@@ -24,3 +24,7 @@ What similar apps and websites? How will your project stand out from these other
 ## Open Questions
 
 What questions do you still have? What topics do you need to research more for your project?
+
+- How can you integrate an AI Companion?
+- How does wellness directly affect company performance?
+- How can we create a website that would make users want to use? 
