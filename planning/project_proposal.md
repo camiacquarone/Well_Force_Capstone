@@ -1,18 +1,21 @@
 # Project Proposal
 
-Pod Members: **Add Pod Members Names**
+Pod Members: **Camila Acquarone, Janine Jimenez, Joshua Donatien**
 
 ## Problem Statement
 
-Insert your groups problem statement and target audience.
+Salesforce invests heavily in employee's wellbeing. However, many employees are unaware of efficent ways to focus on their health during the work day. Our target audience is Salesforce employees who want to make the most of their wellbeing, especially when it comes to meals, but experience friction due to lack of centralized information or guidance.
 
 ## Description
 
 What is the main purpose of your project? What are the key features your site has to offer its users? How will your targeted audience use your website?
 
 ## Expected Features List
-
-Add a list of your groups's brainstormed features list
+- Home Page 
+- Sidebar 
+- AI Companion 
+- Meals Page 
+- Perks Page
 
 ## Related Work
 
