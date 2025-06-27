@@ -20,6 +20,8 @@ What is the main purpose of your project? What are the key features your site ha
 ## Related Work
 
 What similar apps and websites? How will your project stand out from these other websites?
+Thrive. We will build upon this application by making it more salesforce specific.
+
 
 ## Open Questions
 
