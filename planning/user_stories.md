@@ -4,7 +4,7 @@ Pod Members: **Camila, Janine and Joshua**
 
 ## Problem Statement
 
-Insert your groups problem statement and target audience.
+Salesforce invests heavily in employee's wellbeing. However, many employees are unaware of efficent ways to focus on their health during the work day. Our target audience is Salesforce employees who want to make the most of their wellbeing, especially when it comes to meals, but experience friction due to lack of centralized information or guidance.
 
 ## User Roles
 
