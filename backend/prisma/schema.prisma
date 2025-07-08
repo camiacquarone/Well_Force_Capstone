@@ -1,8 +1,93 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
 generator client {
   provider = "prisma-client-js"
+  output   = "../generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int  @id
+  username      String
+  password      String
+  image_url     String
+  name          String
+  dietary_pref  Dietary_Preferences[]?
+  goals         Goals[]
+  role          String
+}
+
+model Goals {
+  id            Int @id
+  title         String
+  description   String
+  categoty      String
+}
+
+model Dietary_Preferences {
+  id              Int
+  isGlutenFree    Boolean?
+  isLactoseInt    Boolean?
+  isVegan         Boolean?
+  isVegetarian    Boolean?
+  isKeto          Boolean?
+  Allergies       String[]
+}
+
+model Snacks {
+  id                    Int
+  name                  String
+  image_url             String?
+  description           String
+  wellness_category	    String[]		//stressed, tired, etc
+  dietary_preferences   Dietary_Preferences[]
+  nutritional_info	    nutritional_information[]
+}
+
+model Meals {
+  id							          Int	@id @autoincrement
+  name						          String					//name of the meal
+  image_url					        String?
+  price						          Float					//total price of meal
+  nutritional_information		Nutritional_Information[]	//info for meal
+  dietary_preferences			  Dietary_Preferences[]
+  restaurant_name				    String
+}
+
+model Nutritional_Information {
+  id              Int
+  serving_size		Int?
+  calories			  Int?
+  total_fat			  Int?
+  cholesterol			Int?
+  sodium				  Int?
+  total_carbs			Int?
+  protein				  Int?
+  sugars				  Int?
+}
+
+model Reccomendation {
+  id           	Int       @id @default(autoincrement())
+  type 			    String?
+  user         	User      @relation(fields: [userId], references: [id])
+  UserId     		Int
+  meal         	Meal      @relation(fields: [mealId], references: [id])
+  mealId       	Int
+  status			  String?
+}
+
+model Benifits {
+  id					    Int		
+  title				    String                     // name of benifit
+  description			String					   // what the benifit does 
+  category			  String "(e.g. “mental”, “dental”, “insurance”)" // type of benifit
+  availabe_for 		String "(intern or full-time)" // If not available
 }
