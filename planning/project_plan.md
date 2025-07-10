@@ -31,6 +31,8 @@ Despite Salesforce’s strong investment in employee wellbeing, many employees a
 
 Pages
 - Landing Page
+<img width="501" height="394" alt="image" src="https://github.com/user-attachments/assets/64c60167-aaf2-4c0e-9564-071f732a1069" />
+
 - Sign Up/Log In Page
 <img width="504" height="404" alt="image" src="https://github.com/user-attachments/assets/67d79902-0948-4fce-b29d-4f084de3c30f" />
 
