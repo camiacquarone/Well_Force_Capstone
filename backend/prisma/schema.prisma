@@ -15,7 +15,7 @@ datasource db {
 }
 
 model User {
-  id            Int  @id
+  id            Int           @id @default(autoincrement())
   username      String
   password      String
   image_url     String
@@ -26,14 +26,14 @@ model User {
 }
 
 model Goals {
-  id            Int @id
+  id            Int           @id @default(autoincrement())
   title         String
   description   String
   categoty      String
 }
 
 model Dietary_Preferences {
-  id              Int
+  id              Int         @id @default(autoincrement())
   isGlutenFree    Boolean?
   isLactoseInt    Boolean?
   isVegan         Boolean?
@@ -43,27 +43,27 @@ model Dietary_Preferences {
 }
 
 model Snacks {
-  id                    Int
+  id                    Int                       @id @default(autoincrement())
   name                  String
   image_url             String?
   description           String
-  wellness_category	    String[]		//stressed, tired, etc
+  wellness_category	    String[]		
   dietary_preferences   Dietary_Preferences[]
   nutritional_info	    nutritional_information[]
 }
 
 model Meals {
-  id							          Int	@id @autoincrement
-  name						          String					//name of the meal
+  id							          Int	                      @id @default(autoincrement())
+  name						          String					
   image_url					        String?
-  price						          Float					//total price of meal
-  nutritional_information		Nutritional_Information[]	//info for meal
+  price						          Float					
+  nutritional_information		Nutritional_Information[]	
   dietary_preferences			  Dietary_Preferences[]
   restaurant_name				    String
 }
 
 model Nutritional_Information {
-  id              Int
+  id              Int   @id @default(autoincrement())
   serving_size		Int?
   calories			  Int?
   total_fat			  Int?
@@ -74,7 +74,7 @@ model Nutritional_Information {
   sugars				  Int?
 }
 
-model Reccomendation {
+model Recommendation {
   id           	Int       @id @default(autoincrement())
   type 			    String?
   user         	User      @relation(fields: [userId], references: [id])
@@ -84,10 +84,10 @@ model Reccomendation {
   status			  String?
 }
 
-model Benifits {
-  id					    Int		
-  title				    String                     // name of benifit
-  description			String					   // what the benifit does 
-  category			  String "(e.g. “mental”, “dental”, “insurance”)" // type of benifit
-  availabe_for 		String "(intern or full-time)" // If not available
+model Benefits {
+  id					    Int		    @id @default(autoincrement())
+  title				    String     
+  description			String					   
+  category			  String 
+  availabe_for 		String 
 }
