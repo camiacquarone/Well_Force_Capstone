@@ -1,5 +1,21 @@
 {
   "dependencies": {
-    "@clerk/clerk-react": "^5.33.0"
+    "@clerk/clerk-react": "^5.33.0",
+    "axios": "^1.10.0",
+    "react-router-dom": "^7.6.3"
+  },
+  "name": "frontend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "vite": "^7.0.3"
   }
 }
