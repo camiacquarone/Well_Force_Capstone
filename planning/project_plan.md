@@ -40,6 +40,8 @@ Pages
 <img width="505" height="410" alt="image" src="https://github.com/user-attachments/assets/2387f829-1c2a-4e7f-b2a2-159fe6db9b14" />
 
 - Home Page
+<img width="497" height="398" alt="image" src="https://github.com/user-attachments/assets/9d50e92d-e10e-450f-85e7-947e9d3141c0" />
+
 - Food Page
 <img width="476" height="319" alt="image" src="https://github.com/user-attachments/assets/e6615225-c9c2-44d9-b0d0-74e30bd3a097" />
 
