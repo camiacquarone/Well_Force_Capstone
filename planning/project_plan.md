@@ -4,7 +4,7 @@ Pod Members: Joshua Donatien, Camila Acquarone, and Janine Jimenez
 
 ## Problem Statement and Description
 
-Despite Salesforce’s strong investment in employee wellbeing, many employees are unaware of available benefits or unsure how to use them. This project proposes a personalized wellbeing platform called Wellforce, helping Salesforce employees easily discover and use their benefits through tailored suggestions and an AI Companion that simplifies access to meals, physical wellness, and other resources.
+Despite Salesforce’s strong investment in employee wellbeing, many employees are unaware of available resources or unsure how to use them. This project proposes a personalized wellbeing platform called Wellforce, helping Salesforce employees easily discover and use their benefits through tailored suggestions and an AI Companion that simplifies access to meals, physical wellness, and other resources.
 
 
 ## User Roles and Personas
