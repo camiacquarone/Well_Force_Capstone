@@ -35,7 +35,7 @@ Pages
 - Profile Setup Page
 - Home Page
 - Food Page
--       <img width="476" height="319" alt="image" src="https://github.com/user-attachments/assets/e6615225-c9c2-44d9-b0d0-74e30bd3a097" />
+<img width="476" height="319" alt="image" src="https://github.com/user-attachments/assets/e6615225-c9c2-44d9-b0d0-74e30bd3a097" />
 
 
 # Wellfore App – Data Model & API Endpoints  
