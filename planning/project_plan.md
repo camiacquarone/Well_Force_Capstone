@@ -119,10 +119,10 @@ model Benefits {
   availabe_for    String                                      // user role eligibility 
 }
 
- 
+``` 
 
 ## Endpoints
-
+```
 User Story 1:
  As a Salesforce employee, I want to view a daily list of healthy snack options available in the office.
  → GET /api/snacks
