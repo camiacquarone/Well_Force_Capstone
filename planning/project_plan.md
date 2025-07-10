@@ -1,6 +1,6 @@
 # Project Plan
 
-Pod Members: **Add Pod Members Names**
+Pod Members: Joshua Donatien, Camila Acquarone, and Janine Jimenez
 
 ## Problem Statement and Description
 
