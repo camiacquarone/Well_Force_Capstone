@@ -11,7 +11,7 @@ Despite Salesforce’s strong investment in employee wellbeing, many employees a
 
 1. Salesforce Employee in the San Francisco Office
       - A Salesforce Software Engineer on the Slack Team looking to view a daily list of healthy snack options available in the office, so that they can make better nutritional choices during their workday.
-      - An FTL SWE intern they want to browse a guide of all available office snacks and drinks, so they can take advantage of what's available during their short time here
+      - An FTL SWE intern wanting to browse a guide of all available office snacks and drinks, so they can take advantage of what's available during their short time here.
 3. Admin - Employee who can edit the snacks available
       - A Salesforce employee in charge of snacks want to add a new seasonal snack available.
       - A Salesforce employee wants to remove a snack that is no longer available.
