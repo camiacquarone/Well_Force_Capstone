@@ -32,7 +32,9 @@ Despite Salesforce’s strong investment in employee wellbeing, many employees a
 Pages
 - Landing Page
 - Sign Up/Log In Page
+<img width="504" height="404" alt="image" src="https://github.com/user-attachments/assets/67d79902-0948-4fce-b29d-4f084de3c30f" />
 - Profile Setup Page
+<img width="505" height="410" alt="image" src="https://github.com/user-attachments/assets/2387f829-1c2a-4e7f-b2a2-159fe6db9b14" />
 - Home Page
 - Food Page
 <img width="476" height="319" alt="image" src="https://github.com/user-attachments/assets/e6615225-c9c2-44d9-b0d0-74e30bd3a097" />
