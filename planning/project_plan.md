@@ -19,11 +19,22 @@ Despite Salesforce’s strong investment in employee wellbeing, many employees a
 ## User Stories
 
 1. As a Salesforce employee, I want to view a daily list of healthy snack options available in the office, so that I can make better nutritional choices during my workday.
-2. 
+2. As a Salesforce employee, I want to discover local meal spots with healthy lunch options near the office, so I can maintain a balanced diet even when eating out.
+3. As a new Salesforce intern, I want to browse a guide of all available office snacks and drinks, so I can take advantage of what's available during my short time here.
+4. As a new Salesforce employee, I want to be able to filter snacks by dietary preferences (e.g., vegan, gluten-free), so I can easily find what fits my needs.
+5. As a Salesforce employee, I want to see a curated list of healthy meal options near the office, so I don’t waste time searching for food.
+6. As a Salesforce employee, I want to set dietary preferences once, so the app only shows me meals that match my eating habits.
+7. As a Salesforce employee, I want to get daily or weekly healthy meal suggestions, so I spend less time figuring out what to eat.
+8. As a Salesforce employee, I want to track how often I make healthy choices, so I can stay motivated and consistent.
 
 ## Pages/Screens
 
-List all the pages and screens in the app. Include wireframes for at least 3 of them.
+Pages
+- Landing Page
+- Sign Up/Log In Page
+- Profile Setup Page
+- Home Page
+- Food Page
 
 ## Data Model
 
