@@ -121,11 +121,11 @@ model Recommendation {
   status         String?                                  // recommendation status 
 } 
 
-model Benefits { 
+model DayToDayPerks { 
   id              Int        @id @default(autoincrement())  // unique benefit ID 
-  title           String                                      // benefit title 
-  description     String                                      // benefit details 
-  category        String                                      // benefit category 
+  title           String                                      // perk title 
+  description     String                                      // perk details 
+  category        String                                      // perk category 
   availabe_for    String                                      // user role eligibility 
 }
 
