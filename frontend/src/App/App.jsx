@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react"
 import {BrowserRouter, Routes, Route } from "react-router-dom"
 import axios from "axios"
 import "./App.css";
+import LandingPage from "../pages/LandingPage/LandingPage";
+
 
 
 function App() {

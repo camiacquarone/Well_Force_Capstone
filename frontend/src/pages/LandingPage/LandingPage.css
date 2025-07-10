@@ -1,0 +1,135 @@
+html,
+body,
+.landing-page-text {
+  height: 100%;
+  min-height: 97vh;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(180deg, #ffffff, #c4ebff);
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow-x: hidden;
+}
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -18rem;
+}
+.logo {
+  width: 8rem;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.landing-page-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  font-family: "Bold";
+  margin: 0.5rem;
+  font-size: 7rem;
+}
+
+.landing-page-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Regular";
+  font-size: 2.8rem;
+}
+
+.get-started-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0d9dda;
+  border: solid #0a7aaa;
+  border-width: 0.3rem;
+  font-family: "Bold";
+  font-size: 2rem;
+  padding: 5rem;
+  border-radius: 2.1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.get-started-button:hover {
+  background-color: #0a7aaa;
+  transform: scale(1.1);
+}
+
+.astro-gif-container {
+  position: absolute;
+  bottom: 250%;
+  right: 20%;
+  position: absolute;
+  left: 90%;
+  transform: translateX(-50%);
+  width: 70vw;
+  height: auto;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.codey-gif-container {
+  position: absolute;
+  bottom: 10%;
+  position: absolute;
+  left: 75%;
+  transform: translateX(-50%);
+  width: 55vw;
+  height: auto;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.footer-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.above-footer-animation {
+  position: absolute;
+  bottom: 100%;
+  left: 65%;
+  transform: translateX(-50%);
+  width: 70vw;
+  height: auto;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.above-footer-animation2 {
+  position: absolute;
+  bottom: 100%;
+  left: 10%;
+  transform: translateX(-50%);
+  width: 45vw;
+  height: auto;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.footer {
+  width: 100%;
+  background-color: #0a7aaa;
+  height: 3vw;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Regular";
+  position: relative;
+  z-index: 1;
+}
