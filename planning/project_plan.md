@@ -36,8 +36,11 @@ Pages
 - Home Page
 - Food Page
 
+# Wellfore App – Data Model & API Endpoints  
+
 ## Data Model
 
+```prisma
 model User { 
   id            Int           @id @default(autoincrement())  // unique user ID 
   username      String                                      // login username 
@@ -48,14 +51,14 @@ model User {
   goals         Goals[]                                     // user's wellness goals 
   role          String                                      // user role (e.g., admin, employee) 
 } 
- 
+
 model Goals { 
   id            Int           @id @default(autoincrement())  // unique goal ID 
   title         String                                      // goal title 
   description   String                                      // goal details 
   categoty      String                                      // category of the goal 
 } 
- 
+
 model Dietary_Preferences { 
   id              Int         @id @default(autoincrement())  // unique preference ID 
   isGlutenFree    Boolean?                                   // gluten-free option 
@@ -65,63 +68,57 @@ model Dietary_Preferences {
   isKeto          Boolean?                                   // keto option 
   Allergies       String[]                                   // allergy list 
 } 
- 
+
 model Snacks { 
   id                    Int                       @id @default(autoincrement())  // unique snack ID 
   name                  String                                              // snack name 
   image_url             String?                                             // snack image URL 
   description           String                                              // snack details 
-  wellness_category      String[]                                           // related wellness categories 
+  wellness_category     String[]                                           // related wellness categories 
   dietary_preferences   Dietary_Preferences[]                               // snack dietary tags 
   nutritional_info      nutritional_information[]                           // snack nutrition info 
 } 
- 
+
 model Meals { 
-  id                        Int                        @id 
-@default(autoincrement())  // unique meal ID 
-  name                     String                                     
-// meal name 
-  image_url                  String?                                   // meal 
-image URL 
-  price                      Float                                       
-// meal price 
-  nutritional_information    Nutritional_Information[]                        // meal nutrition info 
-  dietary_preferences       Dietary_Preferences[]                             // meal dietary 
-tags 
-  restaurant_name            String                                         // restaurant 
-name 
+  id                        Int                        @id @default(autoincrement())  // unique meal ID 
+  name                     String                                      // meal name 
+  image_url                String?                                     // meal image URL 
+  price                    Float                                       // meal price 
+  nutritional_information  Nutritional_Information[]                   // meal nutrition info 
+  dietary_preferences      Dietary_Preferences[]                       // meal dietary tags 
+  restaurant_name          String                                      // restaurant name 
 } 
- 
+
 model Nutritional_Information { 
   id              Int   @id @default(autoincrement())  // unique nutrition info ID 
-  serving_size   Int?                              // portion size 
-  calories        Int?                              // calorie count 
-  total_fat        Int?                              // fat content 
-  cholesterol      Int?                              // cholesterol amount 
-  sodium          Int?                              // sodium content 
-  total_carbs      Int?                              // carbohydrate amount 
-  protein          Int?                              // protein content 
-  sugars          Int?                              // sugar content 
+  serving_size    Int?                                // portion size 
+  calories        Int?                                // calorie count 
+  total_fat       Int?                                // fat content 
+  cholesterol     Int?                                // cholesterol amount 
+  sodium          Int?                                // sodium content 
+  total_carbs     Int?                                // carbohydrate amount 
+  protein         Int?                                // protein content 
+  sugars          Int?                                // sugar content 
 } 
- 
+
 model Recommendation { 
   id             Int       @id @default(autoincrement())  // unique recommendation ID 
   type           String?                                 // recommendation type 
-  user           User      @relation(fields: [userId], references: [id])  // related user 
+  user           User      @relation(fields: [UserId], references: [id])  // related user 
   UserId         Int                                      // foreign key to User 
-  meal           Meal      @relation(fields: [mealId], references: [id])  // related meal 
+  meal           Meals     @relation(fields: [mealId], references: [id])  // related meal 
   mealId         Int                                      // foreign key to Meal 
-  status       String?                                 // recommendation status 
+  status         String?                                  // recommendation status 
 } 
- 
+
 model Benefits { 
-  id              Int        @id @default(autoincrement())  // unique 
-benefit ID 
-  title            String                                      // benefit title 
-  description      String                                      // benefit details 
+  id              Int        @id @default(autoincrement())  // unique benefit ID 
+  title           String                                      // benefit title 
+  description     String                                      // benefit details 
   category        String                                      // benefit category 
   availabe_for    String                                      // user role eligibility 
-} 
+}
+
  
 
 ## Endpoints
