@@ -135,7 +135,7 @@ model DayToDayPerks {
 ```
 User Story 1:
  As a Salesforce employee, I want to view a daily list of healthy snack options available in the office.
- → GET /api/snacks
+ → GET /snacks
 User Story 2:
  As a Salesforce employee, I want to discover local meal spots with healthy lunch options near the office.
  → GET /meals
