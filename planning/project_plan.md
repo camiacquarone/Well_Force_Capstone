@@ -66,7 +66,7 @@ model Goals {
   id            Int           @id @default(autoincrement())  // unique goal ID 
   title         String                                      // goal title 
   description   String                                      // goal details 
-  categoty      String                                      // category of the goal 
+  category      String                                      // category of the goal 
 } 
 
 model Dietary_Preferences { 
