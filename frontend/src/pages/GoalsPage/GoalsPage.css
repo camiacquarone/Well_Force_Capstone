@@ -1,0 +1,123 @@
+.GoalsPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.GoalsPage h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.GoalsPage h3 {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.GoalsPage form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Inputs & Selects */
+.Goals_req_input input,
+.Goals_req_input select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+/* Labels */
+.Goals_req_input label,
+.Goals_but_input label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Calorie Input Buttons */
+.caloric.input {
+  display: flex;
+  gap: 10px;
+}
+
+.caloric.input button {
+  padding: 8px 12px;
+  font-size: 16px;
+}
+
+/* Profile Picture Selection */
+.profile_pic {
+  display: flex;
+  gap: 10px;
+}
+
+.profile_pic button {
+  border: 2px solid transparent;
+  padding: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border 0.3s ease;
+}
+
+.profile_pic button img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.profile_pic button:hover {
+  border-color: #333;
+}
+
+/* Food Goals and Days Selection */
+.FoodGoals_select,
+.FoodDays_select {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.FoodGoals_select button,
+.FoodDays_select button {
+  padding: 15px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.FoodGoals_select button:hover,
+.FoodDays_select button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Submit Button */
+button[type="submit"] {
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #43a047;
+}
+
+/* Optional: Small stars styling */
+.stars {
+  color: red;
+}

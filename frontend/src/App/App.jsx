@@ -3,6 +3,7 @@ import {BrowserRouter, Routes, Route } from "react-router-dom"
 import axios from "axios"
 import "./App.css";
 import LandingPage from "../pages/LandingPage/LandingPage";
+import GoalsPage from "../pages/GoalsPage/GoalsPage";
 
 
 
@@ -15,6 +16,7 @@ function App() {
                     <Route path="/" element= {<LandingPage/>}
 
                     />
+                    <Route path="/home" element={<GoalsPage/>}/>
                 </Routes>
             </main>
             
