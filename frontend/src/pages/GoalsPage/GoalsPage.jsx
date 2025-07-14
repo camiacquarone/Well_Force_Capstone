@@ -8,9 +8,23 @@ function GoalsPage() {
   const [newUserImage_url,setNewUserImage_url] = useState("");
   const [newFoodGoal,setNewFoodGoal] = useState([]);
   const [newFoodDay,setNewFoodDay] = useState([]);
+  const [nameError, setNameError] = useState("");
   const position = ["Intern", "Full Time"]; // Example values
   const increaseCalories = () => setCalories((prev) => Math.min(prev + 50, 5000));
   const decreaseCalories = () => setCalories((prev) => Math.max(prev - 50, 0));
+
+
+  
+
+const handleNameChange = (e) => {
+  const value = e.target.value;
+  if (/^[A-Za-z\s]*$/.test(value)) {
+    setName(value);
+    setNameError("");
+  } else {
+    setNameError("Only letters and spaces are allowed.");
+  }
+};
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -39,6 +53,7 @@ function GoalsPage() {
 
   return (
     <div className="GoalsPage">
+      <button type="button" className="top-right-button" >Setup later ➡</button>
       <h1>Profile</h1>
       <h3> Welcome to your profile </h3>
       <form onSubmit={handleSubmit} className="create-profile-form">
@@ -50,10 +65,11 @@ function GoalsPage() {
             type="text"
             id="Name"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={handleNameChange}
             placeholder="Enter Name"
             required
           />
+          {nameError && <p className="error-message">{nameError}</p>}
         </div>
         <div className="Goals_req_input">
           <label htmlFor="newUserPosition">
@@ -102,8 +118,20 @@ function GoalsPage() {
             </label>
             <div className="profile_pic">
                 
-                <button type="button" onClick={() => setNewUserImage_url("frontend/public/Astro.png")}>
-                <img src="/Astro1.png" alt="Astro" width="200"
+                <button type="button" onClick={() => setNewUserImage_url("frontend/public/einstein-profile.png")}>
+                <img src="/einstein-profile.png" alt="Einstein" width="400"
+            height="230"/>
+                </button>
+                <button type="button" onClick={() => setNewUserImage_url("frontend/public/astro-profile.png")}>
+                <img src="/astro-profile.png" alt="Astro" width="400"
+            height="230"/>
+                </button>
+                <button type="button" onClick={() => setNewUserImage_url("frontend/public/codey-profile.png")}>
+                <img src="/codey-profile.png" alt="Codey" width="400"
+            height="230"/>
+                </button>
+                <button type="button" onClick={() => setNewUserImage_url("frontend/public/ruth-profile.png")}>
+                <img src="/ruth-profile.png" alt="Ruth" width="400"
             height="230"/>
                 </button>
                 {/* {newUserImage_url && (
