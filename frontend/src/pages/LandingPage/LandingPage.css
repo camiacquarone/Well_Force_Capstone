@@ -2,7 +2,7 @@ html,
 body,
 .landing-page-text {
   height: 100%;
-  min-height: 97vh;
+  min-height: 95.5vh;
   margin: 0;
   padding: 0;
   background: linear-gradient(180deg, #ffffff, #c4ebff);
@@ -17,7 +17,7 @@ body,
   margin-top: -18rem;
 }
 .logo {
-  width: 8rem;
+  width: 5.5vw;
 }
 
 .logo:hover {
@@ -29,13 +29,15 @@ body,
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: auto;
 }
 
 .title {
   display: flex;
   font-family: "Bold";
   margin: 0.5rem;
-  font-size: 7rem;
+  font-size: 5.5vw;
+  z-index: 4;
 }
 
 .landing-page-message {
@@ -43,7 +45,9 @@ body,
   justify-content: center;
   align-items: center;
   font-family: "Regular";
-  font-size: 2.8rem;
+  font-size: 2.5vw;
+  z-index: 4;
+  margin-top: 1vh;
 }
 
 .get-started-button {
@@ -54,11 +58,12 @@ body,
   border: solid #0a7aaa;
   border-width: 0.3rem;
   font-family: "Bold";
-  font-size: 2rem;
-  padding: 5rem;
+  font-size: 2vw;
+  padding: 2vw;
   border-radius: 2.1rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  z-index: 4;
 }
 
 .get-started-button:hover {
@@ -68,12 +73,10 @@ body,
 
 .astro-gif-container {
   position: absolute;
-  bottom: 250%;
-  right: 20%;
-  position: absolute;
-  left: 90%;
+  bottom: 220%;
+  left: 74%;
   transform: translateX(-50%);
-  width: 70vw;
+  width: 10vw;
   height: auto;
   pointer-events: none;
   z-index: 3;
@@ -82,10 +85,42 @@ body,
 .codey-gif-container {
   position: absolute;
   bottom: 10%;
-  position: absolute;
   left: 75%;
   transform: translateX(-50%);
   width: 55vw;
+  height: auto;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.einstein-container {
+  position: absolute;
+  bottom: 330%;
+  left: 65%;
+  transform: translateX(-50%);
+  width: 10vw;
+  height: auto;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.appy-container {
+  position: absolute;
+  bottom: 120%;
+  left: 55%;
+  transform: translateX(-50%);
+  width: 10vw;
+  height: auto;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.ruth-container {
+  position: absolute;
+  bottom: 130%;
+  left: 41%;
+  transform: translateX(-50%);
+  width: 10vw;
   height: auto;
   pointer-events: none;
   z-index: 3;
