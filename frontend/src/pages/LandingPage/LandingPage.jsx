@@ -1,7 +1,18 @@
 import React from "react";
 import "./LandingPage.css";
+import { useNavigate } from "react-router-dom";
+import { SignUp, useAuth } from "@clerk/clerk-react";
 
 export default function LandingPage() {
+  const { isSignedIn } = useAuth();
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (isSignedIn) {
+      navigate("/home", { replace: true });
+    }
+  }, [isSignedIn, navigate]);
+
   return (
     <>
       <div className="landing-page-text">
@@ -17,7 +28,12 @@ export default function LandingPage() {
         <h2 className="landing-page-message">
           Nourishing Your Journey with Smart Snacking and Mindful Meals ©
         </h2>
-        <button className="get-started-button">GET STARTED</button>
+        <button
+          className="get-started-button"
+          onClick={() => navigate("/sign-up")}
+        >
+          GET STARTED
+        </button>
       </div>
 
       <div className="footer-wrapper">
