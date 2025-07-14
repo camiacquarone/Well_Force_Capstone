@@ -20,25 +20,48 @@ export default function LandingPage() {
         <button className="get-started-button">GET STARTED</button>
       </div>
 
-
-
       <div className="footer-wrapper">
-        <div className="astro-gif-container">
-          <img
-            src="/Astro1.png"
-            alt="Astro animation"
-            width="200"
-            height="230"
-          />
-        </div>
-                <img
-            src="/Codey.gif"
-            alt="Astro animation"
-            width="400"
-            height="220"
-            className="codey-gif-container"
-          />
-        <img src="/forest.png" className="above-footer-animation2" alt="forest"/>
+        <img
+          src="/Astro1.png"
+          alt="Astro animation"
+          width="200"
+          height="230"
+          className="astro-gif-container"
+        />
+
+        <img
+          src="/Codey.gif"
+          alt="Astro animation"
+          width="400"
+          height="220"
+          className="codey-gif-container"
+        />
+        <img
+          src="/Einstein1.png"
+          alt="Astro animation"
+          width="400"
+          height="220"
+          className="einstein-container"
+        />
+        <img
+          src="/Appy.png"
+          alt="Astro animation"
+          width="400"
+          height="220"
+          className="appy-container"
+        />
+        <img
+          src="/Ruth.png"
+          alt="Astro animation"
+          width="400"
+          height="220"
+          className="ruth-container"
+        />
+        <img
+          src="/forest.png"
+          className="above-footer-animation2"
+          alt="forest"
+        />
         <img src="/grass.png" className="above-footer-animation" alt="grass" />
         <footer className="footer">©2025 WellForce</footer>
       </div>
