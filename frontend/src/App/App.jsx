@@ -16,7 +16,7 @@ function App() {
                     <Route path="/" element= {<LandingPage/>}
 
                     />
-                    <Route path="/home" element={<GoalsPage/>}/>
+                    <Route path="/profile" element={<GoalsPage/>}/>
                 </Routes>
             </main>
             
