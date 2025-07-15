@@ -25,7 +25,7 @@ function App() {
 
         {/* protected routes */}
         <Route path="/home" element={<HomePage />} />
-        <Route path="profile-setup" element={<GoalsPage />} />
+        <Route path="/profile" element={<GoalsPage />} />
         <Route
           path="*"
           element={
