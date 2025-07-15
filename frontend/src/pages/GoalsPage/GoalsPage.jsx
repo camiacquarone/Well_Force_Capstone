@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./GoalsPage.css";
+import HomePage from "../HomePage/HomePage.jsx";
+import { useNavigate } from "react-router-dom";
 
 function GoalsPage() {
   const [name, setName] = useState("");
@@ -13,6 +15,7 @@ function GoalsPage() {
   const increaseCalories = () =>
     setCalories((prev) => Math.min(prev + 50, 5000));
   const decreaseCalories = () => setCalories((prev) => Math.max(prev - 50, 0));
+  const navigate = useNavigate();
 
   const handleNameChange = (e) => {
     const value = e.target.value;
@@ -42,6 +45,14 @@ function GoalsPage() {
           : [...prev, goal] // add if not selected
     );
   }
+  function toggleFoodGoal(goal) {
+    setNewFoodGoal((prev) =>
+      prev.includes(goal)
+        ? prev.filter((item) => item !== goal)
+        : [...prev, goal]
+    );
+  }
+
   function toggleDay(day) {
     setNewFoodDay((prev) =>
       prev.includes(day) ? prev.filter((d) => d !== day) : [...prev, day]
@@ -50,8 +61,12 @@ function GoalsPage() {
 
   return (
     <div className="GoalsPage">
-      <button type="button" className="top-right-button">
-        Setup Later ➡
+      <button
+        type="button"
+        className="top-right-button"
+        onClick={() => navigate("/home")}
+      >
+        Setup later ➡
       </button>
       <h1>Profile</h1>
       <h3> Welcome to Your Profile! </h3>
