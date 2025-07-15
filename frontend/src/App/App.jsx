@@ -10,6 +10,7 @@ import SignInPage from "../pages/SignInPage/SignInPage.jsx";
 import HomePage from "../pages/HomePage/HomePage.jsx";
 import GoalsPage from "../pages/GoalsPage/GoalsPage.jsx";
 import AICompanion from "../components/AICompanion/AICompanion";
+import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute.jsx";
 
 function App() {
   return (
@@ -17,15 +18,36 @@ function App() {
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<LandingPage />} />
-
-        {/* <Route path="/sign-in" element={<SignInPage />} /> */}
         <Route path="/sign-up/*" element={<SignUpPage />} />
-        <Route path="/sign-in/*" element={<SignInPage />} />
-        <Route path="/chat" element={<AICompanion />} />
 
-        {/* protected routes */}
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/profile" element={<GoalsPage />} />
+        <Route path="/sign-in/*" element={<SignInPage />} />
+
+        <Route
+          path="/chat"
+          element={
+            <ProtectedRoute>
+              <AICompanion />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <GoalsPage />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="*"
           element={
