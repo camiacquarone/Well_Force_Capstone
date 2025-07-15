@@ -51,6 +51,7 @@ body,
 }
 
 .get-started-button {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
