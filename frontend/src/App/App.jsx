@@ -14,6 +14,7 @@ import AICompanion from "../components/AICompanion/AICompanion";
 import NavBar from "../components/NavBar/NavBar";
 
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute.jsx";
+import FoodPage from "../pages/FoodPage/FoodPage.jsx";
 
 
 function App() {
@@ -38,7 +39,7 @@ const toggleNavBar = () => setNavBarOpen((isOpen) => !isOpen);
           path="/chat"
           element={
             <ProtectedRoute>
-              <AICompanion />
+              <AICompanion/> 
             </ProtectedRoute>
           }
         />
@@ -47,7 +48,7 @@ const toggleNavBar = () => setNavBarOpen((isOpen) => !isOpen);
           path="/home"
           element={
             <ProtectedRoute>
-              <HomePage />
+              <><HomePage/> <NavBar/></>
             </ProtectedRoute>
           }
         />
@@ -56,10 +57,20 @@ const toggleNavBar = () => setNavBarOpen((isOpen) => !isOpen);
           path="/profile"
           element={
             <ProtectedRoute>
-              <GoalsPage />
+              <><GoalsPage/> <NavBar/></>
             </ProtectedRoute>
           }
         />
+
+        <Route
+          path="/meals"
+          element={
+            <ProtectedRoute>
+              <><FoodPage/> <NavBar/></>
+            </ProtectedRoute>
+          }
+        />
+
 
         <Route
           path="*"
