@@ -1,5 +1,5 @@
 import React from "react";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
@@ -19,7 +19,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
 
         {/* <Route path="/sign-in" element={<SignInPage />} /> */}
-        <Route path="/sign-up" element={<SignUpPage />} />
+        <Route path="/sign-up/*" element={<SignUpPage />} />
         <Route path="/sign-in/*" element={<SignInPage />} />
         <Route path="/chat" element={<AICompanion />} />
 
