@@ -1,50 +1,54 @@
-
-
-.NavBar {
+.navbar-container {
   position: fixed;
   top: 0;
   left: 0;
-  width: 200px;
   height: 100%;
-  background-color: #2c2c2c;
-  color: rgb(214, 46, 135);
-  padding: 20px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+  transition: width 0.3s ease;
+  z-index: 1000;
+}
+
+.navbar {
+  height: 100%;
+  background-color: #4caf50;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: flex-start;
+  padding: 4px;
+  font-family: 'Arial', sans-serif;
 }
 
-.NavBar.closed {
-  transform: translateX(-100%);
+.navbar-container {
+  width: 50px;
 }
 
-.link_to_pages {
+.navbar-container.open {
+  width: 150px;
+}
+
+.hamburger-button,
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  margin: 0px;
+}
+
+.navbar-links {
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.link_to_pages a {
-  color: rgb(73, 116, 128);
+.navbar-links a {
+  color: white;
   text-decoration: none;
   font-size: 18px;
-  transition: color 0.2s;
 }
 
-.link_to_pages a:hover {
-  color: #b3b3b3;
-}
-
-.toggle-button {
-  background: none;
-  border: none;
-  color: rgb(126, 82, 82);
-  cursor: pointer;
-  padding: 10px;
-}
-
-.material-icons {
-  font-size: 36px;
+.navbar-links a:hover {
+  text-decoration: underline;
 }

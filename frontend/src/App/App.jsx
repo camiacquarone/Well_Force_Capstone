@@ -32,8 +32,9 @@ const toggleNavBar = () => setNavBarOpen((isOpen) => !isOpen);
         <Route path="/chat" element={<AICompanion />} />
 
         {/* protected routes */}
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/profile" element={<GoalsPage />} />
+        <Route path="/home" element={(<><HomePage /><NavBar /></>)} />
+        <Route path="/profile" element={(<><GoalsPage /><NavBar /></>)}/>
+        <Route path="/sidebar" element={<NavBar/>}/>
         <Route
           path="*"
           element={

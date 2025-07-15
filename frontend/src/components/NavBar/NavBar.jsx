@@ -1,57 +1,62 @@
 
-import React from "react";
+
+
+
+
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 
-function NavBar({ isOpen, toggleNavBar }) {
-    
+function NavBar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleNavBar = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <nav className={`sidebar ${isOpen ? "open" : "closed"}`}>
-      <div className="link_to_pages">
-        <Link to="/profile">Settings</Link>
-        <Link to="/">Landing Page</Link>
+    <div className={`navbar-container ${isOpen ? "open" : ""}`}>
+      <div className="navbar">
+        {isOpen ? (
+          <>
+            <button className="close-button" onClick={toggleNavBar}>×</button>
+            <nav className="navbar-links">
+              <Link to="/profile" onClick={toggleNavBar}>Settings</Link>
+              <Link to="/" onClick={toggleNavBar}>Landing Page</Link>
+              <Link to="/home" onClick={toggleNavBar}>Home Page</Link>
+            </nav>
+          </>
+        ) : (
+          <button className="hamburger-button" onClick={toggleNavBar}>
+            ☰
+          </button>
+        )}
       </div>
-      <button className="toggle-button" onClick={toggleNavBar}>
-        <span className="material-icons">arrow_forward</span>
-      </button>
-    </nav>
+    </div>
   );
 }
 
 export default NavBar;
 
-
-
-// import { useState } from "react";
+// import React from "react";
 // import { Link } from "react-router-dom";
-// import "./Sidebar.css";
+// import "./NavBar.css";
 
-// function Sidebar() {
-//   const [isOpen, setIsOpen] = useState(false);
-
-//   const toggleSidebar = () => {
-//     setIsOpen(!isOpen);
-//   };
-
+// function NavBar({ isOpen, toggleNavBar }) {
+    
 //   return (
-//     <div className={`sidebar-container ${isOpen ? "open" : ""}`}>
-//       <div className="sidebar">
-//         {isOpen ? (
-//           <>
-//             <button className="close-button" onClick={toggleSidebar}>×</button>
-//             <nav className="sidebar-links">
-//               <Link to="/profile" onClick={toggleSidebar}>Settings</Link>
-//               <Link to="/" onClick={toggleSidebar}>Landing Page</Link>
-//             </nav>
-//           </>
-//         ) : (
-//           <button className="hamburger-button" onClick={toggleSidebar}>
-//             ☰
-//           </button>
-//         )}
+//     <nav className={`sidebar ${isOpen ? "open" : "closed"}`}>
+//       <div className="link_to_pages">
+//         <Link to="/profile">Settings</Link>
+//         <Link to="/">Landing Page</Link>
 //       </div>
-//     </div>
+//       <button className="toggle-button" onClick={toggleNavBar}>
+//         <span className="material-icons">arrow_forward</span>
+//       </button>
+//     </nav>
 //   );
 // }
 
-// export default Sidebar;
+// export default NavBar;
+
+
