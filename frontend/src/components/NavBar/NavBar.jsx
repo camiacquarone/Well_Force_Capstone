@@ -38,25 +38,5 @@ function NavBar() {
 
 export default NavBar;
 
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import "./NavBar.css";
-
-// function NavBar({ isOpen, toggleNavBar }) {
-    
-//   return (
-//     <nav className={`sidebar ${isOpen ? "open" : "closed"}`}>
-//       <div className="link_to_pages">
-//         <Link to="/profile">Settings</Link>
-//         <Link to="/">Landing Page</Link>
-//       </div>
-//       <button className="toggle-button" onClick={toggleNavBar}>
-//         <span className="material-icons">arrow_forward</span>
-//       </button>
-//     </nav>
-//   );
-// }
-
-// export default NavBar;
 
 
