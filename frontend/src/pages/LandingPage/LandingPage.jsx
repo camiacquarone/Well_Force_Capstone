@@ -22,6 +22,7 @@ export default function LandingPage() {
             className="logo"
             alt="Salesforce Logo"
           />
+
           <h1 className="title">WellForce</h1>
         </div>
 

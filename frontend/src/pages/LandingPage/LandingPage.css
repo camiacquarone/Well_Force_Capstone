@@ -169,3 +169,118 @@ body,
   position: relative;
   z-index: 1;
 }
+
+@media screen and (max-width: 500px) {
+  .title {
+    font-size: 15vw;
+  }
+  .logo {
+    width: 14vw;
+  }
+
+  .get-started-button {
+    font-size: 4vw;
+    padding: 4vw;
+  }
+
+  .landing-page-message {
+    font-size: 6vw;
+    margin: 3vw;
+    text-align: center;
+    margin-bottom: 5vh;
+  }
+  .codey-gif-container {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+  }
+
+  .astro-gif-container {
+    display: none;
+  }
+  .ruth-container {
+    width: 15vw;
+  }
+  .einstein-container {
+    position: absolute;
+    bottom: 100%;
+    left: 60%;
+    width: 17vw;
+  }
+  .appy-container {
+    display: none;
+  }
+  .above-footer-animation {
+    position: absolute;
+    bottom: 9.6vw;
+    height: 5vh;
+  }
+  .above-footer-animation2 {
+    position: absolute;
+    bottom: 9.8vw;
+    height: 30vh;
+    width: 80vw;
+  }
+
+  .footer {
+    position: relative;
+    bottom: 0%;
+    padding: 3.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 1024px) {
+  .title {
+    font-size: 12vw;
+  }
+  .logo {
+    width: 12vw;
+  }
+
+  .get-started-button {
+    font-size: 3vw;
+    padding: 3vw;
+  }
+
+  .landing-page-message {
+    font-size: 4vw;
+    margin: 3vw;
+    text-align: center;
+    margin-bottom: 5vh;
+  }
+  .ruth-container{
+        width: 12vw;
+        left:38%;
+  }
+  .appy-container {
+    left: 53%;
+        width: 11vw;
+  }
+  .einstein-container {
+    left: 64%;
+    bottom: 240%;
+    width: 12vw;
+  }
+  .astro-gif-container {
+    bottom: 140%;
+        width: 11vw;
+  }
+  .codey-gif-container {
+    width: 60vw;
+    left: 70%;
+    bottom: 90%;
+  }
+  .footer {
+    position: relative;
+    bottom: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1vw;
+  }
+}

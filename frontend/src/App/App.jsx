@@ -1,5 +1,7 @@
 import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import axios from "axios";
 import "./App.css";
 
 import LandingPage from "../pages/LandingPage/LandingPage.jsx";
@@ -7,6 +9,7 @@ import SignUpPage from "../pages/SignUpPage/SignUpPage.jsx";
 import SignInPage from "../pages/SignInPage/SignInPage.jsx";
 import HomePage from "../pages/HomePage/HomePage.jsx";
 import GoalsPage from "../pages/GoalsPage/GoalsPage.jsx";
+import AICompanion from "../components/AICompanion/AICompanion";
 
 function App() {
   return (
@@ -18,6 +21,7 @@ function App() {
         {/* <Route path="/sign-in" element={<SignInPage />} /> */}
         <Route path="/sign-up" element={<SignUpPage />} />
         <Route path="/sign-in/*" element={<SignInPage />} />
+        <Route path="/chat" element={<AICompanion />} />
 
         {/* protected routes */}
         <Route path="/home" element={<HomePage />} />
