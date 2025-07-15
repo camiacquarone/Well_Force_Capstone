@@ -10,10 +10,21 @@ import SignInPage from "../pages/SignInPage/SignInPage.jsx";
 import HomePage from "../pages/HomePage/HomePage.jsx";
 import GoalsPage from "../pages/GoalsPage/GoalsPage.jsx";
 import AICompanion from "../components/AICompanion/AICompanion";
+
+import NavBar from "../components/NavBar/NavBar";
+
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute.jsx";
 
+
 function App() {
+
+const [NavBarOpen, setNavBarOpen] = useState(false);
+const toggleNavBar = () => setNavBarOpen((isOpen) => !isOpen);
+
   return (
+    <div className="App">
+     
+    
     <Router>
       <Routes>
         {/* Public Routes */}
@@ -21,6 +32,7 @@ function App() {
         <Route path="/sign-up/*" element={<SignUpPage />} />
 
         <Route path="/sign-in/*" element={<SignInPage />} />
+
 
         <Route
           path="/chat"
@@ -48,6 +60,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+
         <Route
           path="*"
           element={
@@ -59,6 +72,7 @@ function App() {
         />
       </Routes>
     </Router>
+    </div>
   );
 }
 
