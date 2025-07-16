@@ -39,16 +39,15 @@ function App() {
             }
           />
 
-          <Route
-            path="/home"
-            element={
-              <ProtectedRoute>
-                <>
-                  <HomePage />{" "}
-                </>
-              </ProtectedRoute>
-            }
-          />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <><HomePage/> <NavBar/></>
+              
+            </ProtectedRoute>
+          }
+        />
 
           <Route
             path="/profile"
