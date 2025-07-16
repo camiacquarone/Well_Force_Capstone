@@ -32,7 +32,6 @@ function GoalsPage() {
     console.log("Name:", name);
     console.log("Position:", newUserPosition);
     console.log("Calories", calories);
-    wh;
     console.log("Image URL:", newUserImage_url);
     console.log("Food Goal:", newFoodGoal);
     console.log("Food Day:", newFoodDay);
@@ -46,6 +45,14 @@ function GoalsPage() {
           : [...prev, goal] // add if not selected
     );
   }
+  function toggleFoodGoal(goal) {
+    setNewFoodGoal((prev) =>
+      prev.includes(goal)
+        ? prev.filter((item) => item !== goal)
+        : [...prev, goal]
+    );
+  }
+
   function toggleDay(day) {
     setNewFoodDay((prev) =>
       prev.includes(day) ? prev.filter((d) => d !== day) : [...prev, day]
@@ -62,7 +69,7 @@ function GoalsPage() {
         Setup later ➡
       </button>
       <h1>Profile</h1>
-      <h3> Welcome to your profile </h3>
+      <h3> Welcome to Your Profile! </h3>
       <form onSubmit={handleSubmit} className="create-profile-form">
         <div className="Goals_req_input">
           <label htmlFor="newUserName">
@@ -96,7 +103,7 @@ function GoalsPage() {
               onChange={(e) => setNewUserPosition(e.target.value)}
               required
             >
-              <option value="">Select a position</option>
+              <option value="">Select a Position</option>
               {position.map((cat) => (
                 <option key={cat} value={cat}>
                   {cat}
@@ -107,7 +114,7 @@ function GoalsPage() {
         </div>
         <div className="Goals_req_input">
           <label htmlFor="newUserCalories">
-            Daily Calories <span className="stars">*</span>
+            Daily Calorie Intake Goal <span className="stars">*</span>
           </label>
           <div className="caloric input">
             <input
@@ -115,10 +122,10 @@ function GoalsPage() {
               value={calories}
               onChange={(e) => setCalories(Number(e.target.value))}
             />
-            <button type="button" onClick={decreaseCalories}>
+            <button type="button" onClick={decreaseCalories} className="arrow">
               ⬇
             </button>
-            <button type="button" onClick={increaseCalories}>
+            <button type="button" onClick={increaseCalories} className="arrow">
               ⬆
             </button>
           </div>
@@ -128,95 +135,130 @@ function GoalsPage() {
             Profile Picture <span className="stars">*</span>
           </label>
           <div className="profile_pic">
-            <button
-              type="button"
-              onClick={() =>
-                setNewUserImage_url("frontend/public/einstein-profile.png")
-              }
-            >
-              <img
-                src="/einstein-profile.png"
-                alt="Einstein"
-                width="400"
-                height="230"
-              />
-            </button>
-            <button
-              type="button"
-              onClick={() =>
-                setNewUserImage_url("frontend/public/astro-profile.png")
-              }
-            >
-              <img
-                src="/astro-profile.png"
-                alt="Astro"
-                width="400"
-                height="230"
-              />
-            </button>
-            <button
-              type="button"
-              onClick={() =>
-                setNewUserImage_url("frontend/public/codey-profile.png")
-              }
-            >
-              <img
-                src="/codey-profile.png"
-                alt="Codey"
-                width="400"
-                height="230"
-              />
-            </button>
-            <button
-              type="button"
-              onClick={() =>
-                setNewUserImage_url("frontend/public/ruth-profile.png")
-              }
-            >
-              <img
-                src="/ruth-profile.png"
-                alt="Ruth"
-                width="400"
-                height="230"
-              />
-            </button>
-            {/* {newUserImage_url && (
-                     <div>
-                    <p>Selected Image Preview:</p>
-                    <img src={newUserImage_url} alt="Selected Profile" />
-                    </div>
-                        )} */}
+            {[
+              {
+                id: "einstein",
+                src: "/einstein-profile.png",
+                selectedSrc: "/einstein-profile-selected.png",
+                alt: "Einstein",
+                className: "einstein-img",
+              },
+              {
+                id: "astro",
+                src: "/astro-profile.png",
+                selectedSrc: "/astro-profile-selected.png",
+                alt: "Astro",
+                className: "astro-img",
+              },
+              {
+                id: "codey",
+                src: "/codey-profile.png",
+                selectedSrc: "/codey-profile-selected.png",
+                alt: "Codey",
+                className: "codey-img",
+              },
+              {
+                id: "ruth",
+                src: "/ruth-profile.png",
+                selectedSrc: "/ruth-profile-selected.png",
+                alt: "Ruth",
+                className: "ruth-img",
+              },
+              {
+                id: "appy",
+                src: "/appy-profile.png",
+                selectedSrc: "/appy-profile-selected.png",
+                alt: "Appy",
+                className: "appy-img",
+              },
+            ].map((char) => {
+              const isSelected = newUserImage_url === char.selectedSrc;
+              return (
+                <img
+                  key={char.id}
+                  src={isSelected ? char.selectedSrc : char.src}
+                  alt={char.alt}
+                  className={`${char.className} ${
+                    isSelected ? "selected" : ""
+                  }`}
+                  onClick={() =>
+                    setNewUserImage_url(isSelected ? "" : char.selectedSrc)
+                  }
+                />
+              );
+            })}
           </div>
         </div>
-        <div className="Goals_but_input">
+        <div className="goals_but_input">
           <label htmlFor="newUserImage">Food Goals</label>
-          <div className="FoodGoals_select">
-            <button type="button" onClick={() => toggleFoodGoal("Protien")}>
-              I want to eat more protien
+          <div className="food-goals-select">
+            <button
+              className={`protein ${
+                newFoodGoal.includes("Protein") ? "selected" : ""
+              }`}
+              onClick={() => toggleFoodGoal("Protein")}
+            >
+              I Want to Eat More Protein
             </button>
-            <button type="button" onClick={() => toggleFoodGoal("Vegetables")}>
-              I want to eat more vegetables
+            <button
+              className={`vegetables ${
+                newFoodGoal.includes("Vegetables") ? "selected" : ""
+              }`}
+              onClick={() => toggleFoodGoal("Vegetables")}
+            >
+              I Want to Eat More Vegetables
             </button>
           </div>
         </div>
-        <div className="Goals_but_input">
+        <div className="goals_but_input">
           <label htmlFor="DaysWanted">
-            How Many Days do you want meal suggestions?
+            What Days of the Week Would You Like Meal Suggestions?
           </label>
 
-          <div className="FoodDays_select">
-            <button type="button" onClick={() => toggleDay("Monday")}>
+          <div className="food-days-select">
+            <button
+              className={`monday ${
+                newFoodDay.includes("Monday") ? "selected" : ""
+              }`}
+              onClick={() => toggleDay("Monday")}
+            >
               Monday
             </button>
-            <button type="button" onClick={() => toggleDay("Tuesday")}>
+            <button
+              className={`tuesday ${
+                newFoodDay.includes("Tuesday") ? "selected" : ""
+              }`}
+              onClick={() => toggleDay("Tuesday")}
+            >
               Tuesday
             </button>
-            <button type="button" onClick={() => toggleDay("Wednesday")}>
+            <button
+              className={`wedensday ${
+                newFoodDay.includes("Wednesday") ? "selected" : ""
+              }`}
+              onClick={() => toggleDay("Wednesday")}
+            >
               Wednesday
+            </button>
+            <button
+              className={`thursday ${
+                newFoodDay.includes("Thursday") ? "selected" : ""
+              }`}
+              onClick={() => toggleDay("Thursday")}
+            >
+              Thursday
+            </button>
+            <button
+              className={`friday ${
+                newFoodDay.includes("Friday") ? "selected" : ""
+              }`}
+              onClick={() => toggleDay("Friday")}
+            >
+              Friday
             </button>
           </div>
         </div>
-        <button type="submit" onClick={() => navigate("/home")}>
+        <button type="submit" className="save-button">
           Save Profile
         </button>
       </form>
