@@ -16,33 +16,28 @@ import NavBar from "../components/NavBar/NavBar";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute.jsx";
 import FoodPage from "../pages/FoodPage/FoodPage.jsx";
 
-
 function App() {
-
-const [NavBarOpen, setNavBarOpen] = useState(false);
-const toggleNavBar = () => setNavBarOpen((isOpen) => !isOpen);
+  const [NavBarOpen, setNavBarOpen] = useState(false);
+  const toggleNavBar = () => setNavBarOpen((isOpen) => !isOpen);
 
   return (
     <div className="App">
-     
-    
-    <Router>
-      <Routes>
-        {/* Public Routes */}
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/sign-up/*" element={<SignUpPage />} />
+      <Router>
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/sign-up/*" element={<SignUpPage />} />
 
-        <Route path="/sign-in/*" element={<SignInPage />} />
+          <Route path="/sign-in/*" element={<SignInPage />} />
 
-
-        <Route
-          path="/chat"
-          element={
-            <ProtectedRoute>
-              <AICompanion/> 
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/chat"
+            element={
+              <ProtectedRoute>
+                <AICompanion />
+              </ProtectedRoute>
+            }
+          />
 
         <Route
           path="/home"
@@ -54,36 +49,39 @@ const toggleNavBar = () => setNavBarOpen((isOpen) => !isOpen);
           }
         />
 
-        <Route
-          path="/profile"
-          element={
-            <ProtectedRoute>
-              <><GoalsPage/> <NavBar/></>
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <>
+                  <GoalsPage /> <NavBar />
+                </>
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="/meals"
-          element={
-            <ProtectedRoute>
-              <><FoodPage/> <NavBar/></>
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/meals"
+            element={
+              <ProtectedRoute>
+                <>
+                  <FoodPage /> <NavBar />
+                </>
+              </ProtectedRoute>
+            }
+          />
 
-
-        <Route
-          path="*"
-          element={
-            <>
-              <h2>404: Not Found</h2>
-              <p>The page you're looking for does not exist.</p>
-            </>
-          }
-        />
-      </Routes>
-    </Router>
+          <Route
+            path="*"
+            element={
+              <>
+                <h2>404: Not Found</h2>
+                <p>The page you're looking for does not exist.</p>
+              </>
+            }
+          />
+        </Routes>
+      </Router>
     </div>
   );
 }
