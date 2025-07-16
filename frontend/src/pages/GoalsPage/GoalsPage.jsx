@@ -63,6 +63,13 @@ function GoalsPage() {
     <div className="GoalsPage">
       <button
         type="button"
+        className="top-left-button"
+        onClick={() => navigate("/")}
+      >
+        ⬅ Back
+      </button>
+      <button
+        type="button"
         className="top-right-button"
         onClick={() => navigate("/home")}
       >
@@ -120,7 +127,11 @@ function GoalsPage() {
             <input
               type="number"
               value={calories}
-              onChange={(e) => setCalories(Number(e.target.value))}
+              onChangeCapture={(e) => {
+                const raw = e.target.value;
+                const sanitized = raw.replace(/^0+(?!$)/, "");
+                setCalories(sanitized === "" ? "0" : sanitized);
+              }}
             />
             <button type="button" onClick={decreaseCalories} className="arrow">
               ⬇

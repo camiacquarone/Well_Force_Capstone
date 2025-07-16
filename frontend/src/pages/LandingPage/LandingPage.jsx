@@ -7,11 +7,11 @@ export default function LandingPage() {
   const { isSignedIn } = useAuth();
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    if (isSignedIn) {
-      navigate("/home", { replace: true });
-    }
-  }, [isSignedIn, navigate]);
+//   React.useEffect(() => {
+//     if (isSignedIn) {
+//       navigate("/home", { replace: true });
+//     }
+//   }, [isSignedIn, navigate]);
 
   return (
     <>
