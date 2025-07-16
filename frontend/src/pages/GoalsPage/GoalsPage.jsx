@@ -131,7 +131,7 @@ function GoalsPage() {
           </div>
         </div>
         <div className="Goals_but_input">
-          <label htmlFor="newUserImage">
+          <label htmlFor="newUserImage" id="profile-pic-text">
             Profile Picture <span className="stars">*</span>
           </label>
           <div className="profile_pic">

@@ -1,3 +1,95 @@
-.cl-card{
-    background-color:  #0a7aaa;
+.cl-card {
+  /* background-color:  #239dd6; */
+  background-color: #c8e6f6;
+}
+
+.auth-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15rem;
+  margin-bottom: 10rem;;
+}
+
+.cl-cardBox {
+  width: 40rem;
+}
+
+.cl-headerTitle {
+  color: rgb(0, 0, 0);
+  font-family: "Regular";
+  font-size: 3rem;
+}
+
+.cl-headerSubtitle {
+  color: rgb(0, 0, 0);
+  font-family: "Regular";
+  font-size: 1.15rem;
+}
+span {
+  color: rgb(0, 0, 0);
+  font-family: "Regular";
+  font-size: 1rem;
+}
+
+.cl-dividerText {
+  font-family: "Regular";
+  font-size: 1rem;
+}
+
+.cl-socialButtonsBlockButtonText{
+    font-size: 1rem;
+    /* font-family: "Bold"; */
+}
+
+.cl-formFieldLabel {
+  font-family: "Regular";
+  font-size: 1.2rem;
+}
+
+.cl-formFieldInput {
+  font-family: "Regular";
+  font-size: 1rem;
+}
+
+/* .cl-internal-1dauvpw {
+  background-color: #ffffff;
+} */
+
+.cl-internal-fcx671 {
+  color: #239dd6;
+  font-family: "Regular";
+}
+
+.cl-footer {
+  background-color: #239dd6;
+}
+
+.cl-footerAction {
+  margin: 0;
+}
+.cl-footerActionText {
+  font-family: "Regular";
+  font-size: 1rem;
+}
+
+.cl-footerActionLink {
+  font-family: "Bold";
+  font-size: 1rem;
+  color: #239dd6;
+}
+
+.cl-internal-1q4rk2m{
+    font-family: "Regular";
+}
+
+.cl-button{
+    background-color: #239dd6;
+}
+
+.cl-providerIcon{
+    background-color: white;
+    padding:0.1rem;
+    border-radius: 0.3rem;
+    min-width: 1.5rem;
 }

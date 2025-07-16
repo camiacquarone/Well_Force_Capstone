@@ -24,6 +24,7 @@ const SignUpPage = () => {
           routing="path"
           signInUrl="/sign-in"
           afterSignUpUrl="/profile"
+           appearance={{elements:{formButtonPrimary:{backgroundColor:"#239dd6"}}}}
         />
       )}
     </div>
