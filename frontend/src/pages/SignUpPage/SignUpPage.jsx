@@ -23,7 +23,7 @@ const SignUpPage = () => {
           path="/sign-up"
           routing="path"
           signInUrl="/sign-in"
-          afterSignUpUrl="/profile-setup"
+          afterSignUpUrl="/profile"
         />
       )}
     </div>
