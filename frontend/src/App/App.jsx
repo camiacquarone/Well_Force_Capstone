@@ -10,10 +10,22 @@ import SignInPage from "../pages/SignInPage/SignInPage.jsx";
 import HomePage from "../pages/HomePage/HomePage.jsx";
 import GoalsPage from "../pages/GoalsPage/GoalsPage.jsx";
 import AICompanion from "../components/AICompanion/AICompanion";
+
+import NavBar from "../components/NavBar/NavBar";
+
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute.jsx";
+import FoodPage from "../pages/FoodPage/FoodPage.jsx";
+
 
 function App() {
+
+const [NavBarOpen, setNavBarOpen] = useState(false);
+const toggleNavBar = () => setNavBarOpen((isOpen) => !isOpen);
+
   return (
+    <div className="App">
+     
+    
     <Router>
       <Routes>
         {/* Public Routes */}
@@ -22,11 +34,12 @@ function App() {
 
         <Route path="/sign-in/*" element={<SignInPage />} />
 
+
         <Route
           path="/chat"
           element={
             <ProtectedRoute>
-              <AICompanion />
+              <AICompanion/> 
             </ProtectedRoute>
           }
         />
@@ -35,7 +48,7 @@ function App() {
           path="/home"
           element={
             <ProtectedRoute>
-              <HomePage />
+              <><HomePage/> <NavBar/></>
             </ProtectedRoute>
           }
         />
@@ -44,10 +57,21 @@ function App() {
           path="/profile"
           element={
             <ProtectedRoute>
-              <GoalsPage />
+              <><GoalsPage/> <NavBar/></>
             </ProtectedRoute>
           }
         />
+
+        <Route
+          path="/meals"
+          element={
+            <ProtectedRoute>
+              <><FoodPage/> <NavBar/></>
+            </ProtectedRoute>
+          }
+        />
+
+
         <Route
           path="*"
           element={
@@ -59,6 +83,7 @@ function App() {
         />
       </Routes>
     </Router>
+    </div>
   );
 }
 

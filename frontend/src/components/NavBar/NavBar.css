@@ -1,0 +1,54 @@
+.navbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transition: width 0.3s ease;
+  z-index: 1000;
+}
+
+.navbar {
+  height: 100%;
+  background-color: #4caf50;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 4px;
+  font-family: 'Arial', sans-serif;
+}
+
+.navbar-container {
+  width: 50px;
+}
+
+.navbar-container.open {
+  width: 150px;
+}
+
+.hamburger-button,
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  margin: 0px;
+}
+
+.navbar-links {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.navbar-links a:hover {
+  text-decoration: underline;
+}
