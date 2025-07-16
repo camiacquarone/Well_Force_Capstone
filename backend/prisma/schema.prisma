@@ -20,7 +20,7 @@ model User {
   email           String        @unique
   image_url       String
   name            String
-  dietary_pref    Dietary_Preferences[]?
+  dietary_pref    Dietary_Preferences[]
   goals           Goals[]
   role            String
   recommendations Recommendation[]
@@ -50,7 +50,7 @@ model Snacks {
   description           String
   wellness_category	    String[]		
   dietary_preferences   Dietary_Preferences[]
-  nutritional_info	    nutritional_information[]
+  nutritional_info	    Nutritional_Information
 }
 
 model Meals {
@@ -78,9 +78,9 @@ model Nutritional_Information {
 model Recommendation {
   id           	Int       @id @default(autoincrement())
   type 			    String?
+  userId     		Int
   user         	User      @relation(fields: [userId], references: [id])
-  UserId     		Int
-  meal         	Meal      @relation(fields: [mealId], references: [id])
+  meal         	Meals      @relation(fields: [mealId], references: [id])
   mealId       	Int
   status			  String?
 }
