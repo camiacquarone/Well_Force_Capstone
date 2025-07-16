@@ -10,13 +10,13 @@
   margin-bottom: 0;
   font-family: "Bold";
   margin-top: 0;
-  color: #04354A
+  color: #04354a;
 }
 .GoalsPage h3 {
   text-align: center;
   font-size: 1.3rem;
   font-family: "Bold";
-  color:#04354A
+  color: #04354a;
 }
 .top-right-button {
   align-items: right;
@@ -29,7 +29,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease;
   position: relative;
-  left: 60vw;
+  left: 55vw;
 }
 .top-right-button:hover {
   background-color: #06415b;
@@ -44,7 +44,7 @@
 label {
   font-family: "Regular";
   font-size: 20px;
-  color:#04354A;
+  color: #04354a;
 }
 
 input {
@@ -133,6 +133,7 @@ button:hover {
   max-width: 100%;
   width: 250px;
   height: auto;
+  margin-top: 1rem;
 }
 
 .einstein-img:hover {
@@ -143,6 +144,7 @@ button:hover {
   max-width: 100%;
   width: 250px;
   height: auto;
+  margin-top: 1rem;
 }
 .astro-img:hover {
   transform: scale(1.1);
@@ -152,6 +154,7 @@ button:hover {
   max-width: 100%;
   width: 250px;
   height: auto;
+  margin-top: 1rem;
 }
 .codey-img:hover {
   transform: scale(1.1);
@@ -161,6 +164,7 @@ button:hover {
   max-width: 100%;
   width: 250px;
   height: auto;
+  margin-top: 1rem;
 }
 
 .ruth-img:hover {
@@ -171,6 +175,7 @@ button:hover {
   max-width: 100%;
   width: 250px;
   height: auto;
+  margin-top: 1rem;
 }
 
 .appy-img:hover {
