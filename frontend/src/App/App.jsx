@@ -49,6 +49,7 @@ const toggleNavBar = () => setNavBarOpen((isOpen) => !isOpen);
           element={
             <ProtectedRoute>
               <><HomePage/> <NavBar/></>
+              
             </ProtectedRoute>
           }
         />
