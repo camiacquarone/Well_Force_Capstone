@@ -1,5 +1,6 @@
 import React from "react";
 import MealsList from "../../components/MealsList/MealsList";
+import SnackList from "../../components/SnackList/SnackList";
 import "./FoodPage.css";
 
 function FoodPage() {
@@ -42,6 +43,7 @@ function FoodPage() {
           <h2>Snacks</h2>
           <div className="snacks-grid">
             {/* Snack Cards Go Here */}
+            <SnackList/>
           </div>
         </section>
       </main>
