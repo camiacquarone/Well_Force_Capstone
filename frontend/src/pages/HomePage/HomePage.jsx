@@ -8,6 +8,8 @@ import {
   useAuth, // Hook to get authentication status and token
 } from "@clerk/clerk-react";
 
+import "../HomePage/HomePage.css"
+
 const HomePage = () => {
   const [clerkUserId, setClerkUserId] = useState("");
 
@@ -24,58 +26,38 @@ const HomePage = () => {
   }, [isLoaded, isSignedIn, userId]);
 
   return (
-    <div className="App p-4 bg-gray-100 min-h-screen font-inter flex flex-col items-center justify-center">
-      <header className="App-header text-center mb-8 bg-white p-6 rounded-lg shadow-md w-full max-w-md">
-        <h1 className="text-4xl font-bold text-gray-800 mb-2">
-          My Awesome App
+    // <div className="App p-4 bg-gray-100 min-h-screen font-inter flex flex-col items-center justify-center">
+    //   <header className="App-header text-center mb-8 bg-white p-6 rounded-lg shadow-md w-full max-w-md">
+        <h1 className="welcome-user">
+          Welcome, User!
         </h1>
-        <p className="text-lg text-gray-600">
-          Authentication powered by Clerk.
-        </p>
-        <div className="mt-4 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-          <SignedOut>
-            <SignInButton
-              mode="modal"
-              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md shadow-sm transition duration-300 ease-in-out"
-            >
-              Sign In
-            </SignInButton>
-          </SignedOut>
-          <SignedIn>
-            {/* Clerk's UserButton provides profile picture and logout functionality */}
-            <UserButton afterSignOutUrl="/" />
-            <div className="text-gray-700 text-sm md:text-base">
-              <p>
-                Your Clerk User ID:{" "}
-                <span className="font-semibold">{clerkUserId}</span>
-              </p>
-              {user && user.primaryEmailAddress && (
-                <p>
-                  Email:{" "}
-                  <span className="font-semibold">
-                    {user.primaryEmailAddress.emailAddress}
-                  </span>
-                </p>
-              )}
-            </div>
-          </SignedIn>
-        </div>
-      </header>
+      //   <div className="mt-4 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+      //     <SignedOut>
+      //       <SignInButton
+      //         mode="modal"
+      //         className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md shadow-sm transition duration-300 ease-in-out"
+      // //       >
+      //         Sign In
+      //       </SignInButton>
+      //     </SignedOut>
+      //     <SignedIn>
+      //       {/* Clerk's UserButton provides profile picture and logout functionality */}
+      //       <UserButton afterSignOutUrl="/" />
+      //       <div className="text-gray-700 text-sm md:text-base">
+      //         {user && user.primaryEmailAddress && (
+      //           <p>
+      //             Email:{" "}
+      //             <span className="font-semibold">
+      //               {user.primaryEmailAddress.emailAddress}
+      //             </span>
+      //           </p>
+      //         )}
+      //       </div>
+      //     </SignedIn>
+      //   </div>
+      // </header>
 
-      <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md mt-8 text-center">
-        {!isLoaded ? (
-          <p className="text-gray-500">Loading authentication status...</p>
-        ) : !isSignedIn ? (
-          <p className="text-gray-500 text-lg">
-            Please sign in to access the application features.
-          </p>
-        ) : (
-          <p className="text-gray-700 text-lg">
-            Welcome! You are signed in. This is your simplified home page.
-          </p>
-        )}
-      </div>
-    </div>
+    // </div>
   );
 };
 

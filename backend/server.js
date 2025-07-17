@@ -3,8 +3,11 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 dotenv.config();
 console.log("API key loaded:", process.env.OPENAI_API_KEY);
+
 const chatRoutes = require("./routes/chat.js");
 const userRoutes = require("./routes/user-routes.js");
+const mealRoutes = require("./routes/meal-routes.js");
+
 
 dotenv.config();
 const app = express();
@@ -15,6 +18,11 @@ app.use(express.json());
 
 app.use("/users", userRoutes);
 app.use("/api", chatRoutes); // This mounts /api/chat
+app.use("/api/meals", mealRoutes); // This mounts api/meals
+
+app.get("/", (req, res) => {
+  res.send("API is working.");
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

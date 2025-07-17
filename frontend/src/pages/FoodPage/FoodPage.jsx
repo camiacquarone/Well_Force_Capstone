@@ -1,4 +1,5 @@
 import React from "react";
+import MealsList from "../../components/MealsList/MealsList";
 import "./FoodPage.css";
 
 function FoodPage() {
@@ -33,6 +34,7 @@ function FoodPage() {
           <h2>Meals</h2>
           <div className="meals-grid">
             {/* Meal Cards Go Here */}
+            <MealsList/>
           </div>
         </section>
 
