@@ -4,6 +4,7 @@
   left: 0;
   height: 100%;
   transition: width 0.3s ease;
+  z-index: 1000;
   /* position: relative; */
 }
 
