@@ -7,6 +7,7 @@ console.log("API key loaded:", process.env.OPENAI_API_KEY);
 const chatRoutes = require("./routes/chat.js");
 const userRoutes = require("./routes/user-routes.js");
 const mealRoutes = require("./routes/meal-routes.js");
+const snackRoutes = require("./routes/snack-routes.js")
 
 
 dotenv.config();
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use("/users", userRoutes);
 app.use("/api", chatRoutes); // This mounts /api/chat
 app.use("/api/meals", mealRoutes); // This mounts api/meals
+app.use("/api/snacks", snackRoutes);
 
 app.get("/", (req, res) => {
   res.send("API is working.");
