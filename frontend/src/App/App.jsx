@@ -47,7 +47,7 @@ function App() {
               <HomePage /> <NavBar />
               </> 
               
-            // </ProtectedRoute>
+             </ProtectedRoute>
           }
         />
 
@@ -58,7 +58,7 @@ function App() {
                 <>
                   <GoalsPage /> <NavBar />
                 </>
-            //   </ProtectedRoute>
+               </ProtectedRoute>
             }
           />
 
