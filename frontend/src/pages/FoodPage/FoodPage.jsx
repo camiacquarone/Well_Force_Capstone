@@ -1,9 +1,33 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import MealsList from "../../components/MealsList/MealsList";
 import SnackList from "../../components/SnackList/SnackList";
 import "./FoodPage.css";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+  useAuth,
+  RedirectToSignIn, // Import RedirectToSignIn
+} from "@clerk/clerk-react";
 
 function FoodPage() {
+const [clerkUserId, setClerkUserId] = useState("");
+
+  const { userId, isLoaded, isSignedIn } = useAuth();
+  
+  useEffect(() => {
+    if (isLoaded && isSignedIn && userId) {
+      setClerkUserId(userId);
+    } else if (isLoaded && !isSignedIn) {
+      setClerkUserId("Not Signed In");
+    }
+  }, [isLoaded, isSignedIn, userId]);
+
+  if (!isLoaded) return null;
+  if (!isSignedIn) {
+    return <RedirectToSignIn />;
+  }
   return (
     <div className="food-page">
 

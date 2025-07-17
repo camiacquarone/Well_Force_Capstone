@@ -1,7 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import "./GoalsPage.css";
 import HomePage from "../HomePage/HomePage.jsx";
 import { useNavigate } from "react-router-dom";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+  useAuth,
+  RedirectToSignIn, // Import RedirectToSignIn
+} from "@clerk/clerk-react";
 
 function GoalsPage() {
   const [name, setName] = useState("");
@@ -12,6 +20,25 @@ function GoalsPage() {
   const [newFoodDay, setNewFoodDay] = useState([]);
   const [nameError, setNameError] = useState("");
   const position = ["Intern", "Full Time"]; // Example values
+  const [clerkUserId, setClerkUserId] = useState("");
+
+  const { userId, isLoaded, isSignedIn } = useAuth();
+  
+  useEffect(() => {
+    if (isLoaded && isSignedIn && userId) {
+      setClerkUserId(userId);
+    } else if (isLoaded && !isSignedIn) {
+      setClerkUserId("Not Signed In");
+    }
+  }, [isLoaded, isSignedIn, userId]);
+
+  if (!isLoaded) return null;
+  if (!isSignedIn) {
+    return <RedirectToSignIn />;
+  }
+
+ 
+
   const increaseCalories = () =>
     setCalories((prev) => Math.min(prev + 50, 5000));
   const decreaseCalories = () => setCalories((prev) => Math.max(prev - 50, 0));
