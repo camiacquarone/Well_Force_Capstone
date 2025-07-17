@@ -42,32 +42,27 @@ function App() {
         <Route
           path="/home"
           element={
-            // <ProtectedRoute>
+        
               <><HomePage /><NavBar/></> 
               
-            // </ProtectedRoute>
           }
         />
 
           <Route
             path="/profile"
             element={
-            //   <ProtectedRoute>
                 <>
                   <GoalsPage /> <NavBar />
                 </>
-            //   </ProtectedRoute>
             }
           />
 
           <Route
             path="/meals"
             element={
-            //   <ProtectedRoute>
                 <>
                   <FoodPage /> <NavBar />
                 </>
-          
             }
           />
 
