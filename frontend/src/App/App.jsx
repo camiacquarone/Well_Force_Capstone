@@ -33,17 +33,19 @@ function App() {
           <Route
             path="/chat"
             element={
-            //   <ProtectedRoute>
+              <ProtectedRoute>
                 <AICompanion />
-            //   </ProtectedRoute>
+               </ProtectedRoute>
             }
           />
 
         <Route
           path="/home"
           element={
-            // <ProtectedRoute>
-              <><HomePage /><NavBar/></> 
+            <ProtectedRoute>
+              <>
+              <HomePage /> <NavBar />
+              </> 
               
             // </ProtectedRoute>
           }
@@ -52,7 +54,7 @@ function App() {
           <Route
             path="/profile"
             element={
-            //   <ProtectedRoute>
+              <ProtectedRoute>
                 <>
                   <GoalsPage /> <NavBar />
                 </>
@@ -63,11 +65,11 @@ function App() {
           <Route
             path="/meals"
             element={
-            //   <ProtectedRoute>
+              <ProtectedRoute>
                 <>
                   <FoodPage /> <NavBar />
                 </>
-          
+            </ProtectedRoute>
             }
           />
 

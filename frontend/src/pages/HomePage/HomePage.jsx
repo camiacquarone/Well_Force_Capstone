@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from "react";
+
 import "../../App/App.css";
 import {
   SignedIn,
   SignedOut,
   SignInButton,
-  UserButton,
-  useAuth,
-  RedirectToSignIn, // Import RedirectToSignIn
+  UserButton, // Clerk's UserButton component for profile and logout
+  useAuth, // Hook to get authentication status and token
 } from "@clerk/clerk-react";
 
-import "../HomePage/HomePage.css";
+import "../HomePage/HomePage.css"
 
 const HomePage = () => {
   const [clerkUserId, setClerkUserId] = useState("");
-  const { userId, isLoaded, isSignedIn,user } = useAuth();
 
+  // useAuth hook from Clerk to get the current session token and user info
+  const { userId, isLoaded, isSignedIn, user } = useAuth();
+
+  // useEffect hook to update Clerk user ID when auth state changes
   useEffect(() => {
     if (isLoaded && isSignedIn && userId) {
       setClerkUserId(userId);
@@ -23,13 +26,7 @@ const HomePage = () => {
     }
   }, [isLoaded, isSignedIn, userId]);
 
-  // Block page if auth isn't loaded yet
-  if (!isLoaded) return null;
-
-  // If user is not signed in, redirect to sign in
-  if (!isSignedIn) {
-    return <RedirectToSignIn />;
-  }
+  
 
 
 
