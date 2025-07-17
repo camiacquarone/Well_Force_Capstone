@@ -42,6 +42,8 @@ function App() {
         <Route
           path="/home"
           element={
+        
+              
             <ProtectedRoute>
               <>
               <HomePage /> <NavBar />
