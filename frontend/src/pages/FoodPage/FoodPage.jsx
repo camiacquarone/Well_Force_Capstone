@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import MealsList from "../../components/MealsList/MealsList";
+import SnackList from "../../components/SnackList/SnackList";
+import { Link } from "react-router-dom"
 import "./FoodPage.css";
 
 function FoodPage() {
+
   return (
     <div className="food-page">
       <header className="food-header">
