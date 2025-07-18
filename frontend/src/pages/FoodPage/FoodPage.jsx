@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from "react";
 import MealsList from "../../components/MealsList/MealsList";
 import SnackList from "../../components/SnackList/SnackList";
+import { Link } from "react-router-dom"
 import "./FoodPage.css";
 
 function FoodPage() {
@@ -48,8 +49,9 @@ function FoodPage() {
           </div>
         </section>
       </main>
-
-      <button className="ai-companion-button">AI Companion</button>
+        <Link to="/chat">
+              <button className="ai-companion-button">AI Companion</button>
+        </Link>
     </div>
   );
 }

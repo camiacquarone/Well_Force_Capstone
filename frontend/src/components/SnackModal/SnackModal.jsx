@@ -10,6 +10,7 @@ export default function SnackModal({ snack, onClose }) {
         <img src={snack.image_url} alt={snack.name} />
         <p>Calories: {snack.nutritional_info[0]?.calories} kcal</p>
         <p>Protein: {snack.nutritional_info[0]?.protein} g</p>
+        <p>{snack.description}</p>
       </div>
     </div>
   );
