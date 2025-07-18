@@ -2,6 +2,8 @@ import React, { useState, useEffect} from "react";
 import "./GoalsPage.css";
 import HomePage from "../HomePage/HomePage.jsx";
 import { useNavigate } from "react-router-dom";
+import { useUser, useAuth } from "@clerk/clerk-react";
+import axios from "axios";
 
 function GoalsPage() {
   const [name, setName] = useState("");
@@ -21,6 +23,9 @@ function GoalsPage() {
   const decreaseCalories = () => setCalories((prev) => Math.max(prev - 50, 0));
   const navigate = useNavigate();
 
+  const { user } = useUser();
+  const { getToken } = useAuth();
+
   const handleNameChange = (e) => {
     const value = e.target.value;
     if (/^[A-Za-z\s]*$/.test(value)) {
@@ -31,24 +36,6 @@ function GoalsPage() {
     }
   };
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log("Name:", name);
-    console.log("Position:", newUserPosition);
-    console.log("Calories", calories);
-    console.log("Image URL:", newUserImage_url);
-    console.log("Food Goal:", newFoodGoal);
-    console.log("Food Day:", newFoodDay);
-  }
-
-  function toggleFoodGoal(goal) {
-    setNewFoodGoal(
-      (prev) =>
-        prev.includes(goal)
-          ? prev.filter((item) => item !== goal) // remove if already selected
-          : [...prev, goal] // add if not selected
-    );
-  }
   function toggleFoodGoal(goal) {
     setNewFoodGoal((prev) =>
       prev.includes(goal)
@@ -61,6 +48,59 @@ function GoalsPage() {
     setNewFoodDay((prev) =>
       prev.includes(day) ? prev.filter((d) => d !== day) : [...prev, day]
     );
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      const clerkId = user.id;
+      const email = user.primaryEmailAddress
+        ? user.primaryEmailAddress.emailAddress
+        : user.emailAddresses[0]?.emailAddress;
+
+      const userData = {
+        clerkId: clerkId,
+        email: email,
+        image_url: newUserImage_url,
+        name: name,
+        dietary_pref: {
+          connect: [],
+        },
+        goals: {
+          connect: newFoodGoal.map((goalName) => ({ title: goalName })),
+        },
+        recommendations: {
+          connect: [],
+        },
+        role: newUserPosition,
+        caloric_goal: calories,
+        daysOfWeek: newFoodDay,
+      };
+
+      console.log("submitting user data: ", userData);
+      const token = await getToken();
+
+      const response = await axios.post(
+        "http://localhost:3000/api/users",
+        userData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Send the Clerk token
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    } catch (error) {
+      console.error("Error creating user profile (AxiosError object):", error);
+    }
+
+    console.log("Name:", name);
+    console.log("Position:", newUserPosition);
+    console.log("Calories", calories);
+    console.log("Image URL:", newUserImage_url);
+    console.log("Food Goal:", newFoodGoal);
+    console.log("Food Day:", newFoodDay);
   }
 
   return (
@@ -128,10 +168,11 @@ function GoalsPage() {
             Daily Calorie Intake Goal <span className="stars">*</span>
           </label>
           <div className="caloric input">
+            {/* BUG HERE */}
             <input
               type="number"
               value={calories}
-              onChangeCapture={(e) => {
+              onChange={(e) => {
                 const raw = e.target.value;
                 const sanitized = raw.replace(/^0+(?!$)/, "");
                 setCalories(sanitized === "" ? "0" : sanitized);
@@ -208,6 +249,7 @@ function GoalsPage() {
           <label htmlFor="newUserImage">Food Goals</label>
           <div className="food-goals-select">
             <button
+              type="button"
               className={`protein ${
                 newFoodGoal.includes("Protein") ? "selected" : ""
               }`}
@@ -216,6 +258,7 @@ function GoalsPage() {
               I Want to Eat More Protein
             </button>
             <button
+              type="button"
               className={`vegetables ${
                 newFoodGoal.includes("Vegetables") ? "selected" : ""
               }`}
@@ -232,6 +275,7 @@ function GoalsPage() {
 
           <div className="food-days-select">
             <button
+              type="button"
               className={`monday ${
                 newFoodDay.includes("Monday") ? "selected" : ""
               }`}
@@ -240,6 +284,7 @@ function GoalsPage() {
               Monday
             </button>
             <button
+              type="button"
               className={`tuesday ${
                 newFoodDay.includes("Tuesday") ? "selected" : ""
               }`}
@@ -248,6 +293,7 @@ function GoalsPage() {
               Tuesday
             </button>
             <button
+              type="button"
               className={`wedensday ${
                 newFoodDay.includes("Wednesday") ? "selected" : ""
               }`}
@@ -256,6 +302,7 @@ function GoalsPage() {
               Wednesday
             </button>
             <button
+              type="button"
               className={`thursday ${
                 newFoodDay.includes("Thursday") ? "selected" : ""
               }`}
@@ -264,6 +311,7 @@ function GoalsPage() {
               Thursday
             </button>
             <button
+              type="button"
               className={`friday ${
                 newFoodDay.includes("Friday") ? "selected" : ""
               }`}
