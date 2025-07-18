@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import MealModal from "/src/components/MealModal/MealModal.jsx";
-
+import { Link } from "react-router-dom"
 // src/components/MealCard.jsx
 export default function MealCard({ meal }) {
   const [showModal, setShowModal] = useState(false);
@@ -13,6 +13,9 @@ export default function MealCard({ meal }) {
       <p>Price: ${meal.price.toFixed(2)}</p>
       <p>Calories: {meal.nutritional_information[0]?.calories || "N/A"} kcal</p>
       <p>Protein: {meal.nutritional_information[0]?.protein || "N/A"} g</p>
+      <Link to="https://order.trypicnic.com/search/chipotle">
+              <button className="order-now">Order Now</button>
+        </Link>
     </div>
     {showModal && (
         <MealModal meal={meal} onClose={() => setShowModal(false)} />

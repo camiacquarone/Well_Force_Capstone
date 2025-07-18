@@ -1,0 +1,11 @@
+.order-now {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: gold;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+} 
