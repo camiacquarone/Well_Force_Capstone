@@ -9,7 +9,7 @@ function FoodPage() {
   return (
     <div className="food-page">
       <header className="food-header">
-        <h1>Food Header</h1>
+        <h1>Meals & Snacks</h1>
         <div className="food-controls">
           <div className="dropdown-group">
             <select>
