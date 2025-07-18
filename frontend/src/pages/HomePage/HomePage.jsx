@@ -95,7 +95,6 @@ const HomePage = () => {
   //     </header>
 
   //   </div>
-  );
 };
 
 export default HomePage;

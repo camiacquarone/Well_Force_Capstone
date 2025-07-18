@@ -1,7 +1,3 @@
-/* #root {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
 
 .navbar {
   position: fixed;
@@ -95,7 +91,6 @@
 }
 
 .home {
-  /* padding-left: 1rem; */
   margin-top: 1rem;
   display: flex;
   align-items: center;
