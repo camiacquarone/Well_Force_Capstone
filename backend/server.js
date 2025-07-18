@@ -6,6 +6,7 @@ dotenv.config();
 const chatRoutes = require("./routes/chat.js");
 const userRoutes = require("./routes/user-routes.js");
 const mealRoutes = require("./routes/meal-routes.js");
+const snackRoutes = require("./routes/snack-routes.js")
 
 
 dotenv.config();

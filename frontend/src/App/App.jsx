@@ -35,17 +35,21 @@ function App() {
             element={
               <ProtectedRoute>
                 <AICompanion />
-              </ProtectedRoute>
+               </ProtectedRoute>
             }
           />
 
         <Route
           path="/home"
           element={
-            <ProtectedRoute>
-              <><HomePage/> <NavBar/></>
+        
               
-            </ProtectedRoute>
+            <ProtectedRoute>
+              <>
+              <HomePage /> <NavBar />
+              </> 
+              
+             </ProtectedRoute>
           }
         />
 
@@ -56,7 +60,7 @@ function App() {
                 <>
                   <GoalsPage /> <NavBar />
                 </>
-              </ProtectedRoute>
+               </ProtectedRoute>
             }
           />
 
@@ -67,7 +71,7 @@ function App() {
                 <>
                   <FoodPage /> <NavBar />
                 </>
-              </ProtectedRoute>
+            </ProtectedRoute>
             }
           />
 
