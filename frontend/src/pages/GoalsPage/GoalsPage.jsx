@@ -14,19 +14,21 @@ function GoalsPage() {
   const [newFoodDay, setNewFoodDay] = useState([]);
   const [nameError, setNameError] = useState("");
   const position = ["Intern", "Full Time"];
+
   const increaseCalories = () =>
     setCalories((prev) => Math.min(prev + 50, 5000));
   const decreaseCalories = () => setCalories((prev) => Math.max(prev - 50, 0));
   const navigate = useNavigate();
-
-    const { user } = useUser();
+  const { user } = useUser();
   const { getToken } = useAuth();
 
+  
   const isFormValid =
     name.trim() !== "" &&
     newUserPosition.trim() !== "" &&
     newUserImage_url.trim() !== "" &&
     !nameError;
+
 
   const handleNameChange = (e) => {
     const value = e.target.value;
