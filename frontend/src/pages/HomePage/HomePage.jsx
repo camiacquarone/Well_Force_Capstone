@@ -34,6 +34,7 @@ const HomePage = () => {
       <h1 className="welcome-user">Welcome, User!</h1>
     </div>
   );
+}
   //   <div className="App p-4 bg-gray-100 min-h-screen font-inter flex flex-col items-center justify-center">
   //     <header className="App-header text-center mb-8 bg-white p-6 rounded-lg shadow-md w-full max-w-md">
   //       <h1 className="welcome-user">Welcome, User!</h1>
@@ -95,7 +96,6 @@ const HomePage = () => {
   //     </header>
 
   //   </div>
-  );
-};
+ 
 
 export default HomePage;
