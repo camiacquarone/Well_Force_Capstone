@@ -1,17 +1,21 @@
-import React from "react";
+
 import "./LandingPage.css";
 import { useNavigate } from "react-router-dom";
 import { SignUp, useAuth } from "@clerk/clerk-react";
+import React, { useState, useEffect } from "react";
 
 export default function LandingPage() {
   const { isSignedIn } = useAuth();
   const navigate = useNavigate();
 
-//   React.useEffect(() => {
-//     if (isSignedIn) {
-//       navigate("/home", { replace: true });
-//     }
-//   }, [isSignedIn, navigate]);
+  //   React.useEffect(() => {
+  //     if (isSignedIn) {
+  //       navigate("/home", { replace: true });
+  //     }
+  //   }, [isSignedIn, navigate]);
+  useEffect(() => {
+    document.body.classList.remove("nav-closed");
+  }, []);
 
   return (
     <>

@@ -22,3 +22,4 @@ ReactDOM.createRoot(rootElement).render(
     </ClerkProvider>
   </React.StrictMode>
 );
+

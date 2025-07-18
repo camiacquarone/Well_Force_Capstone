@@ -13,16 +13,18 @@ function GoalsPage() {
   const [newFoodGoal, setNewFoodGoal] = useState([]);
   const [newFoodDay, setNewFoodDay] = useState([]);
   const [nameError, setNameError] = useState("");
-  const position = ["Intern", "Full Time"]; // Example values
-
-
- 
+  const position = ["Intern", "Full Time"];
 
   const increaseCalories = () =>
     setCalories((prev) => Math.min(prev + 50, 5000));
   const decreaseCalories = () => setCalories((prev) => Math.max(prev - 50, 0));
   const navigate = useNavigate();
 
+  const isFormValid =
+    name.trim() !== "" &&
+    newUserPosition.trim() !== "" &&
+    newUserImage_url.trim() !== "" &&
+    !nameError;
   const { user } = useUser();
   const { getToken } = useAuth();
 
@@ -105,20 +107,22 @@ function GoalsPage() {
 
   return (
     <div className="GoalsPage">
-      <button
-        type="button"
-        className="top-left-button"
-        onClick={() => navigate("/")}
-      >
-        ⬅ Back
-      </button>
-      <button
-        type="button"
-        className="top-right-button"
-        onClick={() => navigate("/home")}
-      >
-        Setup later ➡
-      </button>
+      <span className="top-buttons">
+        <button
+          type="button"
+          className="top-left-button"
+          onClick={() => navigate("/")}
+        >
+          ⬅ Back
+        </button>
+        <button
+          type="button"
+          className="top-right-button"
+          onClick={() => navigate("/home")}
+        >
+          Setup later ➡
+        </button>
+      </span>
       <h1>Profile</h1>
       <h3> Welcome to Your Profile! </h3>
       <form onSubmit={handleSubmit} className="create-profile-form">
@@ -321,7 +325,7 @@ function GoalsPage() {
             </button>
           </div>
         </div>
-        <button type="submit" className="save-button">
+        <button type="submit" className="save-button" disabled={!isFormValid}>
           Save Profile
         </button>
       </form>

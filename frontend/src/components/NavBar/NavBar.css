@@ -1,70 +1,150 @@
-.navbar-container {
+/* #root {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+
+.navbar {
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
-  transition: width 0.3s ease;
-  z-index: 1000;
-  /* position: relative; */
-}
-
-.navbar {
-  height: 100%;
-  background-color: #0a7aaa;
-  overflow: hidden;
   display: flex;
+  background-color: #0a7aaa;
   flex-direction: column;
   align-items: flex-start;
-  padding: 4px;
+  padding: 1rem;
   font-family: "Regular";
 }
 
 .navbar-container {
-  width: 60px;
+  width: 100px;
+  transition: width 0.3s ease;
+  overflow: hidden;
 }
 
-.navbar-container.open {
-  width: 250px;
+.navbar-container.open,
+.GoalsPage {
+  width: calc(100%-300px);
+  left: 300px;
+}
+
+.navbar-banner {
+  margin-top: 1.8rem;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+}
+
+.navbar-title {
+  margin-top: 0rem;
+  margin-bottom: 0;
+  color: white;
+  margin-right: 1rem;
+  font-size: 42px;
+}
+
+.navbar-logo {
+  width: 2.8rem;
+  margin-right: 0.7rem;
 }
 
 .hamburger-button,
 .close-button {
-  background: none;
-  border: none;
+  position: absolute;
   color: white;
+  top: 6px;
   font-size: 40px;
-  cursor: pointer;
-  margin: 0px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  transform: translateX(-50%);
+}
+.hamburger-button {
+  left: 50%;
 }
 
 .close-button {
-  position: relative; 
-  left: 12rem;
-  padding-right:0.6rem;
-  padding-left:0.6rem;
-  padding-top: 0.1rem;
-}
-
-.navbar-links {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  left: 90%;
 }
 
 .navbar-links a {
-  color: white;
-  text-decoration: none;
-  font-size: 35px;
   display: flex;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  flex-direction: column;
+  position: relative;
+  height: 50px;
+  width: 100%;
+  list-style: none;
+  text-decoration: none;
+  color: white;
+  margin-top: 1rem;
+  font-size: 25px;
+  margin-left: 0.7rem;
 }
 
-.navbar-links a:hover {
-  /* text-decoration: underline; */
-  /* font-family: "Bold"; */
+.navbar-links :hover {
   background-color: #07587a;
-  padding-right: 1rem;
+  border-radius: 0.3rem;
 }
+
+.settings {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+.home {
+  /* padding-left: 1rem; */
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+.food {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+body.nav-open {
+  background: linear-gradient(180deg, #ffffff, #c4ebff);
+  width: calc(100% - 250px);
+  margin-left: 250px;
+}
+
+body.nav-closed {
+  background: linear-gradient(180deg, #ffffff, #c4ebff);
+  width: calc(100% - 30px);
+  transition: all 0.5s ease;
+}
+
+h1.welcome-user {
+  transition: all 0.5s ease;
+  margin-left: 3.5rem;
+}
+
+body.nav-open h1.welcome-user {
+  margin-left: 265px;
+}
+
+body.nav-open .navbar {
+  width: 250px;
+  transition: width 0.3s ease;
+}
+
+body.nav-closed .navbar {
+  width: 40px;
+  transition: width 0.3s ease;
+}
+
+body.nav-open .GoalsPage {
+  margin-left: 265px;
+}
+
+body.nav-closed .GoalsPage {
+  margin-left: 200px;
+}
+

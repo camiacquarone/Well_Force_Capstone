@@ -8,7 +8,6 @@ function FoodPage() {
 
   return (
     <div className="food-page">
-
       <header className="food-header">
         <h1>Food Header</h1>
         <div className="food-controls">
@@ -27,7 +26,7 @@ function FoodPage() {
             </select>
           </div>
 
-          <div className="profile-icon">👤</div>    
+          <div className="profile-icon">👤</div>
           {/* ^Make this the actual profile photo */}
         </div>
       </header>
@@ -37,21 +36,23 @@ function FoodPage() {
           <h2>Meals</h2>
           <div className="meals-grid">
             {/* Meal Cards Go Here */}
-            <MealsList/>
+            <MealsList />
           </div>
         </section>
 
         <section className="snacks-section">
           <h2>Snacks</h2>
-          <div className="snacks-grid">
-            {/* Snack Cards Go Here */}
-            <SnackList/>
-          </div>
+          <div className="snacks-grid">{/* Snack Cards Go Here */}</div>
         </section>
+
+        <button
+          type="button"
+          className="ai-companion-button"
+          onClick={() => navigate("/chat")}
+        >
+          AI Companion
+        </button>
       </main>
-        <Link to="/chat">
-              <button className="ai-companion-button">AI Companion</button>
-        </Link>
     </div>
   );
 }
