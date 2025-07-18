@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "../../App/App.css"; // Assuming you have a basic App.css for styling
+
+import "../../App/App.css";
 import {
   SignedIn,
   SignedOut,

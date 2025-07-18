@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import MealsList from "../../components/MealsList/MealsList";
+import SnackList from "../../components/SnackList/SnackList";
+import { Link } from "react-router-dom"
 import "./FoodPage.css";
 
 function FoodPage() {
+
   return (
     <div className="food-page">
       <header className="food-header">
@@ -39,7 +42,10 @@ function FoodPage() {
 
         <section className="snacks-section">
           <h2>Snacks</h2>
-          <div className="snacks-grid">{/* Snack Cards Go Here */}</div>
+          <div className="snacks-grid">
+            {/* Snack Cards Go Here */}
+            <SnackList/>
+          </div>
         </section>
 
         <button
@@ -50,6 +56,9 @@ function FoodPage() {
           AI Companion
         </button>
       </main>
+        <Link to="/chat">
+              <button className="ai-companion-button">AI Companion</button>
+        </Link>
     </div>
   );
 }

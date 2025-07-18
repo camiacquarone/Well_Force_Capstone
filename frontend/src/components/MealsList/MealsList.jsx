@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import MealCard from "../../components/MealsCard/MealsCard"
+import "./MealsList.css"
 
 export default function MealsList() {
   const [meals, setMeals] = useState([]);
