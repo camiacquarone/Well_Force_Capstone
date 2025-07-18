@@ -10,12 +10,14 @@ import {
 } from "@clerk/clerk-react";
 
 import "../HomePage/HomePage.css";
+import NavBar from "../../components/NavBar/NavBar";
 
 const HomePage = () => {
   const [clerkUserId, setClerkUserId] = useState("");
 
   // useAuth hook from Clerk to get the current session token and user info
   const { userId, isLoaded, isSignedIn, user } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
 
   // useEffect hook to update Clerk user ID when auth state changes
   useEffect(() => {
@@ -27,6 +29,11 @@ const HomePage = () => {
   }, [isLoaded, isSignedIn, userId]);
 
   return (
+    <div>
+      {/* <NavBar isOpen={isOpen} setIsOpen={setIsOpen} /> */}
+      <h1 className="welcome-user">Welcome, User!</h1>
+    </div>
+  );
   //   <div className="App p-4 bg-gray-100 min-h-screen font-inter flex flex-col items-center justify-center">
   //     <header className="App-header text-center mb-8 bg-white p-6 rounded-lg shadow-md w-full max-w-md">
   //       <h1 className="welcome-user">Welcome, User!</h1>
@@ -58,9 +65,9 @@ const HomePage = () => {
   //   </div>
   //   <div className="App p-4 bg-gray-100 min-h-screen font-inter flex flex-col items-center justify-center">
   //     <header className="App-header text-center mb-8 bg-white p-6 rounded-lg shadow-md w-full max-w-md">
-        <h1 className="welcome-user">
-          Welcome, User!
-        </h1>
+        // <h1 className="welcome-user">
+        //   Welcome, User!
+        // </h1>
   //       <div className="mt-4 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
   //         <SignedOut>
   //           <SignInButton
