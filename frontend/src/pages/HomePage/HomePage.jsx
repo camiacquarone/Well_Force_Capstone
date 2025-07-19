@@ -10,8 +10,16 @@ import {
 } from "@clerk/clerk-react";
 
 import "../HomePage/HomePage.css";
+import NavBar from "../../components/NavBar/NavBar";
+
+import "../HomePage/HomePage.css";
 
 const HomePage = ({ user, setUser }) => {
+  // useAuth hook from Clerk to get the current session token and user info
+  const { userId, isLoaded, isSignedIn, user } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
+
+  // useEffect hook to update Clerk user ID when auth state changes
   useEffect(() => {
     console.log("HomePage.jsx - Received user prop:", user);
   }, [user]);

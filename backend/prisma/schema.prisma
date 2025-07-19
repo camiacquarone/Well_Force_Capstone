@@ -24,11 +24,13 @@ model User {
   goals           Goals[]
   role            String
   recommendations Recommendation[]
+  caloric_goal    Int                   @default(2000)
+  daysOfWeek      String[]
 }
 
 model Goals {
   id          Int    @id @default(autoincrement())
-  title       String
+  title       String @unique
   description String
   category    String
   User        User?  @relation(fields: [userId], references: [id])
@@ -37,6 +39,7 @@ model Goals {
 
 model Dietary_Preferences {
   id           Int      @id @default(autoincrement())
+  name         String  @unique
   isGlutenFree Boolean?
   isLactoseInt Boolean?
   isVegan      Boolean?

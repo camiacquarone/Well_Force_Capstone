@@ -1,7 +1,13 @@
 .GoalsPage {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  position: absolute;
+  height: 100%;
+  width: calc(100%-50px);
+  left: 50px;
+  transition: all 0.5s ease;
+  margin-top: 1.3rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .GoalsPage h1 {
@@ -10,31 +16,35 @@
   margin-bottom: 0;
   font-family: "Bold";
   margin-top: 0;
-  color: #04354A
+  color: #04354a;
 }
 .GoalsPage h3 {
   text-align: center;
   font-size: 1.3rem;
   font-family: "Bold";
-  color:#04354A
+  color: #04354a;
+}
+.top-buttons {
+  display: flex;
+  justify-content: space-between;
 }
 .top-right-button {
-  align-items: right;
   padding: 12px 16px;
   background-color: #0a7aaa;
   color: white;
   font-size: 20px;
   border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
-  position: relative;
-  left: 60vw;
 }
 .top-right-button:hover {
   background-color: #06415b;
 }
-
+.top-left-button {
+  padding: 12px 16px;
+  background-color: #0a7aaa;
+  color: white;
+  font-size: 20px;
+  border-radius: 8px;
+}
 .GoalsPage form {
   display: flex;
   flex-direction: column;
@@ -44,7 +54,7 @@
 label {
   font-family: "Regular";
   font-size: 20px;
-  color:#04354A;
+  color: #04354a;
 }
 
 input {
@@ -71,7 +81,7 @@ button:hover {
 }
 
 #Name {
-  max-width: 1180px;
+  max-width: 1229px;
   margin-right: 2rem;
 }
 
@@ -133,6 +143,7 @@ button:hover {
   max-width: 100%;
   width: 250px;
   height: auto;
+  margin-top: 1rem;
 }
 
 .einstein-img:hover {
@@ -143,6 +154,7 @@ button:hover {
   max-width: 100%;
   width: 250px;
   height: auto;
+  margin-top: 1rem;
 }
 .astro-img:hover {
   transform: scale(1.1);
@@ -152,6 +164,7 @@ button:hover {
   max-width: 100%;
   width: 250px;
   height: auto;
+  margin-top: 1rem;
 }
 .codey-img:hover {
   transform: scale(1.1);
@@ -161,6 +174,7 @@ button:hover {
   max-width: 100%;
   width: 250px;
   height: auto;
+  margin-top: 1rem;
 }
 
 .ruth-img:hover {
@@ -171,6 +185,7 @@ button:hover {
   max-width: 100%;
   width: 250px;
   height: auto;
+  margin-top: 1rem;
 }
 
 .appy-img:hover {
@@ -242,4 +257,30 @@ button:hover {
 }
 .stars {
   color: red;
+}
+
+@media screen and (max-width: 1024px) {
+  .GoalsPage {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: absolute;
+    width: calc(100%-150px);
+    left: 150px;
+    right: 100px;
+  }
+  .navbar {
+    z-index: 1;
+  }
+
+  .top-buttons {
+    z-index: 2;
+    margin-top: 4rem;
+  }
+}
+.save-button:disabled {
+  color:#06415b;
+  opacity: 0.8;
+  cursor: not-allowed;
+  background-color: #d1d1d1;
 }

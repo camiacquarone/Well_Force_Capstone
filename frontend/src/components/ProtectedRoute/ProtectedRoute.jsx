@@ -1,15 +1,18 @@
 import React from "react";
-import { useAuth } from "@clerk/clerk-react";
-import { Navigate } from "react-router-dom";
+import { useAuth, RedirectToSignIn } from "@clerk/clerk-react";
 
 const ProtectedRoute = ({ children }) => {
-  const { isSignedIn, isLoaded } = useAuth();
+  const { isLoaded, isSignedIn } = useAuth();
 
-  if (!isLoaded) {
-    return <div>Loading...</div>;
+  if (!isLoaded) return null; // Avoid flashing before auth loads
+
+  if (!isSignedIn) {
+    return <RedirectToSignIn />;
   }
 
-  return isSignedIn ? children : <Navigate to="/sign-in" replace />;
+  return children;
 };
 
 export default ProtectedRoute;
+
+

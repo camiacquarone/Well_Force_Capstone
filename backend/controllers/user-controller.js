@@ -1,4 +1,4 @@
-const prisma = require("../models/prisma-client")
+const prisma = require("../models/prisma-client");
 
 exports.createUser = async (req, res) => {
 

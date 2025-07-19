@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./GoalsPage.css";
 import HomePage from "../HomePage/HomePage.jsx";
 import { useNavigate } from "react-router-dom";
+import { useUser, useAuth } from "@clerk/clerk-react";
+import axios from "axios";
 
 function GoalsPage() {
   const [name, setName] = useState("");
@@ -13,12 +15,20 @@ function GoalsPage() {
   const [newFoodGoal, setNewFoodGoal] = useState([]);
   const [newFoodDay, setNewFoodDay] = useState([]);
   const [nameError, setNameError] = useState("");
-  const position = ["Intern", "Full Time"]; // Example values
+  const position = ["Intern", "Full Time"];
 
   const increaseCalories = () =>
     setCalories((prev) => Math.min(prev + 50, 5000));
   const decreaseCalories = () => setCalories((prev) => Math.max(prev - 50, 0));
   const navigate = useNavigate();
+
+  const isFormValid =
+    name.trim() !== "" &&
+    newUserPosition.trim() !== "" &&
+    newUserImage_url.trim() !== "" &&
+    !nameError;
+  const { user } = useUser();
+  const { getToken } = useAuth();
 
   const handleNameChange = (e) => {
     const value = e.target.value;
@@ -30,24 +40,6 @@ function GoalsPage() {
     }
   };
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log("Name:", name);
-    console.log("Position:", newUserPosition);
-    console.log("Calories", calories);
-    console.log("Image URL:", newUserImage_url);
-    console.log("Food Goal:", newFoodGoal);
-    console.log("Food Day:", newFoodDay);
-  }
-
-  function toggleFoodGoal(goal) {
-    setNewFoodGoal(
-      (prev) =>
-        prev.includes(goal)
-          ? prev.filter((item) => item !== goal) // remove if already selected
-          : [...prev, goal] // add if not selected
-    );
-  }
   function toggleFoodGoal(goal) {
     setNewFoodGoal((prev) =>
       prev.includes(goal)
@@ -117,13 +109,22 @@ function GoalsPage() {
 
   return (
     <div className="GoalsPage">
-      <button
-        type="button"
-        className="top-right-button"
-        onClick={() => navigate("/home")}
-      >
-        Setup later ➡
-      </button>
+      <span className="top-buttons">
+        <button
+          type="button"
+          className="top-left-button"
+          onClick={() => navigate("/")}
+        >
+          ⬅ Back
+        </button>
+        <button
+          type="button"
+          className="top-right-button"
+          onClick={() => navigate("/home")}
+        >
+          Setup later ➡
+        </button>
+      </span>
       <h1>Profile</h1>
       <h3> Welcome to Your Profile! </h3>
       <form onSubmit={handleSubmit} className="create-profile-form">
@@ -173,10 +174,15 @@ function GoalsPage() {
             Daily Calorie Intake Goal <span className="stars">*</span>
           </label>
           <div className="caloric input">
+            {/* BUG HERE */}
             <input
               type="number"
               value={calories}
-              onChange={(e) => setCalories(Number(e.target.value))}
+              onChange={(e) => {
+                const raw = e.target.value;
+                const sanitized = raw.replace(/^0+(?!$)/, "");
+                setCalories(sanitized === "" ? "0" : sanitized);
+              }}
             />
             <button type="button" onClick={decreaseCalories} className="arrow">
               ⬇
@@ -187,7 +193,7 @@ function GoalsPage() {
           </div>
         </div>
         <div className="Goals_but_input">
-          <label htmlFor="newUserImage">
+          <label htmlFor="newUserImage" id="profile-pic-text">
             Profile Picture <span className="stars">*</span>
           </label>
           <div className="profile_pic">
@@ -249,6 +255,7 @@ function GoalsPage() {
           <label htmlFor="newUserImage">Food Goals</label>
           <div className="food-goals-select">
             <button
+              type="button"
               className={`protein ${
                 newFoodGoal.includes("Protein") ? "selected" : ""
               }`}
@@ -257,6 +264,7 @@ function GoalsPage() {
               I Want to Eat More Protein
             </button>
             <button
+              type="button"
               className={`vegetables ${
                 newFoodGoal.includes("Vegetables") ? "selected" : ""
               }`}
@@ -273,6 +281,7 @@ function GoalsPage() {
 
           <div className="food-days-select">
             <button
+              type="button"
               className={`monday ${
                 newFoodDay.includes("Monday") ? "selected" : ""
               }`}
@@ -281,6 +290,7 @@ function GoalsPage() {
               Monday
             </button>
             <button
+              type="button"
               className={`tuesday ${
                 newFoodDay.includes("Tuesday") ? "selected" : ""
               }`}
@@ -289,6 +299,7 @@ function GoalsPage() {
               Tuesday
             </button>
             <button
+              type="button"
               className={`wedensday ${
                 newFoodDay.includes("Wednesday") ? "selected" : ""
               }`}
@@ -297,6 +308,7 @@ function GoalsPage() {
               Wednesday
             </button>
             <button
+              type="button"
               className={`thursday ${
                 newFoodDay.includes("Thursday") ? "selected" : ""
               }`}
@@ -305,6 +317,7 @@ function GoalsPage() {
               Thursday
             </button>
             <button
+              type="button"
               className={`friday ${
                 newFoodDay.includes("Friday") ? "selected" : ""
               }`}
@@ -314,7 +327,7 @@ function GoalsPage() {
             </button>
           </div>
         </div>
-        <button type="submit" className="save-button">
+        <button type="submit" className="save-button" disabled={!isFormValid}>
           Save Profile
         </button>
       </form>
