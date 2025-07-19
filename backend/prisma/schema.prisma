@@ -16,8 +16,8 @@ datasource db {
 
 model User {
   id              Int                   @id @default(autoincrement())
-  clerkId         String                @unique
-  email           String                @unique
+  clerkId         String                @unique  
+  email           String                
   image_url       String
   name            String
   dietary_pref    Dietary_Preferences[]
