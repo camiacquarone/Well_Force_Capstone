@@ -96,7 +96,7 @@ function App() {
             element={
               <ProtectedRoute>
                 <>
-                  <GoalsPage /> <NavBar />
+                  <GoalsPage user={user} setUser={setUser} /> <NavBar />
                 </>
               </ProtectedRoute>
             }

@@ -10,6 +10,8 @@ import {
 } from "@clerk/clerk-react";
 
 import "../HomePage/HomePage.css";
+import Graph from "../../components/Graph/Graph";
+import Carousel from "../../components/Carousel/Carousel";
 import NavBar from "../../components/NavBar/NavBar";
 
 import "../HomePage/HomePage.css";
@@ -24,6 +26,12 @@ const HomePage = ({ user, setUser }) => {
       <h2 className="welcome-user">
         Welcome, {user ? user.name || "Friend" : "Guest"}!
       </h2>
+      <div className="container-temp">
+        <div className="separated-container">
+          <Carousel />
+        </div>
+        <Graph />
+      </div>
       <div className="App p-4 bg-gray-100 min-h-screen font-inter flex flex-col items-center justify-center">
         <header className="App-header text-center mb-8 bg-white p-6 rounded-lg shadow-md w-full max-w-md">
           <div className="mt-4 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">

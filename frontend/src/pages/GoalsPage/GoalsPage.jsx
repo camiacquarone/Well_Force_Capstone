@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useUser, useAuth } from "@clerk/clerk-react";
 import axios from "axios";
 
-function GoalsPage() {
+function GoalsPage({ user, setUser }) {
   const [name, setName] = useState("");
   const [dietaryPref, setDietaryPref] = useState([]);
   const [allergies, setAllergies] = useState([]);
@@ -27,7 +27,6 @@ function GoalsPage() {
     newUserPosition.trim() !== "" &&
     newUserImage_url.trim() !== "" &&
     !nameError;
-  const { user } = useUser();
   const { getToken } = useAuth();
 
   const handleNameChange = (e) => {
@@ -58,14 +57,9 @@ function GoalsPage() {
     e.preventDefault();
 
     try {
-      // const clerkId = user.id;
-      // const email = user.primaryEmailAddress
-      //   ? user.primaryEmailAddress.emailAddress
-      //   : user.emailAddresses[0]?.emailAddress;
-
       const userData = {
-        // clerkId: clerkId,
-        // email: email,
+        clerkId: "",
+        email: "",
         image_url: newUserImage_url,
         name: name,
         dietary_pref: {
@@ -95,6 +89,10 @@ function GoalsPage() {
           },
         }
       );
+
+      setUser(user);
+      console.log(response.data);
+      console.log("user: ", user);
     } catch (error) {
       console.error("Error creating user profile (AxiosError object):", error);
     }
