@@ -17,6 +17,7 @@ async function seed() {
 
     // --- 2. Seed Goals (e.g., "Protein", "Vegetables", "Days of the Week") ---
     // Make sure these 'title' values EXACTLY match what your frontend sends.
+    //
     const goalsData = [
       { title: 'Protein', description: 'Focus on consuming more protein', category: 'Nutrition Goal' },
       { title: 'Vegetables', description: 'Increase daily vegetable intake', category: 'Nutrition Goal' },
@@ -37,12 +38,12 @@ async function seed() {
     // Make sure these 'name' values EXACTLY match what your frontend sends.
     // Ensure all boolean/array fields (isGlutenFree, Allergies, etc.) are included with defaults.
     const dietaryPreferencesData = [
-      { name: 'Vegan', isVegan: true, isVegetarian: true, isGlutenFree: false, isLactoseInt: false, isKeto: false, Allergies: [] },
-      { name: 'Vegetarian', isVegan: false, isVegetarian: true, isGlutenFree: false, isLactoseInt: false, isKeto: false, Allergies: [] },
-      { name: 'Gluten-Free', isVegan: false, isVegetarian: false, isGlutenFree: true, isLactoseInt: false, isKeto: false, Allergies: [] },
-      { name: 'Keto', isVegan: false, isVegetarian: false, isGlutenFree: false, isLactoseInt: false, isKeto: true, Allergies: [] },
-      { name: 'Protein', isVegan: false, isVegetarian: false, isGlutenFree: false, isLactoseInt: false, isKeto: false, Allergies: [] }, // Example: if "Protein" is a dietary pref
-      { name: 'Vegetables', isVegan: false, isVegetarian: true, isGlutenFree: false, isLactoseInt: false, isKeto: false, Allergies: [] }, // Example: if "Vegetables" is a dietary pref
+      { name: 'Vegan', isVegan: true, isVegetarian: true, isGlutenFree: false, isLactoseInt: false, isKeto: false },
+      { name: 'Vegetarian', isVegan: false, isVegetarian: true, isGlutenFree: false, isLactoseInt: false, isKeto: false  },
+      { name: 'Gluten-Free', isVegan: false, isVegetarian: false, isGlutenFree: true, isLactoseInt: false, isKeto: false  },
+      { name: 'Keto', isVegan: false, isVegetarian: false, isGlutenFree: false, isLactoseInt: false, isKeto: true  },
+      { name: 'Protein', isVegan: false, isVegetarian: false, isGlutenFree: false, isLactoseInt: false, isKeto: false  }, // Example: if "Protein" is a dietary pref
+      { name: 'Vegetables', isVegan: false, isVegetarian: true, isGlutenFree: false, isLactoseInt: false, isKeto: false  }, // Example: if "Vegetables" is a dietary pref
     ];
     console.log(`✨ Seeding ${dietaryPreferencesData.length} Dietary Preferences...`);
     for (const data of dietaryPreferencesData) {

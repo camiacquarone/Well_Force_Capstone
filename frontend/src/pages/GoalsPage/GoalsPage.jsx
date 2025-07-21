@@ -1,12 +1,15 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./GoalsPage.css";
 import HomePage from "../HomePage/HomePage.jsx";
 import { useNavigate } from "react-router-dom";
 import { useUser, useAuth } from "@clerk/clerk-react";
 import axios from "axios";
 
-function GoalsPage() {
+function GoalsPage({ user, setUser }) {
   const [name, setName] = useState("");
+  const [dietaryPref, setDietaryPref] = useState([]);
+  const [userExist, setUserExist] = useState(false);
+  const [allergies, setAllergies] = useState([]);
   const [newUserPosition, setNewUserPosition] = useState("");
   const [calories, setCalories] = useState(2000);
   const [newUserImage_url, setNewUserImage_url] = useState("");
@@ -14,6 +17,23 @@ function GoalsPage() {
   const [newFoodDay, setNewFoodDay] = useState([]);
   const [nameError, setNameError] = useState("");
   const position = ["Intern", "Full Time"];
+  const commonAllergies = [
+    "Milk",
+    "Eggs",
+    "Peanuts",
+    "Tree Nuts",
+    "Soy",
+    "Wheat",
+    "Fish",
+    "Shellfish",
+    "Sesame",
+    "Mustard",
+    "Celery",
+    "Lupin",
+    "Sulfites",
+    "Corn",
+    "Meat (Red/White)",
+  ];
 
   const increaseCalories = () =>
     setCalories((prev) => Math.min(prev + 50, 5000));
@@ -25,7 +45,6 @@ function GoalsPage() {
     newUserPosition.trim() !== "" &&
     newUserImage_url.trim() !== "" &&
     !nameError;
-  const { user } = useUser();
   const { getToken } = useAuth();
 
   const handleNameChange = (e) => {
@@ -46,63 +65,152 @@ function GoalsPage() {
     );
   }
 
+  function toggleDietaryPref(dr) {
+    setDietaryPref((prev) =>
+      prev.includes(dr) ? prev.filter((item) => item !== dr) : [...prev, dr]
+    );
+  }
+
+  function toggleAllergies(allerg) {
+    setAllergies((prev) =>
+      prev.includes(allerg)
+        ? prev.filter((item) => item !== allerg)
+        : [...prev, allerg]
+    );
+  }
+
   function toggleDay(day) {
     setNewFoodDay((prev) =>
       prev.includes(day) ? prev.filter((d) => d !== day) : [...prev, day]
     );
   }
 
+  /**
+   * TODO
+   * make it so that we check if the user has been signed in b4, and if so,
+   * we just update the user information instead of create a new account
+   *
+   * current bug: when we try to modify or insert new information, no new user
+   * is created. The user is created for the first time, but after that no
+   * new user is created with the new information.
+   *
+   * steps: useEffect to check if the user exists, and then use that boolean
+   * to then determine to either use the put or post method in react
+   *
+   */
+  useEffect(() => {
+    const checkIfExist = async () => {
+      if (!user) {
+        setUserExist(false);
+        return;
+      }
+
+      setUserExist(true);
+
+      try {
+        const token = await getToken();
+      } catch (error) {}
+    };
+
+    checkIfExist();
+  });
+
   async function handleSubmit(e) {
     e.preventDefault();
 
+    console.log("Does the user exist? ", userExist);
     try {
-      const clerkId = user.id;
-      const email = user.primaryEmailAddress
-        ? user.primaryEmailAddress.emailAddress
-        : user.emailAddresses[0]?.emailAddress;
-
-      const userData = {
-        clerkId: clerkId,
-        email: email,
-        image_url: newUserImage_url,
-        name: name,
-        dietary_pref: {
-          connect: [],
-        },
-        goals: {
-          connect: newFoodGoal.map((goalName) => ({ title: goalName })),
-        },
-        recommendations: {
-          connect: [],
-        },
-        role: newUserPosition,
-        caloric_goal: calories,
-        daysOfWeek: newFoodDay,
-      };
-
-      console.log("submitting user data: ", userData);
       const token = await getToken();
 
-      const response = await axios.post(
-        "http://localhost:3000/api/users",
-        userData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`, // Send the Clerk token
-            "Content-Type": "application/json",
+      console.log(allergies);
+
+      if (userExist) {
+        const response = await axios.put(
+          "http://localhost:3000/api/users",
+          {
+            image_url: newUserImage_url,
+            name: name,
+            allergies: allergies,
+            dietary_pref: {
+              connect: dietaryPref.map((drName) => ({
+                name: drName,
+              })),
+            },
+            goals: {
+              connect: newFoodGoal.map((goalName) => ({ title: goalName })),
+            },
+            recommendations: {
+              connect: [],
+            },
+            role: newUserPosition,
+            caloric_goal: calories,
+            daysOfWeek: newFoodDay,
           },
-        }
-      );
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        console.log("completed updating the user information");
+        console.log(user);
+        setUser(user);
+      } else {
+        const userData = {
+          clerkId: "",
+          email: "",
+          image_url: newUserImage_url,
+          name: name,
+          allergies: allergies,
+          dietary_pref: {
+            connect: dietaryPref.map((drName) => ({
+              name: drName,
+            })),
+          },
+          goals: {
+            connect: newFoodGoal.map((goalName) => ({ title: goalName })),
+          },
+          recommendations: {
+            connect: [],
+          },
+          role: newUserPosition,
+          caloric_goal: calories,
+          daysOfWeek: newFoodDay,
+        };
+
+        console.log("submitting user data: ", userData);
+
+        const response = await axios.post(
+          "http://localhost:3000/api/users",
+          userData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`, // Send the Clerk token
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        setUser(user);
+        console.log(response.data);
+      }
+
+      console.log("user: ", user);
     } catch (error) {
       console.error("Error creating user profile (AxiosError object):", error);
     }
 
+    console.log("USER INFORMATION");
     console.log("Name:", name);
     console.log("Position:", newUserPosition);
     console.log("Calories", calories);
     console.log("Image URL:", newUserImage_url);
+    console.log("dietary preferences: ", dietaryPref);
     console.log("Food Goal:", newFoodGoal);
     console.log("Food Day:", newFoodDay);
+    console.log("allergies: ", allergies);
   }
 
   return (
@@ -140,6 +248,7 @@ function GoalsPage() {
           />
           {nameError && <p className="error-message">{nameError}</p>}
         </div>
+
         <div className="Goals_req_input">
           <label htmlFor="newUserPosition">
             Position<span className="stars">*</span>
@@ -249,8 +358,10 @@ function GoalsPage() {
             })}
           </div>
         </div>
+
+        {/* food goals  */}
         <div className="goals_but_input">
-          <label htmlFor="newUserImage">Food Goals</label>
+          <label htmlFor="newUserGoals">Food Goals</label>
           <div className="food-goals-select">
             <button
               type="button"
@@ -272,6 +383,65 @@ function GoalsPage() {
             </button>
           </div>
         </div>
+
+        {/* dietary preferences */}
+        <div className="goals_but_input">
+          <label htmlFor="newUserDietPref">
+            Do you have any dietary preferences?
+          </label>
+          <div className="food-goals-select">
+            <button
+              type="button"
+              className={`Vegetarian ${
+                dietaryPref.includes("Vegetarian") ? "selected" : ""
+              }`}
+              onClick={() => toggleDietaryPref("Vegetarian")}
+            >
+              Vegetarian
+            </button>
+            <button
+              type="button"
+              className={`Vegan ${
+                dietaryPref.includes("Vegan") ? "selected" : ""
+              }`}
+              onClick={() => toggleDietaryPref("Vegan")}
+            >
+              Vegan
+            </button>
+
+            <button
+              type="button"
+              className={`Gluten-Free ${
+                dietaryPref.includes("Gluten-Free") ? "selected" : ""
+              }`}
+              onClick={() => toggleDietaryPref("Gluten-Free")}
+            >
+              Gluten-Free
+            </button>
+          </div>
+        </div>
+
+        {/* allergies */}
+
+        <div className="goals_but_input">
+          <label htmlFor="newUserAllergies">Do you have any allergies?</label>
+          <div className="food-goals-select">
+            {commonAllergies.map((allergy) => {
+              return (
+                <button
+                  type="button"
+                  className={`{allergy} ${
+                    allergies.includes(allergy) ? "selected" : ""
+                  }`}
+                  onClick={() => toggleAllergies(allergy)}
+                >
+                  {allergy}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         <div className="goals_but_input">
           <label htmlFor="DaysWanted">
             What Days of the Week Would You Like Meal Suggestions?

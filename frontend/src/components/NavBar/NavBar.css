@@ -1,5 +1,4 @@
 
-
 .navbar {
   position: fixed;
   top: 0;
@@ -91,8 +90,7 @@
   text-align: left;
 } 
 
- .home {
-  padding-left: 1rem;
+.home {
   margin-top: 1rem;
   display: flex;
   align-items: center;
