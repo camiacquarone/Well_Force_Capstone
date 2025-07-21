@@ -85,7 +85,7 @@ exports.updateUser = async (req, res) => {
 }
 
 
-/ Controller function to retrieve a user from the database using their Clerk ID
+// Controller function to retrieve a user from the database using their Clerk ID
 exports.getUserFromClerk = async (req, res) => {
   // Extract the `clerkId` from the request query parameters
   const { clerkId } = req.query;

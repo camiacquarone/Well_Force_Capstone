@@ -14,7 +14,7 @@ import GoalsPage from "../pages/GoalsPage/GoalsPage.jsx";
 import AICompanion from "../components/AICompanion/AICompanion";
 
 import NavBar from "../components/NavBar/NavBar";
-import { useAuth } from "@clerk/clerk-react";
+// import { useAuth } from "@clerk/clerk-react";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute.jsx";
 import FoodPage from "../pages/FoodPage/FoodPage.jsx";
 
