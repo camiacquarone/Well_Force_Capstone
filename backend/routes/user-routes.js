@@ -5,6 +5,6 @@ const {requireAuth, populateClerkUser} = require('../middleware/clerkAuth');
 
 router.post("/", requireAuth, populateClerkUser, controller.createUser);
 router.get("/:clerkId", requireAuth, populateClerkUser, controller.getUserById);
-// router.put("/:id", controller.updateUser);
+router.put("/:clerkId", requireAuth, populateClerkUser, controller.updateUser);
 
 module.exports = router;

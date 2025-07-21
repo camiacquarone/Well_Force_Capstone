@@ -8,6 +8,7 @@ import axios from "axios";
 function GoalsPage({ user, setUser }) {
   const [name, setName] = useState("");
   const [dietaryPref, setDietaryPref] = useState([]);
+  const [userExist, setUserExist] = useState(false);
   const [allergies, setAllergies] = useState([]);
   const [newUserPosition, setNewUserPosition] = useState("");
   const [calories, setCalories] = useState(2000);
@@ -47,11 +48,47 @@ function GoalsPage({ user, setUser }) {
     );
   }
 
+  function toggleDietaryPref(dr) {
+    setDietaryPref((prev) =>
+      prev.includes(dr) ? prev.filter((item) => item !== dr) : [...prev, dr]
+    );
+  }
+
   function toggleDay(day) {
     setNewFoodDay((prev) =>
       prev.includes(day) ? prev.filter((d) => d !== day) : [...prev, day]
     );
   }
+
+  /**
+   * TODO
+   * make it so that we check if the user has been signed in b4, and if so,
+   * we just update the user information instead of create a new account
+   *
+   * current bug: when we try to modify or insert new information, no new user
+   * is created. The user is created for the first time, but after that no
+   * new user is created with the new information.
+   *
+   * steps: useEffect to check if the user exists, and then use that boolean
+   * to then determine to either use the put or post method in react
+   *
+   */
+  // useEffect(() => {
+  //   const checkIfExist = async() => {
+  //     if(!isLoaded || !isSignedIn || !user) {
+  //       setUserExist(false);
+  //       return;
+  //     }
+
+  //     setUserExist(true);
+
+  //     try {
+  //       const token = await getToken();
+
+  //       const res[omse]
+  //     }
+  //   }
+  // })
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -63,7 +100,7 @@ function GoalsPage({ user, setUser }) {
         image_url: newUserImage_url,
         name: name,
         dietary_pref: {
-          connect: [],
+          connect: dietaryPref.map((drName) => ({ title: drName })),
         },
         goals: {
           connect: newFoodGoal.map((goalName) => ({ title: goalName })),
@@ -101,6 +138,7 @@ function GoalsPage({ user, setUser }) {
     console.log("Position:", newUserPosition);
     console.log("Calories", calories);
     console.log("Image URL:", newUserImage_url);
+    console.log("dietary preferences: ", dietaryPref);
     console.log("Food Goal:", newFoodGoal);
     console.log("Food Day:", newFoodDay);
   }
@@ -250,7 +288,7 @@ function GoalsPage({ user, setUser }) {
           </div>
         </div>
         <div className="goals_but_input">
-          <label htmlFor="newUserImage">Food Goals</label>
+          <label htmlFor="newUserGoals">Food Goals</label>
           <div className="food-goals-select">
             <button
               type="button"
@@ -272,6 +310,77 @@ function GoalsPage({ user, setUser }) {
             </button>
           </div>
         </div>
+        {/* dietary preferences */}
+        <div className="goals_but_input">
+          <label htmlFor="newUserDietPref">
+            Do you have any dietary preferences?
+          </label>
+          <div className="food-goals-select">
+            <button
+              type="button"
+              className={`Vegetarian ${
+                dietaryPref.includes("Vegetarian") ? "selected" : ""
+              }`}
+              onClick={() => toggleDietaryPref("Vegetarian")}
+            >
+              Vegetarian
+            </button>
+            <button
+              type="button"
+              className={`Vegan ${
+                dietaryPref.includes("Vegan") ? "selected" : ""
+              }`}
+              onClick={() => toggleDietaryPref("Vegan")}
+            >
+              Vegan
+            </button>
+
+            <button
+              type="button"
+              className={`Gluten-Free ${
+                dietaryPref.includes("Gluten-Free") ? "selected" : ""
+              }`}
+              onClick={() => toggleDietaryPref("Gluten-Free")}
+            >
+              Gluten-Free
+            </button>
+          </div>
+        </div>
+        {/* allergies */}
+        {/* <div className="goals_but_input">
+          <label htmlFor="newUserImage">Do you have any allergies?</label>
+
+          <div className="food-goals-select">
+            <button
+              type="button"
+              className={`Vegetarian ${
+                newFoodGoal.includes("Vegetarian") ? "selected" : ""
+              }`}
+              onClick={() => toggleFoodGoal("Vegetarian")}
+            >
+              Vegetarian
+            </button>
+            <button
+              type="button"
+              className={`Vegan ${
+                newFoodGoal.includes("Vegan") ? "selected" : ""
+              }`}
+              onClick={() => toggleFoodGoal("Vegan")}
+            >
+              Vegan
+            </button>
+
+            <button
+              type="button"
+              className={`Gluten-Free ${
+                newFoodGoal.includes("Gluten-Free") ? "selected" : ""
+              }`}
+              onClick={() => toggleFoodGoal("Gluten-Free")}
+            >
+              Gluten-Free
+            </button>
+          </div>
+        </div> */}
         <div className="goals_but_input">
           <label htmlFor="DaysWanted">
             What Days of the Week Would You Like Meal Suggestions?

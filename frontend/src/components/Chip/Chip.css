@@ -1,0 +1,35 @@
+
+.chip {
+  display: inline-flex; 
+  align-items: center;
+  justify-content: center; 
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px; 
+  font-size: 0.75rem; 
+  font-weight: 500; 
+  line-height: 1; 
+  white-space: nowrap; 
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); 
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.chip-default {
+  background-color: #e2e8f0; 
+  color: #4a5568; 
+}
+
+.chip-allergy {
+  background-color: #fee2e2;
+  color: #c53030; 
+  border: 1px solid #ef4444; 
+}
+
+.chip-dietary {
+  background-color: #d1fae5; 
+  color: #065f46; 
+}
+
+.chip-mood {
+  background-color: #bfdbfe; 
+  color: #1e40af; 
+}

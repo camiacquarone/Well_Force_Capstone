@@ -12,6 +12,7 @@ import {
 import "../HomePage/HomePage.css";
 import Graph from "../../components/Graph/Graph";
 import Carousel from "../../components/Carousel/Carousel";
+import Info from "../../components/DisplayInfo/DisplayInfo";
 import NavBar from "../../components/NavBar/NavBar";
 
 import "../HomePage/HomePage.css";
@@ -28,6 +29,7 @@ const HomePage = ({ user, setUser }) => {
       </h2>
       <div className="container-temp">
         <div className="separated-container">
+          <Info />
           <Carousel />
         </div>
         <Graph />

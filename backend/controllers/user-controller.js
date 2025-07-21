@@ -50,3 +50,34 @@ exports.getUserById = async (req, res) => {
     }
 };
 
+exports.updateUser = async (req, res) => {
+    const clerkId = req.auth.userId;
+
+    const {email,
+                image_url,
+                 name,
+                 dietary_pref,
+                 goals,
+                 role,
+                 recommendations,
+                 caloric_goal,
+               daysOfWeek} = req.body;
+
+    const updatedUser = await prisma.user.update ({
+        where:{clerkId},
+        data:{email,
+                image_url,
+                 name,
+                 dietary_pref,
+                 goals,
+                 role,
+                 recommendations,
+                 caloric_goal,
+               daysOfWeek}
+    });
+
+    res.json(updatedUser);
+
+
+}
+
