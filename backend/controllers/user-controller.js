@@ -37,7 +37,11 @@ exports.getUserById = async (req, res) => {
         const authClerkId = req.auth.userId;
         const userIdParams = req.params.clerkId;
 
-        const user = await prisma.user.findUnique({where: {clerkId: userIdParams}});
+        const user = await prisma.user.findUnique({where: {clerkId: userIdParams},  include: {
+        dietary_pref: true,
+        goals: true,
+        recommendations: true
+    }});
 
          if(!user) {
             return res.status(404).json({error:" ERROR: user not found"});
