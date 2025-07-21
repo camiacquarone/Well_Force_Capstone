@@ -11,5 +11,11 @@ h1.welcome-user {
   transition: all 0.5s ease;
 }
 
+.separated-container {
+  width: 50%;
+}
 
+.container-temp {
+  display: flex;
+}
 
