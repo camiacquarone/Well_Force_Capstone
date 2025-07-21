@@ -10,8 +10,9 @@ jest.mock('@prisma/client', () => ({
 
 
 jest.mock("../controllers/user-controller.js", () => ({
-  getUserById: jest.fn(),
+getUserById: jest.fn(),
   createUser: jest.fn(),
+  updateUser: jest.fn(),
 }));
 
 
@@ -51,7 +52,7 @@ describe("User Controller", () => {
         res.status(200).json(mockUser);
       });
 
-      const response = await request(app).get("/users/1");
+      const response = await request(app).get("/users/clerkID");
 
       expect(response.status).toBe(200);
       expect(response.body).toEqual(mockUser);
