@@ -42,16 +42,19 @@ function FoodPage() {
 
         <section className="snacks-section">
           <h2>Snacks</h2>
-          <div className="snacks-grid">{/* Snack Cards Go Here */}</div>
+          <div className="snacks-grid">{/* Snack Cards Go Here */}
+            <SnackList/>
+          </div>
         </section>
-
+        <Link to="/chat">
         <button
           type="button"
           className="ai-companion-button"
-          onClick={() => navigate("/chat")}
         >
           AI Companion
         </button>
+        </Link>
+        
       </main>
     </div>
   );

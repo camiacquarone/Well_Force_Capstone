@@ -14,16 +14,24 @@ import GoalsPage from "../pages/GoalsPage/GoalsPage.jsx";
 import AICompanion from "../components/AICompanion/AICompanion";
 
 import NavBar from "../components/NavBar/NavBar";
-
+// import { useAuth } from "@clerk/clerk-react";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute.jsx";
 import FoodPage from "../pages/FoodPage/FoodPage.jsx";
 
 function App() {
-  const { userId, getToken } = useAuth();
+  
 
   const [NavBarOpen, setNavBarOpen] = useState(false);
   const [user, setUser] = useState(null);
   const toggleNavBar = () => setNavBarOpen((isOpen) => !isOpen);
+
+  const { userId, isSignedIn, getToken } = useAuth();
+   useEffect(() => {
+    if (isSignedIn && userId) {
+      localStorage.setItem("userId", userId);
+    }
+  }, [isSignedIn, userId]);
+
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -60,6 +68,7 @@ function App() {
     // You can also add logic here that depends on the 'user' being available
     // For example, if you need to do something *after* the user data is confirmed loaded
   }, [user]);
+
 
   return (
     <div className="App">

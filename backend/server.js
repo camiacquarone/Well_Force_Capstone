@@ -7,7 +7,7 @@ const chatRoutes = require("./routes/chat.js");
 const userRoutes = require("./routes/user-routes.js");
 const mealRoutes = require("./routes/meal-routes.js");
 const snackRoutes = require("./routes/snack-routes.js")
-
+const mealchatRoutes = require("./routes/chat-routes.js")
 
 dotenv.config();
 const app = express();
@@ -20,6 +20,7 @@ app.use("/api/users", userRoutes);
 app.use("/api", chatRoutes); 
 app.use("/api/meals", mealRoutes); 
 app.use("/api/snacks", snackRoutes);
+app.use("/api/mealchat", mealchatRoutes)
 
 app.get("/", (req, res) => {
   res.send("API is working.");

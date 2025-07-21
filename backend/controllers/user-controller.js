@@ -84,3 +84,31 @@ exports.updateUser = async (req, res) => {
 
 }
 
+
+// Controller function to retrieve a user from the database using their Clerk ID
+exports.getUserFromClerk = async (req, res) => {
+  // Extract the `clerkId` from the request query parameters
+  const { clerkId } = req.query;
+
+  try {
+    // Query the database to find a user with the matching Clerk ID
+    const user = await prisma.user.findUnique({
+      where: { clerkId }
+    });
+
+    // If no user is found, return a 404 Not Found response
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // If the user is found, return the user object as JSON
+    // You can limit the response to just { id: user.id } if needed
+    res.json(user);
+  } catch (error) {
+    // Log the error for debugging
+    console.error(error);
+
+    // Return a 500 Internal Server Error response if something goes wrong
+    res.status(500).json({ error: "Failed to retrieve user" });
+  }
+};
