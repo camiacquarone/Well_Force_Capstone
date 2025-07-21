@@ -10,9 +10,9 @@ jest.mock('@prisma/client', () => ({
 
 
 jest.mock("../controllers/user-controller.js", () => ({
-  getUserById: jest.fn(),
+getUserById: jest.fn(),
   createUser: jest.fn(),
-   updateUser: jest.fn(),
+  updateUser: jest.fn(),
 }));
 
 

@@ -7,12 +7,13 @@ exports.createUser = async (req, res) => {
         const clerkId = req.auth.userId;
         const email = req.clerkUser?.primaryEmailAddress?.emailAddress || req.clerkUser?.emailAddresses[0]?.emailAddress;
         
-        const { image_url, name, dietary_pref, goals, role, recommendations, caloric_goal, daysOfWeek} = req.body;
+        const { image_url, name, dietary_pref, goals, role, recommendations, caloric_goal, daysOfWeek, allergies} = req.body;
 
             const newUser = await prisma.user.create({
             data: {
                 clerkId: clerkId,
                 email: email,
+                allergies: allergies, 
                 image_url: image_url,
                 name: name,
                 dietary_pref: dietary_pref,
@@ -56,6 +57,7 @@ exports.updateUser = async (req, res) => {
     const {email,
                 image_url,
                  name,
+                 allergies,
                  dietary_pref,
                  goals,
                  role,
@@ -68,6 +70,7 @@ exports.updateUser = async (req, res) => {
         data:{email,
                 image_url,
                  name,
+                 allergies,
                  dietary_pref,
                  goals,
                  role,

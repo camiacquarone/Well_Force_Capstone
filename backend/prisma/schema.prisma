@@ -21,6 +21,7 @@ model User {
   image_url       String
   name            String
   dietary_pref    Dietary_Preferences[]
+  allergies    String[]
   goals           Goals[]
   role            String
   recommendations Recommendation[]
@@ -39,13 +40,12 @@ model Goals {
 
 model Dietary_Preferences {
   id           Int      @id @default(autoincrement())
-  name         String  @unique
+  name         String   @unique
   isGlutenFree Boolean?
   isLactoseInt Boolean?
   isVegan      Boolean?
   isVegetarian Boolean?
   isKeto       Boolean?
-  Allergies    String[]
   User         User?    @relation(fields: [userId], references: [id])
   userId       Int?
   Snacks       Snacks?  @relation(fields: [snacksId], references: [id])
