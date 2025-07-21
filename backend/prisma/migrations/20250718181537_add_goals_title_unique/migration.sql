@@ -5,4 +5,4 @@
 
 */
 -- CreateIndex
-CREATE UNIQUE INDEX "Dietary_Preferences_name_key" ON "Dietary_Preferences"("name");
+-- CREATE UNIQUE INDEX "Dietary_Preferences_name_key" ON "Dietary_Preferences"("name");

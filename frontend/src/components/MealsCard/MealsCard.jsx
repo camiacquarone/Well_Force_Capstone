@@ -11,8 +11,17 @@ export default function MealCard({ meal }) {
       <h3>{meal.name}</h3>
       <p>Restaurant: {meal.restaurant_name}</p>
       <p>Price: ${meal.price.toFixed(2)}</p>
-      <p>Calories: {meal.nutritional_information[0]?.calories || "N/A"} kcal</p>
-      <p>Protein: {meal.nutritional_information[0]?.protein || "N/A"} g</p>
+<p>
+  Calories: {Array.isArray(meal.nutritional_information) && meal.nutritional_information.length > 0 
+    ? meal.nutritional_information[0].calories 
+    : "N/A"} kcal
+</p>      
+<p>
+  Protein: {Array.isArray(meal.nutritional_information) && meal.nutritional_information.length > 0 
+    ? meal.nutritional_information[0].protein 
+    : "N/A"} g
+</p>
+
       <Link to="https://order.trypicnic.com/search/chipotle">
               <button className="order-now">Order Now</button>
         </Link>

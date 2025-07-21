@@ -12,14 +12,19 @@ import GoalsPage from "../pages/GoalsPage/GoalsPage.jsx";
 import AICompanion from "../components/AICompanion/AICompanion";
 
 import NavBar from "../components/NavBar/NavBar";
-
+import { useAuth } from "@clerk/clerk-react";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute.jsx";
 import FoodPage from "../pages/FoodPage/FoodPage.jsx";
 
 function App() {
   const [NavBarOpen, setNavBarOpen] = useState(false);
   const toggleNavBar = () => setNavBarOpen((isOpen) => !isOpen);
-
+  const { userId, isSignedIn } = useAuth();
+   useEffect(() => {
+    if (isSignedIn && userId) {
+      localStorage.setItem("userId", userId);
+    }
+  }, [isSignedIn, userId]);
   return (
     <div className="App">
       <Router>
