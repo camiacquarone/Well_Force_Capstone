@@ -36,7 +36,7 @@ function App() {
       try {
         const token = await getToken();
         const response = await axios.get(
-          `http://localhost:3000/api/users/${userId}`,
+           `http://localhost:3000/api/users/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

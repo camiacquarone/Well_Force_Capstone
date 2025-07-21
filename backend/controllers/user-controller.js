@@ -1,3 +1,4 @@
+
 const prisma = require("../models/prisma-client");
 
 exports.createUser = async (req, res) => {
@@ -83,4 +84,3 @@ exports.updateUser = async (req, res) => {
 
 
 }
-

@@ -39,14 +39,12 @@ function GoalsPage({ user, setUser }) {
     setCalories((prev) => Math.min(prev + 50, 5000));
   const decreaseCalories = () => setCalories((prev) => Math.max(prev - 50, 0));
   const navigate = useNavigate();
-  // const { user } = useUser();
-  const { getToken } = useAuth();
-
   const isFormValid =
     name.trim() !== "" &&
     newUserPosition.trim() !== "" &&
     newUserImage_url.trim() !== "" &&
     !nameError;
+  const { getToken } = useAuth();
 
   const handleNameChange = (e) => {
     const value = e.target.value;
@@ -453,8 +451,9 @@ function GoalsPage({ user, setUser }) {
             {commonAllergies.map((allergy) => {
               return (
                 <button
+                  key={allergy}
                   type="button"
-                  className={`{allergy} ${
+                  className={`${allergy} ${
                     allergies.includes(allergy) ? "selected" : ""
                   }`}
                   onClick={() => toggleAllergies(allergy)}
