@@ -1,6 +1,4 @@
-/* .food-page {
-  display: flex;
-} */
+
 
 .food-header {
   text-align: center;
@@ -54,13 +52,6 @@ h2 {
   margin-bottom: 40px;
   margin-right: 40px;
 }
-/* 
-.meals-grid,
-.snacks-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 20px;
-} */
 
 .ai-companion-button {
   position: fixed;
@@ -72,6 +63,8 @@ h2 {
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
+  font-family: "Regular";
+  font-size: 1.5rem;
 } 
 
 .food-page {

@@ -1,10 +1,12 @@
-import React, {useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import MealsList from "../../components/MealsList/MealsList";
 import SnackList from "../../components/SnackList/SnackList";
-import { Link } from "react-router-dom"
+import AICompanionModal from "../../components/AICompanion/AICompanion";
+import { Link } from "react-router-dom";
 import "./FoodPage.css";
 
 function FoodPage() {
+  const [isAIModalOpen, setIsAIModalOpen] = useState(false);
 
   return (
     <div className="food-page">
@@ -44,21 +46,21 @@ function FoodPage() {
           <h2>Snacks</h2>
           <div className="snacks-grid">
             {/* Snack Cards Go Here */}
-            <SnackList/>
+            <SnackList />
           </div>
         </section>
 
         <button
           type="button"
           className="ai-companion-button"
-          onClick={() => navigate("/chat")}
+          onClick={() => setIsAIModalOpen(true)}
         >
           AI Companion
         </button>
+        {isAIModalOpen && (
+          <AICompanionModal onClose={() => setIsAIModalOpen(false)} />
+        )}
       </main>
-        <Link to="/chat">
-              <button className="ai-companion-button">AI Companion</button>
-        </Link>
     </div>
   );
 }

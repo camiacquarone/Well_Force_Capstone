@@ -23,11 +23,32 @@ function NavBar() {
     <div className="navbar-container">
       <div className="navbar">
         {!isOpen && (
-          <button className="hamburger-button" onClick={toggleNavBar}>
-            ☰
-          </button>
+          <>
+            <button className="hamburger-button" onClick={toggleNavBar}>
+              ☰
+            </button>
+            <Link to="/home">
+              <img
+                src="/home.png"
+                className="home-closed"
+                alt="home"
+                width="50px"
+                height="35px"
+                style={{ cursor: "pointer" }}
+              />
+            </Link>
+            <Link to="/meals">
+              <img
+                src="/food.png"
+                className="food-closed"
+                alt="food"
+                width="50px"
+                height="35px"
+                style={{ cursor: "pointer" }}
+              />
+            </Link>
+          </>
         )}
-
         <div className="open">
           {isOpen && (
             <>

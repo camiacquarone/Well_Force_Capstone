@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./GoalsPage.css";
 import HomePage from "../HomePage/HomePage.jsx";
 import { useNavigate } from "react-router-dom";
@@ -22,13 +22,11 @@ function GoalsPage() {
   const { user } = useUser();
   const { getToken } = useAuth();
 
-  
   const isFormValid =
     name.trim() !== "" &&
     newUserPosition.trim() !== "" &&
     newUserImage_url.trim() !== "" &&
     !nameError;
-
 
   const handleNameChange = (e) => {
     const value = e.target.value;
@@ -174,7 +172,6 @@ function GoalsPage() {
             Daily Calorie Intake Goal <span className="stars">*</span>
           </label>
           <div className="caloric input">
-            {/* BUG HERE */}
             <input
               type="number"
               value={calories}
@@ -200,51 +197,57 @@ function GoalsPage() {
             {[
               {
                 id: "einstein",
-                src: "/einstein-profile.png",
-                selectedSrc: "/einstein-profile-selected.png",
+                base: "einstein",
                 alt: "Einstein",
                 className: "einstein-img",
               },
               {
                 id: "astro",
-                src: "/astro-profile.png",
-                selectedSrc: "/astro-profile-selected.png",
+                base: "astro",
                 alt: "Astro",
                 className: "astro-img",
               },
               {
                 id: "codey",
-                src: "/codey-profile.png",
-                selectedSrc: "/codey-profile-selected.png",
+                base: "codey",
                 alt: "Codey",
                 className: "codey-img",
               },
               {
                 id: "ruth",
-                src: "/ruth-profile.png",
-                selectedSrc: "/ruth-profile-selected.png",
+                base: "ruth",
                 alt: "Ruth",
                 className: "ruth-img",
               },
               {
                 id: "appy",
-                src: "/appy-profile.png",
-                selectedSrc: "/appy-profile-selected.png",
+                base: "appy",
                 alt: "Appy",
                 className: "appy-img",
               },
             ].map((char) => {
-              const isSelected = newUserImage_url === char.selectedSrc;
+              const isSelected =
+                newUserImage_url === `/${char.base}-profile-selected.png`;
+              const isSomeOtherSelected =
+                newUserImage_url !== "" && !isSelected;
+              const src = isSelected
+                ? `/${char.base}-profile-selected.png`
+                : isSomeOtherSelected
+                ? `/${char.base}-not-selected.png`
+                : `/${char.base}-profile.png`;
+
               return (
                 <img
                   key={char.id}
-                  src={isSelected ? char.selectedSrc : char.src}
+                  src={src}
                   alt={char.alt}
                   className={`${char.className} ${
                     isSelected ? "selected" : ""
                   }`}
                   onClick={() =>
-                    setNewUserImage_url(isSelected ? "" : char.selectedSrc)
+                    setNewUserImage_url(
+                      isSelected ? "" : `/${char.base}-profile-selected.png`
+                    )
                   }
                 />
               );
@@ -254,6 +257,24 @@ function GoalsPage() {
         <div className="goals_but_input">
           <label htmlFor="newUserImage">Food Goals</label>
           <div className="food-goals-select">
+            <button
+              type="button"
+              className={`protein ${
+                newFoodGoal.includes("Protein") ? "selected" : ""
+              }`}
+              onClick={() => toggleFoodGoal("Protein")}
+            >
+              I Want to Eat More Protein
+            </button>
+            <button
+              type="button"
+              className={`vegetables ${
+                newFoodGoal.includes("Vegetables") ? "selected" : ""
+              }`}
+              onClick={() => toggleFoodGoal("Vegetables")}
+            >
+              I Want to Eat More Vegetables
+            </button>
             <button
               type="button"
               className={`protein ${

@@ -1,3 +1,9 @@
+.body,
+html {
+  background: linear-gradient(180deg, #ffffff, #bae8ff);
+  padding-bottom: 12rem;
+}
+
 .GoalsPage {
   position: absolute;
   height: 100%;
@@ -8,6 +14,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  padding-bottom: 10rem;
 }
 
 .GoalsPage h1 {
@@ -55,6 +62,7 @@ label {
   font-family: "Regular";
   font-size: 20px;
   color: #04354a;
+  margin-top:0.5rem
 }
 
 input {
@@ -206,12 +214,12 @@ button:hover {
 }
 
 /* Food Goals and Days Selection */
-.food-goals-select,
-.food-days-select {
+.food-days-select, .food-goals-select {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 12px;
 }
+
 
 .food-goals-select button,
 .food-days-select button {
@@ -250,6 +258,7 @@ button:hover {
   border-radius: 10px;
   cursor: pointer;
   transition: background 0.3s ease;
+  margin-top:1rem;
 }
 
 .save-button:hover {
@@ -279,7 +288,7 @@ button:hover {
   }
 }
 .save-button:disabled {
-  color:#06415b;
+  color: #06415b;
   opacity: 0.8;
   cursor: not-allowed;
   background-color: #d1d1d1;
