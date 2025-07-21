@@ -3,12 +3,17 @@ const prisma = require("../models/prisma-client");
 exports.createUser = async (req, res) => {
 
     try {
-            const { clerkId, email, image_url, name, dietary_pref, goals, role, recommendations, caloric_goal, daysOfWeek} = req.body;
+        
+        const clerkId = req.auth.userId;
+        const email = req.clerkUser?.primaryEmailAddress?.emailAddress || req.clerkUser?.emailAddresses[0]?.emailAddress;
+        
+        const { image_url, name, dietary_pref, goals, role, recommendations, caloric_goal, daysOfWeek, allergies} = req.body;
 
             const newUser = await prisma.user.create({
             data: {
                 clerkId: clerkId,
                 email: email,
+                allergies: allergies, 
                 image_url: image_url,
                 name: name,
                 dietary_pref: dietary_pref,
@@ -29,13 +34,14 @@ exports.createUser = async (req, res) => {
  
 exports.getUserById = async (req, res) => {
     try {
-        const clerkIdFromAuth = req.auth.userId;
-        const user_id = Number(req.params.id);
-        const user = await prisma.user.findUnique({where: {user_id}});
+        const authClerkId = req.auth.userId;
+        const userIdParams = req.params.clerkId;
 
-        if(!user) {
+        const user = await prisma.user.findUnique({where: {clerkId: userIdParams}});
+
+         if(!user) {
             return res.status(404).json({error:" ERROR: user not found"});
-        } else if (user.clerkId !== clerkIdFromAuth) {
+        } else if (authClerkId !== userIdParams) {
             return res.status(403).json({error: "Forbidden: You can only access your own account."})
         }
 
@@ -43,5 +49,38 @@ exports.getUserById = async (req, res) => {
     } catch(error) {
         res.status(400).json({error: "Could not find user."});
     }
-    
 };
+
+exports.updateUser = async (req, res) => {
+    const clerkId = req.auth.userId;
+
+    const {email,
+                image_url,
+                 name,
+                 allergies,
+                 dietary_pref,
+                 goals,
+                 role,
+                 recommendations,
+                 caloric_goal,
+               daysOfWeek} = req.body;
+
+    const updatedUser = await prisma.user.update ({
+        where:{clerkId},
+        data:{email,
+                image_url,
+                 name,
+                 allergies,
+                 dietary_pref,
+                 goals,
+                 role,
+                 recommendations,
+                 caloric_goal,
+               daysOfWeek}
+    });
+
+    res.json(updatedUser);
+
+
+}
+

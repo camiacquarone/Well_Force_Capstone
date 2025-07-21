@@ -5,7 +5,10 @@ CREATE TABLE "User" (
     "email" TEXT NOT NULL,
     "image_url" TEXT NOT NULL,
     "name" TEXT NOT NULL,
+    "allergies" TEXT[],
     "role" TEXT NOT NULL,
+    "caloric_goal" INTEGER NOT NULL DEFAULT 2000,
+    "daysOfWeek" TEXT[],
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -24,12 +27,12 @@ CREATE TABLE "Goals" (
 -- CreateTable
 CREATE TABLE "Dietary_Preferences" (
     "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
     "isGlutenFree" BOOLEAN,
     "isLactoseInt" BOOLEAN,
     "isVegan" BOOLEAN,
     "isVegetarian" BOOLEAN,
     "isKeto" BOOLEAN,
-    "Allergies" TEXT[],
     "userId" INTEGER,
     "snacksId" INTEGER,
     "mealsId" INTEGER,
@@ -102,7 +105,10 @@ CREATE TABLE "Benefits" (
 CREATE UNIQUE INDEX "User_clerkId_key" ON "User"("clerkId");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+CREATE UNIQUE INDEX "Goals_title_key" ON "Goals"("title");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Dietary_Preferences_name_key" ON "Dietary_Preferences"("name");
 
 -- AddForeignKey
 ALTER TABLE "Goals" ADD CONSTRAINT "Goals_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
