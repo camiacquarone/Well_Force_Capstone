@@ -29,7 +29,7 @@ const HomePage = ({ user, setUser }) => {
       </h2>
       <div className="container-temp">
         <div className="separated-container">
-          <Info />
+          <Info user={user} />
           <Carousel />
         </div>
         <Graph />
