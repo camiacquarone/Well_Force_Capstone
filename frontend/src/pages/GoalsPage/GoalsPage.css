@@ -284,3 +284,9 @@ button:hover {
   cursor: not-allowed;
   background-color: #d1d1d1;
 }
+
+.error-message {
+  color:red;
+   font-family: "Regular";
+   margin-top: 1px;
+}

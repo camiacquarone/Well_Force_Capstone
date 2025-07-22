@@ -85,19 +85,6 @@ function GoalsPage({ user, setUser }) {
     );
   }
 
-  /**
-   * TODO
-   * make it so that we check if the user has been signed in b4, and if so,
-   * we just update the user information instead of create a new account
-   *
-   * current bug: when we try to modify or insert new information, no new user
-   * is created. The user is created for the first time, but after that no
-   * new user is created with the new information.
-   *
-   * steps: useEffect to check if the user exists, and then use that boolean
-   * to then determine to either use the put or post method in react
-   *
-   */
   useEffect(() => {
     const checkIfExist = async () => {
       if (!user) {
@@ -495,7 +482,12 @@ function GoalsPage({ user, setUser }) {
             </button>
           </div>
         </div>
-        <button type="submit" className="save-button" disabled={!isFormValid}>
+        <button
+          type="submit"
+          className="save-button"
+          onClick={HomePage}
+          disabled={!isFormValid}
+        >
           Save Profile
         </button>
       </form>
