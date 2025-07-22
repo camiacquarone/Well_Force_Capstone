@@ -23,9 +23,9 @@ export default function MealCard({ meal }) {
 
 
 
-      <Link to="https://order.trypicnic.com" >
-              <button className="order-now">Order Now</button>
-        </Link>
+      <Link to={`https://order.trypicnic.com/search/${encodeURIComponent(meal.restaurant_name)}`}>
+      <button className="order-now">Order Now</button>
+    </Link>
     </div>
     {showModal && (
         <MealModal meal={meal} onClose={() => setShowModal(false)} />
