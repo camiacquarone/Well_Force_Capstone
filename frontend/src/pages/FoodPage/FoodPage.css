@@ -173,33 +173,9 @@ select {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
-/* .meals-scroll-wrapper {
-  overflow-x: auto;
-  gap: 16px;
-  padding-bottom: 10px;
-  scroll-behavior: smooth;
-} */
 
-/* Optional scrollbar styling */
-/* .meals-scroll-wrapper::-webkit-scrollbar {
-  height: 8px;
-}
-
-.meals-scroll-wrapper::-webkit-scrollbar-track {
-  background: #f0f0f0;
-  border-radius: 4px;
-}
 
 .meals-scroll-wrapper::-webkit-scrollbar-thumb {
   background: #999;
   border-radius: 4px;}  */
- .button-wrapper {
-  text-align: right;
-  margin-bottom: 1rem;
-}
-.toggle-meals-button:hover {
-  background-color: #53b780;
-}
-
-
 
