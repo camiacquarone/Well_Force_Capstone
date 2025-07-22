@@ -9,8 +9,12 @@ export default function MealModal({ meal, onClose }) {
         <h2>{meal.name}</h2>
         <img src={meal.image_url} alt={meal.name} />
         <p>Restaurant: {meal.restaurant_name}</p>
-        <p>Calories: {meal.nutritional_information[0]?.calories} kcal</p>
-        <p>Protein: {meal.nutritional_information[0]?.protein} g</p>
+        <p>
+  Calories: {meal.nutritional_information?.[0]?.calories ?? "N/A"} kcal
+</p>
+<p>
+  Protein: {meal.nutritional_information?.[0]?.protein ?? "N/A"} g
+</p>
       </div>
     </div>
   );
