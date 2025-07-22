@@ -58,3 +58,11 @@
   position: relative; /* Important for arrow positioning */
   padding: 20px; /* Add some padding around the slider content */
 }
+
+h2{
+  font-family: "Regular";
+}
+
+h4{  font-family: "Bold";
+
+}
