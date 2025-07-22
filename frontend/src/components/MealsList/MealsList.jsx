@@ -4,7 +4,7 @@ import axios from "axios";
 import MealCard from "../../components/MealsCard/MealsCard";
 import "./MealsList.css";
 
-export default function MealsList() {
+export default function MealsList({showAll}) {
   const { user } = useUser();
   const { getToken } = useAuth();
 
@@ -40,25 +40,27 @@ export default function MealsList() {
       try {
         const token = await getToken();
 
-        const res = await axios.get(
-          "http://localhost:3000/api/mealchat/personalized",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const url = showAll
+          ? "http://localhost:3000/api/meals"
+          : "http://localhost:3000/api/mealchat/personalized";
+
+        const res = await axios.get(url, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
         console.log("Fetched meals:", res.data);
 
-        setMeals(res.data.meals);
+        const data = showAll ? res.data : res.data.meals;
+      setMeals(data);
       } catch (err) {
         console.error("Failed to load meals:", err);
       }
     };
 
     if (internalUserId) fetchMeals();
-  }, [internalUserId, getToken]);
+  }, [internalUserId, getToken, showAll]);
 
   // Render meals
   if (!meals?.length) {

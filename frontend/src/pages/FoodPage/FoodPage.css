@@ -193,3 +193,13 @@ select {
 .meals-scroll-wrapper::-webkit-scrollbar-thumb {
   background: #999;
   border-radius: 4px;}  */
+ .button-wrapper {
+  text-align: right;
+  margin-bottom: 1rem;
+}
+.toggle-meals-button:hover {
+  background-color: #53b780;
+}
+
+
+
