@@ -215,7 +215,7 @@ function GoalsPage({ user, setUser }) {
           className="top-right-button"
           onClick={() => navigate("/home")}
         >
-          Setup later ➡
+          set up later ➡
         </button>
       </span>
       <h1>Profile</h1>
@@ -485,7 +485,7 @@ function GoalsPage({ user, setUser }) {
         <button
           type="submit"
           className="save-button"
-          onClick={HomePage}
+          onClick={() => navigate("/home")}
           disabled={!isFormValid}
         >
           Save Profile
