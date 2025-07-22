@@ -9,6 +9,8 @@ function FoodPage() {
   const [isAIModalOpen, setIsAIModalOpen] = useState(false);
   const [energyLevel, setEnergyLevel] = useState("");
   const [allergy, setAllergy] = useState("");
+  const [showAllMeals, setShowAllMeals] = useState(false);
+
 
   return (
     <div className="food-page">
@@ -39,7 +41,7 @@ function FoodPage() {
               <option>None</option>
             </select>
           </div>
-
+            
           {/* <div className="profile-icon">👤</div> */}
           {/* ^Make this the actual profile photo */}
         </div>
@@ -50,7 +52,15 @@ function FoodPage() {
           <h2>Meals</h2>
           <div className="meals-grid">
             {/* Meal Cards Go Here */}
-            <MealsList />
+            {/* <button className="toggle-button" onClick={() => setShowAllMeals(true)}>Show All Meals</button> */}
+            <button
+              type="button"
+              className="toggle-meals-button"
+              onClick={() => setShowAllMeals((prev) => !prev)}>
+                See All
+            </button>
+
+            <MealsList showAll={showAllMeals}/>
           </div>
         </section>
 
@@ -84,3 +94,9 @@ function FoodPage() {
 }
 
 export default FoodPage;
+
+
+
+
+// Inside JSX:
+
