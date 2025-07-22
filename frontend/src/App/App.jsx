@@ -19,19 +19,16 @@ import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute.jsx";
 import FoodPage from "../pages/FoodPage/FoodPage.jsx";
 
 function App() {
-  
-
   const [NavBarOpen, setNavBarOpen] = useState(false);
   const [user, setUser] = useState(null);
   const toggleNavBar = () => setNavBarOpen((isOpen) => !isOpen);
 
   const { userId, isSignedIn, getToken } = useAuth();
-   useEffect(() => {
+  useEffect(() => {
     if (isSignedIn && userId) {
       localStorage.setItem("userId", userId);
     }
   }, [isSignedIn, userId]);
-
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -44,7 +41,7 @@ function App() {
       try {
         const token = await getToken();
         const response = await axios.get(
-           `http://localhost:3000/api/users/${userId}`,
+          `http://localhost:3000/api/users/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -68,7 +65,6 @@ function App() {
     // You can also add logic here that depends on the 'user' being available
     // For example, if you need to do something *after* the user data is confirmed loaded
   }, [user]);
-
 
   return (
     <div className="App">

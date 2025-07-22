@@ -7,28 +7,40 @@ import "./FoodPage.css";
 
 function FoodPage() {
   const [isAIModalOpen, setIsAIModalOpen] = useState(false);
+  const [energyLevel, setEnergyLevel] = useState("");
+  const [allergy, setAllergy] = useState("");
 
   return (
     <div className="food-page">
       <header className="food-header">
         <h1>Meals & Snacks</h1>
         <div className="food-controls">
+          {/* <p className="erngy-title">Energy Level</p> */}
           <div className="dropdown-group">
-            <select>
+            <select
+              value={energyLevel}
+              onChange={(e) => setEnergyLevel(e.target.value)}
+              className={`energy-select ${energyLevel.toLowerCase()}-option`}
+            >
               <option>Energy Level</option>
               <option>Tired</option>
               <option>Stressed</option>
               <option>Energetic</option>
+              <option>All</option>
             </select>
 
-            <select>
+            <select
+              value={allergy}
+              onChange={(e) => setAllergy(e.target.value)}
+              className={`allergy ${allergy.toLowerCase()}`}
+            >
               <option>Allergies</option>
               <option>My Allergies</option>
               <option>None</option>
             </select>
           </div>
 
-          <div className="profile-icon">👤</div>
+          {/* <div className="profile-icon">👤</div> */}
           {/* ^Make this the actual profile photo */}
         </div>
       </header>
@@ -55,8 +67,13 @@ function FoodPage() {
           className="ai-companion-button"
           onClick={() => setIsAIModalOpen(true)}
         >
-          <img src="astro-profile-selected.png" alt="ai companion" width="60px" className="img-ai"></img>
-          Chat with me! 
+          <img
+            src="astro-profile-selected.png"
+            alt="ai companion"
+            width="60px"
+            className="img-ai"
+          ></img>
+          Chat with me!
         </button>
         {isAIModalOpen && (
           <AICompanionModal onClose={() => setIsAIModalOpen(false)} />

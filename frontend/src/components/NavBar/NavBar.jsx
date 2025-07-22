@@ -93,6 +93,14 @@ function NavBar() {
                 ×
               </button>
               <nav className="navbar-links">
+                <span className="home">
+                  <img src="/home.png" alt="home" width="55px" height="35px" />
+                  <Link to="/home">Home Page</Link>
+                </span>
+                <span className="food">
+                  <img src="/food.png" alt="food" width="50px" height="35px" />
+                  <Link to="/meals">Meals Page</Link>
+                </span>
                 <span className="settings">
                   <img
                     src="/settings.png"
@@ -101,14 +109,6 @@ function NavBar() {
                     height="40px"
                   />
                   <Link to="/profile">Settings</Link>
-                </span>
-                <span className="home">
-                  <img src="/home.png" alt="home" width="55px" height="35px" />
-                  <Link to="/home">Home Page</Link>
-                </span>
-                <span className="food">
-                  <img src="/food.png" alt="food" width="50px" height="35px" />
-                  <Link to="/meals">Meals Page</Link>
                 </span>
                 
               </nav>
