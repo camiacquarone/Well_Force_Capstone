@@ -1,19 +1,15 @@
-/* .food-page {
-  display: flex;
-} */
-
 .food-header {
+  display: flex;
+  align-items: center;
   text-align: center;
   width: 100%;
   padding: 40px;
-  display: flex;
   justify-content: space-between;
-  align-items: center;
   margin-left: 10px;
   margin-right: 20px;
 }
 h1 {
-  text-align: center;
+  /* text-align: center; */
   font-size: 3.5rem;
   margin-bottom: 0;
   font-family: "Bold";
@@ -21,27 +17,100 @@ h1 {
   color: #04354a;
 }
 h2 {
-  
   font-size: 1.3rem;
   font-family: "Bold";
   color: #04354a;
+  margin-top: 0;
 }
 .food-controls {
   display: flex;
+  flex-direction: column;
   gap: 15px;
   align-items: center;
 }
 
-.dropdown-group select {
+.dropdown-group {
   padding: 8px;
-  font-size: 14px;
-  margin-right: 20px;
+  margin-right: 3px;
+  font-family: "Regular";
+  display: flex;
+  gap: 1rem;
+  position: absolute;
+  right: -30rem;
 }
 
-.profile-icon {
-  font-size: 24px;
-  cursor: pointer;
+select {
+  padding: 8px;
+  font-size: 1.2rem;
+  font-family: "Regular";
 }
+
+
+.allergy {
+  margin-right: 500px;
+}
+
+.energy-select.energy.level-option{
+    border-radius: 0.3rem;
+    border-width: 0.2rem;
+
+}
+
+.energy-select.tired-option {
+  background-color: #d7bff2;
+      border-color:  #b5a1cc;
+    border-radius: 0.3rem;
+    border-width: 0.2rem;
+  /* font-size: 1rem; */
+
+}
+
+.energy-select.stressed-option {
+  background-color: #91db8b;
+      border-color:  #7bbb75;
+    border-radius: 0.3rem;
+    border-width: 0.2rem;
+  /* font-size: 1rem; */
+
+}
+
+.energy-select.energetic-option {
+  background-color: #ff784f;
+  border-color: #e06945;
+  border-radius: 0.3rem;
+  border-width: 0.2rem;
+  /* font-size: 1rem; */
+
+}
+
+.energy-select.all-option {
+  background-color: #ff7789;
+  border-radius: 0.3rem;
+  border-color: #e16979;
+  border-width: 0.2rem;
+  /* font-size: 1rem; */
+
+}
+
+.allergy.none {
+  background-color: #ff7789;
+  border-radius: 0.3rem;
+  border-color: #e16979;
+  border-width: 0.2rem;
+  /* font-size: 1rem; */
+}
+
+.allergy.my.allergies{
+    background-color: #ff7789;
+  border-radius: 0.3rem;
+  border-color: #e16979;
+  border-width: 0.2rem;
+  /* font-size: 1rem; */
+
+}
+
+
+
 
 .food-main {
   width: 100%;
@@ -54,13 +123,6 @@ h2 {
   margin-bottom: 40px;
   margin-right: 40px;
 }
-/* 
-.meals-grid,
-.snacks-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 20px;
-} */
 
 .ai-companion-button {
   position: fixed;
@@ -69,10 +131,22 @@ h2 {
   background: gold;
   padding: 12px 20px;
   border: none;
-  border-radius: 6px;
+  border-radius: 1.2rem;
   font-weight: bold;
   cursor: pointer;
-} 
+  font-family: "Regular";
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.img-ai {
+  margin-right: 0.3rem;
+}
+
+.ai-companion-button:hover {
+  background: rgb(203, 173, 0);
+}
 
 .food-page {
   display: flex;

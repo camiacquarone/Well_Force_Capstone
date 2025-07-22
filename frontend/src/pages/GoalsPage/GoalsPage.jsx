@@ -45,6 +45,7 @@ function GoalsPage({ user, setUser }) {
     newUserPosition.trim() !== "" &&
     newUserImage_url.trim() !== "" &&
     !nameError;
+
   const { getToken } = useAuth();
 
   const handleNameChange = (e) => {
@@ -196,6 +197,7 @@ function GoalsPage({ user, setUser }) {
         setUser(user);
         console.log(response.data);
       }
+      navigate("/home");
 
       console.log("user: ", user);
     } catch (error) {
