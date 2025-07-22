@@ -20,18 +20,18 @@ const DisplayInfo = ({ user, setuser }) => {
       <h3>ALLERGIES</h3>
       {user.allergies && user.allergies.length > 0 ? (
         user.allergies.map((allergy, index) => (
-          <Chip key={index} label={allergy} type="allergy" />
+          <Chip key={index} label={allergy} type="info" />
         ))
       ) : (
-        <p className="text-gray-500 text-sm">No allergies specified.</p>
+        <Chip label={"none"} type="default" />
       )}
       <h3>DIETARY PREFERENCES</h3>
       {user.dietary_pref && user.dietary_pref.length > 0 ? (
         user.dietary_pref.map((pref) => (
-          <Chip key={pref.id || pref.name} label={pref.name} type="dietary" />
+          <Chip key={pref.id || pref.name} label={pref.name} type="info" />
         ))
       ) : (
-        <p className="text-gray-500 text-sm">No dietary preferences set.</p>
+        <Chip label={"none"} type="default" />
       )}
     </div>
   );
