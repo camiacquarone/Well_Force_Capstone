@@ -1,4 +1,5 @@
 // backend/middleware/clerkAuth.js
+const { getAuth } = require("@clerk/express");
 const { ClerkExpressRequireAuth, clerkClient } = require('@clerk/clerk-sdk-node');
 
 // Middleware 1: Requires authentication. If not authenticated, returns 401 Unauthorized.
@@ -6,6 +7,7 @@ const { ClerkExpressRequireAuth, clerkClient } = require('@clerk/clerk-sdk-node'
 const requireAuth = ClerkExpressRequireAuth({
   // You can add options here, e.g., authorizedParties, custom JWT templates
   // For basic protection, no options are strictly needed here initially.
+  
 });
 
 // Middleware 2: Fetches the full Clerk user object and attaches it to the request.
