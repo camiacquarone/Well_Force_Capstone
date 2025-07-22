@@ -27,12 +27,15 @@ function GoalsPage({ user, setUser }) {
     "Fish",
     "Shellfish",
     "Sesame",
-    "Mustard",
-    "Celery",
-    "Lupin",
-    "Sulfites",
-    "Corn",
-    "Meat (Red/White)",
+    // "Mustard",
+    // "Celery",
+    // "Lupin",
+    // "Sulfites",
+    // "Corn",
+    // "Meat (Red/White)",
+    // "Rice",
+    // "Oats",
+    // "Strawberries"
   ];
 
   const increaseCalories = () =>
@@ -391,7 +394,7 @@ function GoalsPage({ user, setUser }) {
           <label htmlFor="newUserDietPref">
             Do you have any dietary preferences?
           </label>
-          <div className="food-goals-select">
+          <div className="food-df-select">
             <button
               type="button"
               className={`Vegetarian ${
@@ -427,7 +430,7 @@ function GoalsPage({ user, setUser }) {
 
         <div className="goals_but_input">
           <label htmlFor="newUserAllergies">Do you have any allergies?</label>
-          <div className="food-goals-select">
+          <div className="food-allergy-select">
             {commonAllergies.map((allergy) => {
               return (
                 <button
