@@ -140,3 +140,24 @@
   padding-bottom: 10px;
   scroll-behavior: smooth;
 }
+.loader {
+  border: 16px solid #caecfe; 
+  border-top: 16px solid #0a7aaa; 
+  border-radius: 50%;
+  width: 4vh;
+  height:4vh;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loader-container {
+  /* background-color: red; */
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}

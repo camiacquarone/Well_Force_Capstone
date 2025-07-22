@@ -15,18 +15,14 @@
 
 .chip-default {
   background-color: #e2e8f0; 
+  font-size:14px;
   color: #4a5568; 
 }
 
-.chip-allergy {
-  background-color: #fee2e2;
-  color: #c53030; 
-  border: 1px solid #ef4444; 
-}
-
-.chip-dietary {
-  background-color: #d1fae5; 
-  color: #065f46; 
+.chip-info {
+    font-size:14px;
+  background-color: #caecfe;
+  color: black; 
 }
 
 .chip-mood {

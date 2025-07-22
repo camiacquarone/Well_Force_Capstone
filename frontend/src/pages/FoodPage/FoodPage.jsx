@@ -1,32 +1,46 @@
-import React, {useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import MealsList from "../../components/MealsList/MealsList";
 import SnackList from "../../components/SnackList/SnackList";
-import { Link } from "react-router-dom"
+import AICompanionModal from "../../components/AICompanion/AICompanion";
+import { Link } from "react-router-dom";
 import "./FoodPage.css";
 
 function FoodPage() {
+  const [isAIModalOpen, setIsAIModalOpen] = useState(false);
+  const [energyLevel, setEnergyLevel] = useState("");
+  const [allergy, setAllergy] = useState("");
 
   return (
     <div className="food-page">
       <header className="food-header">
         <h1>Meals & Snacks</h1>
         <div className="food-controls">
+          {/* <p className="erngy-title">Energy Level</p> */}
           <div className="dropdown-group">
-            <select>
+            <select
+              value={energyLevel}
+              onChange={(e) => setEnergyLevel(e.target.value)}
+              className={`energy-select ${energyLevel.toLowerCase()}-option`}
+            >
               <option>Energy Level</option>
               <option>Tired</option>
               <option>Stressed</option>
               <option>Energetic</option>
+              <option>All</option>
             </select>
 
-            <select>
+            <select
+              value={allergy}
+              onChange={(e) => setAllergy(e.target.value)}
+              className={`allergy ${allergy.toLowerCase()}`}
+            >
               <option>Allergies</option>
               <option>My Allergies</option>
               <option>None</option>
             </select>
           </div>
 
-          <div className="profile-icon">👤</div>
+          {/* <div className="profile-icon">👤</div> */}
           {/* ^Make this the actual profile photo */}
         </div>
       </header>
@@ -42,19 +56,28 @@ function FoodPage() {
 
         <section className="snacks-section">
           <h2>Snacks</h2>
-          <div className="snacks-grid">{/* Snack Cards Go Here */}
-            <SnackList/>
+          <div className="snacks-grid">
+            {/* Snack Cards Go Here */}
+            <SnackList />
           </div>
         </section>
-        <Link to="/chat">
+
         <button
           type="button"
           className="ai-companion-button"
+          onClick={() => setIsAIModalOpen(true)}
         >
-          AI Companion
+          <img
+            src="astro-profile-selected.png"
+            alt="ai companion"
+            width="60px"
+            className="img-ai"
+          ></img>
+          Chat with me!
         </button>
-        </Link>
-        
+        {isAIModalOpen && (
+          <AICompanionModal onClose={() => setIsAIModalOpen(false)} />
+        )}
       </main>
     </div>
   );
