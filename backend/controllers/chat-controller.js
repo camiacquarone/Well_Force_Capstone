@@ -44,7 +44,7 @@ console.log("🎯 Goals:", user?.goals);
 
     const systemPrompt = `
 You are a wellness nutrition expert. Based on a user's health preferences, suggest the top 5 meals from a list that best support their goals.
-Only return a JSON array of meal names. No numbers, no restaurant names, no formatting — just strings of meal names in an array without the name of the restaurant.
+Only return a JSON array of meal names. No numbers, no restaurant names, no formatting — just strings of meal names in an array without the name of the restaurant. example ('Harverst bowl')
 `;
 
     const userPrompt = `

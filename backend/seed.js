@@ -260,6 +260,108 @@ async function seed() {
       },
       dietary_pref_names: ["Vegan", "Vegetarian", "Gluten-Free"]
     },
+    {
+    name: "Lay's Classic Chips",
+    description: "Crispy, salty potato chips made from simple ingredients.",
+    image_url: "https://images.ctfassets.net/9tka4b3550oc/laysclassic/abc1234567890/lays_classic.png",
+    wellness_category: ["Snack", "Gluten-Free"],
+    nutritional_info: {
+      serving_size: 1,
+      calories: 160,
+      protein: 2,
+      total_fat: 10,
+      cholesterol: 0,
+      sodium: 170,
+      total_carbs: 15,
+      sugars: 0,
+    },
+    dietary_pref_names: ["Vegetarian", "Gluten-Free"]
+  },
+  {
+    name: "Lay's Baked Barbecue Chips",
+    description: "Oven-baked chips with sweet and smoky barbecue flavor.",
+    image_url: "https://images.ctfassets.net/9tka4b3550oc/bakedbbqlays/def1234567890/baked_bbq_lays.png",
+    wellness_category: ["Low-Fat", "Baked"],
+    nutritional_info: {
+      serving_size: 1,
+      calories: 120,
+      protein: 2,
+      total_fat: 3,
+      cholesterol: 0,
+      sodium: 200,
+      total_carbs: 23,
+      sugars: 3,
+    },
+    dietary_pref_names: ["Vegetarian"]
+  },
+  {
+    name: "Sun Chips Garden Salsa",
+    description: "Whole grain chips with zesty garden salsa flavor.",
+    image_url: "https://images.ctfassets.net/9tka4b3550oc/sunchipsgarden/ghi1234567890/sunchips_garden_salsa.png",
+    wellness_category: ["Whole Grain"],
+    nutritional_info: {
+      serving_size: 1,
+      calories: 140,
+      protein: 2,
+      total_fat: 6,
+      cholesterol: 0,
+      sodium: 120,
+      total_carbs: 19,
+      sugars: 2,
+    },
+    dietary_pref_names: ["Vegetarian"]
+  },
+  {
+    name: "Food Should Taste Good Blue Corn Chips",
+    description: "Stone-ground blue corn tortilla chips made with flax and sunflower seeds.",
+    image_url: "https://images.ctfassets.net/9tka4b3550oc/fstgbluecorn/jkl1234567890/fstg_blue_corn.png",
+    wellness_category: ["Whole Grain", "Gluten-Free", "Non-GMO"],
+    nutritional_info: {
+      serving_size: 1,
+      calories: 140,
+      protein: 2,
+      total_fat: 7,
+      cholesterol: 0,
+      sodium: 80,
+      total_carbs: 18,
+      sugars: 0,
+    },
+    dietary_pref_names: ["Vegan", "Vegetarian", "Gluten-Free"]
+  },
+  {
+    name: "Barbell Protein Bar - Cookies and Cream",
+    description: "High-protein bar with a cookies and cream flavor, low in sugar.",
+    image_url: "https://images.ctfassets.net/9tka4b3550oc/barbellcookiescream/mno1234567890/barbell_cookies_cream.png",
+    wellness_category: ["High-Protein", "Low-Sugar"],
+    nutritional_info: {
+      serving_size: 1,
+      calories: 200,
+      protein: 20,
+      total_fat: 8,
+      cholesterol: 5,
+      sodium: 150,
+      total_carbs: 20,
+      sugars: 1,
+    },
+    dietary_pref_names: ["Vegetarian", "Gluten-Free"]
+  },
+  {
+    name: "Barbell Protein Bar - Caramel Cashew",
+    description: "Chewy caramel protein bar with cashew flavor and no added sugar.",
+    image_url: "https://images.ctfassets.net/9tka4b3550oc/barbellcaramelcashew/pqr1234567890/barbell_caramel_cashew.png",
+    wellness_category: ["High-Protein", "Low-Sugar"],
+    nutritional_info: {
+      serving_size: 1,
+      calories: 200,
+      protein: 20,
+      total_fat: 7,
+      cholesterol: 5,
+      sodium: 160,
+      total_carbs: 22,
+      sugars: 2,
+    },
+    dietary_pref_names: ["Vegetarian", "Gluten-Free"]
+  }
   ];
 
   console.log(`✨ Seeding ${snackData.length} Snacks...`);
