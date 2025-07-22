@@ -60,11 +60,19 @@
   left: 50%;
 }
 
-.food-closed{
+.food-closed {
   margin-top: 3rem;
 }
-.home-closed{
+.home-closed {
   margin-top: 6rem;
+}
+.settings-closed {
+  margin-top: 3rem;
+  margin-bottom:3rem;
+}
+
+.cl-avatarImage, .cl-userButtonAvatarImage{
+  width:30rem;
 }
 
 .close-button {
@@ -133,12 +141,12 @@ body.nav-closed {
 
 h1.welcome-user {
   transition: all 0.5s ease;
-  margin-left: -24rem; 
+  /* margin-left: -24rem;  */
 }
 
-body.nav-open h1.welcome-user {
+/* body.nav-open h1.welcome-user {
   margin-left: calc(100% - 1950px);
-}
+} */
 
 body.nav-open .navbar {
   width: 260px;

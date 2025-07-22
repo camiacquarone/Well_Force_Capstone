@@ -11,7 +11,7 @@
   margin-right: 20px;
 }
 h1 {
-  text-align: center;
+  /* text-align: center; */
   font-size: 3.5rem;
   margin-bottom: 0;
   font-family: "Bold";
@@ -23,6 +23,7 @@ h2 {
   font-size: 1.3rem;
   font-family: "Bold";
   color: #04354a;
+  margin-top:0;
 }
 .food-controls {
   display: flex;
@@ -60,12 +61,23 @@ h2 {
   background: gold;
   padding: 12px 20px;
   border: none;
-  border-radius: 6px;
+  border-radius: 1.2rem;
   font-weight: bold;
   cursor: pointer;
   font-family: "Regular";
   font-size: 1.5rem;
+  display: flex;
+  align-items: center;
 } 
+
+.img-ai{
+  margin-right:0.3rem;
+}
+
+.ai-companion-button:hover{
+    background: rgb(203, 173, 0);
+
+}
 
 .food-page {
   display: flex;

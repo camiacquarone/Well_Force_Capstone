@@ -39,11 +39,13 @@ function GoalsPage({ user, setUser }) {
     setCalories((prev) => Math.min(prev + 50, 5000));
   const decreaseCalories = () => setCalories((prev) => Math.max(prev - 50, 0));
   const navigate = useNavigate();
+
   const isFormValid =
     name.trim() !== "" &&
     newUserPosition.trim() !== "" &&
     newUserImage_url.trim() !== "" &&
     !nameError;
+
   const { getToken } = useAuth();
 
   const handleNameChange = (e) => {
@@ -195,6 +197,7 @@ function GoalsPage({ user, setUser }) {
         setUser(user);
         console.log(response.data);
       }
+      navigate("/home");
 
       console.log("user: ", user);
     } catch (error) {
@@ -280,6 +283,7 @@ function GoalsPage({ user, setUser }) {
             Daily Calorie Intake Goal <span className="stars">*</span>
           </label>
           <div className="caloric input">
+            {/* BUG HERE */}
             <input
               type="number"
               value={calories}
@@ -305,57 +309,51 @@ function GoalsPage({ user, setUser }) {
             {[
               {
                 id: "einstein",
-                base: "einstein",
+                src: "/einstein-profile.png",
+                selectedSrc: "/einstein-profile-selected.png",
                 alt: "Einstein",
                 className: "einstein-img",
               },
               {
                 id: "astro",
-                base: "astro",
+                src: "/astro-profile.png",
+                selectedSrc: "/astro-profile-selected.png",
                 alt: "Astro",
                 className: "astro-img",
               },
               {
                 id: "codey",
-                base: "codey",
+                src: "/codey-profile.png",
+                selectedSrc: "/codey-profile-selected.png",
                 alt: "Codey",
                 className: "codey-img",
               },
               {
                 id: "ruth",
-                base: "ruth",
+                src: "/ruth-profile.png",
+                selectedSrc: "/ruth-profile-selected.png",
                 alt: "Ruth",
                 className: "ruth-img",
               },
               {
                 id: "appy",
-                base: "appy",
+                src: "/appy-profile.png",
+                selectedSrc: "/appy-profile-selected.png",
                 alt: "Appy",
                 className: "appy-img",
               },
             ].map((char) => {
-              const isSelected =
-                newUserImage_url === `/${char.base}-profile-selected.png`;
-              const isSomeOtherSelected =
-                newUserImage_url !== "" && !isSelected;
-              const src = isSelected
-                ? `/${char.base}-profile-selected.png`
-                : isSomeOtherSelected
-                ? `/${char.base}-not-selected.png`
-                : `/${char.base}-profile.png`;
-
+              const isSelected = newUserImage_url === char.selectedSrc;
               return (
                 <img
                   key={char.id}
-                  src={src}
+                  src={isSelected ? char.selectedSrc : char.src}
                   alt={char.alt}
                   className={`${char.className} ${
                     isSelected ? "selected" : ""
                   }`}
                   onClick={() =>
-                    setNewUserImage_url(
-                      isSelected ? "" : `/${char.base}-profile-selected.png`
-                    )
+                    setNewUserImage_url(isSelected ? "" : char.selectedSrc)
                   }
                 />
               );
@@ -367,24 +365,6 @@ function GoalsPage({ user, setUser }) {
         <div className="goals_but_input">
           <label htmlFor="newUserGoals">Food Goals</label>
           <div className="food-goals-select">
-            <button
-              type="button"
-              className={`protein ${
-                newFoodGoal.includes("Protein") ? "selected" : ""
-              }`}
-              onClick={() => toggleFoodGoal("Protein")}
-            >
-              I Want to Eat More Protein
-            </button>
-            <button
-              type="button"
-              className={`vegetables ${
-                newFoodGoal.includes("Vegetables") ? "selected" : ""
-              }`}
-              onClick={() => toggleFoodGoal("Vegetables")}
-            >
-              I Want to Eat More Vegetables
-            </button>
             <button
               type="button"
               className={`protein ${
@@ -451,9 +431,8 @@ function GoalsPage({ user, setUser }) {
             {commonAllergies.map((allergy) => {
               return (
                 <button
-                  key={allergy}
                   type="button"
-                  className={`${allergy} ${
+                  className={`{allergy} ${
                     allergies.includes(allergy) ? "selected" : ""
                   }`}
                   onClick={() => toggleAllergies(allergy)}
@@ -464,6 +443,7 @@ function GoalsPage({ user, setUser }) {
             })}
           </div>
         </div>
+
         <div className="goals_but_input">
           <label htmlFor="DaysWanted">
             What Days of the Week Would You Like Meal Suggestions?

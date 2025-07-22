@@ -55,7 +55,8 @@ function FoodPage() {
           className="ai-companion-button"
           onClick={() => setIsAIModalOpen(true)}
         >
-          AI Companion
+          <img src="astro-profile-selected.png" alt="ai companion" width="60px" className="img-ai"></img>
+          Chat with me! 
         </button>
         {isAIModalOpen && (
           <AICompanionModal onClose={() => setIsAIModalOpen(false)} />
