@@ -17,10 +17,15 @@ export default function SnackList() {
      <p>No meals available right now.</p>;
   }
   return (
-    <div className="snack-list">
+    <div className="snack-container">
+      <div className="snack-scroll-wrapper">
+        <div className="snack-list">
       {snack.map((snack) => (
         <SnackCard key={snack.id} snack={snack} />
       ))}
     </div>
+      </div>
+    </div>
+    
   );
 }

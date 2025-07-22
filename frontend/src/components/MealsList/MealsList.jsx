@@ -100,10 +100,16 @@ useEffect(() => {
   }
 
   return (
-    <div className="meals-list">
-      {meals.map((meal) => (
-        <MealCard key={meal.id} meal={meal} />
-      ))}
+    <div className="meals-container">
+      <div className="meals-scroll-wrapper">
+
+      <div className="meals-list">
+        {meals.map((meal) => (
+          <MealCard key={meal.id} meal={meal} />
+        ))}
+      </div>
     </div>
+    </div>
+
   );
 }
