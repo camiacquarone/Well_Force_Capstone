@@ -31,7 +31,7 @@ const HomePage = ({ user, setUser }) => {
       </h1>
       <div className="container-temp">
         <div className="separated-container">
-          <Info />
+          <Info user={user} />
           <Carousel />
         </div>
         <Graph />
