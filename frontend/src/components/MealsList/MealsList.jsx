@@ -1,49 +1,19 @@
-// src/components/MealsList.jsx
-// import React, { useEffect, useState } from "react";
-// import axios from "axios";
-//  import MealCard from "../../components/MealsCard/MealsCard"
-//  import "./MealsList.css"
-
-// export default function MealsList() {
-//   const [meals, setMeals] = useState([]);
-
-//   const userId = localStorage.getItem("userId");
-//   console.log("This is the userID:", userId)
-
-//   useEffect(() => {
-//     axios.get(`http://localhost:3000/api/meals`)
-//       .then((res) => setMeals(res.data))
-//       .catch((err) => console.error(err));
-//   }, []);
-
-//   if (!meals?.length) {
-//      <p>No meals available right now.</p>;
-//   }
-
-//   return (
-//     <div className="meals-list">
-//       {meals.map((meal) => (
-//         <MealCard key={meal.id} meal={meal} />
-//       ))}
-//     </div>
-//   );
-// }
-
-// src/components/MealsList.jsx
 import { useUser, useAuth } from "@clerk/clerk-react";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import MealCard from "../../components/MealsCard/MealsCard";
 import "./MealsList.css";
+import ReactLoading from "react-loading";
 
 export default function MealsList() {
   const { user } = useUser();
   const { getToken } = useAuth();
 
   const [meals, setMeals] = useState([]);
-  const [internalUserId, setInternalUserId] = useState(() => localStorage.getItem("userId"));
+  const [internalUserId, setInternalUserId] = useState(() =>
+    localStorage.getItem("userId")
+  );
 
-  // Step 1: Get internal user ID using Clerk session token
   useEffect(() => {
     const getInternalUserId = async () => {
       if (user && !internalUserId) {
@@ -66,17 +36,23 @@ export default function MealsList() {
     getInternalUserId();
   }, [user, internalUserId, getToken]);
 
-  // Step 2: Fetch personalized meals (no longer needs userId in params)
   useEffect(() => {
     const fetchMeals = async () => {
       try {
         const token = await getToken();
-        const res = await axios.get("http://localhost:3000/api/mealchat/personalized", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setMeals(res.data.meals); // ⬅ make sure your backend responds with { meals: [...] }
+
+        const res = await axios.get(
+          "http://localhost:3000/api/mealchat/personalized",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        console.log("Fetched meals:", res.data);
+
+        setMeals(res.data.meals);
       } catch (err) {
         console.error("Failed to load meals:", err);
       }
@@ -87,7 +63,16 @@ export default function MealsList() {
 
   // Render meals
   if (!meals?.length) {
-    return <p>No meals available right now.</p>;
+    return (
+      <div className="loader-container">
+        <div class="loader"></div>
+        <p style={{ marginLeft: "10px", fontSize: "1.2em", color: "#333" }}>
+          Loading meals...
+        </p>
+      </div>
+    );
+    // return <ReactLoading height={667} width={375} />;
+    // return <p>No meals available right now.</p>;
   }
 
   return (

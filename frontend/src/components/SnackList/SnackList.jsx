@@ -16,7 +16,6 @@ export default function SnackList() {
   if (!snack?.length) {
      <p>No meals available right now.</p>;
   }
-
   return (
     <div className="snack-list">
       {snack.map((snack) => (
