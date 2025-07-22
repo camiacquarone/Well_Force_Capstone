@@ -66,24 +66,33 @@ export default function MealsList() {
     getInternalUserId();
   }, [user, internalUserId, getToken]);
 
-  // Step 2: Fetch personalized meals (no longer needs userId in params)
-  useEffect(() => {
-    const fetchMeals = async () => {
-      try {
-        const token = await getToken();
-        const res = await axios.get("http://localhost:3000/api/mealchat/personalized", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setMeals(res.data.meals); // ⬅ make sure your backend responds with { meals: [...] }
-      } catch (err) {
-        console.error("Failed to load meals:", err);
-      }
-    };
+ // Step 2: Fetch personalized meals (no longer needs userId in params)
+useEffect(() => {
+  const fetchMeals = async () => {
+    try {
+      // 🔐 Get the user's Clerk token for authentication
+      const token = await getToken();
 
-    if (internalUserId) fetchMeals();
-  }, [internalUserId, getToken]);
+      // 📡 Make GET request to backend to fetch personalized meals
+      const res = await axios.get("http://localhost:3000/api/mealchat/personalized", {
+        headers: {
+          Authorization: `Bearer ${token}`, // ⬅ Send token in Authorization header
+        },
+      });
+
+      console.log("Fetched meals:", res.data);
+
+      // 🍽 Update local state with the personalized meals array
+      setMeals(res.data.meals); // ⬅ make sure your backend responds with { meals: [...] }
+    } catch (err) {
+      // ⚠️ Log any error that occurs during the fetch
+      console.error("Failed to load meals:", err);
+    }
+  };
+
+  // ✅ Only run fetch if internal user ID is present (user is loaded)
+  if (internalUserId) fetchMeals();
+}, [internalUserId, getToken]); // 🔁 Re-run effect if internalUserId or getToken changes
 
   // Render meals
   if (!meals?.length) {
