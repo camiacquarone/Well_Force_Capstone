@@ -21,7 +21,7 @@ model User {
   image_url       String
   name            String
   dietary_pref    Dietary_Preferences[]
-  allergies    String[]
+  allergies       String[]
   goals           Goals[]
   role            String
   recommendations Recommendation[]
