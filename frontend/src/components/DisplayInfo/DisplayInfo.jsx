@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Chip from "../../components/Chip/Chip";
+import "./DisplayInfo.css";
 
 const DisplayInfo = ({ user, setuser }) => {
   useEffect(() => {
@@ -16,7 +17,7 @@ const DisplayInfo = ({ user, setuser }) => {
   }
 
   return (
-    <div className="info_display">
+    <div className="info-display">
       <h3>ALLERGIES</h3>
       {user.allergies && user.allergies.length > 0 ? (
         user.allergies.map((allergy, index) => (

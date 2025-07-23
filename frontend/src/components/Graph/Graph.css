@@ -1,7 +1,8 @@
 .graph {
-  background-color: white;
+  /* background-color: rgb(125, 74, 134); */
   border-radius: 30px;
-  width: 50%;
+  height: 18rem;
+  width: 100% !important;
 }
 
 .graph-title {
@@ -16,7 +17,7 @@
 }
 
 .graph{
-    padding-top:1rem;
-    margin-top: 1rem;
+    /* padding-top:1rem; */
+    /* margin-top: 1rem; */
     width:51.5rem;
 }

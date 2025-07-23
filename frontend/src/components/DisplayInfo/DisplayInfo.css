@@ -1,0 +1,31 @@
+.info-display {
+  background-color: #ffffff;
+  border-radius: 0.5rem; 
+  padding: 1.5rem; 
+  width: 100%; 
+  box-sizing: border-box; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow, match other cards */
+  margin-bottom: 1.5rem; /* Add some space below it if it's a standalone section */
+
+  /* Ensure text color is readable */
+  color: #1a202c; /* A dark gray for text */
+}
+
+/* Responsive adjustments for .info-display */
+@media screen and (max-width: 767px) {
+  .info-display {
+    padding: 1rem; /* Smaller padding on mobile */
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .info-display {
+    /* If this is meant to sit next to other columns on desktop,
+       you might need to set its width or put it in a grid column */
+    /* For example, if it's a standalone section that takes full width: */
+    max-width: 600px; /* Example max-width for readability on desktop */
+    margin-left: auto;
+    margin-right: auto; /* Center it */
+  }
+}

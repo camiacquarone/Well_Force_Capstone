@@ -24,7 +24,7 @@ const Graph = () => {
     <div className="graph">
       <h3 className="graph-title">PROTEIN TRACKER</h3>
       {mockProteinTrackerData && mockProteinTrackerData.length > 0 ? (
-        <ResponsiveContainer width="100%" height={200}>
+        <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={mockProteinTrackerData}
             margin={{ top: 20, right: 20, left: 20, bottom: 20 }}

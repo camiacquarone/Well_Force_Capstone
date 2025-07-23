@@ -5,7 +5,7 @@ h1.welcome-user {
   color: #0a7aaa;
   /* position: absolute; */
   height: 100%;
-  width: calc(100% - 30px);
+  /* width: calc(100% - 30px); */
   transition: all 0.5s ease;
   z-index:1000;
 }
@@ -23,11 +23,54 @@ p{
 
 }
 
-.container-temp{
-  display: flex;
-  flex-direction: column;
-  align-items: left;
+.separated-container {
+  width: 50%; /* Desktop: takes half width */
+  padding: 1.5rem; /* Internal padding for content */
+  border-radius: 8px; /* Rounded corners */
+  box-sizing: border-box;
+  /* width: 50%;
+  background-color: bisque; */
+  /* padding: 1rem; */
 }
+
+.graph-container {
+  /* background-color: coral; */
+  /* width: 50%; */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+
+  width: 50%; /* Desktop: takes half width */
+  background-color: #ffffff; /* coral-like color */
+  padding: 1.5rem; /* Internal padding for content */
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: flex; /* Make graph container a flex container to center its content */
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+
+}
+
+.container-temp{
+  /* padding: 2rem;
+  width: 90%;
+  background-color: rgb(80, 74, 66);
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: space-around; */
+
+  padding: 2rem; /* Consistent padding inside the container */
+  width: 90%; /* Desktop width */
+  border-radius: 8px; /* Add some border-radius */
+
+  display: flex;
+  flex-direction: row; /* Desktop: side-by-side */
+  align-items: flex-start; /* Align items to the top (or center) */
+  justify-content: space-around; /* Distribute children with space around them */
+  gap: 2rem; /* Space between separated-container and graph-container */
+  box-sizing: border-box;
+}
+
 /* tablet */
 @media screen and (min-width: 767px) and (max-width:1024px){
   .welcome-user{

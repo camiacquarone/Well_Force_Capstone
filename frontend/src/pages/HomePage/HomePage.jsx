@@ -34,7 +34,9 @@ const HomePage = ({ user, setUser }) => {
           <Info user={user} />
           <Carousel />
         </div>
-        <Graph />
+        <div className="graph-container">
+          <Graph />
+        </div>
       </div>
       <button
         type="button"
