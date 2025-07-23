@@ -32,12 +32,12 @@ h2 {
   margin-right: 500px;
   font-family: "Regular";
   display: flex;
-  gap: 0.2rem;
-  position: absolute;
-  right: -30rem;
+  gap: 0rem;
+  position: relative;
+  right: -28.5rem;
   display: flex;
   align-items: center;
-  top:0.5rem;
+  top:-1rem;
 }
 
 select {
@@ -225,3 +225,11 @@ label {
   background: #999;
   border-radius: 4px;}  
 
+.meal-card{
+  width:15rem;
+}
+
+.img-meal{
+  width:240px;
+  height:200px;
+}

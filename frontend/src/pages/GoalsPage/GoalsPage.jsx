@@ -220,7 +220,7 @@ function GoalsPage({ user, setUser }) {
           className="top-right-button"
           onClick={() => navigate("/home")}
         >
-          set up later ➡
+          Set Up Later ➡
         </button>
       </span>
       <h1>Profile</h1>

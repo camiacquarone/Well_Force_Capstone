@@ -35,7 +35,8 @@
 
   gap: 20px;              /* Space between individual meal-cards */
   padding-left: 20px;     /* Optional: Padding at the start of the row */
-  padding-right: 20px;    /* Optional: Padding at the end of the row */
+  padding-right: 20px; 
+  padding-top: 5px;   /* Optional: Padding at the end of the row */
 
   
 }
@@ -56,14 +57,13 @@
 /* Other meal-card styles (as you already have them) */
 .meal-card img {
   width: 100%;
-  height: 150px;
+  height: 250px;
   object-fit: cover;
   border-radius: 8px;
 }
 
 .meal-card h3 {
   margin-top: 10px;
-  font-size: 18px;
 }
 
 .meal-card p {
@@ -72,7 +72,7 @@
 }
 
 .meal-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 /* Optional scrollbar styling - apply to .meals-scroll-wrapper */
