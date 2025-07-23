@@ -175,6 +175,16 @@ body.nav-closed .GoalsPage {
     /* background-color: red; */
   }
 
+  .food-closed,
+  .home-closed,
+  .settings-closed {
+    display: none;
+  }
+
+  .home-body {
+    margin-left: 2rem;
+  }
+
   body.nav-open .navbar {
   width: 100%;
   height: 100%;

@@ -1,7 +1,7 @@
 h1.welcome-user {
   margin-top: 4rem;
   font-family: "Bold";
-  font-size: 6rem;
+  font-size: 4rem;
   color: #0a7aaa;
   /* position: absolute; */
   height: 100%;
@@ -28,9 +28,17 @@ p{
   flex-direction: column;
   align-items: left;
 }
-
-@media screen and (max-width: 767px) {
+/* tablet */
+@media screen and (min-width: 767px) and (max-width:1024px){
   .welcome-user{
-    font-size: 5vh !important;
+    font-size: 3rem !important;
+  }
+}
+
+/* phone */
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .welcome-user {
+    color:red;
+    font-size: 3rem !important;
   }
 }
