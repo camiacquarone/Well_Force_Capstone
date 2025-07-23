@@ -41,7 +41,7 @@
 /* This is the individual ITEM within the flex container */
 .snack-card {
   background: #ffffff;
-  width: 220px; /* <--- CRITICAL: Give each card a fixed, explicit width */
+  width: 250px; /* <--- CRITICAL: Give each card a fixed, explicit width */
   flex: 0 0 auto; /* <--- CRITICAL: Prevents card from growing (0), shrinking (0), and sets basis to its width (auto) */
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -54,7 +54,7 @@
 /* Other meal-card styles (as you already have them) */
 .snack-card img {
   width: 100%;
-  height: 150px;
+  height:200px;
   object-fit: cover;
   border-radius: 8px;
 }

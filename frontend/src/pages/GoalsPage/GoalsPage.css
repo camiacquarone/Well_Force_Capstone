@@ -62,7 +62,7 @@ label {
   font-family: "Regular";
   font-size: 20px;
   color: #04354a;
-  margin-top:0.5rem
+  margin-top: 0.5rem;
 }
 
 input {
@@ -214,16 +214,19 @@ button:hover {
 }
 
 /* Food Goals and Days Selection */
-.food-days-select, .food-goals-select {
+.food-days-select,
+.food-goals-select,
+.food-df-select,
+.food-allergy-select {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 12px;
 }
 
-
 .food-goals-select button,
-.food-days-select button {
-  padding: 25px;
+.food-days-select button,
+.food-df-select button {
+  /* padding: 25px; */
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -231,6 +234,20 @@ button:hover {
   cursor: pointer;
   transition: background 0.3s ease, border-color 0.3s ease;
   font-family: "Regular";
+}
+
+.food-allergy-select button {
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  height:5rem;
+}
+
+.food-days-select button,
+.food-df-select button,
+.food-goals-select button {
+  padding: 25px;
 }
 
 .food-days-select button.selected {
@@ -258,7 +275,7 @@ button:hover {
   border-radius: 10px;
   cursor: pointer;
   transition: background 0.3s ease;
-  margin-top:1rem;
+  margin-top: 1rem;
 }
 
 .save-button:hover {
