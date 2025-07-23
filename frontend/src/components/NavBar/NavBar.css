@@ -165,3 +165,20 @@ body.nav-open .GoalsPage {
 body.nav-closed .GoalsPage {
   margin-left: 200px;
 }
+
+@media screen and (max-width: 767px) {
+  .navbar {
+    position: absolute;
+    width: 100% !important;
+    height: 30px;
+    /* align-items: left; */
+    /* background-color: red; */
+  }
+
+  body.nav-open .navbar {
+  width: 100%;
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+}

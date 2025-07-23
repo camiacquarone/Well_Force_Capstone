@@ -53,7 +53,7 @@ function NavBar() {
                 style={{ cursor: "pointer" }}
               />
             </Link>
-                        <Link to="/profile">
+            <Link to="/profile">
               <img
                 src="/settings.png"
                 className="settings-closed"
@@ -63,7 +63,7 @@ function NavBar() {
                 style={{ cursor: "pointer" }}
               />
             </Link>
-             <SignedOut>
+            <SignedOut>
               <SignInButton
                 mode="modal"
                 className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md shadow-sm transition duration-300 ease-in-out"
@@ -110,7 +110,6 @@ function NavBar() {
                   />
                   <Link to="/profile">Settings</Link>
                 </span>
-                
               </nav>
             </>
           )}

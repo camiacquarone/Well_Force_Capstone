@@ -164,6 +164,9 @@ function GoalsPage({ user, setUser }) {
         };
 
         console.log("submitting user data: ", userData);
+        await user.update({
+          imageUrl: newUserImage_url,
+        });
 
         const response = await axios.post(
           "http://localhost:3000/api/users",
