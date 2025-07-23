@@ -33,6 +33,7 @@ function NavBar() {
             <button className="hamburger-button" onClick={toggleNavBar}>
               ☰
             </button>
+
             <Link to="/home">
               <img
                 src="/home.png"
@@ -53,7 +54,7 @@ function NavBar() {
                 style={{ cursor: "pointer" }}
               />
             </Link>
-                        <Link to="/profile">
+            <Link to="/profile">
               <img
                 src="/settings.png"
                 className="settings-closed"
@@ -63,18 +64,20 @@ function NavBar() {
                 style={{ cursor: "pointer" }}
               />
             </Link>
-             <SignedOut>
-              <SignInButton
-                mode="modal"
-                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md shadow-sm transition duration-300 ease-in-out"
-              >
-                Sign In
-              </SignInButton>
-            </SignedOut>
-            <SignedIn>
-              <UserButton afterSignOutUrl="/" />
-              <div className="text-gray-700 text-sm md:text-base"></div>
-            </SignedIn>
+            <div className="pfp">
+              <SignedOut>
+                <SignInButton
+                  mode="modal"
+                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md shadow-sm transition duration-300 ease-in-out"
+                >
+                  Sign In
+                </SignInButton>
+              </SignedOut>
+              <SignedIn>
+                <UserButton afterSignOutUrl="/" />
+                <div className="text-gray-700 text-sm md:text-base"></div>
+              </SignedIn>
+            </div>
           </>
         )}
         <div className="open">
@@ -93,15 +96,15 @@ function NavBar() {
                 ×
               </button>
               <nav className="navbar-links">
-                <span className="home">
+                <span className="home" onClick={toggleNavBar}>
                   <img src="/home.png" alt="home" width="55px" height="35px" />
                   <Link to="/home">Home Page</Link>
                 </span>
-                <span className="food">
+                <span className="food" onClick={toggleNavBar}>
                   <img src="/food.png" alt="food" width="50px" height="35px" />
                   <Link to="/meals">Meals Page</Link>
                 </span>
-                <span className="settings">
+                <span className="settings" onClick={toggleNavBar}>
                   <img
                     src="/settings.png"
                     alt="settings"
@@ -110,7 +113,6 @@ function NavBar() {
                   />
                   <Link to="/profile">Settings</Link>
                 </span>
-                
               </nav>
             </>
           )}

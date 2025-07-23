@@ -165,3 +165,96 @@ body.nav-open .GoalsPage {
 body.nav-closed .GoalsPage {
   margin-left: 200px;
 }
+
+/* phone screen */
+@media screen and (max-width: 767px) {
+
+  .navbar {
+    position: absolute;
+    width: 100% !important;
+    height: 30px;
+    align-items: center !important;
+    justify-content: flex-start !important;
+  }
+
+  .navbar-header {
+    /* This container holds the hamburger and potentially the logo.
+       If no logo, it just positions the hamburger. */
+    display: flex;
+    align-items: center;
+    /* No margin-left: auto or justify-content: flex-end here */
+  }
+
+  .hamburger-button {
+    margin-right: 9rem; 
+  }
+
+  .navbar button {
+    /* background-color: #c4ebff; */
+    /* margin-left: 9rem; */
+
+  }
+
+  .food-closed,
+  .home-closed,
+  .settings-closed {
+    display: none;
+  }
+
+  .home-body {
+    margin-left: 2rem;
+  }
+
+  body.nav-open .navbar {
+  width: 100%;
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+}
+
+@media screen and (max-width: 767px) {
+  .navbar {
+    /* Ensure the main navbar aligns its content to the start */
+    justify-content: flex-start; /* <--- CRITICAL FIX: Align content to the left */
+    align-items: center; /* Keep items vertically centered */
+    /* padding: 0.5rem 1rem; Adjust padding as needed */
+    height: 40px; /* Keep fixed height for top bar */
+    /* ... other existing mobile navbar styles ... */
+    z-index: 4;
+  }
+
+  body.nav-open .navbar {
+  width: 100%;
+  height: 100%;
+  transition: width 0.3s ease;
+  z-index: 10;
+  margin-left: 1px;
+  left: 0px;
+  padding: 0rem;
+  /* background-color: red; */
+}
+
+.pfp {
+  position: absolute;
+  margin-left: 15rem;
+  margin-top: 0.9rem;
+}
+
+body.nav-open .open {
+  /* background-color: red; */
+  margin-right: 6rem;
+}
+  .navbar-header {
+    display: flex;
+    align-items: center;
+  }
+
+
+  /* Hamburger Button (Already set to display: block in base mobile styles) */
+  .hamburger-button {
+    margin-right: 18rem; 
+    position: static; 
+  }
+
+}
