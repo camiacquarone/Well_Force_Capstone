@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Carousel.css";
+import Chip from "../../components/Chip/Chip";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -91,7 +92,8 @@ const Carousel = () => {
                   </h4>
                   <div>
                     {snack.moods.map((mood, index) => (
-                      <span key={index}>{mood}</span>
+                      // <span key={index}>{mood}</span>
+                      <Chip type="info" label={mood}></Chip>
                     ))}
                   </div>
                   <p>{snack.description.substring(0, 100)}...</p>
