@@ -116,3 +116,43 @@ exports.getUserFromClerk = async (req, res) => {
     res.status(500).json({ error: "Failed to retrieve user" });
   }
 };
+
+
+// ✅ Get currently authenticated user (used to access allergies on frontend)
+exports.getCurrentUser = async (req, res) => {
+  console.log("🔥 /current_user_snack route hit");
+  try {
+    const clerkId = req.auth.userId;
+
+    if (!clerkId) {
+      return res.status(401).json({ error: "Unauthorized: No Clerk ID found" });
+    }
+
+    const user = await prisma.user.findUnique({
+      where: { clerkId },
+      include: {
+        dietary_pref: true,
+        goals: true,
+        recommendations: true,
+      },
+    });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Return only the fields needed on frontend (customize as needed)
+    res.json({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      allergies: user.allergies, // ✅ this is the key
+      dietary_pref: user.dietary_pref,
+      goals: user.goals,
+    });
+
+  } catch (err) {
+    console.error("Error getting current user:", err);
+    res.status(500).json({ error: "Failed to get current user" });
+  }
+};
