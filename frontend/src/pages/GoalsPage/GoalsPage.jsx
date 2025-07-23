@@ -45,7 +45,6 @@ function GoalsPage({ user, setUser }) {
     newUserPosition.trim() !== "" &&
     newUserImage_url.trim() !== "" &&
     !nameError;
-
   const { getToken } = useAuth();
 
   const handleNameChange = (e) => {
@@ -94,10 +93,6 @@ function GoalsPage({ user, setUser }) {
       }
 
       setUserExist(true);
-
-      try {
-        const token = await getToken();
-      } catch (error) {}
     };
 
     checkIfExist();
@@ -184,7 +179,6 @@ function GoalsPage({ user, setUser }) {
         setUser(user);
         console.log(response.data);
       }
-      navigate("/home");
 
       console.log("user: ", user);
     } catch (error) {
@@ -217,7 +211,7 @@ function GoalsPage({ user, setUser }) {
           className="top-right-button"
           onClick={() => navigate("/home")}
         >
-          set up later ➡
+          Setup later ➡
         </button>
       </span>
       <h1>Profile</h1>
@@ -484,12 +478,7 @@ function GoalsPage({ user, setUser }) {
             </button>
           </div>
         </div>
-        <button
-          type="submit"
-          className="save-button"
-          onClick={() => navigate("/home")}
-          disabled={!isFormValid}
-        >
+        <button type="submit" className="save-button" disabled={!isFormValid}>
           Save Profile
         </button>
       </form>
