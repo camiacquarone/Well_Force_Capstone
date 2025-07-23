@@ -38,7 +38,9 @@ p{
 /* phone */
 @media screen and (min-width: 300px) and (max-width: 768px) {
   .welcome-user {
-    color:red;
-    font-size: 3rem !important;
+    /* color:red; */
+    font-size: 2rem !important;
+    margin-top: 2rem;
+    padding-top: 2rem;
   }
 }
