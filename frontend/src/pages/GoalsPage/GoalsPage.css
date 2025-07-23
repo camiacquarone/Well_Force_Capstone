@@ -285,25 +285,7 @@ button:hover {
   color: red;
 }
 
-@media screen and (max-width: 1024px) {
-  .GoalsPage {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    position: absolute;
-    width: calc(100%-150px);
-    left: 150px;
-    right: 100px;
-  }
-  .navbar {
-    z-index: 1;
-  }
 
-  .top-buttons {
-    z-index: 2;
-    margin-top: 4rem;
-  }
-}
 .save-button:disabled {
   color: #06415b;
   opacity: 0.8;
@@ -315,4 +297,56 @@ button:hover {
   color:red;
    font-family: "Regular";
    margin-top: 1px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .GoalsPage {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: absolute;
+    width: calc(100%-150px);
+    left: 1px !important;
+    right: 100px;
+    width: 80%;
+  }
+
+  .nav-closed .GoalsPage {
+    margin-left: 5.5rem !important;
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 767px) {
+  .GoalsPage {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: absolute;
+    /* width: calc(100%-150px); */
+    left: 1rem !important;
+    right: 100px;
+    width: 80%;
+  }
+  .navbar {
+    z-index: 3;
+  }
+
+  .top-buttons {
+    z-index: 2;
+    margin-top: 3rem;
+  }
+
+    body.nav-closed .GoalsPage {
+    margin-left: 2rem;
+}
+}
+
+@media screen and (min-width: 1025px) {
+
+  .GoalsPage {
+    width: 75%;
+  }
+  body .nav-closed .GoalsPage {
+    margin-left: 50px;
+  }
 }

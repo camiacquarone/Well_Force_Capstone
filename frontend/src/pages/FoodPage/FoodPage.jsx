@@ -74,12 +74,14 @@ function FoodPage() {
           <div className="meals-grid">
             {/* Meal Cards Go Here */}
             {/* <button className="toggle-button" onClick={() => setShowAllMeals(true)}>Show All Meals</button> */}
-            <button
-              type="button"
-              className="toggle-meals-button"
-              onClick={() => setShowAllMeals((prev) => !prev)}>
-                See All
-            </button>
+            <div className="button-wrapper">
+              <button
+                type="button"
+                className="toggle-meals-button"
+                onClick={() => setShowAllMeals((prev) => !prev)}>
+                  See All
+              </button>
+              </div>
 
             <MealsList showAll={showAllMeals}/>
           </div>
@@ -89,7 +91,7 @@ function FoodPage() {
           <h2>Snacks</h2>
           <div className="snacks-grid">
             {/* Snack Cards Go Here */}
-            <SnackList />
+            <SnackList energyLevel={energyLevel} allergy={allergy} />
           </div>
         </section>
         {/* <Select options={options} /> */}

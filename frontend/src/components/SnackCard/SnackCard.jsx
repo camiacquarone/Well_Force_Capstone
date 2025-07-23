@@ -13,6 +13,7 @@ export default function SnackCard({ snack }) {
       <p> <span class>   Calories:</span>
  {snack.nutritional_info?.[0]?.calories ?? "N/A"} kcal
 </p>
+
 <p>
   Protein: {snack.nutritional_info?.[0]?.protein ?? "N/A"} g
 </p>
