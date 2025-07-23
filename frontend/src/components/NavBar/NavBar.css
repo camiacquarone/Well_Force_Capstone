@@ -127,11 +127,11 @@
   text-align: left;
 }
 
-/* body.nav-open {
+body.nav-open {
   background: linear-gradient(180deg, #ffffff, #c4ebff);
   width: calc(100% - 250px);
   margin-left: 250px;
-} */
+}
 
 body.nav-closed {
   background: linear-gradient(180deg, #ffffff, #c4ebff);
