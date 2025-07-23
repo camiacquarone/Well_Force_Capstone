@@ -66,7 +66,7 @@ export default function MealsList({showAll}) {
   if (!meals?.length) {
     return (
       <div className="loader-container">
-        <div class="loader"></div>
+        <div className="loader"></div>
         <p style={{ marginLeft: "10px", fontSize: "1.2em", color: "#333" }}>
           Loading meals...
         </p>

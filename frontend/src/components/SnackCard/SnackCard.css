@@ -1,6 +1,18 @@
 .snack-card img {
   width: 100%;
-  height: 150px;
   object-fit: cover;
   border-radius: 8px;
+}
+
+.snack-card-img {
+  height: 200px;
+}
+
+.snack-card-title {
+  font-family: "Bold";
+  color: #04354a;
+  font-size: 1rem;
+  background-color: aliceblue;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
 }

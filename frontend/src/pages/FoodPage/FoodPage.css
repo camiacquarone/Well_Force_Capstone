@@ -22,56 +22,98 @@ h2 {
   color: #04354a;
   margin-top: 0;
 }
-.food-controls {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+/* .food-controls {
+  /* display: flex;
   align-items: center;
-}
+  justify-content: center; */
 
 .dropdown-group {
   padding: 8px;
-  margin-right: 3px;
+  margin-right: 500px;
   font-family: "Regular";
   display: flex;
-  gap: 1rem;
-  position: absolute;
-  right: -30rem;
+  gap: 0rem;
+  position: relative;
+  right: -28.5rem;
+  display: flex;
+  align-items: center;
+  top:-1rem;
 }
 
 select {
   padding: 8px;
   font-size: 1.2rem;
   font-family: "Regular";
+  width: 10rem;
 }
 
+/* .energy-title{
+  position:fixed;
+  right:14rem;
+  top:0;
+} */
+/* .allergy{
+  display:flex;
+  flex-direction: column;
+} */
+.energy-title {
+  margin-right: 90px;
+  position: absolute;
+  /* top: 0rem; */
+}
+
+.allergy-title {
+  position: absolute;
+  /* top: -5rem; */
+  margin-left: 10rem;
+}
 
 .allergy {
-  margin-right: 500px;
+  /* margin-right: 500px; */
+  border-radius: 0.3rem;
+  border-width: 0.2rem;
+  background-color: #e6e6e6;
+  /* margin-bottom: 0.3rem; */
 }
 
-.energy-select.energy.level-option{
-    border-radius: 0.3rem;
-    border-width: 0.2rem;
+.energy-drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+}
+.allergy-drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+}
 
+.energy-select.energy.level-option {
+  border-radius: 0.3rem;
+  border-width: 0.2rem;
+  background-color: #ebebeb;
+}
+.energy-select.-option {
+  border-radius: 0.3rem;
+  border-width: 0.2rem;
+  background-color: #ebebeb;
 }
 
 .energy-select.tired-option {
   background-color: #d7bff2;
-      border-color:  #b5a1cc;
-    border-radius: 0.3rem;
-    border-width: 0.2rem;
+  border-color: #b5a1cc;
+  border-radius: 0.3rem;
+  border-width: 0.2rem;
   /* font-size: 1rem; */
-
 }
 
 .energy-select.stressed-option {
   background-color: #91db8b;
-      border-color:  #7bbb75;
-    border-radius: 0.3rem;
-    border-width: 0.2rem;
+  border-color: #7bbb75;
+  border-radius: 0.3rem;
+  border-width: 0.2rem;
   /* font-size: 1rem; */
-
 }
 
 .energy-select.energetic-option {
@@ -80,7 +122,6 @@ select {
   border-radius: 0.3rem;
   border-width: 0.2rem;
   /* font-size: 1rem; */
-
 }
 
 .energy-select.all-option {
@@ -89,28 +130,33 @@ select {
   border-color: #e16979;
   border-width: 0.2rem;
   /* font-size: 1rem; */
+}
 
+label {
+  font-family: "Bold";
+}
+
+.allergy.allergies {
+  border-radius: 0.3rem;
+  border-width: 0.2rem;
+  background-color: #ebebeb;
 }
 
 .allergy.none {
-  background-color: #ff7789;
+  background-color: #f9e3b6;
   border-radius: 0.3rem;
-  border-color: #e16979;
+  border-color: #dbc69c;
   border-width: 0.2rem;
   /* font-size: 1rem; */
 }
 
-.allergy.my.allergies{
-    background-color: #ff7789;
+.allergy.my.allergies {
+  background-color: #d6e6ff;
   border-radius: 0.3rem;
-  border-color: #e16979;
+  border-color: #b1bfd7;
   border-width: 0.2rem;
   /* font-size: 1rem; */
-
 }
-
-
-
 
 .food-main {
   width: 100%;
@@ -179,3 +225,11 @@ select {
   background: #999;
   border-radius: 4px;}  
 
+.meal-card{
+  width:15rem;
+}
+
+.img-meal{
+  width:240px;
+  height:200px;
+}

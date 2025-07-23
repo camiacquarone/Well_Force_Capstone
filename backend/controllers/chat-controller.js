@@ -1,9 +1,7 @@
-
-
-const prisma = require('../models/prisma-client');
-const OpenAI = require('openai');
+const prisma = require("../models/prisma-client");
+const OpenAI = require("openai");
 const openai = new OpenAI({
-apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENAI_API_KEY,
 });
 const { getAuth } = require("@clerk/express");
 
@@ -11,7 +9,7 @@ exports.getPersonalizedMeals = async (req, res) => {
   console.log("✅ Personalized meal route was hit!");
 
   const { userId: clerkId } = req.auth;
-    console.log("🔍 Searching user with clerkId:", clerkId);
+  console.log("🔍 Searching user with clerkId:", clerkId);
 
   try {
     if (!clerkId) {
@@ -27,8 +25,8 @@ exports.getPersonalizedMeals = async (req, res) => {
       },
     });
     console.log("🧪 Checking user:", user);
-console.log("🥗 Dietary prefs:", user?.dietary_pref);
-console.log("🎯 Goals:", user?.goals);
+    console.log("🥗 Dietary prefs:", user?.dietary_pref);
+    console.log("🎯 Goals:", user?.goals);
 
     if (!user || (!user.dietary_pref.length && !user.goals.length)) {
       const meals = await prisma.meals.findMany();
@@ -49,14 +47,24 @@ Only return a JSON array of meal names. No numbers, no restaurant names, no form
 
     const userPrompt = `
 User Preferences:
-- Dietary Preferences: ${user.dietary_pref.map(p => p.name).join(", ") || "None"}
-- Wellness Goals: ${user.goals.map(g => g.title).join(", ") || "None"}
+- Dietary Preferences: ${
+      user.dietary_pref.map((p) => p.name).join(", ") || "None"
+    }
+- Wellness Goals: ${user.goals.map((g) => g.title).join(", ") || "None"}
 
 Available Meals:
-${meals.map((meal) => {
-  const nutri = meal.nutritional_information[0] || {};
-  return `${meal.name} (${meal.restaurant_name}) - ${nutri.calories ?? "?"} kcal, ${nutri.protein ?? "?"}g protein, Dietary Tags: ${meal.dietary_preferences.map(dp => dp.name).join(", ")}`;
-}).join("\n")}
+${meals
+  .map((meal) => {
+    const nutri = meal.nutritional_information[0] || {};
+    return `${meal.name} (${meal.restaurant_name}) - ${
+      nutri.calories ?? "?"
+    } kcal, ${
+      nutri.protein ?? "?"
+    }g protein, Dietary Tags: ${meal.dietary_preferences
+      .map((dp) => dp.name)
+      .join(", ")}`;
+  })
+  .join("\n")}
 `;
 
     console.log("📤 Sending prompt to GPT...");
@@ -75,7 +83,6 @@ ${meals.map((meal) => {
 
       gptContent = completion.choices[0].message.content;
       console.log("🤖 GPT response:", gptContent);
-
     } catch (err) {
       console.error("🔥 GPT call failed:", err);
       return res.status(500).json({ error: "GPT call failed." });
@@ -102,26 +109,34 @@ ${meals.map((meal) => {
 
     if (!Array.isArray(selectedMealNames) || selectedMealNames.length === 0) {
       console.error("❌ GPT returned empty or invalid meal list.");
-      return res.status(500).json({ error: "GPT did not return any valid meals." });
+      return res
+        .status(500)
+        .json({ error: "GPT did not return any valid meals." });
     }
 
     console.log("✅ GPT parsed meal names:", selectedMealNames);
 
-    const normalize = str => str.trim().toLowerCase().replace(/[^a-z0-9\s]/g, "");
+    const normalize = (str) =>
+      str
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9\s]/g, "");
 
     // Match and preserve GPT order
-    const topMeals = selectedMealNames.map(name => {
-      return meals.find(meal => normalize(meal.name) === normalize(name));
-    }).filter(Boolean);
+    const topMeals = selectedMealNames
+      .map((name) => {
+        return meals.find((meal) => normalize(meal.name) === normalize(name));
+      })
+      .filter(Boolean);
 
-    console.log("🍽 Final matched meals:", topMeals.map(m => m.name));
+    console.log(
+      "🍽 Final matched meals:",
+      topMeals.map((m) => m.name)
+    );
 
     res.json({ meals: topMeals });
-
   } catch (err) {
     console.error("🔥 Error in personalized meal route:", err);
     res.status(500).json({ error: "Something went wrong" });
   }
 };
-
-
