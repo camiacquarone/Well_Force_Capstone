@@ -179,7 +179,7 @@ async function seed() {
         restaurant_name: "Mendocino Farms",
         price: 14.25,
         image_url:
-          "https://www.mendocinofarms.com/wp-content/uploads/2020/05/transparent.png",
+          "https://photos.tryotter.com/cdn-cgi/image/fit=crop,width=984,height=534,quality=60,format=auto/menu-photos/80a3ace9-741b-46bf-99ae-c0d8292656bc.png",
         nutritional_information: {
           serving_size: 1,
           calories: 790,
@@ -198,7 +198,8 @@ async function seed() {
         name: "Classic Wings (10 pcs)",
         restaurant_name: "Wingstop",
         price: 13.99,
-        image_url: "https://wingstop.com/menu/classic-wings.jpg",
+        image_url:
+          "https://cdn.bfldr.com/NDQASMJ1/as/wzskp78wwt6mxcpjkbkr3gb9/10_pc_Classic_Wings?auto=webp&format=png&width=900",
         nutritional_information: {
           serving_size: 1,
           calories: 900,
@@ -215,7 +216,8 @@ async function seed() {
         name: "Boneless Wings (10 pcs)",
         restaurant_name: "Wingstop",
         price: 12.99,
-        image_url: "https://wingstop.com/menu/boneless-wings.jpg",
+        image_url:
+          "https://cdn.bfldr.com/NDQASMJ1/as/4w453948gr48fw6n2hkwczg/10_Boneless_Wings?auto=webp&format=png&width=900",
         nutritional_information: {
           serving_size: 1,
           calories: 870,
@@ -234,7 +236,8 @@ async function seed() {
         name: "Super Slaw Salad",
         restaurant_name: "Starbird",
         price: 11.75,
-        image_url: "https://starbirdchicken.com/menu/super-slaw-salad.jpg",
+        image_url:
+          "https://cdn.prod.website-files.com/5caa9a34f8e012d3d5e50127/5cb14bf12edee0e5ce7e72dc_sides-super-slaw.jpeg",
         nutritional_information: {
           serving_size: 1,
           calories: 520,
@@ -251,7 +254,8 @@ async function seed() {
         name: "Crispy Chicken Sandwich",
         restaurant_name: "Starbird",
         price: 12.5,
-        image_url: "https://starbirdchicken.com/menu/chicken-sandwich.jpg",
+        image_url:
+          "https://cdn.prod.website-files.com/5caa9a34f8e012d3d5e50127/6492929fd771e6ed621b7cf9_bg%20png.png",
         nutritional_information: {
           serving_size: 1,
           calories: 780,
