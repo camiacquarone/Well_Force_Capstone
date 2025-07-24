@@ -20,6 +20,12 @@
   position: relative;
 }
 
+
+.modal-img{
+  width: 80%;
+
+}
+
 .close-btn {
   position: absolute;
   top: 8px;

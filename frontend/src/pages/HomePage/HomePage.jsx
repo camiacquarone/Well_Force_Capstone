@@ -36,19 +36,19 @@ const HomePage = ({ user, setUser }) => {
         </div>
         <Graph />
       </div>
-      <button
-        type="button"
-        className="ai-companion-button"
-        onClick={() => setIsAIModalOpen(true)}
-      >
-        <img
-          src="astro-profile-selected.png"
-          alt="ai companion"
-          width="60px"
-          className="img-ai"
-        ></img>
-        Chat with me!
-      </button>
+        <button
+          type="button"
+          className="ai-companion-button"
+          onClick={() => setIsAIModalOpen(true)}
+        >
+          <img
+            src="BWell-Astro.png"
+            alt="ai companion"
+            width="60px"
+            className="img-ai"
+          ></img>
+          <span className="chat-message"> Chat With Me!</span>
+        </button>
       {isAIModalOpen && (
         <AICompanionModal onClose={() => setIsAIModalOpen(false)} />
       )}

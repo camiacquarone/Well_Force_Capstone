@@ -12,12 +12,11 @@ function FoodPage() {
   const [allergy, setAllergy] = useState("");
   const [showAllMeals, setShowAllMeals] = useState(false);
 
-
   // const showTitle = energyLevel !== "";
   return (
     <div className="food-page">
       <header className="food-header">
-        <h1>Meals & Snacks</h1>
+        <h1 className="meals-header">Meals & Snacks</h1>
         <div className="food-controls">
           {/* <div> */}
           <div className="dropdown-group">
@@ -33,9 +32,7 @@ function FoodPage() {
                 required
                 className={`energy-select ${energyLevel.toLowerCase()}-option`}
               >
-                <option value="" disabled>
-                  None
-                </option>
+                <option value="">None</option>
                 <option value="tired">Tired</option>
                 <option value="stressed">Stressed</option>
                 <option value="energetic">Energetic</option>
@@ -54,23 +51,28 @@ function FoodPage() {
                 onChange={(e) => setAllergy(e.target.value)}
                 className={`allergy ${allergy.toLowerCase()}`}
               >
-                <option value="" disabled>
-                  Select
-                </option>
                 <option>My Allergies</option>
                 <option>None</option>
               </select>
             </div>
           </div>
-            
+
           {/* <div className="profile-icon">👤</div> */}
           {/* ^Make this the actual profile photo */}
         </div>
       </header>
 
       <main className="food-main">
+        <section className="snacks-section">
+          <h2> Recommended Snacks</h2>
+          <div className="snacks-grid">
+            {/* Snack Cards Go Here */}
+            <SnackList energyLevel={energyLevel} allergy={allergy} />
+          </div>
+        </section>
+
         <section className="meals-section">
-          <h2>Meals</h2>
+          <h2>Meals For You</h2>
           <div className="meals-grid">
             {/* Meal Cards Go Here */}
             {/* <button className="toggle-button" onClick={() => setShowAllMeals(true)}>Show All Meals</button> */}
@@ -78,22 +80,16 @@ function FoodPage() {
               <button
                 type="button"
                 className="toggle-meals-button"
-                onClick={() => setShowAllMeals((prev) => !prev)}>
-                  See All
+                onClick={() => setShowAllMeals((prev) => !prev)}
+              >
+                See All
               </button>
-              </div>
+            </div>
 
-            <MealsList showAll={showAllMeals}/>
+            <MealsList showAll={showAllMeals} />
           </div>
         </section>
 
-        <section className="snacks-section">
-          <h2>Snacks</h2>
-          <div className="snacks-grid">
-            {/* Snack Cards Go Here */}
-            <SnackList energyLevel={energyLevel} allergy={allergy} />
-          </div>
-        </section>
         {/* <Select options={options} /> */}
 
         <button
@@ -102,12 +98,12 @@ function FoodPage() {
           onClick={() => setIsAIModalOpen(true)}
         >
           <img
-            src="astro-profile-selected.png"
+            src="BWell-Astro.png"
             alt="ai companion"
             width="60px"
             className="img-ai"
           ></img>
-          Chat with me!
+          <span className="chat-message"> Chat With Me!</span>
         </button>
         {isAIModalOpen && (
           <AICompanionModal onClose={() => setIsAIModalOpen(false)} />
@@ -119,8 +115,4 @@ function FoodPage() {
 
 export default FoodPage;
 
-
-
-
 // Inside JSX:
-

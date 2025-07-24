@@ -67,8 +67,9 @@ export default function MealsList({showAll}) {
     return (
       <div className="loader-container">
         <div className="loader"></div>
+        <img src="/bee.gif" alt="bee" width="150px"></img>
         <p style={{ marginLeft: "10px", fontSize: "1.2em", color: "#333" }}>
-          Loading meals...
+          Loading Your Customized Meals...
         </p>
       </div>
     );

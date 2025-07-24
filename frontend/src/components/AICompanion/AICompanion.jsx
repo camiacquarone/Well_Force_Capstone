@@ -54,7 +54,7 @@ export default function AICompanionModal({ onClose }) {
                   src={
                     msg.role === "user"
                       ? "/ruth-profile-selected.png"
-                      : "/astro-profile-selected.png"
+                      : "/BWell-Astro.png"
                   }
                   alt={msg.role === "user" ? "You" : "B-Well Astro"}
                   className="ai-avatar"
@@ -69,7 +69,7 @@ export default function AICompanionModal({ onClose }) {
             <div className="ai-chatbot-message assistant">
               <div className="ai-message-header">
                 <img
-                  src="/astro-profile-selected.png"
+                  src="/BWell-Astro.png"
                   alt="B-Well Astro"
                   className="ai-avatar"
                 />
