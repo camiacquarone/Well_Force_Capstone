@@ -20,9 +20,82 @@ import "../HomePage/HomePage.css";
 
 const HomePage = ({ user, setUser }) => {
   const [isAIModalOpen, setIsAIModalOpen] = useState(false);
+
+  const [snacks, setSnacks] = useState([]); // All fetched snacks
+  const [filteredSnacks, setFilteredSnacks] = useState([]); // Snacks after filtering
+  const [userAllergies, setUserAllergies] = useState([]); // User's allergies from backend profile
+  const [ignoreAllergiesFilter, setIgnoreAllergiesFilter] = useState(false); // Controls allergy filter
+  const [selectedEnergyLevel, setSelectedEnergyLevel] = useState("All"); // User's selected energy level
+  const [selectedAllergyFilter, setSelectedAllergyFilter] = useState("All"); // User's selected allergy filter (e.g., "None", "Peanuts")
+
+  const [isSnacksLoading, setIsSnacksLoading] = useState(true); // Loading state for snacks
+  const [snacksError, setSnacksError] = useState(null); // Error state for snacks
+
   useEffect(() => {
     console.log("HomePage.jsx - Received user prop:", user);
   }, [user]);
+
+  useEffect(() => {
+    const fetchAllSnacks = async () => {
+      setIsSnacksLoading(true);
+      setSnacksError(null);
+      try {
+        const res = await axios.get("http://localhost:3000/api/snacks");
+        setSnacks(res.data);
+        console.log("📦 All snacks loaded:", res.data);
+      } catch (err) {
+        console.error("Error fetching all snacks:", err);
+        setSnacksError("Failed to load snacks.");
+      } finally {
+        setIsSnacksLoading(false);
+      }
+    };
+
+    fetchAllSnacks();
+  }, []);
+
+  useEffect(() => {
+    if (selectedAllergyFilter === "None") {
+      // Assuming "None" means ignore allergies
+      setIgnoreAllergiesFilter(true);
+    } else {
+      setIgnoreAllergiesFilter(false);
+    }
+  }, [selectedAllergyFilter]);
+
+  useEffect(() => {
+    let filtered = [...snacks]; // Start with all snacks
+
+    // Allergies filtering
+    if (userAllergies.length > 0 && !ignoreAllergiesFilter) {
+      const lowerAllergies = userAllergies.map((a) => a.toLowerCase());
+      filtered = filtered.filter((snack) => {
+        // Assuming snack.description contains ingredients/allergens
+        const snackText = `${snack.name} ${
+          snack.description || ""
+        }`.toLowerCase();
+        return !lowerAllergies.some((allergy) => snackText.includes(allergy));
+      });
+      console.log("Snacks after allergy filter:", filtered.length);
+    }
+
+    // Energy level filtering (assuming wellness_category is an array of strings)
+    if (
+      selectedEnergyLevel &&
+      selectedEnergyLevel !== "All" &&
+      selectedEnergyLevel !== "Energy Level"
+    ) {
+      const normalizedEnergy = selectedEnergyLevel.toLowerCase();
+      filtered = filtered.filter((snack) =>
+        snack.wellness_category?.some((category) =>
+          category.toLowerCase().includes(normalizedEnergy)
+        )
+      );
+      console.log("Snacks after energy filter:", filtered.length);
+    }
+
+    setFilteredSnacks(filtered);
+  }, [snacks, userAllergies, selectedEnergyLevel, ignoreAllergiesFilter]);
 
   return (
     <div className="home-body">
@@ -32,9 +105,11 @@ const HomePage = ({ user, setUser }) => {
       <div className="container-temp">
         <div className="separated-container">
           <Info user={user} />
-          <Carousel />
+          <Carousel snacks={filteredSnacks} />
         </div>
-        <Graph />
+        <div className="graph-container">
+          <Graph />
+        </div>
       </div>
       <button
         type="button"
@@ -47,7 +122,7 @@ const HomePage = ({ user, setUser }) => {
           width="60px"
           className="img-ai"
         ></img>
-        Chat with me!
+        <span className="ai-button-txt">Chat with me!</span>
       </button>
       {isAIModalOpen && (
         <AICompanionModal onClose={() => setIsAIModalOpen(false)} />
