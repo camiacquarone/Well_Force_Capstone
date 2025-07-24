@@ -1,56 +1,33 @@
-.slider {
-    border-radius: 20px;
-    padding-left : 1rem;
-    width: 95%;
-    padding-bottom: 1rem;
-    padding-top: 0.01rem;
-}
-
-/* Carousel.css */
-
-/* Custom styling for React Slick arrows */
 .slick-prev,
 .slick-next {
   width: 70px;
   height: 40px;
-  display: flex !important; /* Override slick's default display: none */
+  display: flex !important;
   align-items: center;
   justify-content: center;
-  z-index: 10; /* Ensure arrows are above content */
-  /* transition: background-color 0.2s ease-in-out; */
 }
 
 .slick-prev::before,
 .slick-next::before {
-  content: none !important; /* Hide default slick arrow content */
+  content: none !important; 
 }
 
-.slick-prev {
-  left: -20px; /* Adjust position */
-}
 
-.slick-next {
-  right: -20px; /* Adjust position */
-}
-
-/* Material Icons specific styling for arrows */
 .slick-prev .material-icons,
 .slick-next .material-icons {
-  font-size: 2rem; /* Adjust icon size */
-  color: #4a5568; /* Dark gray color */
+  font-size: 2rem; 
+  color: #4a5568; 
 }
 
-/* Ensure images in carousel slides are properly displayed */
 .slick-slide img {
-  display: block; /* Remove extra space below image */
+  display: block; 
   max-width: 100%;
   height: auto;
 }
 
-/* Basic styling for the container if needed */
 .slider {
-  position: relative; /* Important for arrow positioning */
-  padding: 20px; /* Add some padding around the slider content */
+  position: relative; 
+  padding: 20px; 
 }
 
 h2{
@@ -61,125 +38,107 @@ h4{  font-family: "Bold";
 
 }
 
-/* Carousel.css */
 
-/* --- NEW/MODIFIED: .slider styles --- */
 .slider {
-  /* Match the background color of the 'Recommended Snacks' section from the mock-up */
-  background-color: #ffffff; /* blue-100 from mock-up */
-  border-radius: 0.5rem; /* Match rounded-lg (8px) from other cards */
-  padding: 1.5rem; /* Consistent internal padding, adjust as needed */
-  width: 100%; /* Take full width of its parent */
-  box-sizing: border-box; /* Crucial for padding to be included in width */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow, match other cards */
-  position: relative; /* Important for arrow positioning */
-  overflow: hidden; /* Hide content that goes beyond bounds (e.g., during slide) */
-  margin-bottom: 1.5rem; /* Add some space below it if it's a standalone section */
+  background-color: #ffffff; 
+  border-radius: 0.5rem; 
+  padding: 1.5rem; 
+  width: 100%; 
+  box-sizing: border-box; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+  position: relative; 
+  overflow: hidden; 
+  margin-bottom: 1.5rem; 
 }
 
-/* Heading for the slider */
 .slider h2 {
-  font-family: "Regular", sans-serif; /* Ensure font is loaded */
-  font-size: 1.125rem; /* text-lg */
-  font-weight: 600; /* font-semibold */
-  color: #1a202c; /* gray-800 */
-  margin-bottom: 0.75rem; /* mb-3 */
-  text-align: left; /* Align title to left */
+  font-family: "Regular", sans-serif; 
+  font-size: 1.125rem;
+  font-weight: 600; 
+  color: #1a202c; 
+  margin-bottom: 0.75rem; 
+  text-align: left; 
 }
 
-/* Snack Name inside the carousel */
 .slider h4 {
-  font-family: "Bold", sans-serif; /* Ensure font is loaded */
-  font-size: 1.25rem; /* text-xl */
+  font-family: "Bold", sans-serif; 
+  font-size: 1.25rem; 
   font-weight: bold;
-  color: #2d3748; /* gray-800 */
-  margin-bottom: 0.25rem; /* mb-1 */
+  color: #2d3748; 
+  margin-bottom: 0.25rem;
 }
 
-/* --- Refined Custom styling for React Slick arrows --- */
-.slick-prev,
-.slick-next {
-  width: 40px; /* Consistent width */
-  height: 40px; /* Consistent height */
-  background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-  border-radius: 50%; /* Make them circular */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow */
-  display: flex !important; /* Override slick's default display: none */
-  align-items: center;
-  justify-content: center;
-  z-index: 10; /* Ensure arrows are above content */
-  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out; /* Add transform transition */
-}
 
-.slick-prev:hover,
-.slick-next:hover {
-  background: rgba(255, 255, 255, 1); /* Solid white on hover */
-  transform: scale(1.05); /* Slightly enlarge on hover */
-}
 
 .slick-prev::before,
 .slick-next::before {
-  content: none !important; /* Hide default slick arrow content */
+  content: none !important; 
 }
 
 .slick-prev {
-  left: -20px; /* Position relative to the slider container */
+  left: -50px !important; 
+  z-index: 1 !important; 
 }
 
 .slick-next {
-  right: -20px; /* Position relative to the slider container */
+  right: -50px !important;
+  z-index: 1 !important; 
 }
 
-/* Material Icons specific styling for arrows */
 .slick-prev .material-icons,
 .slick-next .material-icons {
-  font-size: 2rem; /* Adjust icon size */
-  color: #4a5568; /* Dark gray color */
+  font-size: 2rem; 
+  color: #4a5568; 
 }
 
-/* Ensure images in carousel slides are properly displayed */
 .slick-slide img {
-  display: block; /* Remove extra space below image */
-  max-width: 100%;
+  display: block; 
+  max-width: 50%;
   height: auto;
-  border-radius: 0.5rem; /* Match rounded corners of other elements */
-  object-fit: cover; /* Ensure image covers its area */
+  border-radius: 0.5rem; 
+  object-fit: cover; 
 }
 
-/* Basic styling for the container if needed */
-/* The .slider class already defines position: relative and padding: 20px */
 
 
-/* --- Responsive Overrides for Phone Screens (max-width: 767px) --- */
 @media screen and (max-width: 767px) {
   .slider {
-    padding: 1rem; /* Smaller padding on mobile */
+    padding: 1rem; 
     margin-bottom: 1rem;
   }
   .slider h2 {
-    font-size: 1rem; /* Smaller title on mobile */
+    font-size: 1rem; 
     margin-bottom: 0.5rem;
   }
   .slider h4 {
-    font-size: 1.1rem; /* Smaller snack name on mobile */
+    font-size: 1.1rem; 
   }
   .slick-prev,
   .slick-next {
-    width: 30px; /* Smaller arrows on mobile */
+    width: 30px;
     height: 30px;
-    left: -15px; /* Adjust position */
-    right: -15px; /* Adjust position */
+    left: -15px; 
+    right: -15px; 
   }
   .slick-prev .material-icons,
   .slick-next .material-icons {
-    font-size: 1.5rem; /* Smaller icons on mobile */
+    font-size: 1.5rem; 
+  }
+
+  .slick-next,
+  .slick-prev {
+    display: none
+  }
+
+  .slick-prev .material-icons,
+  .slick-next .material-icons {
+    font-size: 1.5rem; 
   }
 }
 
-/* --- Media Queries for Tablets (min-width: 768px and max-width: 1023px) --- */
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .slider {
-    padding: 1.5rem; /* Adjust padding for tablet */
+    padding: 1.5rem; 
   }
   .slider h2 {
     font-size: 1.125rem;
@@ -187,4 +146,10 @@ h4{  font-family: "Bold";
   .slider h4 {
     font-size: 1.25rem;
   }
+
+  .slick-next,
+  .slick-prev {
+    display: none
+  }
+
 }

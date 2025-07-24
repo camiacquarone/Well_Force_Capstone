@@ -9,21 +9,20 @@ function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-      className={`${className} custom-slick-arrow next-arrow`} // Add custom classes for CSS
-      style={{ ...style, display: "block", right: "-20px", zIndex: 10 }} // Adjust positioning
+      className={`${className} custom-slick-arrow next-arrow`}
+      style={{ ...style, display: "block", right: "-20px", zIndex: 10 }}
       onClick={onClick}
     >
       <span className="material-icons text-gray-700 text-3xl">&gt;</span>
     </div>
   );
 }
-
 function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-      className={`${className} custom-slick-arrow prev-arrow`} // Add custom classes for CSS
-      style={{ ...style, display: "block", left: "-20px", zIndex: 10 }} // Adjust positioning
+      className={`${className} custom-slick-arrow prev-arrow`}
+      style={{ ...style, display: "block", left: "-20px", zIndex: 10 }}
       onClick={onClick}
     >
       <span className="material-icons text-gray-700 text-3xl">&lt;</span>
@@ -31,40 +30,6 @@ function SamplePrevArrow(props) {
   );
 }
 
-const mockRecommendedSnacks = [
-  {
-    id: 1,
-    name: "Nutrient Bar",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    imageUrl: "https://placehold.co/150x150/ADD8E6/000?text=Snack1",
-    moods: ["stress", "tired", "frustrated"],
-  },
-  {
-    id: 2,
-    name: "Fruit Medley",
-    description:
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    imageUrl: "https://placehold.co/150x150/90EE90/000?text=Snack2",
-    moods: ["energetic", "happy"],
-  },
-  {
-    id: 3,
-    name: "Veggie Crisps",
-    description:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    imageUrl: "https://placehold.co/150x150/FFDAB9/000?text=Snack3",
-    moods: ["calm", "focused"],
-  },
-  {
-    id: 4,
-    name: "Protein Shake",
-    description:
-      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    imageUrl: "https://placehold.co/150x150/DDA0DD/000?text=Snack4",
-    moods: ["motivated"],
-  },
-];
 const sliderSettings = {
   dots: true,
   infinite: true,
@@ -73,30 +38,43 @@ const sliderSettings = {
   slidesToScroll: 1,
   nextArrow: <SampleNextArrow />,
   prevArrow: <SamplePrevArrow />,
+
+  responsive: [
+    { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+    { breakpoint: 1024, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+  ],
 };
 
-const Carousel = () => {
+const Carousel = ({ snacks }) => {
   return (
     <div className="slider">
       <h2>RECOMMENDED SNACKS</h2>
 
-      {mockRecommendedSnacks.length > 0 ? (
+      {snacks && snacks.length > 0 ? (
         <Slider {...sliderSettings}>
-          {mockRecommendedSnacks.map((snack) => (
-            <div key={snack.id}>
-              <div>
-                <img src={snack.imageUrl} alt={snack.name} />
-                <div>
+          {snacks.map((snack) => (
+            <div key={snack.id || snack.name} className="p-2 outline-none">
+              {" "}
+              <div className="snack-info">
+                {" "}
+                <img
+                  src={
+                    snack.image_url ||
+                    "https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example"
+                  }
+                  alt={snack.name}
+                />
+                <div className="text-left flex-grow">
                   <h4 className="text-xl font-bold text-gray-800 mb-1">
                     {snack.name}
                   </h4>
-                  <div>
-                    {snack.moods.map((mood, index) => (
-                      // <span key={index}>{mood}</span>
-                      <Chip type="info" label={mood}></Chip>
-                    ))}
+                  <div className="flex flex-wrap gap-1 mb-2">
+                    {snack.moods &&
+                      snack.moods.map((mood, index) => (
+                        <Chip key={index} type="mood" label={mood} />
+                      ))}
                   </div>
-                  <p>{snack.description.substring(0, 100)}...</p>
+                  <p className="text-gray-600 text-sm">{snack.description}</p>{" "}
                 </div>
               </div>
             </div>
