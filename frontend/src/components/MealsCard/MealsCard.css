@@ -4,20 +4,30 @@
   padding-left: 0.6rem;
   padding-right: 0.6rem;
   font-size: 1.1rem;
+  border: 1px solid #0077a3;
 }
 
 .order-now:hover {
   color: #04354a;
   background-color: white;
-  border: solid #04354a;
+  border: 1px solid #04354a;
+  padding: 0.3rem;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+  font-size: 1.1rem;
 }
 
 
 
 .meal-name {
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  display:flex;
   font-family: "Bold";
   color: #04354a;
-  font-size:1.3rem;
+  font-size: 1.1rem;
   background-color: aliceblue;
   padding:0.5rem;
   border-radius: 0.5rem;

@@ -42,6 +42,7 @@ p{
   flex-direction: column;
   align-items: center; 
   justify-content: center; 
+  margin-top: 1.5rem;
 
 }
 
@@ -67,6 +68,11 @@ p{
     margin-top: 2rem;
     padding-top: 2rem;
   }
+
+  .container-temp {
+    margin-left: 0rem !important;
+  }
+
 }
 
 @media screen and (max-width: 1024px) {
@@ -97,6 +103,11 @@ p{
     align-items: center; 
     margin-left: 2rem;
   }
+
+  .graph-container {
+  margin-top: 0rem;
+
+}
 
   .separated-container,
   .graph-container {

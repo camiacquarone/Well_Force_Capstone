@@ -341,6 +341,10 @@ button:hover {
 }
 }
 
+.disclaimer {
+  margin-top: 1px;
+}
+
 @media screen and (min-width: 1025px) {
 
   .GoalsPage {
