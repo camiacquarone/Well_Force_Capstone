@@ -205,15 +205,16 @@ label {
 
 .meals-scroll-wrapper::-webkit-scrollbar-thumb {
   background: #999;
-  border-radius: 4px;}  
-
-.meal-card{
-  width:15rem;
+  border-radius: 4px;
 }
 
-.img-meal{
-  width:240px;
-  height:200px;
+.meal-card {
+  width: 15rem;
+}
+
+.img-meal {
+  width: 240px;
+  height: 200px;
 }
 .chat-message {
   visibility: hidden;
@@ -229,10 +230,9 @@ label {
 }
 
 @media screen and (max-width: 767px) {
-
   .img-ai {
-  margin-right: 0rem;
-}
+    margin-right: 0rem;
+  }
   .ai-companion-button {
     z-index: 90;
     position: fixed;
