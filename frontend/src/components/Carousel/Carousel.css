@@ -1,62 +1,33 @@
-.slider {
-    background-color: white;
-    border-radius: 20px;
-    width: 100%;
-}
-
-/* Carousel.css */
-
-/* Custom styling for React Slick arrows */
 .slick-prev,
 .slick-next {
-  width: 40px;
+  width: 70px;
   height: 40px;
-  /* background: rgba(255, 255, 255, 0.8); Semi-transparent white background */
-  /* border-radius: 50%; Make them circular */
-  /* box-shadow: 0 2px 5px rgba(0,s0,0,0.2); Subtle shadow */
-  display: flex !important; /* Override slick's default display: none */
+  display: flex !important;
   align-items: center;
   justify-content: center;
-  z-index: 10; /* Ensure arrows are above content */
-  transition: background-color 0.2s ease-in-out;
 }
-
-/* .slick-prev:hover,
-.slick-next:hover {
-  background: rgba(255, 255, 255, 1); /* Solid white on hover */
-
 
 .slick-prev::before,
 .slick-next::before {
-  content: none !important; /* Hide default slick arrow content */
+  content: none !important; 
 }
 
-.slick-prev {
-  left: -20px; /* Adjust position */
-}
 
-.slick-next {
-  right: -20px; /* Adjust position */
-}
-
-/* Material Icons specific styling for arrows */
 .slick-prev .material-icons,
 .slick-next .material-icons {
-  font-size: 2rem; /* Adjust icon size */
-  color: #4a5568; /* Dark gray color */
+  font-size: 2rem; 
+  color: #4a5568; 
 }
 
-/* Ensure images in carousel slides are properly displayed */
 .slick-slide img {
-  display: block; /* Remove extra space below image */
+  display: block; 
   max-width: 100%;
   height: auto;
 }
 
-/* Basic styling for the container if needed */
 .slider {
-  position: relative; /* Important for arrow positioning */
-  padding: 20px; /* Add some padding around the slider content */
+  position: relative; 
+  padding: 20px; 
 }
 
 h2{
@@ -64,5 +35,121 @@ h2{
 }
 
 h4{  font-family: "Bold";
+
+}
+
+
+.slider {
+  background-color: #ffffff; 
+  border-radius: 0.5rem; 
+  padding: 1.5rem; 
+  width: 100%; 
+  box-sizing: border-box; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+  position: relative; 
+  overflow: hidden; 
+  margin-bottom: 1.5rem; 
+}
+
+.slider h2 {
+  font-family: "Regular", sans-serif; 
+  font-size: 1.125rem;
+  font-weight: 600; 
+  color: #1a202c; 
+  margin-bottom: 0.75rem; 
+  text-align: left; 
+}
+
+.slider h4 {
+  font-family: "Bold", sans-serif; 
+  font-size: 1.25rem; 
+  font-weight: bold;
+  color: #2d3748; 
+  margin-bottom: 0.25rem;
+}
+
+
+
+.slick-prev::before,
+.slick-next::before {
+  content: none !important; 
+}
+
+.slick-prev {
+  left: -50px !important; 
+  z-index: 1 !important; 
+}
+
+.slick-next {
+  right: -50px !important;
+  z-index: 1 !important; 
+}
+
+.slick-prev .material-icons,
+.slick-next .material-icons {
+  font-size: 2rem; 
+  color: #4a5568; 
+}
+
+.slick-slide img {
+  display: block; 
+  max-width: 50%;
+  height: auto;
+  border-radius: 0.5rem; 
+  object-fit: cover; 
+}
+
+
+
+@media screen and (max-width: 767px) {
+  .slider {
+    padding: 1rem; 
+    margin-bottom: 1rem;
+  }
+  .slider h2 {
+    font-size: 1rem; 
+    margin-bottom: 0.5rem;
+  }
+  .slider h4 {
+    font-size: 1.1rem; 
+  }
+  .slick-prev,
+  .slick-next {
+    width: 30px;
+    height: 30px;
+    left: -15px; 
+    right: -15px; 
+  }
+  .slick-prev .material-icons,
+  .slick-next .material-icons {
+    font-size: 1.5rem; 
+  }
+
+  .slick-next,
+  .slick-prev {
+    display: none
+  }
+
+  .slick-prev .material-icons,
+  .slick-next .material-icons {
+    font-size: 1.5rem; 
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .slider {
+    padding: 1.5rem; 
+  }
+  .slider h2 {
+    font-size: 1.125rem;
+  }
+  .slider h4 {
+    font-size: 1.25rem;
+  }
+
+  .slick-next,
+  .slick-prev {
+    display: none
+  }
 
 }

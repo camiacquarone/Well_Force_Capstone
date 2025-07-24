@@ -1,14 +1,14 @@
 .graph {
-  background-color: white;
   border-radius: 30px;
-  width: 50%;
+  height: 18rem;
+  width: 100% !important;
+  font-family: "Regular";
 }
 
 .graph-title {
   font-size: 1.3rem;
   font-family: "Bold";
   color: #04354a;
-  /* position: absolute; */
   top:0;
   margin-top: 0;
   margin-left:1.5rem;
@@ -16,7 +16,9 @@
 }
 
 .graph{
-    padding-top:1rem;
-    margin-top: 1rem;
     width:51.5rem;
+}
+
+YAxis {
+  font-family: "normal";
 }

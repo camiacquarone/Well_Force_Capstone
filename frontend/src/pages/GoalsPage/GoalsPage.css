@@ -319,10 +319,10 @@ button:hover {
 @media screen and (min-width: 300px) and (max-width: 767px) {
   .GoalsPage {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: auto;
+    margin-top: 3rem;
     padding: 20px;
     position: absolute;
-    /* width: calc(100%-150px); */
     left: 1rem !important;
     right: 100px;
     width: 80%;

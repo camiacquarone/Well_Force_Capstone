@@ -6,43 +6,36 @@
   margin: 20px 0;
   background-color: #fdfdfd;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.05);
-  /* No flex/overflow properties here - this is just a wrapper */
 }
 
-/* This is the VIEWER/WINDOW for the scrollable content */
 .snack-scroll-wrapper {
-  overflow-x: auto;      /* <--- CRITICAL: Enables horizontal scrolling */
-  overflow-y: hidden;    /* Hides any unwanted vertical scrollbar */
-  scroll-behavior: smooth; /* For smooth scrolling */
-  padding-bottom: 10px;  /* Provides space for the horizontal scrollbar */
+  overflow-x: auto;     
+  overflow-y: hidden;    
+  scroll-behavior: smooth; 
+  padding-bottom: 10px; 
 
  
-  max-width: 700px; /* Try this value. You can adjust it. */
+  max-width: 700px; 
 
-  /* Optional: Center the scrollable wrapper if it's narrower than its parent */
   margin-left: auto;
   margin-right: auto;
 }
 
-/* This is the FLEX CONTAINER that lays out the cards in a single row */
 .snack-list {
-  display: flex;          /* <--- CRITICAL: Arranges children in a row by default */
-  flex-direction: row;    /* Explicitly sets row direction (good for clarity) */
-  flex-wrap: nowrap;      /* <--- CRITICAL: Prevents children from wrapping to a new line */
+  display: flex;         
+  flex-direction: row;    
+  flex-wrap: nowrap;     
 
-  /* Remove any overflow-x/y or max-width from here! Its job is just to hold the cards in a line. */
-
-  gap: 20px;              /* Space between individual meal-cards */
-  padding-left: 20px;     /* Optional: Padding at the start of the row */
-  padding-right: 20px;    /* Optional: Padding at the end of the row */
+  gap: 20px;             
+  padding-left: 20px;     
+  padding-right: 20px;   
 
 }
 
-/* This is the individual ITEM within the flex container */
 .snack-card {
   background: #ffffff;
-  width: 240px; /* <--- CRITICAL: Give each card a fixed, explicit width */
-  flex: 0 0 auto; /* <--- CRITICAL: Prevents card from growing (0), shrinking (0), and sets basis to its width (auto) */
+  width: 250px; 
+  flex: 0 0 auto; 
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -51,7 +44,6 @@
   text-align: center;
 }
 
-/* Other meal-card styles (as you already have them) */
 .snack-card img {
   width: 100%;
   height:230px;
@@ -73,9 +65,8 @@
   transform: scale(1.05);
 }
 
-/* Optional scrollbar styling - apply to .meals-scroll-wrapper */
 .snack-scroll-wrapper::-webkit-scrollbar {
-  height: 8px; /* For horizontal scrollbar, control height */
+  height: 8px; 
 }
 
 .snack-scroll-wrapper::-webkit-scrollbar-track {
@@ -88,10 +79,8 @@
   border-radius: 4px;
 }
 
-/* ... (rest of your CSS for .order-now, .food-header, etc.) ... */
 
 .snack-scroll-wrapper {
-  /* display: flex; */
   max-width: 3500px;
   overflow-x: auto;
   gap: 16px;

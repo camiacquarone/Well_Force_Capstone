@@ -142,12 +142,9 @@ body.nav-closed {
 
 h1.welcome-user {
   transition: all 0.5s ease;
-  /* margin-left: -24rem;  */
+  margin-left: 4rem; 
 }
 
-/* body.nav-open h1.welcome-user {
-  margin-left: calc(100% - 1950px);
-} */
 
 body.nav-open .navbar {
   width: 260px;
@@ -178,11 +175,8 @@ body.nav-closed .GoalsPage {
   }
 
   .navbar-header {
-    /* This container holds the hamburger and potentially the logo.
-       If no logo, it just positions the hamburger. */
     display: flex;
     align-items: center;
-    /* No margin-left: auto or justify-content: flex-end here */
   }
 
   .hamburger-button {
@@ -201,7 +195,7 @@ body.nav-closed .GoalsPage {
   }
 
   .home-body {
-    margin-left: 2rem;
+    margin-left: 0rem;
   }
 
   body.nav-open .navbar {
@@ -219,14 +213,16 @@ body.nav-closed .GoalsPage {
 
 @media screen and (max-width: 767px) {
   .navbar {
-    /* Ensure the main navbar aligns its content to the start */
-    justify-content: flex-start; /* <--- CRITICAL FIX: Align content to the left */
-    align-items: center; /* Keep items vertically centered */
-    /* padding: 0.5rem 1rem; Adjust padding as needed */
-    height: 40px; /* Keep fixed height for top bar */
-    /* ... other existing mobile navbar styles ... */
+    justify-content: flex-start; 
+    align-items: center; 
+    height: 40px; 
     z-index: 4;
   }
+
+  h1.welcome-user {
+  transition: all 0.5s ease;
+  margin-left: 0rem; 
+}
 
   body.nav-open .navbar {
     width: 100%;
@@ -254,7 +250,6 @@ body.nav-closed .GoalsPage {
     align-items: center;
   }
 
-  /* Hamburger Button (Already set to display: block in base mobile styles) */
   .hamburger-button {
     margin-right: 18rem;
     position: static;
