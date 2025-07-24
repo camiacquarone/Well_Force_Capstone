@@ -49,7 +49,7 @@ const HomePage = ({ user, setUser }) => {
           width="60px"
           className="img-ai"
         ></img>
-        Chat with me!
+        <span className="ai-button-txt">Chat with me!</span>
       </button>
       {isAIModalOpen && (
         <AICompanionModal onClose={() => setIsAIModalOpen(false)} />

@@ -233,3 +233,36 @@ label {
   width:240px;
   height:200px;
 }
+
+@media screen and (max-width: 767px) {
+
+  /* .ai-chatbot-messages {
+    background-color: red;
+    width: 100%;
+    position: absolute;
+    height: 100%;
+  } */
+
+  .img-ai {
+  margin-right: 0rem;
+}
+  .ai-companion-button {
+    position: fixed;
+    bottom: 3rem;
+    right: 2rem;
+    background: gold;
+    padding: 12px 10px;
+    border: none;
+    border-radius: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: "Regular";
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .ai-companion-button .ai-button-txt {
+    display: none;
+  }
+}

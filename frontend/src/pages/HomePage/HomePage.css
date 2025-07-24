@@ -58,12 +58,7 @@ p{
   box-sizing: border-box;
 }
 
-/* tablet */
-@media screen and (min-width: 767px) and (max-width:1024px){
-  .welcome-user{
-    font-size: 3rem !important;
-  }
-}
+
 
 /* phone */
 @media screen and (min-width: 300px) and (max-width: 768px) {
@@ -71,5 +66,40 @@ p{
     font-size: 2rem !important;
     margin-top: 2rem;
     padding-top: 2rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  h1.welcome-user {
+    font-size: 2rem !important; 
+    margin-top: 7rem; 
+    padding-top: 0; 
+    height: auto; 
+    width: 100%; 
+    text-align: center;
+    box-sizing: border-box;
+    padding-left: 0.5rem; 
+    padding-right: 0.5rem;
+  }
+
+  .home-body {
+    margin-left: 0; 
+    width: 100%; 
+    padding: 0 1rem; 
+    box-sizing: border-box;
+  }
+
+  .container-temp {
+    flex-direction: column; 
+    width: 100%; 
+    padding: 1rem; 
+    gap: 1rem; 
+    align-items: center; 
+  }
+
+  .separated-container,
+  .graph-container {
+    width: 100%;
+    padding: 1rem; 
   }
 }
