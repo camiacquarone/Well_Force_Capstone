@@ -68,11 +68,12 @@
 }
 .settings-closed {
   margin-top: 3rem;
-  margin-bottom:3rem;
+  margin-bottom: 2.5rem;
 }
 
-.cl-avatarImage, .cl-userButtonAvatarImage{
-  width:30rem;
+.cl-avatarImage,
+.cl-userButtonAvatarImage {
+  width: 30rem;
 }
 
 .close-button {
@@ -111,7 +112,7 @@
   display: flex;
   align-items: center;
   text-align: left;
-} 
+}
 
 .home {
   margin-top: 1rem;
@@ -165,7 +166,6 @@ body.nav-closed .GoalsPage {
 
 /* phone screen */
 @media screen and (max-width: 767px) {
-
   .navbar {
     position: absolute;
     width: 100% !important;
@@ -180,7 +180,12 @@ body.nav-closed .GoalsPage {
   }
 
   .hamburger-button {
-    margin-right: 9rem; 
+    margin-right: 9rem;
+  }
+
+  .navbar button {
+    /* background-color: #c4ebff; */
+    /* margin-left: 9rem; */
   }
 
   .food-closed,
@@ -194,11 +199,16 @@ body.nav-closed .GoalsPage {
   }
 
   body.nav-open .navbar {
-  width: 100%;
-  height: 100%;
-  transition: width 0.3s ease;
+    width: 100%;
+    height: 100%;
+    transition: width 0.3s ease;
+  }
 }
 
+.cl-avatarBox {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-left:-0.2rem;
 }
 
 @media screen and (max-width: 767px) {
@@ -215,38 +225,33 @@ body.nav-closed .GoalsPage {
 }
 
   body.nav-open .navbar {
-  width: 100%;
-  height: 100%;
-  transition: width 0.3s ease;
-  z-index: 10;
-  margin-left: 1px;
-  left: 0px;
-  padding: 0rem;
-}
+    width: 100%;
+    height: 100%;
+    transition: width 0.3s ease;
+    z-index: 10;
+    margin-left: 1px;
+    left: 0px;
+    padding: 0rem;
+    /* background-color: red; */
+  }
 
-.pfp {
-  position: absolute;
-  margin-left: 15rem;
-  margin-top: 0.9rem;
-}
+  .pfp {
+    position: absolute;
+    margin-left: 15rem;
+    margin-top: 0.9rem;
+  }
 
-body.nav-open .open {
-  margin-right: 6rem;
-}
+  body.nav-open .open {
+    /* background-color: red; */
+    margin-right: 6rem;
+  }
   .navbar-header {
     display: flex;
     align-items: center;
   }
 
-    h1.welcome-user {
-  transition: all 0.5s ease;
-  margin-left: 0rem; 
-}
-
-
   .hamburger-button {
-    margin-right: 18rem; 
-    position: static; 
+    margin-right: 18rem;
+    position: static;
   }
-
 }

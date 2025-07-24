@@ -7,6 +7,7 @@
   justify-content: space-between;
   margin-left: 10px;
   margin-right: 20px;
+  padding-bottom: 0;
 }
 h1 {
   font-size: 3.5rem;
@@ -14,6 +15,9 @@ h1 {
   font-family: "Bold";
   margin-top: 0;
   color: #04354a;
+}
+.meals-header {
+  margin-left: -1.5rem;
 }
 h2 {
   font-size: 1.3rem;
@@ -32,7 +36,7 @@ h2 {
   right: -28.5rem;
   display: flex;
   align-items: center;
-  top:-1rem;
+  top: -1rem;
 }
 
 select {
@@ -55,7 +59,10 @@ select {
 .allergy {
   border-radius: 0.3rem;
   border-width: 0.2rem;
-  background-color: #e6e6e6;
+  background-color: #d6e6ff;
+  border-radius: 0.3rem;
+  border-color: #b1bfd7;
+  /* margin-bottom: 0.3rem; */
 }
 
 .energy-drop {
@@ -150,24 +157,25 @@ label {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: gold;
-  padding: 12px 20px;
+  background: rgb(255, 228, 78);
+  padding: 10px 15px;
   border: none;
   border-radius: 1.2rem;
   font-weight: bold;
   cursor: pointer;
   font-family: "Regular";
-  font-size: 1.5rem;
+  font-size: 2rem;
   display: flex;
   align-items: center;
-}
-
-.img-ai {
-  margin-right: 0.3rem;
+  box-shadow: 3px 5px gold;
+  width: 90px;
 }
 
 .ai-companion-button:hover {
   background: rgb(203, 173, 0);
+  box-shadow: 3px 5px gold;
+  transform: scale(1.02);
+  width: 200px;
 }
 
 .food-page {
@@ -195,7 +203,6 @@ label {
   gap: 20px;
 }
 
-
 .meals-scroll-wrapper::-webkit-scrollbar-thumb {
   background: #999;
   border-radius: 4px;}  
@@ -207,6 +214,18 @@ label {
 .img-meal{
   width:240px;
   height:200px;
+}
+.chat-message {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.ai-companion-button:hover .chat-message {
+  visibility: visible;
+  opacity: 1;
 }
 
 @media screen and (max-width: 767px) {
