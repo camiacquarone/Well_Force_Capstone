@@ -4,7 +4,7 @@ import axios from "axios";
 import MealCard from "../../components/MealsCard/MealsCard";
 import "./MealsList.css";
 
-export default function MealsList({showAll}) {
+export default function MealsList({ showAll }) {
   const { user } = useUser();
   const { getToken } = useAuth();
 
@@ -53,7 +53,7 @@ export default function MealsList({showAll}) {
         console.log("Fetched meals:", res.data);
 
         const data = showAll ? res.data : res.data.meals;
-      setMeals(data);
+        setMeals(data);
       } catch (err) {
         console.error("Failed to load meals:", err);
       }
@@ -80,14 +80,12 @@ export default function MealsList({showAll}) {
   return (
     <div className="meals-container">
       <div className="meals-scroll-wrapper">
-
-      <div className="meals-list">
-        {meals.map((meal) => (
-          <MealCard key={meal.id} meal={meal} />
-        ))}
+        <div className="meals-list">
+          {meals.map((meal) => (
+            <MealCard key={meal.id} meal={meal} />
+          ))}
+        </div>
       </div>
     </div>
-    </div>
-
   );
 }

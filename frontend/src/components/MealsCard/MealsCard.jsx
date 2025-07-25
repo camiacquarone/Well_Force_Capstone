@@ -13,11 +13,13 @@ export default function MealCard({ meal }) {
           src={meal.image_url}
           alt={meal.name}
           className="img-meal"
+          onError={
+            "https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example"
+          }
           width={"250px"}
           height={"200px"}
           onClick={() => setShowModal(true)}
         />
-
         <p>
           <span className="label">Restaurant:</span>{" "}
           <span className="restaurant-name">{meal.restaurant_name}</span>
@@ -37,11 +39,13 @@ export default function MealCard({ meal }) {
 
         <p>
           <span className="label">Protein:</span>{" "}
-          <span>{Array.isArray(meal.nutritional_information) &&
-          meal.nutritional_information.length > 0
-            ? meal.nutritional_information[0].protein
-            : "N/A"}
-          g </span>
+          <span>
+            {Array.isArray(meal.nutritional_information) &&
+            meal.nutritional_information.length > 0
+              ? meal.nutritional_information[0].protein
+              : "N/A"}
+            g{" "}
+          </span>
         </p>
 
         <Link
