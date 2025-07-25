@@ -12,7 +12,10 @@
   border: solid #04354a;
 }
 
-
+.img-meal {
+  width: 240px;
+  height: 200px;
+}
 
 .meal-name {
   font-family: "Bold";
