@@ -9,136 +9,158 @@
 
 .slick-prev::before,
 .slick-next::before {
-  content: none !important; 
+  content: none !important;
 }
-
 
 .slick-prev .material-icons,
 .slick-next .material-icons {
-  font-size: 2rem; 
-  color: #4a5568; 
+  font-size: 2rem;
+  color: #4a5568;
 }
 
 .slick-slide img {
-  display: block; 
+  display: block;
   max-width: 100%;
   height: auto;
 }
 
 .slider {
-  position: relative; 
-  padding: 20px; 
+  position: relative;
+  padding: 20px;
 }
 
-h2{
+h2 {
   font-family: "Regular";
 }
 
-h4{  font-family: "Bold";
-
+h4 {
+  font-family: "Bold";
 }
 
-
 .slider {
-  background-color: #ffffff; 
-  border-radius: 0.5rem; 
-  padding: 1.5rem; 
-  width: 100%; 
-  box-sizing: border-box; 
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
-  position: relative; 
-  overflow: hidden; 
-  margin-bottom: 1.5rem; 
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
 }
 
 .slider h2 {
-  font-family: "Regular", sans-serif; 
+  font-family: "Regular", sans-serif;
   font-size: 1.125rem;
-  font-weight: 600; 
-  color: #1a202c; 
-  margin-bottom: 0.75rem; 
-  text-align: left; 
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 0.75rem;
+  text-align: left;
 }
 
 .slider h4 {
-  font-family: "Bold", sans-serif; 
-  font-size: 1.25rem; 
+  font-family: "Bold", sans-serif;
+  font-size: 1.25rem;
   font-weight: bold;
-  color: #2d3748; 
+  color: #2d3748;
   margin-bottom: 0.25rem;
 }
 
-
-
 .slick-prev::before,
 .slick-next::before {
-  content: none !important; 
+  content: none !important;
 }
 
 .slick-prev {
-  left: -50px !important; 
-  z-index: 1 !important; 
+  left: -50px !important;
+  z-index: 1 !important;
 }
 
 .slick-next {
   right: -50px !important;
-  z-index: 1 !important; 
+  z-index: 1 !important;
 }
 
 .slick-prev .material-icons,
 .slick-next .material-icons {
-  font-size: 2rem; 
-  color: #4a5568; 
+  font-size: 2rem;
+  color: #4a5568;
 }
 
 .slick-slide img {
-  display: block; 
+  display: block;
   max-width: 50%;
   height: auto;
-  border-radius: 0.5rem; 
-  object-fit: cover; 
+  border-radius: 0.5rem;
+  object-fit: cover;
 }
 
+.snack-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
 
+.text-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.3rem;
+  margin-top: 1rem;
+}
 
+h4 {
+  background-color: #dfebff;
+  border-radius: 0.3rem;
+  background-color: #caecfe;
+  border: solid #a1deff;
+  padding:0.3rem;
+}
+
+.snack-info img {
+  max-width: 20rem;
+  max-height: 18rem;
+}
 @media screen and (max-width: 767px) {
   .slider {
-    padding: 1rem; 
+    padding: 1rem;
     margin-bottom: 1rem;
   }
   .slider h2 {
-    font-size: 1rem; 
+    font-size: 1rem;
     margin-bottom: 0.5rem;
   }
   .slider h4 {
-    font-size: 1.1rem; 
+    font-size: 1.1rem;
   }
   .slick-prev,
   .slick-next {
     width: 30px;
     height: 30px;
-    left: -15px; 
-    right: -15px; 
+    left: -15px;
+    right: -15px;
   }
   .slick-prev .material-icons,
   .slick-next .material-icons {
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
   }
 
   .slick-next,
   .slick-prev {
-    display: none
+    display: none;
   }
 
   .slick-prev .material-icons,
   .slick-next .material-icons {
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .slider {
-    padding: 1.5rem; 
+    padding: 1.5rem;
   }
   .slider h2 {
     font-size: 1.125rem;
@@ -149,7 +171,6 @@ h4{  font-family: "Bold";
 
   .slick-next,
   .slick-prev {
-    display: none
+    display: none;
   }
-
 }

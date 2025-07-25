@@ -1,17 +1,25 @@
 .info-display {
   background-color: #ffffff;
-  border-radius: 0.5rem; 
-  padding: 1.5rem; 
-  width: 100%; 
-  box-sizing: border-box; 
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  padding-bottom:0.2rem;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 1.5rem;
-  color: #1a202c; 
+  color: #1a202c;
+}
+
+.home-page-titles {
+  color: #04354a;
+  font-family: "Bold";
+  margin-bottom: 0.7rem;
+  margin-top: 0rem;
 }
 
 @media screen and (max-width: 767px) {
   .info-display {
-    padding: 1rem; 
+    padding: 1rem;
     margin-bottom: 1rem;
   }
 }
@@ -19,6 +27,6 @@
 @media screen and (min-width: 768px) {
   .info-display {
     margin-left: auto;
-    margin-right: auto; 
+    margin-right: auto;
   }
 }
