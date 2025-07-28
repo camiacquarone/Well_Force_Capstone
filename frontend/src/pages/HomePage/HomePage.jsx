@@ -3,12 +3,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import "../../App/App.css";
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-} from "@clerk/clerk-react";
 
 import "../HomePage/HomePage.css";
 import Graph from "../../components/Graph/Graph";
@@ -22,15 +16,15 @@ import HabitCard from "../../components/Habit Card/HabitCard";
 const HomePage = ({ user, setUser }) => {
   const [isAIModalOpen, setIsAIModalOpen] = useState(false);
 
-  const [snacks, setSnacks] = useState([]); // All fetched snacks
-  const [filteredSnacks, setFilteredSnacks] = useState([]); // Snacks after filtering
-  const [userAllergies, setUserAllergies] = useState([]); // User's allergies from backend profile
-  const [ignoreAllergiesFilter, setIgnoreAllergiesFilter] = useState(false); // Controls allergy filter
-  const [selectedEnergyLevel, setSelectedEnergyLevel] = useState("All"); // User's selected energy level
-  const [selectedAllergyFilter, setSelectedAllergyFilter] = useState("All"); // User's selected allergy filter (e.g., "None", "Peanuts")
+  const [snacks, setSnacks] = useState([]);
+  const [filteredSnacks, setFilteredSnacks] = useState([]);
+  const [userAllergies, setUserAllergies] = useState([]);
+  const [ignoreAllergiesFilter, setIgnoreAllergiesFilter] = useState(false);
+  const [selectedEnergyLevel, setSelectedEnergyLevel] = useState("All");
+  const [selectedAllergyFilter, setSelectedAllergyFilter] = useState("All");
 
-  const [isSnacksLoading, setIsSnacksLoading] = useState(true); // Loading state for snacks
-  const [snacksError, setSnacksError] = useState(null); // Error state for snacks
+  const [isSnacksLoading, setIsSnacksLoading] = useState(true);
+  const [snacksError, setSnacksError] = useState(null);
 
   useEffect(() => {
     console.log("HomePage.jsx - Received user prop:", user);
@@ -41,15 +35,14 @@ const HomePage = ({ user, setUser }) => {
       setIsSnacksLoading(true);
       setSnacksError(null);
       try {
-        const res = await axios.get("http://localhost:3000/api/snacks");
+        const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL
+        const res = await axios.get(`${baseUrl}/api/snacks`);
         setSnacks(res.data);
-        console.log("📦 All snacks loaded:", res.data);
+        console.log(res.data);
       } catch (err) {
         console.error("Error fetching all snacks:", err);
-        setSnacksError("Failed to load snacks.");
-      } finally {
-        setIsSnacksLoading(false);
       }
+      setIsSnacksLoading(false);
     };
 
     fetchAllSnacks();
@@ -57,7 +50,6 @@ const HomePage = ({ user, setUser }) => {
 
   useEffect(() => {
     if (selectedAllergyFilter === "None") {
-      // Assuming "None" means ignore allergies
       setIgnoreAllergiesFilter(true);
     } else {
       setIgnoreAllergiesFilter(false);
@@ -65,13 +57,11 @@ const HomePage = ({ user, setUser }) => {
   }, [selectedAllergyFilter]);
 
   useEffect(() => {
-    let filtered = [...snacks]; // Start with all snacks
+    let filtered = [...snacks];
 
-    // Allergies filtering
     if (userAllergies.length > 0 && !ignoreAllergiesFilter) {
       const lowerAllergies = userAllergies.map((a) => a.toLowerCase());
       filtered = filtered.filter((snack) => {
-        // Assuming snack.description contains ingredients/allergens
         const snackText = `${snack.name} ${
           snack.description || ""
         }`.toLowerCase();
@@ -80,7 +70,6 @@ const HomePage = ({ user, setUser }) => {
       console.log("Snacks after allergy filter:", filtered.length);
     }
 
-    // Energy level filtering (assuming wellness_category is an array of strings)
     if (
       selectedEnergyLevel &&
       selectedEnergyLevel !== "All" &&
@@ -133,9 +122,6 @@ const HomePage = ({ user, setUser }) => {
         <AICompanionModal onClose={() => setIsAIModalOpen(false)} />
       )}
     </div>
-    //   </header>
-    // </div>
-    // </div>
   );
 };
 

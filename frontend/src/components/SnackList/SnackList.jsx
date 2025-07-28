@@ -13,13 +13,14 @@ export default function SnackList({ energyLevel, allergy }) {
   const { getToken } = useAuth();
   const [ignoreAllergiesFilter, setIgnoreAllergiesFilter] = useState(false); // New state!
 
-
+  
   // 1. Fetch user allergies from backend
   useEffect(() => {
   const fetchUserAllergies = async () => {
     try {
       const token = await getToken();
-      const res = await axios.get("http://localhost:3000/api/users/current_user_snack", {
+      const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL
+      const res = await axios.get(`${baseUrl}/api/users/current_user_snack`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUserAllergies(res.data.allergies || []);
@@ -36,7 +37,8 @@ export default function SnackList({ energyLevel, allergy }) {
   useEffect(() => {
     const fetchSnacks = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/snacks");
+        const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL
+        const res = await axios.get(`${baseUrl}/api/snacks`);
         setSnacks(res.data);
         console.log("📦 Snacks loaded:", res.data);
       } catch (err) {

@@ -278,13 +278,14 @@ async function seed() {
           name: meal.name,
           restaurant_name: meal.restaurant_name,
           price: meal.price,
-          image_url: meal.image_url,
+          image_url: meal.image_url ,
           nutritional_information: {
             create: meal.nutritional_information,
           },
           dietary_preferences: {
             connect: meal.dietary_pref_names.map((name) => ({ name })),
           },
+          is_AI: false,
         },
         include: {
           nutritional_information: true,
@@ -320,7 +321,7 @@ async function seed() {
         name: "100 Calorie SkinnyPop",
         description: "Pre-portioned popcorn bag made with simple ingredients.",
         image_url:
-          "https://images.ctfassets.net/https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSPXlu9HcdMLPm6sS1aWRiTrWSTMSflfrvS48qG-NgrH7U18cBqJzotE05qpBKV7qwqwXVlVokuskHGEAh5TTTeNOqdmMVxunPF4SjnVc4O3kAM3cp3iAf4j_W361WHEM1lcVAElw&usqp=CAc/100calorieskinny/8aa2d72a42edabe2edfbff7f1cf68101/100calorieskinny.png",
+          "https://m.media-amazon.com/images/I/71DARoAdDGL.jpg",
         wellness_category: ["Low-Calorie", "Gluten-Free", "Stressed"],
         nutritional_info: {
           serving_size: 1,
