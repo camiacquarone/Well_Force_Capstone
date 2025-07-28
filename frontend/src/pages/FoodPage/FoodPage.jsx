@@ -11,8 +11,8 @@ function FoodPage() {
   const [energyLevel, setEnergyLevel] = useState("");
   const [allergy, setAllergy] = useState("");
   const [showAllMeals, setShowAllMeals] = useState(false);
+  const [buttonText, setButtonText] = useState(true);
 
-  // const showTitle = energyLevel !== "";
   return (
     <div className="food-page">
       <header className="food-header">
@@ -74,15 +74,15 @@ function FoodPage() {
         <section className="meals-section">
           <h2>Meals For You</h2>
           <div className="meals-grid">
-            {/* Meal Cards Go Here */}
-            {/* <button className="toggle-button" onClick={() => setShowAllMeals(true)}>Show All Meals</button> */}
             <div className="button-wrapper">
               <button
                 type="button"
                 className="toggle-meals-button"
-                onClick={() => setShowAllMeals((prev) => !prev)}
+                onClick={() => {
+                  setShowAllMeals((prev) => !prev), setButtonText(!buttonText);
+                }}
               >
-                See All
+                {buttonText ? "Show All" : "Show Recommended"}
               </button>
             </div>
 
