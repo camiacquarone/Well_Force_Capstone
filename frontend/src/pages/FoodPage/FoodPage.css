@@ -147,6 +147,11 @@ label {
   margin-right: 20px;
 }
 
+.meals-section .button-wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 .meals-section,
 .snacks-section {
   margin-bottom: 40px;
@@ -232,6 +237,10 @@ label {
 .ai-companion-button:hover .chat-message {
   visibility: visible;
   opacity: 1;
+}
+
+.meals-grid button {
+  width: auto;
 }
 
 @media screen and (max-width: 767px) {

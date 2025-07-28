@@ -22,7 +22,7 @@ function App() {
   const [NavBarOpen, setNavBarOpen] = useState(false);
   const [user, setUser] = useState(null);
   const toggleNavBar = () => setNavBarOpen((isOpen) => !isOpen);
-  const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL
+  const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL;
 
   const { userId, isSignedIn, getToken } = useAuth();
   useEffect(() => {
@@ -41,15 +41,12 @@ function App() {
 
       try {
         const token = await getToken();
-        const response = await axios.get(
-          `${baseUrl}/api/users/${userId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const response = await axios.get(`${baseUrl}/api/users/${userId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
 
         setUser(response.data); // Update state with the fetched data
         console.log("User data fetched:", response.data);

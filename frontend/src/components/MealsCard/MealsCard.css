@@ -50,10 +50,15 @@ element.style{
   /* color: white !important; */
 }
 
-.meal-card-ai button {
-  background-color: white;
-  color: #0077a3;
+.meal-card .ai-header {
+  display: none;
 }
+.meal-card-ai button {
+  /* background-color: white; */
+  /* color: #0077a3; */
+  border: 2px solid white;
+}
+
 
 .meal-card-ai span {
   color: white !important;
