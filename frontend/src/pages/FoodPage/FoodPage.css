@@ -11,6 +11,7 @@
 }
 h1 {
   font-size: 3.5rem;
+  white-space: nowrap; 
   margin-bottom: 0;
   font-family: "Bold";
   margin-top: 0;
@@ -18,12 +19,30 @@ h1 {
 }
 .meals-header {
   margin-left: -1.5rem;
+  /* background-color: red; */
 }
 h2 {
   font-size: 1.3rem;
   font-family: "Bold";
   color: #04354a;
   margin-top: 0;
+}
+.food-header {
+  /* background-color: rgb(158, 158, 158); */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* margin-top: 4rem; */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 40px;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 20px;
+  padding-bottom: 0;
 }
 
 .dropdown-group {
@@ -32,12 +51,14 @@ h2 {
   font-family: "Regular";
   display: flex;
   gap: 0rem;
-  position: relative;
-  right: -28.5rem;
+  margin-right: 3rem;
+  position: static;
+  /* right: -28.5rem; */
   display: flex;
   align-items: center;
   top: -1rem;
 }
+
 
 select {
   padding: 8px;
@@ -163,7 +184,7 @@ label {
   bottom: 20px;
   right: 20px;
   background: rgb(255, 228, 78);
-  padding: 10px 15px;
+  /* padding: 10px 15px; */
   border: none;
   border-radius: 1.2rem;
   font-weight: bold;
@@ -173,7 +194,9 @@ label {
   display: flex;
   align-items: center;
   box-shadow: 3px 5px gold;
-  width: 90px;
+  width: 5rem;
+  height: 5rem;
+  padding:10px;
 }
 
 .ai-companion-button:hover {
@@ -243,7 +266,68 @@ label {
   width: auto;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1024px) {
+
+  .food-header {
+    margin-top: 5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: auto;
+    text-align: center !important;
+  }
+
+  h1 {
+    font-size: 2rem !important;
+  }
+
+  .food-controls {
+        margin: 0px;
+        margin-right: 0px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+  }
+
+  .dropdown-group {
+  padding: 8px;
+    /* margin-right: 500px; */
+    font-family: "Regular";
+    /* display: flex; */
+    gap: 0rem;
+    /* position: relative; */
+    /* right: -28.5rem; */
+    display: flex;
+    align-items: center;
+    top: -1rem;
+}
+
+  .food-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0px;
+    padding-top: 40px;
+    margin-right: 20px;
+    padding-bottom: 0;
+  }
+
+  h1 {
+  /* font-size: 3.5rem; */
+  margin-bottom: 0;
+  font-family: "Bold";
+  margin-top: 0;
+  color: #04354a;
+}
+
+  .meals-header {
+    margin-top: 3rem;
+    font-size: 2rem;
+  }
+
   .img-ai {
     margin-right: 0rem;
   }
@@ -266,5 +350,81 @@ label {
 
   .ai-companion-button .ai-button-txt {
     display: none;
+  }
+
+  
+
+  .food-header {
+    /* Make this the container that centers both the header text and the dropdown group */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center horizontally */
+    text-align: center; /* Center text within h1/h2 */
+    width: 100%; /* Take full width */
+    padding: 1rem; /* Adjust padding for mobile */
+    margin: 0; /* Remove fixed margins */
+    justify-content: center; /* Center content vertically */
+    padding-bottom: 0;
+  }
+
+  .meals-header {
+    margin-left: 0; /* Remove fixed margin */
+    margin-top: 0; /* Adjust top margin if needed */
+    font-size: 1.8rem; /* Adjust font size for mobile h1 */
+    /* Ensure h1/h2 are block elements for centering */
+  }
+
+  .meals-header h1 { /* Target h1 inside meals-header if needed */
+    font-size: 1.8rem; /* Adjust font size for mobile */
+  }
+  .meals-header h2 { /* Target h2 inside meals-header if needed */
+    font-size: 1rem; /* Adjust font size for mobile */
+    margin-top: 0.5rem; /* Space below h1 */
+  }
+
+
+  .dropdown-group {
+    position: static; /* Reset positioning */
+    right: auto; /* Remove fixed right */
+    top: auto; /* Remove fixed top */
+    margin: 1rem 0; /* Add vertical margin for spacing, remove horizontal */
+    padding: 0; /* Remove padding if not needed */
+    width: 100%; /* Take full width */
+    display: flex; /* Ensure it's a flex container */
+    flex-direction: column; /* Stack dropdowns vertically */
+    align-items: center; /* Center dropdowns horizontally */
+    gap: 1rem; /* Space between energy and allergy dropdowns */
+  }
+
+  .energy-drop, .allergy-drop {
+    width: 100%; /* Make dropdowns full width */
+    max-width: 250px; /* Limit max width for readability */
+    align-items: center; /* Center content within each dropdown container */
+  }
+
+  .energy-title, .allergy-title {
+    position: static; /* Reset absolute positioning */
+    margin: 0; /* Remove fixed margins */
+    text-align: center; /* Center title text */
+    margin-bottom: 0.5rem; /* Space below title */
+  }
+
+  select {
+    width: 100%; /* Make select full width within its container */
+    max-width: 250px; /* Limit max width */
+    font-size: 1rem; /* Adjust font size */
+  }
+
+  
+
+  /* Adjustments for meals/snacks lists */
+  .meals-list, .snacks-list {
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center; /* Center cards horizontally */
+    gap: 1rem; /* Space between cards */
+  }
+  .meal-card {
+    width: 100%; /* Cards take full width on mobile */
+    max-width: 280px; /* Max width for readability */
   }
 }
