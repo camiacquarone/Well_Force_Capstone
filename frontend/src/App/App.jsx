@@ -22,6 +22,7 @@ function App() {
   const [NavBarOpen, setNavBarOpen] = useState(false);
   const [user, setUser] = useState(null);
   const toggleNavBar = () => setNavBarOpen((isOpen) => !isOpen);
+  const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL
 
   const { userId, isSignedIn, getToken } = useAuth();
   useEffect(() => {
@@ -41,7 +42,7 @@ function App() {
       try {
         const token = await getToken();
         const response = await axios.get(
-          `http://localhost:3000/api/users/${userId}`,
+          `${baseUrl}/api/users/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

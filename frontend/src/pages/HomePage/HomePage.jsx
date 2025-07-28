@@ -40,7 +40,8 @@ const HomePage = ({ user, setUser }) => {
       setIsSnacksLoading(true);
       setSnacksError(null);
       try {
-        const res = await axios.get("http://localhost:3000/api/snacks");
+        const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL
+        const res = await axios.get(`${baseUrl}/api/snacks`);
         setSnacks(res.data);
         console.log("📦 All snacks loaded:", res.data);
       } catch (err) {

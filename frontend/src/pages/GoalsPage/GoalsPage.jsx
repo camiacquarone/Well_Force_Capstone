@@ -37,6 +37,8 @@ function GoalsPage({ user, setUser }) {
     // "Oats",
     // "Strawberries"
   ];
+  const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL 
+  
 
   const increaseCalories = () =>
     setCalories((prev) => Math.min(prev + 50, 5000));
@@ -48,7 +50,6 @@ function GoalsPage({ user, setUser }) {
     newUserPosition.trim() !== "" &&
     newUserImage_url.trim() !== "" &&
     !nameError;
-
   const { getToken } = useAuth();
 
   const handleNameChange = (e) => {
@@ -89,6 +90,7 @@ function GoalsPage({ user, setUser }) {
     );
   }
 
+
   useEffect(() => {
     const checkIfExist = async () => {
       if (!user) {
@@ -117,7 +119,7 @@ function GoalsPage({ user, setUser }) {
 
       if (userExist) {
         const response = await axios.put(
-          "http://localhost:3000/api/users",
+          `${baseUrl}/api/users`,
           {
             image_url: newUserImage_url,
             name: name,
@@ -174,7 +176,7 @@ function GoalsPage({ user, setUser }) {
         console.log("submitting user data: ", userData);
 
         const response = await axios.post(
-          "http://localhost:3000/api/users",
+          `${baseUrl}/api/users`,
           userData,
           {
             headers: {
@@ -187,7 +189,7 @@ function GoalsPage({ user, setUser }) {
         setUser(user);
         console.log(response.data);
       }
-      navigate("/home");
+            navigate("/home");
 
       console.log("user: ", user);
     } catch (error) {
@@ -220,7 +222,7 @@ function GoalsPage({ user, setUser }) {
           className="top-right-button"
           onClick={() => navigate("/home")}
         >
-          Set Up Later ➡
+           Set Up Later ➡
         </button>
       </span>
       <h1>Profile</h1>
@@ -492,8 +494,8 @@ function GoalsPage({ user, setUser }) {
           className="save-button"
           onClick={() => navigate("/home")}
           disabled={!isFormValid}
-        >
-          Save Profile
+        >          
+        Save Profile
         </button>
       </form>
     </div>
