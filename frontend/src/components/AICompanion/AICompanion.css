@@ -3,15 +3,15 @@
   right: 1rem;
   bottom: 1rem;
   background-color: white;
-  width: 30vw;
+  width: 50vw;
   height: 80vh;
   display: flex;
   flex-direction: column;
   border-radius: 0.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   background-color: rgb(255, 229, 82);
-  padding-bottom: 1rem;
-  z-index: 1000;
+  /* padding-bottom: 1rem; */
+  z-index: 90;
 }
 .ai-modal {
   display: flex;
@@ -81,10 +81,10 @@ b {
   padding: 0.5rem;
   border-radius: 0.25rem;
   border: 1px solid #ccc;
-  position: absolute;
+  /* position: absolute; */
   left: 1rem;
   bottom: 0.9rem;
-  width: 23vw;
+  width: 20rem;
   padding: 0.5rem;
   margin-top: auto;
 }
@@ -96,8 +96,8 @@ b {
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
-  position: absolute;
-  left: 25.5vw;
+  /* position: absolute; */
+  left: 35vw;
   bottom: 1rem;
   width: 4rem;
 }
@@ -105,7 +105,7 @@ b {
   position: absolute;
   right: 1rem;
   top: 0.5rem;
-  width: 2vw;
+  width: 2.5rem;
   height: 3vh;
   color:white;
 }
@@ -115,9 +115,9 @@ b {
 }
 
 @media screen and (max-width: 767px) {
-  .ai-chatbot-messages {
+  /* .ai-chatbot-messages {
   /* background-color: blueviolet; */
-  width: 50rem;
+  /* width: 50rem;
   flex: 1;
   overflow-y: auto;
   display: flex;
@@ -127,21 +127,19 @@ b {
   padding: 1rem;
   gap: 1rem;
   margin-top: 3rem;
-}
+}  */
 
 .ai-chatbot-input-row {
   display: flex;
   padding: 1rem;
   gap: 0.5rem;
+  /* height: 50px; */
+  width: auto;
 }
 
-.close-ai-modal-btn {
-  width: 40px;
-  height: 40px;
-  margin-top: 1rem;
-}
 
-.ai-chatbot-input {
+
+/* .ai-chatbot-input {
   flex: 1;
   padding: 0.5rem;
   border-radius: 0.25rem;
@@ -153,22 +151,23 @@ b {
   padding: 0.5rem;
   margin-top: auto;
 }
-
+ */
 .ai-chatbot-send-btn {
-  padding: 0.5rem 1rem;
+  /* padding: 0.5rem 1rem; */
   background-color: #0077a3;
   color: white;
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
-  position: absolute;
-  left: 87vw;
+  /* position: absolute; */
+  /* left: 87vw; */
   bottom: 1.1rem;
+  height: auto;
   width:4rem;
-}
+} 
 
 .ai-modal-overlay {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
 }
 }
