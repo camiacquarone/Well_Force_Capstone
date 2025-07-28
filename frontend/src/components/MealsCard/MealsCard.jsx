@@ -2,22 +2,29 @@ import React, { useState } from "react";
 import MealModal from "/src/components/MealModal/MealModal.jsx";
 import { Link } from "react-router-dom";
 import "../MealsCard/MealsCard.css";
-// src/components/MealCard.jsx
-export default function MealCard({ meal }) {
+
+export default function MealCard({ meal, type }) {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
-      <div className="meal-card">
+      <div className={`meal-card meal-card-${type}`}>
+        <div className="ai-header">
+          <img src="../../public/bee.png" />
+          <h4>WellForce AI Pick</h4>
+        </div>
+
         <h3 className="meal-name">{meal.name}</h3>
         <img
           src={meal.image_url}
           alt={meal.name}
           className="img-meal"
+          onError={
+            "https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example"
+          }
           width={"250px"}
           height={"200px"}
           onClick={() => setShowModal(true)}
         />
-
         <p>
           <span className="label">Restaurant:</span>{" "}
           <span className="restaurant-name">{meal.restaurant_name}</span>
@@ -37,11 +44,13 @@ export default function MealCard({ meal }) {
 
         <p>
           <span className="label">Protein:</span>{" "}
-          <span>{Array.isArray(meal.nutritional_information) &&
-          meal.nutritional_information.length > 0
-            ? meal.nutritional_information[0].protein
-            : "N/A"}
-          g </span>
+          <span>
+            {Array.isArray(meal.nutritional_information) &&
+            meal.nutritional_information.length > 0
+              ? meal.nutritional_information[0].protein
+              : "N/A"}
+            g{" "}
+          </span>
         </p>
 
         <Link

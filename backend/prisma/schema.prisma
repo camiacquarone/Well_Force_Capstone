@@ -72,6 +72,7 @@ model Meals {
   nutritional_information Nutritional_Information[]
   dietary_preferences     Dietary_Preferences[]
   restaurant_name         String
+  is_AI                   Boolean?
   Recommendation          Recommendation[]
 }
 

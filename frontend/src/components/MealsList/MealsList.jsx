@@ -4,7 +4,7 @@ import axios from "axios";
 import MealCard from "../../components/MealsCard/MealsCard";
 import "./MealsList.css";
 
-export default function MealsList({showAll}) {
+export default function MealsList({ showAll }) {
   const { user } = useUser();
   const { getToken } = useAuth();
   //const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL
@@ -55,8 +55,24 @@ export default function MealsList({showAll}) {
 
         console.log("Fetched meals:", res.data);
 
-        const data = showAll ? res.data : res.data.meals;
-      setMeals(data);
+        let data = showAll ? res.data : res.data.meals;
+        // setMeals(data);
+
+        if (url === "http://localhost:3000/api/mealchat/personalized") {
+          data = data.map((meal) => ({
+            ...meal,
+            is_AI: true, // Add the flag
+          }));
+          console.log("Meals after adding AI flag:", data); // Log after modification
+        } else {
+          data = data.map((meal) => ({
+            ...meal,
+            is_AI: meal.is_AI || false,
+          }));
+          console.log("Meals after adding AI flag (regular):", data);
+        }
+
+        setMeals(data);
       } catch (err) {
         console.error("Failed to load meals:", err);
       }
@@ -76,21 +92,20 @@ export default function MealsList({showAll}) {
         </p>
       </div>
     );
-    // return <ReactLoading height={667} width={375} />;
-    // return <p>No meals available right now.</p>;
   }
 
   return (
     <div className="meals-container">
       <div className="meals-scroll-wrapper">
+        <div className="meals-list">
+          {meals.map((meal) => {
+            console.log(meal.is_AI);
+            const cardType = meal.is_AI ? "ai" : "regular";
 
-      <div className="meals-list">
-        {meals.map((meal) => (
-          <MealCard key={meal.id} meal={meal} />
-        ))}
+            return <MealCard type={cardType} key={meal.id} meal={meal} />;
+          })}
+        </div>
       </div>
     </div>
-    </div>
-
   );
 }

@@ -12,6 +12,12 @@
   content: none !important; 
 }
 
+.snack-info  img{
+  min-height: 15rem;
+  width: auto;
+  max-height: 15rem;
+}
+
 
 .slick-prev .material-icons,
 .slick-next .material-icons {

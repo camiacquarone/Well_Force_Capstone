@@ -27,15 +27,6 @@ function GoalsPage({ user, setUser }) {
     "Fish",
     "Shellfish",
     "Sesame",
-    // "Mustard",
-    // "Celery",
-    // "Lupin",
-    // "Sulfites",
-    // "Corn",
-    // "Meat (Red/White)",
-    // "Rice",
-    // "Oats",
-    // "Strawberries"
   ];
   const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL 
   
@@ -364,7 +355,7 @@ function GoalsPage({ user, setUser }) {
               }`}
               onClick={() => toggleFoodGoal("Protein")}
             >
-              I Want to Eat More Protein
+              I want to eat more protein
             </button>
             <button
               type="button"
@@ -373,7 +364,27 @@ function GoalsPage({ user, setUser }) {
               }`}
               onClick={() => toggleFoodGoal("Vegetables")}
             >
-              I Want to Eat More Vegetables
+              I want to eat more vegetables
+            </button>
+
+            <button
+              type="button"
+              className={`Weight Loss ${
+                newFoodGoal.includes("Weight Loss") ? "selected" : ""
+              }`}
+              onClick={() => toggleFoodGoal("Weight Loss")}
+            >
+              I want to lose weight
+            </button>
+
+            <button
+              type="button"
+              className={`Muscle Gain ${
+                newFoodGoal.includes("Muscle Gain") ? "selected" : ""
+              }`}
+              onClick={() => toggleFoodGoal("Muscle Gain")}
+            >
+              I want to gain more muscle
             </button>
           </div>
         </div>
@@ -419,6 +430,10 @@ function GoalsPage({ user, setUser }) {
 
         <div className="goals_but_input">
           <label htmlFor="newUserAllergies">Do you have any allergies?</label>
+          <p className="disclaimer">
+            *Our AI provides personalized meal recommendations. Please note that
+            some suggestions may not be accurate.
+          </p>
           <div className="food-allergy-select">
             {commonAllergies.map((allergy) => {
               return (

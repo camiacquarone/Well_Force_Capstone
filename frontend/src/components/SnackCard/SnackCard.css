@@ -9,6 +9,11 @@
 }
 
 .snack-card-title {
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  display:flex;
   font-family: "Bold";
   color: #04354a;
   font-size: 1rem;

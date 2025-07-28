@@ -23,7 +23,10 @@
 
 .modal-img{
   width: 80%;
+}
 
+.modal-content p {
+  text-align: left;
 }
 
 .close-btn {
