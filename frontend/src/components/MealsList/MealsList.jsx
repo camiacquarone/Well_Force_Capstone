@@ -50,23 +50,18 @@ export default function MealsList({ showAll }) {
           },
         });
 
-        console.log("Fetched meals:", res.data);
-
         let data = showAll ? res.data : res.data.meals;
-        // setMeals(data);
 
         if (url === "http://localhost:3000/api/mealchat/personalized") {
-          data = data.map((meal) => ({
-            ...meal,
-            is_AI: true, // Add the flag
-          }));
+          let recMeal = data[0];
+
+          recMeal.is_AI = true;
           console.log("Meals after adding AI flag:", data); // Log after modification
         } else {
           data = data.map((meal) => ({
             ...meal,
             is_AI: meal.is_AI || false,
           }));
-          console.log("Meals after adding AI flag (regular):", data);
         }
 
         setMeals(data);
@@ -99,6 +94,14 @@ export default function MealsList({ showAll }) {
             console.log(meal.is_AI);
             const cardType = meal.is_AI ? "ai" : "regular";
 
+            console.log(
+              "DEBUG: meal.is_AI:",
+              meal.is_AI,
+              "Calculated cardType:",
+              cardType,
+              "Meal Name:",
+              meal.name
+            );
             return <MealCard type={cardType} key={meal.id} meal={meal} />;
           })}
         </div>

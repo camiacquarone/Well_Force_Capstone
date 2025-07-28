@@ -5,6 +5,7 @@ import "../MealsCard/MealsCard.css";
 
 export default function MealCard({ meal, type }) {
   const [showModal, setShowModal] = useState(false);
+
   return (
     <>
       <div className={`meal-card meal-card-${type}`}>
