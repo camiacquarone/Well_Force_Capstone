@@ -223,7 +223,12 @@ label {
   font-size: 1.1rem;
   margin: 0;
 }
-
+.toggle-meals-button {
+  height: 2rem;
+  width:5rem;
+  color: white;
+  font-weight: 800;
+}
 .ai-companion-button:hover .chat-message {
   visibility: visible;
   opacity: 1;
