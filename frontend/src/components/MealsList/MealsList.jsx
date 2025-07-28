@@ -7,7 +7,7 @@ import "./MealsList.css";
 export default function MealsList({showAll}) {
   const { user } = useUser();
   const { getToken } = useAuth();
-
+  //const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL
   const [meals, setMeals] = useState([]);
   const [internalUserId, setInternalUserId] = useState(() =>
     localStorage.getItem("userId")
@@ -17,8 +17,9 @@ export default function MealsList({showAll}) {
     const getInternalUserId = async () => {
       if (user && !internalUserId) {
         try {
+          const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL
           const token = await getToken();
-          const res = await axios.get("http://localhost:3000/api/users/me", {
+          const res = await axios.get(`${baseUrl}/api/users/me`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -39,10 +40,12 @@ export default function MealsList({showAll}) {
     const fetchMeals = async () => {
       try {
         const token = await getToken();
-
+        const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL
+        console.log(baseUrl, "/api/meals")
         const url = showAll
-          ? "http://localhost:3000/api/meals"
-          : "http://localhost:3000/api/mealchat/personalized";
+          ? `${baseUrl}/api/meals`
+          
+          : `${baseUrl}/api/mealchat/personalized`;//${baseUrl}
 
         const res = await axios.get(url, {
           headers: {
