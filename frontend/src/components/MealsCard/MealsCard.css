@@ -44,3 +44,49 @@
 element.style{
   height:200px;
 }
+
+.meal-card-ai {
+  background-color: #0077a3 !important;
+  /* color: white !important; */
+}
+
+.meal-card-ai button {
+  background-color: white;
+  color: #0077a3;
+}
+
+.meal-card-ai span {
+  color: white !important;
+}
+
+.meal-card-ai .ai-header img {
+  width: 10%;
+  height: 10%;
+  margin-right: 1rem;
+}
+
+.meal-card-ai h4 {
+    color: white;
+    font-weight: 100;
+    font-family: 'Regular';
+}
+
+.meal-card-ai h3 {
+  margin-top: 1px;
+}
+
+.meal-card-ai h4 {
+  color: white;
+  font-weight: 100;
+  font-family: 'regular';
+}
+
+.meal-card-ai .ai-header {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+

@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import MealModal from "/src/components/MealModal/MealModal.jsx";
 import { Link } from "react-router-dom";
 import "../MealsCard/MealsCard.css";
-// src/components/MealCard.jsx
-export default function MealCard({ meal }) {
+
+export default function MealCard({ meal, type }) {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
-      <div className="meal-card">
+      <div className={`meal-card meal-card-${type}`}>
+        <div className="ai-header">
+          <img src="../../public/bee.png" />
+          <h4>WellForce AI Pick</h4>
+        </div>
+
         <h3 className="meal-name">{meal.name}</h3>
         <img
           src={meal.image_url}

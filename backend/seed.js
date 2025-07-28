@@ -285,6 +285,7 @@ async function seed() {
           dietary_preferences: {
             connect: meal.dietary_pref_names.map((name) => ({ name })),
           },
+          is_AI: false,
         },
         include: {
           nutritional_information: true,
