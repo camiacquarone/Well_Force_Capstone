@@ -36,7 +36,8 @@ exports.getUserById = async (req, res) => {
     try {
         const authClerkId = req.auth.userId;
         const userIdParams = req.params.clerkId;
-
+        console.log("Controller: getUserById - authClerkId:", authClerkId);
+        console.log("Controller: getUserById - userIdParams:", userIdParams);
         const user = await prisma.user.findUnique({where: {clerkId: userIdParams},  include: {
         dietary_pref: true,
         goals: true,

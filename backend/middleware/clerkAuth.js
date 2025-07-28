@@ -13,6 +13,8 @@ const requireAuth = ClerkExpressRequireAuth({
 // Middleware 2: Fetches the full Clerk user object and attaches it to the request.
 // This is useful if you need user's email, name, image_url etc. in your controller.
 const populateClerkUser = async (req, res, next) => {
+  console.log("Middleware: populateClerkUser - req.auth:", req.auth);
+  console.log("Middleware: populateClerkUser - req.auth.userId:", req.auth?.userId);
   // ClerkExpressRequireAuth (or ClerkExpressWithAuth) has already run and populated req.auth
   if (req.auth && req.auth.userId) {
     try {
