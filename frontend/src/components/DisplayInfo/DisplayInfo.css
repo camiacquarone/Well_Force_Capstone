@@ -2,12 +2,13 @@
   background-color: #ffffff;
   border-radius: 0.5rem;
   padding: 1.5rem;
-  padding-bottom:0.2rem;
+  padding-bottom: 0.2rem;
   width: 100%;
   box-sizing: border-box;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 1.5rem;
   color: #1a202c;
+  border: solid #a1deff 4px;
 }
 
 .home-page-titles {

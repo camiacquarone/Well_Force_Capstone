@@ -12,11 +12,11 @@ import {
 import "./Graph.css";
 
 const mockCalorieTrackerData = [
-  { name: "Mon", calories: 1000 },
-  { name: "Tue", calories: 2000 },
-  { name: "Wed", calories: 1250 },
-  { name: "Thu", calories: 0 },
-  { name: "Fri", calories: 0 },
+  { name: "Mon", Calories: 1000 },
+  { name: "Tue", Calories: 0 },
+  { name: "Wed", Calories: 1250 },
+  { name: "Thu", Calories: 0 },
+  { name: "Fri", Calories: 1000 },
 ];
 
 const Graph = () => {
@@ -39,7 +39,7 @@ const Graph = () => {
               axisLine={false}
               tickLine={false}
               label={{
-                value: "calories",
+                value: "Calories",
                 angle: -90,
                 position: "insideLeft",
                 dy: 20,
@@ -50,7 +50,7 @@ const Graph = () => {
               }}
             />
             <Tooltip cursor={{ fill: "transparent" }} />
-            <Bar dataKey="calories" fill="#0a7aaa" radius={[0, 0, 0, 0]} />{" "}
+            <Bar dataKey="Calories" fill="#0a7aaa" radius={[0, 0, 0, 0]} />{" "}
             {/* Teal color */}
           </BarChart>
         </ResponsiveContainer>

@@ -142,7 +142,7 @@ body.nav-closed {
 
 h1.welcome-user {
   transition: all 0.5s ease;
-  margin-left: 4rem; 
+  margin-left: 2rem; 
 }
 
 
@@ -160,9 +160,9 @@ body.nav-open .GoalsPage {
   margin-left: 265px;
 }
 
-body.nav-closed .GoalsPage {
+/* body.nav-closed .GoalsPage {
   margin-left: 200px;
-}
+} */
 
 /* phone screen */
 @media screen and (max-width: 767px) {

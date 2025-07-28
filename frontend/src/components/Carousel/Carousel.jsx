@@ -42,8 +42,8 @@ const sliderSettings = {
   speed: 3000,
   autoplaySpeed: 6000,
   cssEase: "linear",
-  // nextArrow: <SampleNextArrow />,
-  // prevArrow: <SamplePrevArrow />,
+  nextArrow: <SampleNextArrow />,
+  prevArrow: <SamplePrevArrow />,
 
   responsive: [
     { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } },

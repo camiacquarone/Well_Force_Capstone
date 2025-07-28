@@ -27,11 +27,11 @@ p {
   padding: 1.5rem;
   border-radius: 8px;
   box-sizing: border-box;
+  /* padding-right: 0; */
 }
 
 .graph-container {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 50%;
   background-color: #ffffff;
   padding: 1.5rem;
   border-radius: 8px;
@@ -41,19 +41,26 @@ p {
   align-items: center;
   justify-content: center;
   margin-top: 1.45rem;
+    border: solid #a1deff 4px;
+}
+
+.right-container{
+  display: flex;
+  flex-direction: column;
+  width:45rem;
+  margin-top:1.55rem;
 }
 
 .container-temp {
-  padding: 2rem;
-  width: 90%;
+  padding-top: 2rem;
   border-radius: 8px;
-
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-around;
-  gap: 2rem;
   box-sizing: border-box;
+  padding-left:-1rem;
+  margin-left: -2rem;
 }
 
 /* phone */

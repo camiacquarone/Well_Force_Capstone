@@ -27,6 +27,7 @@
 .slider {
   position: relative;
   padding: 20px;
+  border: solid #a1deff 4px;
 }
 
 h2 {
@@ -116,7 +117,7 @@ h4 {
   border-radius: 0.3rem;
   background-color: #caecfe;
   border: solid #a1deff;
-  padding:0.3rem;
+  padding: 0.3rem;
 }
 
 .snack-info img {

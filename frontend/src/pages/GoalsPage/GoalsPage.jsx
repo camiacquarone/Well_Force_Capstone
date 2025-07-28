@@ -27,15 +27,6 @@ function GoalsPage({ user, setUser }) {
     "Fish",
     "Shellfish",
     "Sesame",
-    // "Mustard",
-    // "Celery",
-    // "Lupin",
-    // "Sulfites",
-    // "Corn",
-    // "Meat (Red/White)",
-    // "Rice",
-    // "Oats",
-    // "Strawberries"
   ];
 
   const increaseCalories = () =>
@@ -83,11 +74,11 @@ function GoalsPage({ user, setUser }) {
     );
   }
 
-  function toggleDay(day) {
+  const toggleDay = (day) => {
     setNewFoodDay((prev) =>
       prev.includes(day) ? prev.filter((d) => d !== day) : [...prev, day]
     );
-  }
+  };
 
   useEffect(() => {
     const checkIfExist = async () => {
@@ -490,7 +481,13 @@ function GoalsPage({ user, setUser }) {
         <button
           type="submit"
           className="save-button"
-          onClick={() => navigate("/home")}
+          onClick={() => {
+            localStorage.setItem(
+              "selectedFoodDays",
+              JSON.stringify(newFoodDay)
+            ); 
+            navigate("/home");
+          }}
           disabled={!isFormValid}
         >
           Save Profile

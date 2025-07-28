@@ -17,6 +17,7 @@ import Info from "../../components/DisplayInfo/DisplayInfo";
 import NavBar from "../../components/NavBar/NavBar";
 
 import "../HomePage/HomePage.css";
+import HabitCard from "../../components/Habit Card/HabitCard";
 
 const HomePage = ({ user, setUser }) => {
   const [isAIModalOpen, setIsAIModalOpen] = useState(false);
@@ -107,9 +108,13 @@ const HomePage = ({ user, setUser }) => {
           <Info user={user} />
           <Carousel snacks={filteredSnacks} />
         </div>
+        <span className="right-container">
+        <HabitCard/>
         <div className="graph-container">
           <Graph />
         </div>
+
+        </span>
       </div>
       <button
         type="button"

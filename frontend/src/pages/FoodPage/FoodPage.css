@@ -1,3 +1,11 @@
+html, .food-page{
+  background: linear-gradient(180deg, #ffffff, #abe3ff);
+  padding-left:1rem;
+}
+
+
+
+
 .food-header {
   display: flex;
   align-items: center;
@@ -183,6 +191,7 @@ label {
   flex-direction: column;
   padding-left: 60px;
   gap: 20px;
+
 }
 
 .food-page-header {
