@@ -6,12 +6,14 @@ import { Link } from "react-router-dom";
 import "./FoodPage.css";
 // import Select from 'react-select'
 
-function FoodPage() {
+function FoodPage({ user, setUser }) {
   const [isAIModalOpen, setIsAIModalOpen] = useState(false);
   const [energyLevel, setEnergyLevel] = useState("");
   const [allergy, setAllergy] = useState("");
   const [showAllMeals, setShowAllMeals] = useState(false);
   const [buttonText, setButtonText] = useState(true);
+  console.log("user in FoodPage:", user);
+
 
   return (
     <div className="food-page">
@@ -106,7 +108,10 @@ function FoodPage() {
           <span className="chat-message"> Chat With Me!</span>
         </button>
         {isAIModalOpen && (
-          <AICompanionModal onClose={() => setIsAIModalOpen(false)} />
+          <AICompanionModal
+            onClose={() => setIsAIModalOpen(false)}
+            user={user}
+          />
         )}
       </main>
     </div>

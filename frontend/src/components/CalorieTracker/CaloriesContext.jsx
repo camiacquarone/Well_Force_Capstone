@@ -29,6 +29,11 @@ export const CaloriesProvider = ({ children }) => {
     fetchDailyCalories();
   }, [user]);
 
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("loggedSnackDays")) || {};
+    setSnackLoggedByDay(stored);
+  }, []);
+
   const refreshCalories = async () => {
     if (!user) return;
     try {
@@ -55,7 +60,11 @@ export const CaloriesProvider = ({ children }) => {
 
   const logSnackForDay = (date) => {
     const key = date.toISOString().split("T")[0];
-    setSnackLoggedByDay((prev) => ({ ...prev, [key]: true }));
+    setSnackLoggedByDay((prev) => {
+      const updated = { ...prev, [key]: true };
+      localStorage.setItem("loggedSnackDays", JSON.stringify(updated));
+      return updated;
+    });
   };
 
   return (
