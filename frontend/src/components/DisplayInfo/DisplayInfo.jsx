@@ -18,7 +18,7 @@ const DisplayInfo = ({ user, setuser }) => {
 
   return (
     <div className="info-display">
-      <h3>ALLERGIES</h3>
+      <h3 className="home-page-titles">ALLERGIES</h3>
       {user.allergies && user.allergies.length > 0 ? (
         user.allergies.map((allergy, index) => (
           <Chip key={index} label={allergy} type="info" />
@@ -26,7 +26,7 @@ const DisplayInfo = ({ user, setuser }) => {
       ) : (
         <Chip label={"none"} type="default" />
       )}
-      <h3>DIETARY PREFERENCES</h3>
+      <h3 className="home-page-titles">DIETARY PREFERENCES</h3>
       {user.dietary_pref && user.dietary_pref.length > 0 ? (
         user.dietary_pref.map((pref) => (
           <Chip key={pref.id || pref.name} label={pref.name} type="info" />

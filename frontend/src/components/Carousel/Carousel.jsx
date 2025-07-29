@@ -4,9 +4,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Carousel.css";
 import Chip from "../../components/Chip/Chip";
+import "../DisplayInfo/DisplayInfo.css";
+
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
+
   return (
     <div
       className={`${className} custom-slick-arrow next-arrow`}
@@ -33,9 +36,12 @@ function SamplePrevArrow(props) {
 const sliderSettings = {
   dots: true,
   infinite: true,
-  speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
+  autoplay: true,
+  speed: 3000,
+  autoplaySpeed: 6000,
+  cssEase: "linear",
   nextArrow: <SampleNextArrow />,
   prevArrow: <SamplePrevArrow />,
 
@@ -48,7 +54,7 @@ const sliderSettings = {
 const Carousel = ({ snacks }) => {
   return (
     <div className="slider">
-      <h2>RECOMMENDED SNACKS</h2>
+      <h3 className="home-page-titles">RECOMMENDED SNACKS</h3>
 
       {snacks && snacks.length > 0 ? (
         <Slider {...sliderSettings}>

@@ -16,6 +16,10 @@
   padding: 20px;
   border-radius: 12px;
   max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   position: relative;
 }
@@ -28,4 +32,23 @@
   border: none;
   font-size: 18px;
   cursor: pointer;
+}
+
+/* span{
+  font-family: "Bold";
+} */
+
+p{
+  margin:0.8rem;
+  margin-bottom: 0;
+}
+
+.description-modal{
+  background-color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:15rem;
+  border-radius: 0.3rem;
+  padding:0.5rem; 
 }

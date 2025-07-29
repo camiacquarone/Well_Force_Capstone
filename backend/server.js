@@ -6,8 +6,8 @@ dotenv.config();
 const chatRoutes = require("./routes/chat.js");
 const userRoutes = require("./routes/user-routes.js");
 const mealRoutes = require("./routes/meal-routes.js");
-const snackRoutes = require("./routes/snack-routes.js")
-const mealchatRoutes = require("./routes/chat-routes.js")
+const snackRoutes = require("./routes/snack-routes.js");
+const mealchatRoutes = require("./routes/chat-routes.js");
 
 dotenv.config();
 const app = express();

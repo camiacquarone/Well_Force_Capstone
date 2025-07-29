@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from "react";
 import { useAuth } from "@clerk/clerk-react";
-
 import axios from "axios";
 import SnackCard from "../../components/SnackCard/SnackCard";
 import "./SnackList.css";

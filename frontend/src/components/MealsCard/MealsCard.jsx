@@ -11,7 +11,7 @@ export default function MealCard({ meal, type }) {
       <div className={`meal-card meal-card-${type}`}>
         <div className="ai-header">
           <img src="../../public/bee.png" />
-          <h4>WellForce AI Pick</h4>
+          <h5 className="ai-pick-title">WellForce AI Pick</h5>
         </div>
 
         <h3 className="meal-name">{meal.name}</h3>
@@ -19,9 +19,7 @@ export default function MealCard({ meal, type }) {
           src={meal.image_url}
           alt={meal.name}
           className="img-meal"
-          onError={
-            "https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example"
-          }
+          onError="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example"
           width={"250px"}
           height={"200px"}
           onClick={() => setShowModal(true)}
@@ -37,8 +35,9 @@ export default function MealCard({ meal, type }) {
         </p>
 
         <p>
-          <span className="label">Calories: </span>
+          <span className="label">Calories: </span>{" "}
           <span className="calories">
+            {" "}
             {meal.nutritional_information?.[0]?.calories ?? "N/A"} kcal{" "}
           </span>
         </p>

@@ -11,6 +11,7 @@ import Info from "../../components/DisplayInfo/DisplayInfo";
 import NavBar from "../../components/NavBar/NavBar";
 
 import "../HomePage/HomePage.css";
+import HabitCard from "../../components/Habit Card/HabitCard";
 
 const HomePage = ({ user, setUser }) => {
   const [isAIModalOpen, setIsAIModalOpen] = useState(false);
@@ -21,6 +22,7 @@ const HomePage = ({ user, setUser }) => {
   const [ignoreAllergiesFilter, setIgnoreAllergiesFilter] = useState(false);
   const [selectedEnergyLevel, setSelectedEnergyLevel] = useState("All");
   const [selectedAllergyFilter, setSelectedAllergyFilter] = useState("All");
+  const [dailyCalories, setDailyCalories] = useState({});
 
   const [isSnacksLoading, setIsSnacksLoading] = useState(true);
   const [snacksError, setSnacksError] = useState(null);
@@ -34,7 +36,7 @@ const HomePage = ({ user, setUser }) => {
       setIsSnacksLoading(true);
       setSnacksError(null);
       try {
-        const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL
+        const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL;
         const res = await axios.get(`${baseUrl}/api/snacks`);
         setSnacks(res.data);
         console.log(res.data);
@@ -46,6 +48,24 @@ const HomePage = ({ user, setUser }) => {
 
     fetchAllSnacks();
   }, []);
+  useEffect(() => {
+const fetchCaloriesPerDay = async () => {
+  if (!user?.clerkId) return;
+  try {
+    const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL;
+    const res = await axios.get(`${baseUrl}/api/snacks/log/daily`, {
+      params: { userId: user.clerkId },
+    });
+    console.log("📊 Calories per day:", res.data);
+    setDailyCalories(res.data);
+  } catch (err) {
+    console.error("Failed to fetch daily calories:", err);
+  }
+};
+
+
+    fetchCaloriesPerDay();
+  }, [user]);
 
   useEffect(() => {
     if (selectedAllergyFilter === "None") {
@@ -96,9 +116,12 @@ const HomePage = ({ user, setUser }) => {
           <Info user={user} />
           <Carousel snacks={filteredSnacks} />
         </div>
-        <div className="graph-container">
-          <Graph />
-        </div>
+        <span className="right-container">
+          <HabitCard />
+          <div className="graph-container">
+            <Graph />
+          </div>
+        </span>
       </div>
       <button
         type="button"

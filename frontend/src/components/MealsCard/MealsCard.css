@@ -27,12 +27,12 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  display:flex;
+  display: flex;
   font-family: "Bold";
   color: #04354a;
   font-size: 1.1rem;
   background-color: aliceblue;
-  padding:0.5rem;
+  padding: 0.5rem;
   border-radius: 0.5rem;
 }
 
@@ -41,8 +41,8 @@
   font-family: "Bold";
 }
 
-element.style{
-  height:200px;
+element.style {
+  height: 200px;
 }
 
 .meal-card-ai {
@@ -71,9 +71,9 @@ element.style{
 }
 
 .meal-card-ai h4 {
-    color: white;
-    font-weight: 100;
-    font-family: 'Regular';
+  color: white;
+  font-weight: 100;
+  font-family: "Regular";
 }
 
 .meal-card-ai h3 {
@@ -83,7 +83,14 @@ element.style{
 .meal-card-ai h4 {
   color: white;
   font-weight: 100;
-  font-family: 'regular';
+  font-family: "regular";
+}
+
+.ai-pick-title {
+  color: white;
+  font-weight: 100;
+  font-family: "regular";
+  font-size: 1.25rem;
 }
 
 .meal-card-ai .ai-header {
@@ -92,6 +99,3 @@ element.style{
   flex-direction: row;
   align-items: center;
 }
-
-
-

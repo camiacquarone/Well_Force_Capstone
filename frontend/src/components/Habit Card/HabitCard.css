@@ -1,0 +1,93 @@
+.habit-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 670px;
+  font-family: sans-serif;
+  border: solid #a1deff 4px;
+}
+
+.habit-title {
+  font-size: 1.3rem;
+  font-family: "Bold";
+  color: #04354a;
+  top: 0;
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+}
+
+.habit-icon {
+  font-size: 24px;
+}
+
+.food-day {
+  border: 10px solid #ffa500;
+  box-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
+}
+
+.habit-week {
+  display: flex;
+  justify-content: space-between;
+}
+
+.day {
+  text-align: center;
+  font-size: 12px;
+  /* width:10rem; */
+}
+
+.day-label {
+  font-family: "Regular";
+  font-size: 1rem;
+}
+
+.circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  line-height: 24px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 5px;
+  border: 15px solid #e2e2e2;
+}
+
+.food-day {
+  border: 15px solid #caecfe;
+  box-shadow: 0 0 10px #98bacc;
+}
+
+.checked {
+  /* background-color: #3c4858; */
+  color: rgb(114, 255, 123);
+  width: 5rem;
+  height: 5rem;
+  background-color: rgb(23, 220, 89);
+}
+
+.unchecked {
+  background-color: #989898;
+  color: #3c4858;
+  width: 5rem;
+  height: 5rem;
+}
+
+.circle.unchecked.food-day {
+  background-color: #ff7a7a;
+  width: 5rem;
+  height: 5rem;
+}
+.circle-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-image {
+  width: 80px;
+  height: 70px;
+  margin-top: -15px;
+  object-fit: cover;
+}

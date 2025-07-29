@@ -1,20 +1,24 @@
 .body,
-html {
+html,
+.GoalsPage {
   background: linear-gradient(180deg, #ffffff, #abe3ff);
-  padding-bottom: 30rem;
+  /* padding-bottom: 30rem; */
 }
 
 .GoalsPage {
   position: absolute;
   height: 100%;
-  width: calc(100%-50px);
-  left: 50px;
+  /* width: 50rem; */
+  /* width: calc(100%-50px); */
+  left: 1px;
   transition: all 0.5s ease;
   margin-top: 1.3rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding-bottom: 10rem;
+  padding-bottom: 30rem;
+  padding-right: 12rem;
+  padding-left: 15rem;
 }
 
 .GoalsPage h1 {
@@ -319,14 +323,16 @@ button:hover {
     padding: 20px;
     position: absolute;
     width: calc(100%-150px);
-    left: 1px !important;
     right: 100px;
     width: 80%;
+    padding-bottom: 40rem;
+    padding-right: 10rem;
+    padding-left: 10rem;
   }
-
+  /* 
   .nav-closed .GoalsPage {
     margin-left: 5.5rem !important;
-  }
+  } */
 }
 
 @media screen and (min-width: 300px) and (max-width: 767px) {
@@ -336,9 +342,11 @@ button:hover {
     margin-top: 3rem;
     padding: 20px;
     position: absolute;
-    left: 1rem !important;
     right: 100px;
     width: 80%;
+    padding-bottom: 39rem;
+    padding-right: 10rem;
+    padding-left: 10rem;
   }
   .navbar {
     z-index: 3;
@@ -348,10 +356,10 @@ button:hover {
     z-index: 2;
     margin-top: 3rem;
   }
-
+  /* 
   body.nav-closed .GoalsPage {
     margin-left: 2rem;
-  }
+  } */
 }
 
 .disclaimer {

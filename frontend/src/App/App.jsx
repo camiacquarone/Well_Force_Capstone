@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
+import { CaloriesProvider } from "../components/CalorieTracker/CaloriesContext.jsx";
 
 import { SignedIn, SignedOut, useAuth } from "@clerk/clerk-react";
 
@@ -67,65 +68,66 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Routes>
-          {/* Public Routes */}
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/sign-up/*" element={<SignUpPage />} />
+        <CaloriesProvider>
+          <Routes>
+            {/* Public Routes */}
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/sign-up/*" element={<SignUpPage />} />
+            <Route path="/sign-in/*" element={<SignInPage />} />
 
-          <Route path="/sign-in/*" element={<SignInPage />} />
+            <Route
+              path="/chat"
+              element={
+                <ProtectedRoute>
+                  <AICompanion />
+                </ProtectedRoute>
+              }
+            />
 
-          <Route
-            path="/chat"
-            element={
-              <ProtectedRoute>
-                <AICompanion />
-              </ProtectedRoute>
-            }
-          />
+            <Route
+              path="/home"
+              element={
+                <ProtectedRoute>
+                  <>
+                    <HomePage user={user} setUser={setUser} /> <NavBar />
+                  </>
+                </ProtectedRoute>
+              }
+            />
 
-          <Route
-            path="/home"
-            element={
-              <ProtectedRoute>
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <>
+                    <GoalsPage user={user} setUser={setUser} /> <NavBar />
+                  </>
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/meals"
+              element={
+                <ProtectedRoute>
+                  <>
+                    <FoodPage /> <NavBar />
+                  </>
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="*"
+              element={
                 <>
-                  <HomePage user={user} setUser={setUser} /> <NavBar />
+                  <h2>404: Not Found</h2>
+                  <p>The page you're looking for does not exist.</p>
                 </>
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
-                <>
-                  <GoalsPage user={user} setUser={setUser} /> <NavBar />
-                </>
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="/meals"
-            element={
-              <ProtectedRoute>
-                <>
-                  <FoodPage /> <NavBar />
-                </>
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="*"
-            element={
-              <>
-                <h2>404: Not Found</h2>
-                <p>The page you're looking for does not exist.</p>
-              </>
-            }
-          />
-        </Routes>
+              }
+            />
+          </Routes>
+        </CaloriesProvider>
       </Router>
     </div>
   );
