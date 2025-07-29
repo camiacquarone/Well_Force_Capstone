@@ -16,8 +16,8 @@ datasource db {
 
 model User {
   id              Int                   @id @default(autoincrement())
-  clerkId         String                @unique  
-  email           String                
+  clerkId         String                @unique
+  email           String
   image_url       String
   name            String
   dietary_pref    Dietary_Preferences[]
@@ -27,6 +27,7 @@ model User {
   recommendations Recommendation[]
   caloric_goal    Int                   @default(2000)
   daysOfWeek      String[]
+  snackLogs       SnackLog[]
 }
 
 model Goals {
@@ -62,6 +63,9 @@ model Snacks {
   wellness_category   String[]
   dietary_preferences Dietary_Preferences[]
   nutritional_info    Nutritional_Information[]
+    snackLogs       SnackLog[]
+
+
 }
 
 model Meals {
@@ -108,4 +112,17 @@ model Benefits {
   description  String
   category     String
   availabe_for String
+}
+
+model SnackLog {
+  id      Int      @id @default(autoincrement())
+  userId  Int
+  snackId Int
+  date    DateTime
+  count   Int      @default(1)
+
+  user  User   @relation(fields: [userId], references: [id])
+  snack Snacks @relation(fields: [snackId], references: [id])
+
+  @@unique([userId, snackId, date])
 }

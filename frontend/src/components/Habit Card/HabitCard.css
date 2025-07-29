@@ -37,9 +37,9 @@
   /* width:10rem; */
 }
 
-.day-label{
-    font-family: "Regular";
-    font-size:1rem;
+.day-label {
+  font-family: "Regular";
+  font-size: 1rem;
 }
 
 .circle {
@@ -77,4 +77,17 @@
   background-color: #ff7a7a;
   width: 5rem;
   height: 5rem;
+}
+.circle-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-image {
+  width: 80px;
+  height: 70px;
+  margin-top: -15px;
+  object-fit: cover;
 }
