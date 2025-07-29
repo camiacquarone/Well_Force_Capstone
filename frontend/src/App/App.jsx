@@ -111,7 +111,7 @@ function App() {
               element={
                 <ProtectedRoute>
                   <>
-                    <FoodPage /> <NavBar />
+                    <FoodPage user={user} setUser={setUser} /> <NavBar />
                   </>
                 </ProtectedRoute>
               }
