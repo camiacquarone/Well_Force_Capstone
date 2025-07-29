@@ -29,6 +29,6 @@
     "jest": "^30.0.4"
   },
   "prisma": {
-    "seed": "node seed.js"
+    "seed": "node ./seed.js"
   }
 }

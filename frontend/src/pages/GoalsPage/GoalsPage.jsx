@@ -28,8 +28,7 @@ function GoalsPage({ user, setUser }) {
     "Shellfish",
     "Sesame",
   ];
-  const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL 
-  
+  const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL;
 
   const increaseCalories = () =>
     setCalories((prev) => Math.min(prev + 50, 5000));
@@ -81,7 +80,6 @@ function GoalsPage({ user, setUser }) {
     );
   };
 
-
   useEffect(() => {
     const checkIfExist = async () => {
       if (!user) {
@@ -105,11 +103,12 @@ function GoalsPage({ user, setUser }) {
     console.log("Does the user exist? ", userExist);
     try {
       const token = await getToken();
+      let resultUser;
 
       console.log(allergies);
 
       if (userExist) {
-        const response = await axios.put(
+        resultUser = await axios.put(
           `${baseUrl}/api/users`,
           {
             image_url: newUserImage_url,
@@ -140,7 +139,6 @@ function GoalsPage({ user, setUser }) {
 
         console.log("completed updating the user information");
         console.log(user);
-        setUser(user);
       } else {
         const userData = {
           clerkId: "",
@@ -164,23 +162,22 @@ function GoalsPage({ user, setUser }) {
           daysOfWeek: newFoodDay,
         };
 
-        console.log("submitting user data: ", userData);
+        resultUser = await axios.post(`${baseUrl}/api/users`, userData, {
+          headers: {
+            Authorization: `Bearer ${token}`, // Send the Clerk token
+            "Content-Type": "application/json",
+          },
+        });
 
-        const response = await axios.post(
-          `${baseUrl}/api/users`,
-          userData,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`, // Send the Clerk token
-              "Content-Type": "application/json",
-            },
-          }
-        );
-
-        setUser(user);
         console.log(response.data);
       }
-            navigate("/home");
+
+      if (setUser) {
+        setUser(resultUser.data);
+        console.log("setting user!!!!!!");
+      }
+
+      navigate("/home");
 
       console.log("user: ", user);
     } catch (error) {
@@ -213,7 +210,7 @@ function GoalsPage({ user, setUser }) {
           className="top-right-button"
           onClick={() => navigate("/home")}
         >
-           Set Up Later ➡
+          Set Up Later ➡
         </button>
       </span>
       <h1>Profile</h1>
@@ -515,8 +512,8 @@ function GoalsPage({ user, setUser }) {
             navigate("/home");
           }}
           disabled={!isFormValid}
-        >          
-        Save Profile
+        >
+          Save Profile
         </button>
       </form>
     </div>

@@ -268,6 +268,177 @@ async function seed() {
         },
         dietary_pref_names: ["Protein"],
       },
+
+  {
+    name: "Chicken Rice Bowl",
+    restaurant_name: "Umami Express",
+    price: 11.95,
+    image_url: "https://www.umamiexpress.com/images/chicken-bowl.jpg", // placeholder
+    nutritional_information: {
+      serving_size: 1,
+      calories: 680,
+      protein: 35,
+      total_fat: 22,
+      cholesterol: 80,
+      sodium: 950,
+      total_carbs: 70,
+      sugars: 5,
+    },
+    dietary_pref_names: ["Protein", "Gluten-Free"],
+  },
+  {
+    name: "Organic Tofu Rice Bowl",
+    restaurant_name: "Umami Express",
+    price: 11.95,
+    image_url: "https://www.umamiexpress.com/images/tofu-bowl.jpg", // placeholder
+    nutritional_information: {
+      serving_size: 1,
+      calories: 540,
+      protein: 18,
+      total_fat: 14,
+      cholesterol: 0,
+      sodium: 880,
+      total_carbs: 65,
+      sugars: 6,
+    },
+    dietary_pref_names: ["Vegan", "Gluten-Free"],
+  },
+  {
+    name: "Everyday 6\" Turkey Sandwich",
+    restaurant_name: "Crust - Fresh Sourdough Deli",
+    price: 9.99,
+    image_url: "https://www.crust.com/images/turkey-sandwich.jpg", // placeholder
+    nutritional_information: {
+      serving_size: 1,
+      calories: 600,
+      protein: 32,
+      total_fat: 20,
+      cholesterol: 50,
+      sodium: 1200,
+      total_carbs: 55,
+      sugars: 4,
+    },
+    dietary_pref_names: ["Protein"],
+  },
+  {
+    name: "The Farm Club",
+    restaurant_name: "Mendocino Farms",
+    price: 15.05,
+    image_url: "https://mendocinofarms.com/images/farm-club.jpg", // placeholder
+    nutritional_information: {
+      serving_size: 1,
+      calories: 750,
+      protein: 36,
+      total_fat: 34,
+      cholesterol: 85,
+      sodium: 1100,
+      total_carbs: 60,
+      sugars: 5,
+    },
+    dietary_pref_names: ["Protein"],
+  },
+  {
+    name: "Hawaiian BBQ Chicken Plate",
+    restaurant_name: "Big Daddy's Hawaiian BBQ",
+    price: 15.00,
+    image_url: "https://www.bigdaddyshawaiianbbq.com/images/hawaiian-bbq.jpg", // placeholder
+    nutritional_information: {
+      serving_size: 1,
+      calories: 800,
+      protein: 38,
+      total_fat: 30,
+      cholesterol: 90,
+      sodium: 1350,
+      total_carbs: 70,
+      sugars: 10,
+    },
+    dietary_pref_names: [],
+  },
+  {
+    name: "Large Fried Chicken Plate",
+    restaurant_name: "Big Daddy's Hawaiian BBQ",
+    price: 19.00,
+    image_url: "https://www.bigdaddyshawaiianbbq.com/images/fried-chicken.jpg", // placeholder
+    nutritional_information: {
+      serving_size: 1,
+      calories: 1000,
+      protein: 45,
+      total_fat: 50,
+      cholesterol: 120,
+      sodium: 1400,
+      total_carbs: 75,
+      sugars: 6,
+    },
+    dietary_pref_names: [],
+  },
+  {
+    name: "Tea Leaf Salad",
+    restaurant_name: "Burma Classic",
+    price: 16.99,
+    image_url: "https://burmaclassic.com/images/tea-leaf-salad.jpg", // placeholder
+    nutritional_information: {
+      serving_size: 1,
+      calories: 420,
+      protein: 8,
+      total_fat: 22,
+      cholesterol: 0,
+      sodium: 400,
+      total_carbs: 40,
+      sugars: 4,
+    },
+    dietary_pref_names: ["Vegan", "Vegetarian", "Gluten-Free"],
+  },
+  {
+    name: "Fiery Tofu & Vegetables",
+    restaurant_name: "Burma Classic",
+    price: 16.99,
+    image_url: "https://burmaclassic.com/images/fiery-tofu.jpg", // placeholder
+    nutritional_information: {
+      serving_size: 1,
+      calories: 500,
+      protein: 20,
+      total_fat: 18,
+      cholesterol: 0,
+      sodium: 950,
+      total_carbs: 50,
+      sugars: 8,
+    },
+    dietary_pref_names: ["Vegan", "Gluten-Free"],
+  },
+  {
+    name: "Chicken Rice Bowl",
+    restaurant_name: "Palmita",
+    price: 10.35,
+    image_url: "https://www.palmita.com/images/chicken-bowl.jpg", // placeholder
+    nutritional_information: {
+      serving_size: 1,
+      calories: 670,
+      protein: 30,
+      total_fat: 20,
+      cholesterol: 80,
+      sodium: 850,
+      total_carbs: 60,
+      sugars: 5,
+    },
+    dietary_pref_names: ["Gluten-Free" ],
+  },
+  {
+    name: "(V) Tofu Rice Bowl",
+    restaurant_name: "Palmita",
+    price: 9.95,
+    image_url: "https://www.palmita.com/images/tofu-bowl.jpg", // placeholder
+    nutritional_information: {
+      serving_size: 1,
+      calories: 530,
+      protein: 18,
+      total_fat: 14,
+      cholesterol: 0,
+      sodium: 700,
+      total_carbs: 60,
+      sugars: 6,
+    },
+    dietary_pref_names: ["Vegan", "Gluten-Free"],
+  }
     ];
 
     console.log(`✨ Seeding ${mealData.length} Meals...`);
@@ -451,6 +622,158 @@ async function seed() {
         },
         dietary_pref_names: ["Vegetarian", "Gluten-Free"],
       },
+      {
+    name: "Think Jerky 80 Cal Beef Stick",
+    description:
+      "80-calorie beef jerky stick made with grass-fed beef and minimal ingredients. Allergies include: soy and other potential preservatives.",
+    image_url:
+      "https://m.media-amazon.com/images/I/81AaCwhYKLL._SX679_.jpg",
+    wellness_category: ["High-Protein", "Low-Carb", "Tired"],
+    nutritional_info: {
+      serving_size: 1,
+      calories: 80,
+      protein: 6,
+      total_fat: 5,
+      cholesterol: 20,
+      sodium: 300,
+      total_carbs: 1,
+      sugars: 0,
+    },
+    dietary_pref_names: ["Keto", "Gluten-Free"],
+  },
+  {
+    name: "Mango Fruit Stick",
+    description:
+      "Dried mango fruit stick with no added sugar and full of natural vitamins. Allergies include: none (check packaging for sulfites).",
+    image_url:
+      "https://m.media-amazon.com/images/I/71DLvud+SCL._SX679_.jpg",
+    wellness_category: ["Low-Calorie", "Energizing", "Stressed"],
+    nutritional_info: {
+      serving_size: 1,
+      calories: 60,
+      protein: 0,
+      total_fat: 0,
+      cholesterol: 0,
+      sodium: 0,
+      total_carbs: 15,
+      sugars: 13,
+    },
+    dietary_pref_names: ["Vegan", "Gluten-Free"],
+  },
+  {
+    name: "Cooper Blueberry Pomegranate Bars",
+    description:
+      "Blueberry pomegranate fruit and nut bar for a sweet and chewy snack. Allergies include: tree nuts, soy, and possibly milk.",
+    image_url:
+      "https://images.heb.com/is/image/HEBGrocery/003094175",
+    wellness_category: ["Antioxidant-Rich", "Stressed", "Low-Sugar"],
+    nutritional_info: {
+      serving_size: 1,
+      calories: 150,
+      protein: 3,
+      total_fat: 6,
+      cholesterol: 0,
+      sodium: 50,
+      total_carbs: 20,
+      sugars: 8,
+    },
+    dietary_pref_names: ["Vegetarian", "Gluten-Free"],
+  },
+  {
+    name: "Peach",
+    description:
+      "Fresh peach, high in fiber and vitamins. Naturally sweet and refreshing. Allergies include: none (cross-reactivity with birch pollen possible).",
+    image_url:
+      "https://m.media-amazon.com/images/I/61VLoztAFrL._SX679_.jpg",
+    wellness_category: ["Low-Calorie", "Hydrating", "Stressed"],
+    nutritional_info: {
+      serving_size: 1,
+      calories: 70,
+      protein: 1,
+      total_fat: 0,
+      cholesterol: 0,
+      sodium: 0,
+      total_carbs: 17,
+      sugars: 15,
+    },
+    dietary_pref_names: ["Vegan", "Gluten-Free"],
+  },
+  {
+    name: "Chocolate Pretzels",
+    description:
+      "Crunchy pretzels coated in milk chocolate. Sweet and salty combo snack. Allergies include: wheat, milk, soy.",
+    image_url:
+      "https://m.media-amazon.com/images/I/81FSUUM84rL._SX679_.jpg",
+    wellness_category: ["Comfort Food", "Stressed"],
+    nutritional_info: {
+      serving_size: 1,
+      calories: 180,
+      protein: 2,
+      total_fat: 8,
+      cholesterol: 5,
+      sodium: 200,
+      total_carbs: 26,
+      sugars: 12,
+    },
+    dietary_pref_names: ["Vegetarian"],
+  },
+  {
+    name: "Honey Nut Cheerios",
+    description:
+      "Honey Nut Cheerios made with whole grain oats and lightly sweetened. Allergies include: almonds, wheat.",
+    image_url:
+      "https://m.media-amazon.com/images/I/81vwF50I3BL._SX679_.jpg",
+    wellness_category: ["Heart-Healthy", "Low-Fat", "Tired"],
+    nutritional_info: {
+      serving_size: 1,
+      calories: 140,
+      protein: 3,
+      total_fat: 2,
+      cholesterol: 0,
+      sodium: 190,
+      total_carbs: 29,
+      sugars: 9,
+    },
+    dietary_pref_names: ["Vegetarian"],
+  },
+  {
+    name: "Special K with Strawberries",
+    description:
+      "Crispy rice flakes with dried strawberries. A classic low-fat breakfast choice. Allergies include: wheat, soy, milk.",
+    image_url:
+      "https://m.media-amazon.com/images/I/91KFe2X8q1L._SX679_.jpg",
+    wellness_category: ["Low-Fat", "Tired", "Heart-Healthy"],
+    nutritional_info: {
+      serving_size: 1,
+      calories: 120,
+      protein: 2,
+      total_fat: 0.5,
+      cholesterol: 0,
+      sodium: 220,
+      total_carbs: 27,
+      sugars: 9,
+    },
+    dietary_pref_names: ["Vegetarian"],
+  },
+  {
+    name: "Gummy Bears",
+    description:
+      "Classic chewy gummy candy. Great for a sweet pick-me-up. Allergies include: gelatin (animal product), may contain wheat or soy.",
+    image_url:
+      "https://m.media-amazon.com/images/I/81G2caz-IiL._SX679_.jpg",
+    wellness_category: ["Comfort Food", "Stressed"],
+    nutritional_info: {
+      serving_size: 1,
+      calories: 140,
+      protein: 2,
+      total_fat: 0,
+      cholesterol: 0,
+      sodium: 15,
+      total_carbs: 34,
+      sugars: 23,
+    },
+    dietary_pref_names: [],
+  },
     ];
 
     console.log(`✨ Seeding ${snackData.length} Snacks...`);
