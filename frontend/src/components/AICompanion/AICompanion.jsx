@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState } from "react"; // ← no useEffect needed anymore
 import axios from "axios";
 import CONFIG from "../../config.js";
 import "./AICompanion.css";
 
-export default function AICompanionModal({ onClose }) {
-  const [messages, setMessages] = useState([]);
+export default function AICompanionModal({ onClose, user }) {
+  const [messages, setMessages] = useState([
+    { sender: "assistant", content: "👋 Hi! I'm B-Well Astro. Ready to buzz into some healthy habits?🐝" },
+  ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  console.log("user.image_url", user?.image_url);
 
   const sendMessage = async () => {
     if (!input.trim()) return;
@@ -41,6 +45,7 @@ export default function AICompanionModal({ onClose }) {
         <button className="close-ai-modal-btn" onClick={onClose}>
           ✕
         </button>
+
         <div className="ai-chatbot-messages">
           {messages.map((msg, i) => (
             <div
@@ -53,7 +58,7 @@ export default function AICompanionModal({ onClose }) {
                 <img
                   src={
                     msg.role === "user"
-                      ? "/ruth-profile-selected.png"
+                      ? user?.image_url || "/default-profile.png"
                       : "/BWell-Astro.png"
                   }
                   alt={msg.role === "user" ? "You" : "B-Well Astro"}
@@ -61,10 +66,10 @@ export default function AICompanionModal({ onClose }) {
                 />
                 <b>{msg.role === "user" ? "You" : "B-Well Astro"}:</b>
               </div>
-
               {msg.content}
             </div>
           ))}
+
           {isLoading && (
             <div className="ai-chatbot-message assistant">
               <div className="ai-message-header">

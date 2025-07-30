@@ -49,20 +49,19 @@ const HomePage = ({ user, setUser }) => {
     fetchAllSnacks();
   }, []);
   useEffect(() => {
-const fetchCaloriesPerDay = async () => {
-  if (!user?.clerkId) return;
-  try {
-    const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL;
-    const res = await axios.get(`${baseUrl}/api/snacks/log/daily`, {
-      params: { userId: user.clerkId },
-    });
-    console.log("📊 Calories per day:", res.data);
-    setDailyCalories(res.data);
-  } catch (err) {
-    console.error("Failed to fetch daily calories:", err);
-  }
-};
-
+    const fetchCaloriesPerDay = async () => {
+      if (!user?.clerkId) return;
+      try {
+        const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL;
+        const res = await axios.get(`${baseUrl}/api/snacks/log/daily`, {
+          params: { userId: user.clerkId },
+        });
+        console.log("📊 Calories per day:", res.data);
+        setDailyCalories(res.data);
+      } catch (err) {
+        console.error("Failed to fetch daily calories:", err);
+      }
+    };
 
     fetchCaloriesPerDay();
   }, [user]);
@@ -135,7 +134,7 @@ const fetchCaloriesPerDay = async () => {
         <span className="chat-message"> Chat With Me!</span>
       </button>
       {isAIModalOpen && (
-        <AICompanionModal onClose={() => setIsAIModalOpen(false)} />
+        <AICompanionModal onClose={() => setIsAIModalOpen(false)} user={user} />
       )}
     </div>
   );

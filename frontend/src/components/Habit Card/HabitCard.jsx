@@ -41,8 +41,14 @@ const HabitCard = () => {
         {weekDays.map((abbr, i) => {
           const fullDay = fullDayMap[abbr];
           const isFoodDay = foodDays.includes(fullDay);
-          const dateKey = currentWeekDates[i];
-          const isLogged = snackLoggedByDay[dateKey];
+
+          const date = new Date(); // get start of current week and add `i` days
+          const monday = new Date();
+          monday.setDate(monday.getDate() - ((monday.getDay() + 6) % 7)); // get Monday of current week
+          const currentDate = new Date(monday);
+          currentDate.setDate(monday.getDate() + i);
+          const isoDate = currentDate.toISOString().split("T")[0];
+          const isLogged = snackLoggedByDay[isoDate];
 
           return (
             <div className="day" key={i}>
@@ -53,15 +59,19 @@ const HabitCard = () => {
               >
                 {isLogged ? (
                   <div className="circle-content">
-                    ✓
+                    <span className="checkmark">✓</span>
                     <img
                       src="/Appy-complete.png"
                       alt="appy"
                       className="circle-image"
                     />
+                    <span className="good-job-text">GOOD JOB!</span>
                   </div>
                 ) : (
-                  "×"
+                  <div className="circle-content">
+                    {/* <span className="checkmark">×</span> */}
+                    <span className="got-this-text">YOU GOT THIS!</span>
+                  </div>
                 )}
               </div>
               <p className="day-label">{abbr}</p>

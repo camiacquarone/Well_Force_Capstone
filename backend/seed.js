@@ -12,10 +12,18 @@ async function seed() {
     // --- 1. Clear existing data for these models (optional, but good for clean re-seeding) ---
     // If you uncomment these, be careful as they will delete all records in these tables!
     // They are usually safer for development/testing environments.
+    console.log(`🗑️ Deleting existing SnackLog entries...`);
+  await prisma.snackLog.deleteMany({});
     await prisma.goals.deleteMany();
     console.log("🗑️ Cleared existing Goals data.");
     await prisma.dietary_Preferences.deleteMany();
     console.log("🗑️ Cleared existing Dietary_Preferences data.");
+    console.log(`🗑️ Deleting existing Meals...`);
+    await prisma.meals.deleteMany(); // Deletes all records from the 'Meals' table
+
+    console.log(`🗑️ Deleting existing Snacks...`);
+    await prisma.snacks.deleteMany(); // Deletes all records from the 'Snack' table
+
 
     // --- 2. Seed Goals (e.g., "Protein", "Vegetables", "Days of the Week") ---
     // Make sure these 'title' values EXACTLY match what your frontend sends.
@@ -273,7 +281,7 @@ async function seed() {
     name: "Chicken Rice Bowl",
     restaurant_name: "Umami Express",
     price: 11.95,
-    image_url: "https://www.umamiexpress.com/images/chicken-bowl.jpg", // placeholder
+    image_url: "https://photos.tryotter.com/cdn-cgi/image/fit=crop,width=312,height=276,quality=60,format=auto/menu-photos/fd16dfd8-330b-40e0-b0a5-3c625c8e3b29.jpeg", 
     nutritional_information: {
       serving_size: 1,
       calories: 680,
@@ -290,7 +298,7 @@ async function seed() {
     name: "Organic Tofu Rice Bowl",
     restaurant_name: "Umami Express",
     price: 11.95,
-    image_url: "https://www.umamiexpress.com/images/tofu-bowl.jpg", // placeholder
+    image_url: "https://photos.tryotter.com/cdn-cgi/image/fit=crop,width=492,height=267,quality=60,format=auto/menu-photos/ea08a37d-2c90-4c15-8ae1-5a69ce0770b7.jpeg", 
     nutritional_information: {
       serving_size: 1,
       calories: 540,
@@ -307,7 +315,7 @@ async function seed() {
     name: "Everyday 6\" Turkey Sandwich",
     restaurant_name: "Crust - Fresh Sourdough Deli",
     price: 9.99,
-    image_url: "https://www.crust.com/images/turkey-sandwich.jpg", // placeholder
+    image_url: "https://photos.tryotter.com/cdn-cgi/image/fit=crop,width=312,height=276,quality=60,format=auto/menu-photos/6f81a5c8-03f7-40a1-9859-18f4325829c2.jpeg",
     nutritional_information: {
       serving_size: 1,
       calories: 600,
@@ -324,7 +332,7 @@ async function seed() {
     name: "The Farm Club",
     restaurant_name: "Mendocino Farms",
     price: 15.05,
-    image_url: "https://mendocinofarms.com/images/farm-club.jpg", // placeholder
+    image_url: "https://photos.tryotter.com/cdn-cgi/image/fit=crop,width=312,height=276,quality=60,format=auto/menu-photos/384f0d1f-e6b6-441f-9b86-fedae2526103.jpeg", 
     nutritional_information: {
       serving_size: 1,
       calories: 750,
@@ -341,7 +349,7 @@ async function seed() {
     name: "Hawaiian BBQ Chicken Plate",
     restaurant_name: "Big Daddy's Hawaiian BBQ",
     price: 15.00,
-    image_url: "https://www.bigdaddyshawaiianbbq.com/images/hawaiian-bbq.jpg", // placeholder
+    image_url: "https://photos.tryotter.com/cdn-cgi/image/fit=crop,width=312,height=276,quality=60,format=auto/menu-photos/f6005255-abc9-4bdb-b4ab-e26f40657905.jpeg", 
     nutritional_information: {
       serving_size: 1,
       calories: 800,
@@ -358,7 +366,7 @@ async function seed() {
     name: "Large Fried Chicken Plate",
     restaurant_name: "Big Daddy's Hawaiian BBQ",
     price: 19.00,
-    image_url: "https://www.bigdaddyshawaiianbbq.com/images/fried-chicken.jpg", // placeholder
+    image_url: "https://photos.tryotter.com/cdn-cgi/image/fit=crop,width=312,height=276,quality=60,format=auto/menu-photos/341a5c3a-a159-42f7-a69d-4cf3d6ae1b9a.jpeg", 
     nutritional_information: {
       serving_size: 1,
       calories: 1000,
@@ -375,7 +383,7 @@ async function seed() {
     name: "Tea Leaf Salad",
     restaurant_name: "Burma Classic",
     price: 16.99,
-    image_url: "https://burmaclassic.com/images/tea-leaf-salad.jpg", // placeholder
+    image_url: "https://photos.tryotter.com/cdn-cgi/image/fit=crop,width=312,height=276,quality=60,format=auto/menu-photos/93e21d76-a4b2-4126-8bca-efe32ae58c42.jpeg",
     nutritional_information: {
       serving_size: 1,
       calories: 420,
@@ -392,7 +400,7 @@ async function seed() {
     name: "Fiery Tofu & Vegetables",
     restaurant_name: "Burma Classic",
     price: 16.99,
-    image_url: "https://burmaclassic.com/images/fiery-tofu.jpg", // placeholder
+    image_url: "https://photos.tryotter.com/cdn-cgi/image/fit=crop,width=312,height=276,quality=60,format=auto/menu-photos/e9496259-3674-4226-af1a-fe30e888e07e.jpeg", 
     nutritional_information: {
       serving_size: 1,
       calories: 500,
@@ -409,7 +417,7 @@ async function seed() {
     name: "Chicken Rice Bowl",
     restaurant_name: "Palmita",
     price: 10.35,
-    image_url: "https://www.palmita.com/images/chicken-bowl.jpg", // placeholder
+    image_url: "https://photos.tryotter.com/cdn-cgi/image/fit=crop,width=312,height=276,quality=60,format=auto/menu-photos/c99c17bb-43b9-48a2-a7a7-937197390a3c.jpeg",
     nutritional_information: {
       serving_size: 1,
       calories: 670,
@@ -426,7 +434,7 @@ async function seed() {
     name: "(V) Tofu Rice Bowl",
     restaurant_name: "Palmita",
     price: 9.95,
-    image_url: "https://www.palmita.com/images/tofu-bowl.jpg", // placeholder
+    image_url: "https://photos.tryotter.com/cdn-cgi/image/fit=crop,width=312,height=276,quality=60,format=auto/menu-photos/0f3c34dd-0955-44f2-856a-4caf7c0bc765.jpeg", 
     nutritional_information: {
       serving_size: 1,
       calories: 530,
@@ -627,7 +635,7 @@ async function seed() {
     description:
       "80-calorie beef jerky stick made with grass-fed beef and minimal ingredients. Allergies include: soy and other potential preservatives.",
     image_url:
-      "https://m.media-amazon.com/images/I/81AaCwhYKLL._SX679_.jpg",
+      "https://cdn.shopify.com/s/files/1/1515/2714/products/think-jerky-treats-1-oz-beef-think-jerky-sticks-15022916796479_540x540.jpg?v=1594474138",
     wellness_category: ["High-Protein", "Low-Carb", "Tired"],
     nutritional_info: {
       serving_size: 1,
@@ -646,7 +654,7 @@ async function seed() {
     description:
       "Dried mango fruit stick with no added sugar and full of natural vitamins. Allergies include: none (check packaging for sulfites).",
     image_url:
-      "https://m.media-amazon.com/images/I/71DLvud+SCL._SX679_.jpg",
+      "https://target.scene7.com/is/image/Target/GUEST_96cea12e-8588-4d3b-af43-c98bd0055474?wid=1200&hei=1200&qlt=80&fmt=webp",
     wellness_category: ["Low-Calorie", "Energizing", "Stressed"],
     nutritional_info: {
       serving_size: 1,
@@ -665,7 +673,7 @@ async function seed() {
     description:
       "Blueberry pomegranate fruit and nut bar for a sweet and chewy snack. Allergies include: tree nuts, soy, and possibly milk.",
     image_url:
-      "https://images.heb.com/is/image/HEBGrocery/003094175",
+      "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQvCXZF_7dO1GidbcMP_TuRUE-cQy1uSLhWqRFK2qJ345fkmQCRVB59-1CdbfhFgFkUZPRc_KDEOq1EuYhmT4r36SPLOdHOIJfrS3revtQJ6IFEMP5xhQ_DpA",
     wellness_category: ["Antioxidant-Rich", "Stressed", "Low-Sugar"],
     nutritional_info: {
       serving_size: 1,
@@ -684,7 +692,7 @@ async function seed() {
     description:
       "Fresh peach, high in fiber and vitamins. Naturally sweet and refreshing. Allergies include: none (cross-reactivity with birch pollen possible).",
     image_url:
-      "https://m.media-amazon.com/images/I/61VLoztAFrL._SX679_.jpg",
+      "https://m.media-amazon.com/images/S/assets.wholefoodsmarket.com/PIE/product/414MRvf6XzL._FMwebp__SR600,600_.jpg",
     wellness_category: ["Low-Calorie", "Hydrating", "Stressed"],
     nutritional_info: {
       serving_size: 1,
@@ -703,7 +711,7 @@ async function seed() {
     description:
       "Crunchy pretzels coated in milk chocolate. Sweet and salty combo snack. Allergies include: wheat, milk, soy.",
     image_url:
-      "https://m.media-amazon.com/images/I/81FSUUM84rL._SX679_.jpg",
+      "https://media.istockphoto.com/id/510149908/photo/dark-chocolate-covered-pretzel.jpg?b=1&s=612x612&w=0&k=20&c=dBxEMMR_YmMdPgQOcXfth1XXBBuKyhwJXIKBO3LwMxg=",
     wellness_category: ["Comfort Food", "Stressed"],
     nutritional_info: {
       serving_size: 1,
@@ -722,7 +730,7 @@ async function seed() {
     description:
       "Honey Nut Cheerios made with whole grain oats and lightly sweetened. Allergies include: almonds, wheat.",
     image_url:
-      "https://m.media-amazon.com/images/I/81vwF50I3BL._SX679_.jpg",
+      "https://media.istockphoto.com/id/493056490/photo/breakfast-cereal.jpg?b=1&s=612x612&w=0&k=20&c=1PyyBIDFSzSJHejLJjbQiq5v0AdcZ7MWMm_kAvFVHgU=",
     wellness_category: ["Heart-Healthy", "Low-Fat", "Tired"],
     nutritional_info: {
       serving_size: 1,
@@ -741,7 +749,7 @@ async function seed() {
     description:
       "Crispy rice flakes with dried strawberries. A classic low-fat breakfast choice. Allergies include: wheat, soy, milk.",
     image_url:
-      "https://m.media-amazon.com/images/I/91KFe2X8q1L._SX679_.jpg",
+      "https://media.istockphoto.com/id/611986762/photo/breakfast-cereal.jpg?b=1&s=612x612&w=0&k=20&c=_dfZ-AQ11kTMmCDrlhsuZSd3vaPzFXuFDUPsDE33-0k=",
     wellness_category: ["Low-Fat", "Tired", "Heart-Healthy"],
     nutritional_info: {
       serving_size: 1,
@@ -760,7 +768,7 @@ async function seed() {
     description:
       "Classic chewy gummy candy. Great for a sweet pick-me-up. Allergies include: gelatin (animal product), may contain wheat or soy.",
     image_url:
-      "https://m.media-amazon.com/images/I/81G2caz-IiL._SX679_.jpg",
+      "https://media.istockphoto.com/id/157337515/photo/gummy-bears-background.jpg?b=1&s=612x612&w=0&k=20&c=-F2Xy9U0B89LHa-Uyy3P8TOAQns7n3_PCJBQsR1meV0=",
     wellness_category: ["Comfort Food", "Stressed"],
     nutritional_info: {
       serving_size: 1,
