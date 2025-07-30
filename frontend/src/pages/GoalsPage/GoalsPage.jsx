@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./GoalsPage.css";
-import HomePage from "../HomePage/HomePage.jsx";
 import { useNavigate } from "react-router-dom";
-import { useUser, useAuth } from "@clerk/clerk-react";
+import { useAuth } from "@clerk/clerk-react";
 import axios from "axios";
 
 function GoalsPage({ user, setUser }) {
@@ -29,18 +28,14 @@ function GoalsPage({ user, setUser }) {
     "Sesame",
   ];
   const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL;
-
-  const increaseCalories = () =>
-    setCalories((prev) => Math.min(prev + 50, 5000));
-  const decreaseCalories = () => setCalories((prev) => Math.max(prev - 50, 0));
   const navigate = useNavigate();
+  const { getToken } = useAuth();
 
   const isFormValid =
     name.trim() !== "" &&
     newUserPosition.trim() !== "" &&
     newUserImage_url.trim() !== "" &&
     !nameError;
-  const { getToken } = useAuth();
 
   const handleNameChange = (e) => {
     const value = e.target.value;
@@ -51,6 +46,10 @@ function GoalsPage({ user, setUser }) {
       setNameError("Only letters and spaces are allowed.");
     }
   };
+
+  const increaseCalories = () =>
+    setCalories((prev) => Math.min(prev + 50, 5000));
+  const decreaseCalories = () => setCalories((prev) => Math.max(prev - 50, 0));
 
   function toggleFoodGoal(goal) {
     setNewFoodGoal((prev) =>
@@ -96,6 +95,19 @@ function GoalsPage({ user, setUser }) {
 
     checkIfExist();
   });
+
+  useEffect(() => {
+    if (!user) return;
+    setUserExist(true);
+    setName(user.name || "");
+    setNewUserImage_url(user.image_url || "");
+    setCalories(user.caloric_goal || 2000);
+    setDietaryPref(user.dietary_pref?.map((d) => d.name) || []);
+    setAllergies(user.allergies || []);
+    setNewFoodGoal(user.goals?.map((g) => g.title) || []);
+    setNewFoodDay(user.daysOfWeek || []);
+    setNewUserPosition(user.role || "");
+  }, [user]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -164,12 +176,12 @@ function GoalsPage({ user, setUser }) {
 
         resultUser = await axios.post(`${baseUrl}/api/users`, userData, {
           headers: {
-            Authorization: `Bearer ${token}`, // Send the Clerk token
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         });
 
-        console.log(response.data);
+        console.log(resultUser.data);
       }
 
       if (setUser) {
@@ -508,7 +520,7 @@ function GoalsPage({ user, setUser }) {
             localStorage.setItem(
               "selectedFoodDays",
               JSON.stringify(newFoodDay)
-            ); 
+            );
             navigate("/home");
           }}
           disabled={!isFormValid}

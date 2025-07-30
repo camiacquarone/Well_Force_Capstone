@@ -1,9 +1,45 @@
 @font-face {
-  font-family: 'Bold';
-  src: url('./SalesforceSans-Bold.ttf') format('truetype');
+  font-family: "Bold";
+  src: url("./SalesforceSans-Bold.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Regular';
-  src: url('./SalesforceSans-Regular.ttf') format('truetype');
+  font-family: "Regular";
+  src: url("./SalesforceSans-Regular.ttf") format("truetype");
 }
+
+ .not-found-page {
+  text-align: center;
+  padding: 4rem;
+  font-family: "Regular"
+}
+
+.not-found-page h2 {
+  font-size: 12rem;
+  color: #151f4f;
+  font-family: "Regular";
+  margin-bottom: 1.5rem;
+} 
+
+.not-found-page p {
+  margin-top: 1rem;
+  font-size: 1.8rem;
+  color: #151f4f;
+  font-family: "Regular";
+}
+
+.astro-zero {
+  width: 10rem;
+  vertical-align: middle;
+  margin: 0 0.5rem;
+}
+
+.back-home {
+  font-family: "Regular";
+  background-color: #151f4f;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  border-radius: 2rem;
+  margin-top: 1rem;
+}  

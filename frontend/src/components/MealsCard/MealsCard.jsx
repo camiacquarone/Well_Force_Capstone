@@ -53,13 +53,15 @@ export default function MealCard({ meal, type }) {
           </span>
         </p>
 
-        <Link
-          to={`https://order.trypicnic.com/search/${encodeURIComponent(
+        <a
+          href={`https://order.trypicnic.com/search/${encodeURIComponent(
             meal.restaurant_name
           )}`}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <button className="order-now">Order Now</button>
-        </Link>
+        </a>
       </div>
       {showModal && (
         <MealModal meal={meal} onClose={() => setShowModal(false)} />
