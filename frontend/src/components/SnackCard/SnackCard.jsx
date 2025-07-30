@@ -129,14 +129,14 @@ export default function SnackCard({ snack }) {
 
         <button className="eaten-button">Eaten Today: {eatCount}</button>
         <div>
-          <button className="add-calories-button" onClick={handleAddCalories}>
-            ➕
-          </button>
           <button
             className="sub-calories-button"
             onClick={handleSubtractCalories}
           >
             ➖
+          </button>
+          <button className="add-calories-button" onClick={handleAddCalories}>
+            ➕
           </button>
         </div>
       </div>
