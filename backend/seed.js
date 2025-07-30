@@ -129,7 +129,7 @@ async function seed() {
       {
         name: "Harvest Bowl",
         restaurant_name: "Sweetgreen",
-        price: 12.95,
+        price: 16.25,
         image_url:
           "https://images.ctfassets.net/eum7w7yri3zr/Br3EYlf6srQYhCXdvOfwt/65b582e0c488a871e36cda2ea5e52df3/SG_Web_Image_Bowl_Harvest.png?w=600&fm=avif&q=75",
         nutritional_information: {
@@ -147,7 +147,7 @@ async function seed() {
       {
         name: "Shroomami Bowl",
         restaurant_name: "Sweetgreen",
-        price: 11.95,
+        price: 15.65,
         image_url:
           "https://images.ctfassets.net/eum7w7yri3zr/57c1vaLIB4WtuQXQblhUa5/5bbbf55c178b7985a03f994749445040/SG_Web_Image_Bowl_Shroomami.png?w=600&fm=avif&q=75",
         nutritional_information: {
@@ -165,27 +165,27 @@ async function seed() {
 
       // Mendocino Farms
       {
-        name: "Impossible Taco Salad",
-        restaurant_name: "Mendocino Farms",
-        price: 13.5,
-        image_url:
-          "https://www.mendocinofarms.com/wp-content/uploads/2018/01/impossible-taco-salad-1080x675.png",
-        nutritional_information: {
-          serving_size: 1,
-          calories: 730,
-          protein: 28,
-          total_fat: 38,
-          cholesterol: 0,
-          sodium: 940,
-          total_carbs: 65,
-          sugars: 7,
-        },
-        dietary_pref_names: ["Vegetarian", "Gluten-Free"],
-      },
+    name: "Vegan Banh Mi",
+    restaurant_name: "Mendocino Farms",
+    price: 13.75,
+    image_url: "https://photos.tryotter.com/cdn-cgi/image/fit=crop,width=312,height=276,quality=60,format=auto/menu-photos/6d4b0f8a-825c-45c8-af05-1341b488229c.png",
+    nutritional_information: {
+      serving_size: 1,
+      calories: 670,
+      protein: 21,
+      total_fat: 25,
+      cholesterol: 0,
+      sodium: 1320,
+      total_carbs: 85,
+      sugars: 10,
+    },
+
+  dietary_pref_names: ["Vegan"],
+},
       {
         name: "Peruvian Steak Sandwich",
         restaurant_name: "Mendocino Farms",
-        price: 14.25,
+        price: 16.50,
         image_url:
           "https://photos.tryotter.com/cdn-cgi/image/fit=crop,width=984,height=534,quality=60,format=auto/menu-photos/80a3ace9-741b-46bf-99ae-c0d8292656bc.png",
         nutritional_information: {
@@ -205,7 +205,7 @@ async function seed() {
       {
         name: "Classic Wings (10 pcs)",
         restaurant_name: "Wingstop",
-        price: 13.99,
+        price: 15.99,
         image_url:
           "https://cdn.bfldr.com/NDQASMJ1/as/wzskp78wwt6mxcpjkbkr3gb9/10_pc_Classic_Wings?auto=webp&format=png&width=900",
         nutritional_information: {
@@ -223,7 +223,7 @@ async function seed() {
       {
         name: "Boneless Wings (10 pcs)",
         restaurant_name: "Wingstop",
-        price: 12.99,
+        price: 8.00,
         image_url:
           "https://cdn.bfldr.com/NDQASMJ1/as/4w453948gr48fw6n2hkwczg/10_Boneless_Wings?auto=webp&format=png&width=900",
         nutritional_information: {
@@ -240,42 +240,94 @@ async function seed() {
       },
 
       // Starbird
-      {
-        name: "Super Slaw Salad",
-        restaurant_name: "Starbird",
-        price: 11.75,
-        image_url:
-          "https://cdn.prod.website-files.com/5caa9a34f8e012d3d5e50127/5cb14bf12edee0e5ce7e72dc_sides-super-slaw.jpeg",
-        nutritional_information: {
-          serving_size: 1,
-          calories: 520,
-          protein: 20,
-          total_fat: 28,
-          cholesterol: 40,
-          sodium: 640,
-          total_carbs: 48,
-          sugars: 8,
-        },
-        dietary_pref_names: ["Vegetarian", "Gluten-Free"],
-      },
-      {
-        name: "Crispy Chicken Sandwich",
-        restaurant_name: "Starbird",
-        price: 12.5,
-        image_url:
-          "https://cdn.prod.website-files.com/5caa9a34f8e012d3d5e50127/6492929fd771e6ed621b7cf9_bg%20png.png",
-        nutritional_information: {
-          serving_size: 1,
-          calories: 780,
-          protein: 38,
-          total_fat: 40,
-          cholesterol: 80,
-          sodium: 980,
-          total_carbs: 62,
-          sugars: 5,
-        },
-        dietary_pref_names: ["Protein"],
-      },
+      
+  {
+  name: "Elote Chop Salad",
+  restaurant_name: "Starbird",
+  price: 14.97,
+  image_url: "https://photos.tryotter.com/cdn-cgi/image/fit=crop,width=312,height=276,quality=60,format=auto/menu-photos/4aeb1fe1-3999-4ddf-b773-6ecbf51cc8c5.png",
+  nutritional_information: {
+    serving_size: 1,
+    calories: 580,
+    protein: 28,
+    total_fat: 36,
+    cholesterol: 80,
+    sodium: 990,
+    total_carbs: 36,
+    sugars: 8,
+  },
+
+  dietary_pref_names: [],
+},
+
+{
+  name: "Chicken Chop Salad",
+  restaurant_name: "Starbird",
+
+  price: 14.97,
+
+  image_url: "https://photos.tryotter.com/cdn-cgi/image/fit=crop,width=312,height=276,quality=60,format=auto/menu-photos/34251b09-449b-4e30-88fc-0cb94408d279.png",
+
+  nutritional_information: {
+    serving_size: 1,
+    calories: 610,
+    protein: 35,
+    total_fat: 38,
+    cholesterol: 85,
+    sodium: 1020,
+    total_carbs: 34,
+    sugars: 7,
+  },
+
+  dietary_pref_names: [],
+},
+
+{
+  name: "Thai Chicken Salad",
+
+  restaurant_name: "Starbird",
+
+  price: 14.97,
+
+  image_url: "https://photos.tryotter.com/cdn-cgi/image/fit=crop,width=312,height=276,quality=60,format=auto/menu-photos/3f2ccb3e-32f9-422a-bf27-335ed3f8d5ec.png",
+
+  nutritional_information: {
+    serving_size: 1,
+    calories: 640,
+    protein: 33,
+    total_fat: 40,
+    cholesterol: 90,
+    sodium: 1100,
+    total_carbs: 38,
+    sugars: 10,
+  },
+
+  dietary_pref_names: [],
+},
+
+{
+  name: "Nashville Hotbird® Sandwich Box",
+
+  restaurant_name: "Starbird",
+
+  price: 14.47,
+
+  image_url: "https://photos.tryotter.com/cdn-cgi/image/fit=crop,width=312,height=276,quality=60,format=auto/menu-photos/de4854f9-0ae0-47cc-9dc1-fee4f3c015ff.png",
+
+  nutritional_information: {
+    serving_size: 1,
+    calories: 850,
+    protein: 41,
+    total_fat: 46,
+    cholesterol: 105,
+    sodium: 1580,
+    total_carbs: 65,
+    sugars: 10,
+  },
+
+  dietary_pref_names: [],
+},
+
 
   {
     name: "Chicken Rice Bowl",
@@ -534,7 +586,7 @@ async function seed() {
       },
       {
         name: "Lay's Baked Barbecue Chips",
-        description: "Oven-baked chips with sweet and smoky barbecue flavor.",
+        description: "Oven-baked chips with sweet and smoky barbecue flavor. Allergies include: Soy (may contain soy ingredients in seasonings).",
         image_url:
           "https://i5.walmartimages.com/seo/Lay-s-Baked-Gluten-Free-Barbecue-Flavored-Potato-Chips-6-25-oz-Bag_7e161f6d-5f93-4453-8865-eb7e449828b7.b74beac7ae46a530afa71bf662ae84ce.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF",
         wellness_category: ["Low-Fat", "Baked", "Tired"],
@@ -552,7 +604,7 @@ async function seed() {
       },
       {
         name: "Sun Chips Garden Salsa",
-        description: "Whole grain chips with zesty garden salsa flavor.",
+        description: "Whole grain chips with zesty garden salsa flavor. Allergies include: Wheat, Milk (from cheese/dairy in seasoning), Soy. ",
         image_url:
           "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRvVaUIbGs6ouglRwDSU9ZQCVjPMxPzKR3w7zzs7Km_cCDBJdq4qBG2MjkpT1j8EuPdkgN6Jw89w0McKkP2UznxJtsVDae_RdO2dn1MsNPKR7aVyQzrn2qMyVNev5HJ4Q&usqp=CAc",
         wellness_category: ["Whole Grain", "Tired"],
@@ -595,7 +647,7 @@ async function seed() {
       {
         name: "Barbell Protein Bar - Cookies and Cream",
         description:
-          "High-protein bar with a cookies and cream flavor, low in sugar.",
+          "High-protein bar with a cookies and cream flavor, low in sugar. Allergies include: Milk, Tree Nuts (cashew), Soy. May contain traces of Peanuts, Eggs, and Wheat due to manufacturing processes.",
         image_url:
           "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRZnejHBbEh5V83pQ2b905FybSLAY3DyxZamOuaoBwE9BANXHTF_UC4LDOaXVKZrQdHNNj4OJ2a5srkOYliwwD_nVjrml__XtZ0LEZGZwMfHmH_beT_8FRXi8BxsNDH&usqp=CAc",
         wellness_category: ["High-Protein", "Low-Sugar", "Tired"],
@@ -614,7 +666,7 @@ async function seed() {
       {
         name: "Barbell Protein Bar - Caramel Cashew",
         description:
-          "Chewy caramel protein bar with cashew flavor and no added sugar.",
+          "Chewy caramel protein bar with cashew flavor and no added sugar. Allergies include: Milk, Peanuts, Tree Nuts (cashew).",
         image_url:
           "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRhz_BbNsD3YHMkmWCmTsczYQPdUecjSR6z1yb33sgXy_n5FuFLZ2eeeOkHSBjBXBEk3IK8hp7ZKPyTERaRv1cfoqpeViEoEiAp8Ts67APy4reqwwwL_9YdP81O6eDLP-KQICa4XQ&usqp=CAc",
         wellness_category: ["High-Protein", "Low-Sugar", "Tired"],
