@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
-import Avatar from "../Avatar/Avatar.jsx";
+// import Avatar from "../Avatar/Avatar.jsx";
 import {
   SignedIn,
   SignedOut,

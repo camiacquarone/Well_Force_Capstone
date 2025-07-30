@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./GoalsPage.css";
 import HomePage from "../HomePage/HomePage.jsx";
 import { useNavigate } from "react-router-dom";
@@ -64,6 +64,8 @@ function GoalsPage({ user, setUser }) {
     setDietaryPref((prev) =>
       prev.includes(dr) ? prev.filter((item) => item !== dr) : [...prev, dr]
     );
+
+    console.log("dietary preferences: ", dietaryPref);
   }
 
   function toggleAllergies(allerg) {
@@ -164,7 +166,7 @@ function GoalsPage({ user, setUser }) {
 
         resultUser = await axios.post(`${baseUrl}/api/users`, userData, {
           headers: {
-            Authorization: `Bearer ${token}`, // Send the Clerk token
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         });
@@ -172,12 +174,7 @@ function GoalsPage({ user, setUser }) {
         console.log(response.data);
       }
 
-      if (setUser) {
-        console.log("setting new user profile img");
-        await clerk.user.setProfileImage({ file: newUserImage_url });
-        setUser(resultUser.data);
-        console.log("setting user!!!!!!");
-      }
+      setUser(resultUser.data.user || resultUser.data);
 
       navigate("/home");
 
@@ -206,13 +203,6 @@ function GoalsPage({ user, setUser }) {
           onClick={() => navigate("/")}
         >
           ⬅ Back
-        </button>
-        <button
-          type="button"
-          className="top-right-button"
-          onClick={() => navigate("/home")}
-        >
-          Set Up Later ➡
         </button>
       </span>
       <h1>Profile</h1>
@@ -510,7 +500,7 @@ function GoalsPage({ user, setUser }) {
             localStorage.setItem(
               "selectedFoodDays",
               JSON.stringify(newFoodDay)
-            ); 
+            );
             navigate("/home");
           }}
           disabled={!isFormValid}
