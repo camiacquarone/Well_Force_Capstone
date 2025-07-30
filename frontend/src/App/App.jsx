@@ -1,6 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  useNavigate,
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 import axios from "axios";
 import "./App.css";
 import { CaloriesProvider } from "../components/CalorieTracker/CaloriesContext.jsx";
@@ -13,6 +18,7 @@ import SignInPage from "../pages/SignInPage/SignInPage.jsx";
 import HomePage from "../pages/HomePage/HomePage.jsx";
 import GoalsPage from "../pages/GoalsPage/GoalsPage.jsx";
 import AICompanion from "../components/AICompanion/AICompanion";
+import NotFoundPage from "../pages/NotFoundPage/NotFoundPage.jsx"
 
 import NavBar from "../components/NavBar/NavBar";
 // import { useAuth } from "@clerk/clerk-react";
@@ -117,15 +123,7 @@ function App() {
               }
             />
 
-            <Route
-              path="*"
-              element={
-                <>
-                  <h2>404: Not Found</h2>
-                  <p>The page you're looking for does not exist.</p>
-                </>
-              }
-            />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </CaloriesProvider>
       </Router>
