@@ -94,17 +94,17 @@ export default function MealsList({ showAll }) {
       <div className="meals-scroll-wrapper">
         <div className="meals-list">
           {meals.map((meal) => {
-            console.log(meal.is_AI);
+            //console.log(meal.is_AI);
             const cardType = meal.is_AI ? "ai" : "regular";
 
-            console.log(
-              "DEBUG: meal.is_AI:",
-              meal.is_AI,
-              "Calculated cardType:",
-              cardType,
-              "Meal Name:",
-              meal.name
-            );
+            // console.log(
+            //   "DEBUG: meal.is_AI:",
+            //   meal.is_AI,
+            //   "Calculated cardType:",
+            //   cardType,
+            //   "Meal Name:",
+            //   meal.name
+            // );
             return <MealCard type={cardType} key={meal.id} meal={meal} />;
           })}
         </div>
