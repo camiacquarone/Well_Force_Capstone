@@ -4,11 +4,13 @@ import CONFIG from "../../config.js";
 import "./AICompanion.css";
 
 export default function AICompanionModal({ onClose, user }) {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    { sender: "assistant", content: "👋 Hi! I'm B-Well Astro. Ready to buzz into some healthy habits?🐝" },
+  ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-    console.log("user.image_url", user?.image_url);
+  console.log("user.image_url", user?.image_url);
 
   const sendMessage = async () => {
     if (!input.trim()) return;
@@ -40,13 +42,17 @@ export default function AICompanionModal({ onClose, user }) {
   return (
     <div className="ai-modal-overlay">
       <div className="ai-modal">
-        <button className="close-ai-modal-btn" onClick={onClose}>✕</button>
+        <button className="close-ai-modal-btn" onClick={onClose}>
+          ✕
+        </button>
 
         <div className="ai-chatbot-messages">
           {messages.map((msg, i) => (
             <div
               key={i}
-              className={`ai-chatbot-message ${msg.role === "user" ? "user" : "assistant"} ${msg.role === "assistant" ? "chatbot-message" : ""}`}
+              className={`ai-chatbot-message ${
+                msg.role === "user" ? "user" : "assistant"
+              } ${msg.role === "assistant" ? "chatbot-message" : ""}`}
             >
               <div className="ai-message-header">
                 <img
@@ -54,7 +60,7 @@ export default function AICompanionModal({ onClose, user }) {
                     msg.role === "user"
                       ? user?.image_url || "/default-profile.png"
                       : "/BWell-Astro.png"
-                    }
+                  }
                   alt={msg.role === "user" ? "You" : "B-Well Astro"}
                   className="ai-avatar"
                 />
@@ -67,10 +73,19 @@ export default function AICompanionModal({ onClose, user }) {
           {isLoading && (
             <div className="ai-chatbot-message assistant">
               <div className="ai-message-header">
-                <img src="/BWell-Astro.png" alt="B-Well Astro" className="ai-avatar" />
+                <img
+                  src="/BWell-Astro.png"
+                  alt="B-Well Astro"
+                  className="ai-avatar"
+                />
                 <b>B-Well Astro:</b>
               </div>
-              <img src="/bee.gif" alt="Thinking..." className="bee-gif" style={{ width: "80px", height: "80px" }} />
+              <img
+                src="/bee.gif"
+                alt="Thinking..."
+                className="bee-gif"
+                style={{ width: "80px", height: "80px" }}
+              />
             </div>
           )}
         </div>
@@ -82,8 +97,9 @@ export default function AICompanionModal({ onClose, user }) {
             className="ai-chatbot-input"
             placeholder="Type your message..."
           />
-          <button onClick={sendMessage} className="ai-chatbot-send-btn">Send</button>
-
+          <button onClick={sendMessage} className="ai-chatbot-send-btn">
+            Send
+          </button>
         </div>
       </div>
     </div>
