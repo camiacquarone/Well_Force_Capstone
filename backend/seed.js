@@ -12,6 +12,8 @@ async function seed() {
     // --- 1. Clear existing data for these models (optional, but good for clean re-seeding) ---
     // If you uncomment these, be careful as they will delete all records in these tables!
     // They are usually safer for development/testing environments.
+    console.log(`🗑️ Deleting existing SnackLog entries...`);
+  await prisma.snackLog.deleteMany({});
     await prisma.goals.deleteMany();
     console.log("🗑️ Cleared existing Goals data.");
     await prisma.dietary_Preferences.deleteMany();
