@@ -59,6 +59,7 @@ function App() {
     fetchUserData();
   }, [userId, getToken]);
 
+  //user dp is not included
   useEffect(() => {
     console.log("User state updated:", user);
     // You can also add logic here that depends on the 'user' being available
@@ -89,7 +90,8 @@ function App() {
               element={
                 <ProtectedRoute>
                   <>
-                    <HomePage user={user} setUser={setUser} /> <NavBar />
+                    <HomePage user={user} setUser={setUser} />
+                    <NavBar user={user} />
                   </>
                 </ProtectedRoute>
               }

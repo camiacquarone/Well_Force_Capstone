@@ -108,9 +108,7 @@ const fetchCaloriesPerDay = async () => {
 
   return (
     <div className="home-body">
-      <h1 className="welcome-user">
-        Welcome, {user ? user.name || "Friend" : "Guest"}!
-      </h1>
+      <h1 className="welcome-user">Welcome{user ? ", " + user.name : ""}!</h1>
       <div className="container-temp">
         <div className="separated-container">
           <Info user={user} />

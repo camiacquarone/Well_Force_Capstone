@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
+import Avatar from "../Avatar/Avatar.jsx";
 import {
   SignedIn,
   SignedOut,
@@ -8,7 +9,7 @@ import {
   UserButton,
 } from "@clerk/clerk-react";
 
-function NavBar() {
+function NavBar({ user }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavBar = () => {
@@ -113,6 +114,23 @@ function NavBar() {
                   />
                   <Link to="/profile">Settings</Link>
                 </span>
+                <div className="pfp">
+                  <SignedOut>
+                    <SignInButton
+                      mode="modal"
+                      className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md shadow-sm transition duration-300 ease-in-out"
+                    >
+                      Sign In
+                    </SignInButton>
+                  </SignedOut>
+                  <SignedIn>
+                    <UserButton afterSignOutUrl="/" />
+                    <div className="text-gray-700 text-sm md:text-base"></div>
+                  </SignedIn>
+                  Profile
+                </div>
+
+                {/* <Avatar pfpImg={user.image_url}></Avatar> */}
               </nav>
             </>
           )}

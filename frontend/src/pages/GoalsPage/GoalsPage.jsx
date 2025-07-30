@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./GoalsPage.css";
 import HomePage from "../HomePage/HomePage.jsx";
 import { useNavigate } from "react-router-dom";
-import { useUser, useAuth } from "@clerk/clerk-react";
+import { useUser, useAuth, UserButton } from "@clerk/clerk-react";
 import axios from "axios";
 
 function GoalsPage({ user, setUser }) {
@@ -173,6 +173,8 @@ function GoalsPage({ user, setUser }) {
       }
 
       if (setUser) {
+        console.log("setting new user profile img");
+        await clerk.user.setProfileImage({ file: newUserImage_url });
         setUser(resultUser.data);
         console.log("setting user!!!!!!");
       }
