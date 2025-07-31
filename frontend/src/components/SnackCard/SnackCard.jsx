@@ -16,6 +16,7 @@ export default function SnackCard({ snack }) {
   const { getToken } = useAuth();
   const { user } = useUser();
   const userId = user?.id;
+  const ERROR_IMG = "/snack_not_found.png";
 
   useEffect(() => {
     const fetchCount = async () => {
@@ -122,6 +123,9 @@ export default function SnackCard({ snack }) {
             alt={snack.name}
             className={`snack-card-img ${showFuelPopup ? "dimmed" : ""}`}
             onClick={() => setShowModal(true)}
+            onError={(e) => {
+              e.target.src = ERROR_IMG;
+            }}
           />
           <div className="hover-text">What's Inside?</div>
           {showFuelPopup && <div className="fuel-popup">Fuel Logged!</div>}
