@@ -87,3 +87,76 @@
   padding-bottom: 10px;
   scroll-behavior: smooth;
 }
+
+.add-snack-card {
+  /* Inherit general card styling from .snack-card */
+  /* Override specific styles for the 'add' card appearance */
+  border: 2px dashed #ccc; /* Dashed border to signify "add" */
+  box-shadow: none; /* No strong shadow for 'add' card */
+  background-color: #fcfcfc; /* Very light background */
+  cursor: pointer;
+  /* Ensure it has the same flex properties as snack-card */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes title and bottom apart */
+  min-height: 380px; /* Ensure this matches the total height of a snack-card with all elements */
+}
+
+.add-snack-card:hover {
+  background-color: #f0f0f0; /* Slight color change on hover */
+  border-color: #a0a0a0;
+  transform: scale(1.05); /* Inherit hover scale from snack-card */
+}
+
+/* Specific styling for the image area of the add snack card */
+.add-snack-image-container {
+  background-color: #e6f7ff; /* Light blue background for the plus area */
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 230px; /* Explicitly set height to match .snack-card img */
+  flex-grow: 1; /* Allow it to grow to fill available space */
+  margin-bottom: 15px; /* Space between image area and bottom text */
+}
+
+.plus-icon-wrapper {
+  /* If you need a circle around the plus, style this */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px; /* Size of the circle */
+  height: 100px;
+  border-radius: 50%; /* Make it a circle */
+  background-color: #cceeff; /* Slightly darker blue for the circle */
+}
+
+.plus-icon {
+  font-size: 60px; /* Slightly smaller plus sign */
+  color: #007bff; /* Blue color for the plus */
+  line-height: 1;
+}
+
+.add-snack-card .snack-card-title {
+  /* Inherits existing title styles */
+}
+
+.add-snack-card .snack-card-bottom-actions {
+  /* This div holds the "Click to create" text, styled to appear at the bottom */
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
+  font-family: "Regular"; /* Assuming you have this font */
+  margin-top: 10px; /* Space from image container */
+  /* If you want it to look like the eaten button, apply similar styles */
+  background-color: aliceblue;
+  padding: 0.4rem 0; /* Padding top/bottom */
+  border-radius: 0.5rem;
+  border: solid 0.2rem rgb(208, 233, 255);
+}
+
+
+/* Hide the old button if it accidentally remains */
+.add-snack-button {
+  display: none;
+}
