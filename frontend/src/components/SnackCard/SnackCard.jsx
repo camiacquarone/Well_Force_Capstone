@@ -7,7 +7,7 @@ import axios from "axios";
 
 const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL;
 
-export default function SnackCard({ snack }) {
+export default function SnackCard({ snack, onMoveToEnd }) {
   const [showModal, setShowModal] = useState(false);
   const { addCalories, refreshCalories } = useContext(CaloriesContext);
 
@@ -116,6 +116,13 @@ export default function SnackCard({ snack }) {
   return (
     <>
       <div className="snack-card">
+        {/* The new "move to end" button */}
+        {onMoveToEnd && ( // Only render if the prop exists
+          <button className="move-to-end-button" onClick={() => onMoveToEnd(snack.id)}>
+            <span className="x-icon">×</span>
+          </button>
+        )}
+
         <h3 className="snack-card-title">{snack.name}</h3>
         <div className="snack-image-container">
           <img
