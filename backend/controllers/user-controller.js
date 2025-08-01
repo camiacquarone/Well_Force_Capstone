@@ -22,6 +22,11 @@ exports.createUser = async (req, res) => {
                 recommendations: recommendations,
                 caloric_goal: caloric_goal,
                 daysOfWeek: daysOfWeek
+            },
+            include: {
+                dietary_pref: true,
+                goals: true,
+                recommendations: true
             }
         });
 

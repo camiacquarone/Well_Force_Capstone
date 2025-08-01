@@ -62,10 +62,7 @@ const Carousel = ({ snacks }) => {
               {" "}
               <div className="snack-info">
                 {" "}
-                <img
-                  src={snack.image_url}
-                  onerror="this.onerror=null this.src='https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example';'"
-                />
+                <img src={snack.image_url} />
                 <div className="text-left flex-grow">
                   <h4 className="text-xl font-bold text-gray-800 mb-1">
                     {snack.name}

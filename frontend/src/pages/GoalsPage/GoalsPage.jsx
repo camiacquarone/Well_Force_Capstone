@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./GoalsPage.css";
 import { useNavigate } from "react-router-dom";
+
 import { useAuth } from "@clerk/clerk-react";
 import axios from "axios";
 
