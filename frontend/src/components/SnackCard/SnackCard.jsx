@@ -7,7 +7,7 @@ import axios from "axios";
 
 const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL;
 
-export default function SnackCard({ snack }) {
+export default function SnackCard({ snack, onMoveToEnd }) {
   const [showModal, setShowModal] = useState(false);
   const { addCalories, refreshCalories } = useContext(CaloriesContext);
 
@@ -16,6 +16,7 @@ export default function SnackCard({ snack }) {
   const { getToken } = useAuth();
   const { user } = useUser();
   const userId = user?.id;
+  const ERROR_IMG = "/snack_not_found.png";
 
   useEffect(() => {
     const fetchCount = async () => {
@@ -115,6 +116,13 @@ export default function SnackCard({ snack }) {
   return (
     <>
       <div className="snack-card">
+        {/* The new "move to end" button */}
+        {onMoveToEnd && ( // Only render if the prop exists
+          <button className="move-to-end-button" onClick={() => onMoveToEnd(snack.id)}>
+            <span className="x-icon">×</span>
+          </button>
+        )}
+
         <h3 className="snack-card-title">{snack.name}</h3>
         <div className="snack-image-container">
           <img
@@ -122,6 +130,9 @@ export default function SnackCard({ snack }) {
             alt={snack.name}
             className={`snack-card-img ${showFuelPopup ? "dimmed" : ""}`}
             onClick={() => setShowModal(true)}
+            onError={(e) => {
+              e.target.src = ERROR_IMG;
+            }}
           />
           <div className="hover-text">What's Inside?</div>
           {showFuelPopup && <div className="fuel-popup">Fuel Logged!</div>}

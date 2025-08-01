@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./GoalsPage.css";
 import { useNavigate } from "react-router-dom";
+
 import { useAuth } from "@clerk/clerk-react";
 import axios from "axios";
 
@@ -63,6 +64,8 @@ function GoalsPage({ user, setUser }) {
     setDietaryPref((prev) =>
       prev.includes(dr) ? prev.filter((item) => item !== dr) : [...prev, dr]
     );
+
+    console.log("dietary preferences: ", dietaryPref);
   }
 
   function toggleAllergies(allerg) {
@@ -184,10 +187,7 @@ function GoalsPage({ user, setUser }) {
         console.log(resultUser.data);
       }
 
-      if (setUser) {
-        setUser(resultUser.data);
-        console.log("setting user!!!!!!");
-      }
+      setUser(resultUser.data.user || resultUser.data);
 
       navigate("/home");
 
@@ -216,13 +216,6 @@ function GoalsPage({ user, setUser }) {
           onClick={() => navigate("/")}
         >
           ⬅ Back
-        </button>
-        <button
-          type="button"
-          className="top-right-button"
-          onClick={() => navigate("/home")}
-        >
-          Set Up Later ➡
         </button>
       </span>
       <h1>Profile</h1>

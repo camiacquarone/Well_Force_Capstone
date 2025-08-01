@@ -101,6 +101,7 @@ export default function MealCard({ meal, type }) {
       console.error("Meal subtraction failed:", err);
     }
   };
+  const ERROR_IMG = "/image_not_found.png";
 
   return (
     <>
@@ -123,6 +124,17 @@ export default function MealCard({ meal, type }) {
           <div className="hover-text">What's Inside?</div>
           {showFuelPopup && <div className="fuel-popup">Fuel Logged!</div>}
         </div>
+        <img
+          src={meal.image_url}
+          alt={meal.name}
+          className="img-meal"
+          width={"250px"}
+          height={"200px"}
+          onClick={() => setShowModal(true)}
+          onError={(e) => {
+            e.target.src = ERROR_IMG;
+          }}
+        />
         <p>
           <span className="label">Price: </span>
           <span className="price">${meal.price.toFixed(2)} </span>

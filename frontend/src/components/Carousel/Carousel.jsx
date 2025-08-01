@@ -6,7 +6,6 @@ import "./Carousel.css";
 import Chip from "../../components/Chip/Chip";
 import "../DisplayInfo/DisplayInfo.css";
 
-
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
 
@@ -63,13 +62,7 @@ const Carousel = ({ snacks }) => {
               {" "}
               <div className="snack-info">
                 {" "}
-                <img
-                  src={
-                    snack.image_url ||
-                    "https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example"
-                  }
-                  alt={snack.name}
-                />
+                <img src={snack.image_url} />
                 <div className="text-left flex-grow">
                   <h4 className="text-xl font-bold text-gray-800 mb-1">
                     {snack.name}

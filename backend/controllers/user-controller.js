@@ -22,6 +22,11 @@ exports.createUser = async (req, res) => {
                 recommendations: recommendations,
                 caloric_goal: caloric_goal,
                 daysOfWeek: daysOfWeek
+            },
+            include: {
+                dietary_pref: true,
+                goals: true,
+                recommendations: true
             }
         });
 
@@ -57,7 +62,10 @@ exports.getUserById = async (req, res) => {
 };
 
 exports.updateUser = async (req, res) => {
-    const clerkId = req.auth.userId;
+
+
+  try {
+     const clerkId = req.auth.userId;
 
     const {email,
                 image_url,
@@ -70,23 +78,35 @@ exports.updateUser = async (req, res) => {
                  caloric_goal,
                daysOfWeek} = req.body;
 
+      console.log("this is the user dietary pref", dietary_pref);
+
+
     const updatedUser = await prisma.user.update ({
         where:{clerkId},
         data:{email,
                 image_url,
                  name,
                  allergies,
-                 dietary_pref,
+                 dietary_pref: {
+                    set: dietary_pref.connect
+                },
                  goals,
                  role,
                  recommendations,
                  caloric_goal,
-               daysOfWeek}
+               daysOfWeek},
+               include : {
+                dietary_pref: true,
+                goals: true,
+                recommendations: true,
+               }
     });
 
     res.json(updatedUser);
-
-
+  }catch (error) {
+      res.json(400).json({error: error.message});
+  }
+   
 }
 
 
@@ -137,7 +157,7 @@ exports.getCurrentUser = async (req, res) => {
       id: user.id,
       name: user.name,
       email: user.email,
-      allergies: user.allergies, // ✅ this is the key
+      allergies: user.allergies, 
       dietary_pref: user.dietary_pref,
       goals: user.goals,
     });
