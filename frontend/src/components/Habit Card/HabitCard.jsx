@@ -44,7 +44,7 @@ const HabitCard = () => {
 
           const date = new Date(); // get start of current week and add `i` days
           const monday = new Date();
-          monday.setDate(monday.getDate() - ((monday.getDay() + 6) % 7)); // get Monday of current week
+          monday.setDate(monday.getDate() - ((monday.getDay() + 6) % 7)); // get monday of current week
           const currentDate = new Date(monday);
           currentDate.setDate(monday.getDate() + i);
           const isoDate = currentDate.toISOString().split("T")[0];

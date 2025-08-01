@@ -1,6 +1,5 @@
 const prisma = require("../models/prisma-client");
 
-// Grab all snacks
 exports.getAllSnacks = async (req, res) => {
   try {
     const snacks = await prisma.snacks.findMany({
@@ -25,7 +24,7 @@ exports.logSnack = async (req, res) => {
       return res.status(400).json({ error: "Invalid or missing date." });
     }
 
-    // 1. Find internal numeric user ID by Clerk ID
+    // find internal numeric user ID by Clerk ID
     const user = await prisma.user.findUnique({
       where: { clerkId }, // clerkId is a string
     });
@@ -36,7 +35,7 @@ exports.logSnack = async (req, res) => {
 
     const internalUserId = user.id;
 
-    // 2. Proceed with using internal numeric ID
+    //using internal numeric ID
     const existing = await prisma.snackLog.findFirst({
       where: {
         userId: internalUserId,

@@ -12,7 +12,7 @@ function FoodPage({ user, setUser }) {
   const [allergy, setAllergy] = useState("");
   const [showAllMeals, setShowAllMeals] = useState(false);
   const [buttonText, setButtonText] = useState(true);
-  console.log("user in FoodPage:", user);
+
 
 
   return (

@@ -8,6 +8,8 @@ export const CaloriesContext = createContext();
 export const CaloriesProvider = ({ children }) => {
   const [caloriesByDay, setCaloriesByDay] = useState({});
   const [snackLoggedByDay, setSnackLoggedByDay] = useState({});
+  const [mealLoggedByDay, setMealLoggedByDay] = useState({});
+
   const { user } = useUser();
   const { getToken } = useAuth();
   const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL;
@@ -17,7 +19,7 @@ export const CaloriesProvider = ({ children }) => {
       if (!user) return;
       try {
         const token = await getToken();
-        const res = await axios.get(`${baseUrl}/api/snacks/log/totals`, {
+        const res = await axios.get(`${baseUrl}/api/meals/log/totals`, {
           params: { userId: user.id },
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -34,11 +36,17 @@ export const CaloriesProvider = ({ children }) => {
     setSnackLoggedByDay(stored);
   }, []);
 
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("loggedMealDays")) || {};
+    setMealLoggedByDay(stored);
+  }, []);
+
   const refreshCalories = async () => {
     if (!user) return;
     try {
       const token = await getToken();
-      const res = await axios.get(`${baseUrl}/api/snacks/log/totals`, {
+      // ✅ Fixed endpoint to match backend
+      const res = await axios.get(`${baseUrl}/api/meals/log/totals`, {
         params: { userId: user.id },
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -48,14 +56,19 @@ export const CaloriesProvider = ({ children }) => {
     }
   };
 
-  const addCalories = (date, amount) => {
+  const addCalories = (date, amount, type = "snack") => {
     const dateStr =
       typeof date === "string" ? date : date.toISOString().split("T")[0];
     setCaloriesByDay((prev) => ({
       ...prev,
       [dateStr]: (prev[dateStr] || 0) + amount,
     }));
-    logSnackForDay(new Date(dateStr));
+
+    if (type === "snack") {
+      logSnackForDay(new Date(dateStr));
+    } else if (type === "meal") {
+      logMealForDay(new Date(dateStr));
+    }
   };
 
   const logSnackForDay = (date) => {
@@ -63,6 +76,15 @@ export const CaloriesProvider = ({ children }) => {
     setSnackLoggedByDay((prev) => {
       const updated = { ...prev, [key]: true };
       localStorage.setItem("loggedSnackDays", JSON.stringify(updated));
+      return updated;
+    });
+  };
+
+  const logMealForDay = (date) => {
+    const key = date.toISOString().split("T")[0];
+    setMealLoggedByDay((prev) => {
+      const updated = { ...prev, [key]: true };
+      localStorage.setItem("loggedMealDays", JSON.stringify(updated));
       return updated;
     });
   };
@@ -76,6 +98,8 @@ export const CaloriesProvider = ({ children }) => {
         refreshCalories,
         snackLoggedByDay,
         logSnackForDay,
+        mealLoggedByDay,
+        logMealForDay,
       }}
     >
       {children}
