@@ -5,6 +5,7 @@ import "../MealsCard/MealsCard.css";
 
 export default function MealCard({ meal, type }) {
   const [showModal, setShowModal] = useState(false);
+  const ERROR_IMG = "/image_not_found.png";
 
   return (
     <>
@@ -19,10 +20,12 @@ export default function MealCard({ meal, type }) {
           src={meal.image_url}
           alt={meal.name}
           className="img-meal"
-          onError="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example"
           width={"250px"}
           height={"200px"}
           onClick={() => setShowModal(true)}
+          onError={(e) => {
+            e.target.src = ERROR_IMG;
+          }}
         />
         <p>
           <span className="label">Restaurant:</span>{" "}
