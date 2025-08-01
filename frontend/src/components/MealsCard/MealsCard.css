@@ -1,3 +1,13 @@
+.restaurant-line{
+  margin-left:0; 
+  margin-right: 0;
+  margin-top: 0.1rem;
+  min-height: 40px;
+}
+
+
+
+
 .order-now {
   color: white;
   padding: 0.3rem;
@@ -5,6 +15,7 @@
   padding-right: 0.6rem;
   font-size: 1.1rem;
   border: 1px solid #0077a3;
+  /* margin-top:0.8rem; */
 }
 
 .order-now:hover {
@@ -14,7 +25,6 @@
   padding: 0.3rem;
   padding-left: 0.6rem;
   padding-right: 0.6rem;
-  font-size: 1.1rem;
 }
 
 .img-meal {
@@ -39,6 +49,7 @@
 .label {
   color: rgb(0, 0, 0);
   font-family: "Bold";
+  font-size: 1rem;
 }
 
 element.style {
@@ -54,8 +65,7 @@ element.style {
   display: none;
 }
 .meal-card-ai button {
-  /* background-color: white; */
-  /* color: #0077a3; */
+
   border: 2px solid white;
 }
 
@@ -98,4 +108,79 @@ element.style {
   justify-content: center;
   flex-direction: row;
   align-items: center;
+}
+
+
+/* added  */
+
+.meal-image-container {
+  position: relative;
+}
+
+.meal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.hover-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(10, 122, 170);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  font-family: "Regular";
+}
+
+.meal-image-container:hover .hover-text {
+  opacity: 1;
+}
+
+.img-meal:hover{
+  opacity: 0.5;
+}
+.fuel-popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(255, 93, 69);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 15px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  font-family: "Regular";
+  z-index: 10;
+  animation: fadeOut 2s ease-out forwards;
+}
+.img-meal.dimmed {
+  opacity: 0.3;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
 }

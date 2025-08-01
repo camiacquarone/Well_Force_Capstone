@@ -28,6 +28,7 @@ model User {
   caloric_goal    Int                   @default(2000)
   daysOfWeek      String[]
   snackLogs       SnackLog[]
+  mealLogs        MealLog[]
 }
 
 model Goals {
@@ -78,6 +79,7 @@ model Meals {
   restaurant_name         String
   is_AI                   Boolean?
   Recommendation          Recommendation[]
+  mealLogs                MealLog []
 }
 
 model Nutritional_Information {
@@ -125,4 +127,18 @@ model SnackLog {
   snack Snacks @relation(fields: [snackId], references: [id])
 
   @@unique([userId, snackId, date])
+}
+
+model MealLog{
+    id      Int      @id @default(autoincrement())
+  userId  Int
+  mealId Int
+  date    DateTime
+  count   Int      @default(1)
+
+  user  User   @relation(fields: [userId], references: [id])
+  meal Meals @relation(fields: [mealId], references: [id])
+
+  @@unique([userId, mealId, date])
+
 }

@@ -12,18 +12,25 @@
 }
 
 .modal-content {
+  /* height: 500px; */
   background: white;
   padding: 20px;
   border-radius: 12px;
   max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   position: relative;
 }
 
 
-.modal-img{
-  width: 80%;
-}
+.img-meal2{
+    width: 260px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;}
 
 .modal-content p {
   text-align: left;
