@@ -112,8 +112,7 @@ export default function MealCard({ meal, type }) {
             src={meal.image_url}
             alt={meal.name}
             onError={(e) => {
-              e.target.src =
-                "https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example";
+              e.target.src = ERROR_IMG;
             }}
             width={"250px"}
             height={"200px"}
@@ -124,26 +123,15 @@ export default function MealCard({ meal, type }) {
           <div className="hover-text">What's Inside?</div>
           {showFuelPopup && <div className="fuel-popup">Fuel Logged!</div>}
         </div>
-        <img
-          src={meal.image_url}
-          alt={meal.name}
-          className="img-meal"
-          width={"250px"}
-          height={"200px"}
-          onClick={() => setShowModal(true)}
-          onError={(e) => {
-            e.target.src = ERROR_IMG;
-          }}
-        />
+
         <p>
           <span className="label">Price: </span>
           <span className="price">${meal.price.toFixed(2)} </span>
         </p>
-        <p className="restaurant-line"> 
+        <p className="restaurant-line">
           <span className="label">Restaurant:</span>{" "}
           <span className="restaurant-name">{meal.restaurant_name}</span>
         </p>
-
 
         <a
           href={`https://order.trypicnic.com/search/${encodeURIComponent(
