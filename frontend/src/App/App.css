@@ -1,11 +1,11 @@
 @font-face {
   font-family: "Bold";
-  src: url("./SalesforceSans-Bold.ttf") format("truetype");
+  src: url("/SalesforceSans-Bold.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Regular";
-  src: url("./SalesforceSans-Regular.ttf") format("truetype");
+  src: url("/SalesforceSans-Regular.ttf") format("truetype");
 }
 
  .not-found-page {
