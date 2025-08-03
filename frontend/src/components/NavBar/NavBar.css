@@ -231,7 +231,6 @@ body.nav-open .GoalsPage {
     margin-left: 1px;
     left: 0px;
     padding: 0rem;
-    /* background-color: red; */
   }
 
   .pfp {
@@ -240,7 +239,6 @@ body.nav-open .GoalsPage {
   }
 
   body.nav-open .open {
-    /* background-color: red; */
     margin-right: 6rem;
   }
   .navbar-header {

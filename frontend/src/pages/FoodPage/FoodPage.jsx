@@ -13,8 +13,6 @@ function FoodPage({ user, setUser }) {
   const [showAllMeals, setShowAllMeals] = useState(false);
   const [buttonText, setButtonText] = useState(true);
 
-
-
   return (
     <div className="food-page">
       <header className="food-header">
@@ -74,9 +72,10 @@ function FoodPage({ user, setUser }) {
         </section>
 
         <section className="meals-section">
-          <h2>Meals For You</h2>
+          <div className="meals-for-header"></div>
           <div className="meals-grid">
             <div className="button-wrapper">
+              <h2>Meals For You</h2>
               <button
                 type="button"
                 className="toggle-meals-button"

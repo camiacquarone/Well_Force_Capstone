@@ -30,9 +30,9 @@ h1 {
   /* background-color: red; */
 }
 h2 {
-  font-size: 1.3rem;
+  font-size: 2rem;
+  color: #0a7aaa;
   font-family: "Bold";
-  color: #04354a;
   margin-top: 0;
 }
 .food-header {
@@ -177,8 +177,18 @@ label {
 }
 
 .meals-section .button-wrapper {
-  display: flex;
-  flex-direction: row-reverse;
+ display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+
+}
+
+.meals-section h2 {
+  margin: 0px;
 }
 
 .meals-section,
@@ -261,10 +271,11 @@ label {
   margin: 0;
 }
 .toggle-meals-button {
-  height: 2rem;
-  width:5rem;
-  color: white;
-  font-weight: 800;
+  height: 2.5rem;
+    width: auto !important;
+    color: white;
+    font-weight: 800;
+    font-size: 1.2rem;
 }
 .ai-companion-button:hover .chat-message {
   visibility: visible;
@@ -387,7 +398,7 @@ label {
     font-size: 1.8rem; /* Adjust font size for mobile */
   }
   .meals-header h2 { /* Target h2 inside meals-header if needed */
-    font-size: 1rem; /* Adjust font size for mobile */
+    font-size: 1.8rem; /* Adjust font size for mobile */
     margin-top: 0.5rem; /* Space below h1 */
   }
 
