@@ -116,9 +116,11 @@ export default function SnackCard({ snack, onMoveToEnd }) {
   return (
     <>
       <div className="snack-card">
-        {/* The new "move to end" button */}
         {onMoveToEnd && ( // Only render if the prop exists
-          <button className="move-to-end-button" onClick={() => onMoveToEnd(snack.id)}>
+          <button
+            className="move-to-end-button"
+            onClick={() => onMoveToEnd(snack.id)}
+          >
             <span className="x-icon">×</span>
           </button>
         )}

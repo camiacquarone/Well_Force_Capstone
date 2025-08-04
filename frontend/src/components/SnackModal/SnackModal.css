@@ -34,13 +34,35 @@
   cursor: pointer;
 }
 
-/* span{
-  font-family: "Bold";
-} */
+.modal-header {
+  width: 30rem;
+}
+
+
+
+.food-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Make it take the full width of its container */
+}
+
+.food-info p {
+  display: flex;
+  justify-content: space-between; /* This is the key: aligns items to start and end */
+  padding: 0.5rem 0; /* Add vertical padding for spacing */
+  border-bottom: 1px solid #eee; /* Optional separator line */
+}
+
 
 p{
   margin:0.8rem;
+  text-align: left;
   margin-bottom: 0;
+  margin-top: 10px !important;
+}
+
+span {
+  text-align: left;
 }
 
 .description-modal{
@@ -48,7 +70,8 @@ p{
   display: flex;
   align-items: center;
   justify-content: center;
-  width:15rem;
+  width:autorem;
   border-radius: 0.3rem;
   padding:0.5rem; 
+  margin-top: 2rem !important;
 }
