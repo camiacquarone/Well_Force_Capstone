@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import "./GoalsPage.css";
 import { useNavigate } from "react-router-dom";
-
 import { useAuth } from "@clerk/clerk-react";
 import axios from "axios";
 
@@ -16,18 +15,12 @@ function GoalsPage({ user, setUser }) {
   const [newFoodGoal, setNewFoodGoal] = useState([]);
   const [newFoodDay, setNewFoodDay] = useState([]);
   const [nameError, setNameError] = useState("");
+
   const position = ["Intern", "Full Time"];
   const commonAllergies = [
-    "Milk",
-    "Eggs",
-    "Peanuts",
-    "Tree Nuts",
-    "Soy",
-    "Wheat",
-    "Fish",
-    "Shellfish",
-    "Sesame",
+    "Milk", "Eggs", "Peanuts", "Tree Nuts", "Soy", "Wheat", "Fish", "Shellfish", "Sesame"
   ];
+
   const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL;
   const navigate = useNavigate();
   const { getToken } = useAuth();
@@ -48,15 +41,12 @@ function GoalsPage({ user, setUser }) {
     }
   };
 
-  const increaseCalories = () =>
-    setCalories((prev) => Math.min(prev + 50, 5000));
+  const increaseCalories = () => setCalories((prev) => Math.min(prev + 50, 5000));
   const decreaseCalories = () => setCalories((prev) => Math.max(prev - 50, 0));
 
   function toggleFoodGoal(goal) {
     setNewFoodGoal((prev) =>
-      prev.includes(goal)
-        ? prev.filter((item) => item !== goal)
-        : [...prev, goal]
+      prev.includes(goal) ? prev.filter((item) => item !== goal) : [...prev, goal]
     );
   }
 
@@ -64,15 +54,12 @@ function GoalsPage({ user, setUser }) {
     setDietaryPref((prev) =>
       prev.includes(dr) ? prev.filter((item) => item !== dr) : [...prev, dr]
     );
-
     console.log("dietary preferences: ", dietaryPref);
   }
 
   function toggleAllergies(allerg) {
     setAllergies((prev) =>
-      prev.includes(allerg)
-        ? prev.filter((item) => item !== allerg)
-        : [...prev, allerg]
+      prev.includes(allerg) ? prev.filter((item) => item !== allerg) : [...prev, allerg]
     );
   }
 
@@ -88,14 +75,8 @@ function GoalsPage({ user, setUser }) {
         setUserExist(false);
         return;
       }
-
       setUserExist(true);
-
-      try {
-        const token = await getToken();
-      } catch (error) {}
     };
-
     checkIfExist();
   });
 
@@ -112,15 +93,35 @@ function GoalsPage({ user, setUser }) {
     setNewUserPosition(user.role || "");
   }, [user]);
 
+
+  async function checkAndUpdatePreferences() {
+    try {
+      const token = await getToken();
+      const res = await axios.get(`${baseUrl}/api/users/me/preferences`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const latestPreferences = res.data;
+      const storedPreferences = localStorage.getItem("userPreferences");
+      const latestString = JSON.stringify(latestPreferences);
+
+      if (storedPreferences !== latestString) {
+        localStorage.setItem("userPreferences", latestString);
+        localStorage.removeItem("personalizedMeals");
+      }
+    } catch (err) {
+      console.error("Error updating preferences after save:", err);
+    }
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
 
-    console.log("Does the user exist? ", userExist);
     try {
       const token = await getToken();
       let resultUser;
-
-      console.log(allergies);
 
       if (userExist) {
         resultUser = await axios.put(
@@ -130,16 +131,12 @@ function GoalsPage({ user, setUser }) {
             name: name,
             allergies: allergies,
             dietary_pref: {
-              connect: dietaryPref.map((drName) => ({
-                name: drName,
-              })),
+              connect: dietaryPref.map((drName) => ({ name: drName })),
             },
             goals: {
               connect: newFoodGoal.map((goalName) => ({ title: goalName })),
             },
-            recommendations: {
-              connect: [],
-            },
+            recommendations: { connect: [] },
             role: newUserPosition,
             caloric_goal: calories,
             daysOfWeek: newFoodDay,
@@ -151,9 +148,6 @@ function GoalsPage({ user, setUser }) {
             },
           }
         );
-
-        console.log("completed updating the user information");
-        console.log(user);
       } else {
         const userData = {
           clerkId: "",
@@ -162,16 +156,12 @@ function GoalsPage({ user, setUser }) {
           name: name,
           allergies: allergies,
           dietary_pref: {
-            connect: dietaryPref.map((drName) => ({
-              name: drName,
-            })),
+            connect: dietaryPref.map((drName) => ({ name: drName })),
           },
           goals: {
             connect: newFoodGoal.map((goalName) => ({ title: goalName })),
           },
-          recommendations: {
-            connect: [],
-          },
+          recommendations: { connect: [] },
           role: newUserPosition,
           caloric_goal: calories,
           daysOfWeek: newFoodDay,
@@ -183,18 +173,15 @@ function GoalsPage({ user, setUser }) {
             "Content-Type": "application/json",
           },
         });
-
-        console.log(resultUser.data);
       }
 
       setUser(resultUser.data.user || resultUser.data);
-
+      await checkAndUpdatePreferences(); 
       navigate("/home");
-
-      console.log("user: ", user);
     } catch (error) {
-      console.error("Error creating user profile (AxiosError object):", error);
+      console.error("Error creating user profile:", error);
     }
+  }
 
     console.log("USER INFORMATION");
     console.log("Name:", name);
@@ -205,7 +192,7 @@ function GoalsPage({ user, setUser }) {
     console.log("Food Goal:", newFoodGoal);
     console.log("Food Day:", newFoodDay);
     console.log("allergies: ", allergies);
-  }
+  
 
   return (
     <div className="GoalsPage">

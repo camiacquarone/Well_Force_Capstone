@@ -167,3 +167,26 @@ exports.getCurrentUser = async (req, res) => {
     res.status(500).json({ error: "Failed to get current user" });
   }
 };
+
+exports.getUserPreferences = async (req, res) => {
+  try {
+    const clerkId = req.auth.userId;
+
+    const user = await prisma.user.findUnique({
+      where: { clerkId },
+      select: {
+        caloric_goal: true,
+        dietary_pref: true,
+        allergies: true,
+        goals: true,
+      },
+    });
+
+    if (!user) return res.status(404).json({ error: "User not found" });
+
+    res.json(user);
+  } catch (error) {
+    console.error("Failed to fetch preferences:", error);
+    res.status(500).json({ error: "Failed to fetch preferences" });
+  }
+};

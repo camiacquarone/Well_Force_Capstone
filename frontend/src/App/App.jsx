@@ -18,7 +18,7 @@ import SignInPage from "../pages/SignInPage/SignInPage.jsx";
 import HomePage from "../pages/HomePage/HomePage.jsx";
 import GoalsPage from "../pages/GoalsPage/GoalsPage.jsx";
 import AICompanion from "../components/AICompanion/AICompanion";
-import NotFoundPage from "../pages/NotFoundPage/NotFoundPage.jsx"
+import NotFoundPage from "../pages/NotFoundPage/NotFoundPage.jsx";
 
 import NavBar from "../components/NavBar/NavBar";
 // import { useAuth } from "@clerk/clerk-react";
@@ -54,8 +54,8 @@ function App() {
             "Content-Type": "application/json",
           },
         });
-
         setUser(response.data); // Update state with the fetched data
+        localStorage.setItem("userObject", JSON.stringify(response.data)); // 💾 Save to localStorage
         console.log("User data fetched:", response.data);
       } catch (err) {
         console.error("Error fetching user data:", err);
