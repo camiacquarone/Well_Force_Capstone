@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import "./GoalsPage.css";
 import { useNavigate } from "react-router-dom";
-
 import { useAuth } from "@clerk/clerk-react";
 import axios from "axios";
 
@@ -16,6 +15,7 @@ function GoalsPage({ user, setUser }) {
   const [newFoodGoal, setNewFoodGoal] = useState([]);
   const [newFoodDay, setNewFoodDay] = useState([]);
   const [nameError, setNameError] = useState("");
+
   const position = ["Intern", "Full Time"];
   const commonAllergies = [
     "Milk",
@@ -28,6 +28,7 @@ function GoalsPage({ user, setUser }) {
     "Shellfish",
     "Sesame",
   ];
+
   const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL;
   const navigate = useNavigate();
   const { getToken } = useAuth();
@@ -37,6 +38,8 @@ function GoalsPage({ user, setUser }) {
     newUserPosition.trim() !== "" &&
     newUserImage_url.trim() !== "" &&
     !nameError;
+
+  const hasProfile = !!user;
 
   const handleNameChange = (e) => {
     const value = e.target.value;
@@ -64,7 +67,6 @@ function GoalsPage({ user, setUser }) {
     setDietaryPref((prev) =>
       prev.includes(dr) ? prev.filter((item) => item !== dr) : [...prev, dr]
     );
-
     console.log("dietary preferences: ", dietaryPref);
   }
 
@@ -88,16 +90,13 @@ function GoalsPage({ user, setUser }) {
         setLocalUserExist(false);
         return;
       }
-
       setLocalUserExist(true);
-
       try {
         const token = await getToken();
       } catch (error) {}
     };
-
     checkIfExist();
-  });
+  }, [user]);
 
   useEffect(() => {
     if (!user) return;
@@ -112,34 +111,55 @@ function GoalsPage({ user, setUser }) {
     setNewUserPosition(user.role || "");
   }, [user]);
 
+  async function checkAndUpdatePreferences() {
+    try {
+      const token = await getToken();
+      const res = await axios.get(`${baseUrl}/api/users/me/preferences`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const latestPreferences = res.data;
+      const storedPreferences = localStorage.getItem("userPreferences");
+      const latestString = JSON.stringify(latestPreferences);
+      if (storedPreferences !== latestString) {
+        localStorage.setItem("userPreferences", latestString);
+        localStorage.removeItem("personalizedMeals");
+      }
+    } catch (err) {
+      console.error("Error updating preferences after save:", err);
+    }
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
-
     console.log("Does the user exist? ", localUserExist);
     try {
       const token = await getToken();
       let resultUser;
 
-      console.log(allergies);
+      console.log("USER INFORMATION");
+      console.log("Name:", name);
+      console.log("Position:", newUserPosition);
+      console.log("Calories", calories);
+      console.log("Image URL:", newUserImage_url);
+      console.log("dietary preferences: ", dietaryPref);
+      console.log("Food Goal:", newFoodGoal);
+      console.log("Food Day:", newFoodDay);
+      console.log("allergies: ", allergies);
 
       if (localUserExist) {
         resultUser = await axios.put(
           `${baseUrl}/api/users`,
           {
             image_url: newUserImage_url,
-            name: name,
-            allergies: allergies,
+            name,
+            allergies,
             dietary_pref: {
-              connect: dietaryPref.map((drName) => ({
-                name: drName,
-              })),
+              connect: dietaryPref.map((drName) => ({ name: drName })),
             },
             goals: {
               connect: newFoodGoal.map((goalName) => ({ title: goalName })),
             },
-            recommendations: {
-              connect: [],
-            },
+            recommendations: { connect: [] },
             role: newUserPosition,
             caloric_goal: calories,
             daysOfWeek: newFoodDay,
@@ -151,70 +171,47 @@ function GoalsPage({ user, setUser }) {
             },
           }
         );
-
-        console.log("completed updating the user information");
-        console.log(user);
       } else {
         const userData = {
           clerkId: "",
           email: "",
           image_url: newUserImage_url,
-          name: name,
-          allergies: allergies,
+          name,
+          allergies,
           dietary_pref: {
-            connect: dietaryPref.map((drName) => ({
-              name: drName,
-            })),
+            connect: dietaryPref.map((drName) => ({ name: drName })),
           },
           goals: {
             connect: newFoodGoal.map((goalName) => ({ title: goalName })),
           },
-          recommendations: {
-            connect: [],
-          },
+          recommendations: { connect: [] },
           role: newUserPosition,
           caloric_goal: calories,
           daysOfWeek: newFoodDay,
         };
-
         resultUser = await axios.post(`${baseUrl}/api/users`, userData, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         });
-
-        console.log(resultUser.data);
       }
 
       setUser(resultUser.data.user || resultUser.data);
-
+      await checkAndUpdatePreferences();
       navigate("/home");
-
-      console.log("user: ", user);
     } catch (error) {
-      console.error("Error creating user profile (AxiosError object):", error);
+      console.error("Error creating user profile:", error);
     }
-
-    console.log("USER INFORMATION");
-    console.log("Name:", name);
-    console.log("Position:", newUserPosition);
-    console.log("Calories", calories);
-    console.log("Image URL:", newUserImage_url);
-    console.log("dietary preferences: ", dietaryPref);
-    console.log("Food Goal:", newFoodGoal);
-    console.log("Food Day:", newFoodDay);
-    console.log("allergies: ", allergies);
   }
-
-  const hasProfile = !!user;
 
   return (
     <div className="GoalsPage">
       <span className="top-buttons"></span>
       <h1>Profile</h1>
-      <h3> Welcome to Your Profile! </h3>
+      <h3>Welcome to Your Profile!</h3>
       <form onSubmit={handleSubmit} className="create-profile-form">
+        {/* Name Input */}
         <div className="Goals_req_input">
           <label htmlFor="newUserName">
             Name <span className="stars">*</span>
@@ -230,9 +227,10 @@ function GoalsPage({ user, setUser }) {
           {nameError && <p className="error-message">{nameError}</p>}
         </div>
 
+        {/* Position Dropdown */}
         <div className="Goals_req_input">
           <label htmlFor="newUserPosition">
-            Position<span className="stars">*</span>
+            Position <span className="stars">*</span>
           </label>
           <div className="user-postion">
             <select
@@ -257,19 +255,20 @@ function GoalsPage({ user, setUser }) {
             </select>
           </div>
         </div>
+
+        {/* Caloric Goal */}
         <div className="Goals_req_input">
           <label htmlFor="newUserCalories">
             Daily Calorie Intake Goal <span className="stars">*</span>
           </label>
           <div className="caloric input">
-            {/* BUG HERE */}
             <input
               type="number"
               value={calories}
               onChange={(e) => {
                 const raw = e.target.value;
                 const sanitized = raw.replace(/^0+(?!$)/, "");
-                setCalories(sanitized === "" ? "0" : sanitized);
+                setCalories(sanitized === "" ? 0 : parseInt(sanitized));
               }}
             />
             <button type="button" onClick={decreaseCalories} className="arrow">
@@ -280,226 +279,116 @@ function GoalsPage({ user, setUser }) {
             </button>
           </div>
         </div>
+
+        {/* Profile Picture Selection */}
         <div className="Goals_but_input">
           <label htmlFor="newUserImage" id="profile-pic-text">
             Profile Picture <span className="stars">*</span>
           </label>
           <div className="profile_pic">
-            {[
-              {
-                id: "einstein",
-                src: "/einstein-profile.png",
-                selectedSrc: "/einstein-profile-selected.png",
-                alt: "Einstein",
-                className: "einstein-img",
-              },
-              {
-                id: "astro",
-                src: "/astro-profile.png",
-                selectedSrc: "/astro-profile-selected.png",
-                alt: "Astro",
-                className: "astro-img",
-              },
-              {
-                id: "codey",
-                src: "/codey-profile.png",
-                selectedSrc: "/codey-profile-selected.png",
-                alt: "Codey",
-                className: "codey-img",
-              },
-              {
-                id: "ruth",
-                src: "/ruth-profile.png",
-                selectedSrc: "/ruth-profile-selected.png",
-                alt: "Ruth",
-                className: "ruth-img",
-              },
-              {
-                id: "appy",
-                src: "/appy-profile.png",
-                selectedSrc: "/appy-profile-selected.png",
-                alt: "Appy",
-                className: "appy-img",
-              },
-            ].map((char) => {
-              const isSelected = newUserImage_url === char.selectedSrc;
+            {["einstein", "astro", "codey", "ruth", "appy"].map((id) => {
+              const selectedSrc = `/${id}-profile-selected.png`;
+              const src = `/${id}-profile.png`;
+              const isSelected = newUserImage_url === selectedSrc;
               return (
                 <img
-                  key={char.id}
-                  src={isSelected ? char.selectedSrc : char.src}
-                  alt={char.alt}
-                  className={`${char.className} ${
-                    isSelected ? "selected" : ""
-                  }`}
+                  key={id}
+                  src={isSelected ? selectedSrc : src}
+                  alt={id}
+                  className={`${id}-img ${isSelected ? "selected" : ""}`}
                   onClick={() =>
-                    setNewUserImage_url(isSelected ? "" : char.selectedSrc)
+                    setNewUserImage_url(isSelected ? "" : selectedSrc)
                   }
                 />
               );
             })}
           </div>
         </div>
-
-        {/* food goals  */}
+        {/* Food Goals Section */}
         <div className="goals_but_input">
           <label htmlFor="newUserGoals">Food Goals</label>
           <div className="food-goals-select">
-            <button
-              type="button"
-              className={`protein ${
-                newFoodGoal.includes("Protein") ? "selected" : ""
-              }`}
-              onClick={() => toggleFoodGoal("Protein")}
-            >
-              I want to eat more protein
-            </button>
-            <button
-              type="button"
-              className={`vegetables ${
-                newFoodGoal.includes("Vegetables") ? "selected" : ""
-              }`}
-              onClick={() => toggleFoodGoal("Vegetables")}
-            >
-              I want to eat more vegetables
-            </button>
-
-            <button
-              type="button"
-              className={`Weight Loss ${
-                newFoodGoal.includes("Weight Loss") ? "selected" : ""
-              }`}
-              onClick={() => toggleFoodGoal("Weight Loss")}
-            >
-              I want to lose weight
-            </button>
-
-            <button
-              type="button"
-              className={`Muscle Gain ${
-                newFoodGoal.includes("Muscle Gain") ? "selected" : ""
-              }`}
-              onClick={() => toggleFoodGoal("Muscle Gain")}
-            >
-              I want to gain more muscle
-            </button>
-          </div>
-        </div>
-
-        {/* dietary preferences */}
-        <div className="goals_but_input">
-          <label htmlFor="newUserDietPref">
-            Do you have any dietary preferences?
-          </label>
-          <div className="food-df-select">
-            <button
-              type="button"
-              className={`Vegetarian ${
-                dietaryPref.includes("Vegetarian") ? "selected" : ""
-              }`}
-              onClick={() => toggleDietaryPref("Vegetarian")}
-            >
-              Vegetarian
-            </button>
-            <button
-              type="button"
-              className={`Vegan ${
-                dietaryPref.includes("Vegan") ? "selected" : ""
-              }`}
-              onClick={() => toggleDietaryPref("Vegan")}
-            >
-              Vegan
-            </button>
-
-            <button
-              type="button"
-              className={`Gluten-Free ${
-                dietaryPref.includes("Gluten-Free") ? "selected" : ""
-              }`}
-              onClick={() => toggleDietaryPref("Gluten-Free")}
-            >
-              Gluten-Free
-            </button>
-          </div>
-        </div>
-
-        {/* allergies */}
-
-        <div className="goals_but_input">
-          <label htmlFor="newUserAllergies">Do you have any allergies?</label>
-          <p className="disclaimer">
-            *Our AI provides personalized meal recommendations. Please note that
-            some suggestions may not be accurate.
-          </p>
-          <div className="food-allergy-select">
-            {commonAllergies.map((allergy) => {
-              return (
+            {["Protein", "Vegetables", "Weight Loss", "Muscle Gain"].map(
+              (goal) => (
                 <button
                   type="button"
-                  className={`{allergy} ${
-                    allergies.includes(allergy) ? "selected" : ""
+                  key={goal}
+                  className={`${goal.replace(/\s+/g, "-").toLowerCase()} ${
+                    newFoodGoal.includes(goal) ? "selected" : ""
                   }`}
-                  onClick={() => toggleAllergies(allergy)}
+                  onClick={() => toggleFoodGoal(goal)}
                 >
-                  {allergy}
+                  I want to{" "}
+                  {goal === "Weight Loss"
+                    ? "lose weight"
+                    : goal === "Muscle Gain"
+                    ? "gain more muscle"
+                    : `eat more ${goal.toLowerCase()}`}
                 </button>
-              );
-            })}
+              )
+            )}
           </div>
         </div>
 
+        {/* Dietary Preferences */}
         <div className="goals_but_input">
-          <label htmlFor="DaysWanted">
-            What Days of the Week Would You Like Meal Suggestions?
-          </label>
-
-          <div className="food-days-select">
-            <button
-              type="button"
-              className={`monday ${
-                newFoodDay.includes("Monday") ? "selected" : ""
-              }`}
-              onClick={() => toggleDay("Monday")}
-            >
-              Monday
-            </button>
-            <button
-              type="button"
-              className={`tuesday ${
-                newFoodDay.includes("Tuesday") ? "selected" : ""
-              }`}
-              onClick={() => toggleDay("Tuesday")}
-            >
-              Tuesday
-            </button>
-            <button
-              type="button"
-              className={`wedensday ${
-                newFoodDay.includes("Wednesday") ? "selected" : ""
-              }`}
-              onClick={() => toggleDay("Wednesday")}
-            >
-              Wednesday
-            </button>
-            <button
-              type="button"
-              className={`thursday ${
-                newFoodDay.includes("Thursday") ? "selected" : ""
-              }`}
-              onClick={() => toggleDay("Thursday")}
-            >
-              Thursday
-            </button>
-            <button
-              type="button"
-              className={`friday ${
-                newFoodDay.includes("Friday") ? "selected" : ""
-              }`}
-              onClick={() => toggleDay("Friday")}
-            >
-              Friday
-            </button>
+          <label>Do you have any dietary preferences?</label>
+          <div className="food-df-select">
+            {["Vegetarian", "Vegan", "Gluten-Free"].map((pref) => (
+              <button
+                key={pref}
+                type="button"
+                className={`${pref.replace(/\s+/g, "-").toLowerCase()} ${
+                  dietaryPref.includes(pref) ? "selected" : ""
+                }`}
+                onClick={() => toggleDietaryPref(pref)}
+              >
+                {pref}
+              </button>
+            ))}
           </div>
         </div>
+
+        {/* Allergies */}
+        <div className="goals_but_input">
+          <label>Do you have any allergies?</label>
+          <div className="food-allergy-select">
+            {commonAllergies.map((allergy) => (
+              <button
+                key={allergy}
+                type="button"
+                className={`${allergy.toLowerCase()} ${
+                  allergies.includes(allergy) ? "selected" : ""
+                }`}
+                onClick={() => toggleAllergies(allergy)}
+              >
+                {allergy}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Preferred Days */}
+        <div className="goals_but_input">
+          <label>What days would you like meal suggestions?</label>
+          <div className="food-days-select">
+            {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"].map(
+              (day) => (
+                <button
+                  key={day}
+                  type="button"
+                  className={`${day.toLowerCase()} ${
+                    newFoodDay.includes(day) ? "selected" : ""
+                  }`}
+                  onClick={() => toggleDay(day)}
+                >
+                  {day}
+                </button>
+              )
+            )}
+          </div>
+        </div>
+
         <button
           type="submit"
           className="save-button"
@@ -508,7 +397,6 @@ function GoalsPage({ user, setUser }) {
               "selectedFoodDays",
               JSON.stringify(newFoodDay)
             );
-            navigate("/home");
           }}
           disabled={!isFormValid}
         >
