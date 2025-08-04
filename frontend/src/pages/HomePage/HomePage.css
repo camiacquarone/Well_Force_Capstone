@@ -4,7 +4,6 @@ h1.welcome-user {
   color: #0a7aaa;
   height: 100%;
   transition: all 0.5s ease;
-  z-index: 1000;
 }
 
 .home-header {

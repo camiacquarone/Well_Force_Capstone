@@ -135,7 +135,7 @@ body.nav-open {
 }
 
 body.nav-closed {
-  background: linear-gradient(180deg, #ffffff, #c4ebff);
+  /* background: linear-gradient(180deg, #ffffff, #c4ebff); */
   transition: all 0.5s ease;
 }
 
@@ -228,16 +228,13 @@ body.nav-open .GoalsPage {
     margin-left: 1px;
     left: 0px;
     padding: 0rem;
-    /* background-color: red; */
   }
 
   .pfp {
     position: absolute; 
-    margin-left: 15rem;
   }
 
   body.nav-open .open {
-    /* background-color: red; */
     margin-right: 6rem;
   }
   .navbar-header {

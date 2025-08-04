@@ -3,15 +3,22 @@ import MealModal from "/src/components/MealModal/MealModal.jsx";
 import { Link } from "react-router-dom";
 import "../MealsCard/MealsCard.css";
 import { CaloriesContext } from "../CalorieTracker/CaloriesContext.jsx";
+import Notification from "../Notification/Notification.jsx";
 import { useAuth, useUser } from "@clerk/clerk-react";
 import axios from "axios";
 
 const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL;
 
-export default function MealCard({ meal, type }) {
+export default function MealCard({
+  meal,
+  type,
+  hasOrderedBefore,
+  setHasOrderedBefore,
+}) {
   const [showModal, setShowModal] = useState(false);
   const [eatCount, setEatCount] = useState(0);
   const [showFuelPopup, setShowFuelPopup] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
   const { addCalories, refreshCalories } = useContext(CaloriesContext);
   const { getToken } = useAuth();
   const { user } = useUser();
@@ -132,6 +139,7 @@ export default function MealCard({ meal, type }) {
           <span className="label">Restaurant:</span>{" "}
           <span className="restaurant-name">{meal.restaurant_name}</span>
         </p>
+        {/* <Notification /> */}
 
         <a
           href={`https://order.trypicnic.com/search/${encodeURIComponent(
@@ -140,7 +148,17 @@ export default function MealCard({ meal, type }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <button className="order-now">Order Now</button>
+          <button
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+            className="order-now"
+            onClick={() => {
+              setHasOrderedBefore(true);
+            }}
+          >
+            {hasOrderedBefore === false && isHovering && <Notification />}
+            Order Now
+          </button>
         </a>
         <button className="eaten-button">Eaten Today: {eatCount}</button>
         <div>
@@ -158,25 +176,6 @@ export default function MealCard({ meal, type }) {
             <h5 className="ai-pick-title">WellForce AI Pick</h5>
           </div>
         </div>
-
-        {/* <p>
-          <span className="label">Calories: </span>{" "}
-          <span className="calories">
-            {" "}
-            {meal.nutritional_information?.[0]?.calories ?? "N/A"} kcal{" "}
-          </span>
-        </p>
-
-        <p>
-          <span className="label">Protein:</span>{" "}
-          <span>
-            {Array.isArray(meal.nutritional_information) &&
-            meal.nutritional_information.length > 0
-              ? meal.nutritional_information[0].protein
-              : "N/A"}
-            g{" "}
-          </span>
-        </p> */}
       </div>
       {showModal && (
         <MealModal meal={meal} onClose={() => setShowModal(false)} />
