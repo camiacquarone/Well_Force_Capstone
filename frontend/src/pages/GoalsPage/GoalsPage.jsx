@@ -18,7 +18,15 @@ function GoalsPage({ user, setUser }) {
 
   const position = ["Intern", "Full Time"];
   const commonAllergies = [
-    "Milk", "Eggs", "Peanuts", "Tree Nuts", "Soy", "Wheat", "Fish", "Shellfish", "Sesame"
+    "Milk",
+    "Eggs",
+    "Peanuts",
+    "Tree Nuts",
+    "Soy",
+    "Wheat",
+    "Fish",
+    "Shellfish",
+    "Sesame",
   ];
 
   const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL;
@@ -41,12 +49,15 @@ function GoalsPage({ user, setUser }) {
     }
   };
 
-  const increaseCalories = () => setCalories((prev) => Math.min(prev + 50, 5000));
+  const increaseCalories = () =>
+    setCalories((prev) => Math.min(prev + 50, 5000));
   const decreaseCalories = () => setCalories((prev) => Math.max(prev - 50, 0));
 
   function toggleFoodGoal(goal) {
     setNewFoodGoal((prev) =>
-      prev.includes(goal) ? prev.filter((item) => item !== goal) : [...prev, goal]
+      prev.includes(goal)
+        ? prev.filter((item) => item !== goal)
+        : [...prev, goal]
     );
   }
 
@@ -59,7 +70,9 @@ function GoalsPage({ user, setUser }) {
 
   function toggleAllergies(allerg) {
     setAllergies((prev) =>
-      prev.includes(allerg) ? prev.filter((item) => item !== allerg) : [...prev, allerg]
+      prev.includes(allerg)
+        ? prev.filter((item) => item !== allerg)
+        : [...prev, allerg]
     );
   }
 
@@ -75,15 +88,13 @@ function GoalsPage({ user, setUser }) {
         setLocalUserExist(false);
         return;
       }
-
       setLocalUserExist(true);
-
       try {
         const token = await getToken();
       } catch (error) {}
     };
     checkIfExist();
-  }, [user]); // ✅ Fixed: added dependency array
+  }, [user]);
 
   useEffect(() => {
     if (!user) return;
@@ -102,15 +113,11 @@ function GoalsPage({ user, setUser }) {
     try {
       const token = await getToken();
       const res = await axios.get(`${baseUrl}/api/users/me/preferences`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
-
       const latestPreferences = res.data;
       const storedPreferences = localStorage.getItem("userPreferences");
       const latestString = JSON.stringify(latestPreferences);
-
       if (storedPreferences !== latestString) {
         localStorage.setItem("userPreferences", latestString);
         localStorage.removeItem("personalizedMeals");
@@ -122,9 +129,7 @@ function GoalsPage({ user, setUser }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     console.log("Does the user exist? ", localUserExist);
-
     try {
       const token = await getToken();
       let resultUser;
@@ -144,8 +149,8 @@ function GoalsPage({ user, setUser }) {
           `${baseUrl}/api/users`,
           {
             image_url: newUserImage_url,
-            name: name,
-            allergies: allergies,
+            name,
+            allergies,
             dietary_pref: {
               connect: dietaryPref.map((drName) => ({ name: drName })),
             },
@@ -169,8 +174,8 @@ function GoalsPage({ user, setUser }) {
           clerkId: "",
           email: "",
           image_url: newUserImage_url,
-          name: name,
-          allergies: allergies,
+          name,
+          allergies,
           dietary_pref: {
             connect: dietaryPref.map((drName) => ({ name: drName })),
           },
@@ -182,7 +187,6 @@ function GoalsPage({ user, setUser }) {
           caloric_goal: calories,
           daysOfWeek: newFoodDay,
         };
-
         resultUser = await axios.post(`${baseUrl}/api/users`, userData, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -193,31 +197,18 @@ function GoalsPage({ user, setUser }) {
 
       setUser(resultUser.data.user || resultUser.data);
       await checkAndUpdatePreferences();
-      navigate("/home"); // ✅ This is now the only navigation call
+      navigate("/home");
     } catch (error) {
       console.error("Error creating user profile:", error);
     }
   }
 
-  const hasProfile = !!user;
-
   return (
     <div className="GoalsPage">
-      <span className="top-buttons">
-        {!hasProfile && (
-          <button
-            type="button"
-            className="top-left-button"
-            onClick={() => navigate("/")}
-          >
-            ⬅ Back
-          </button>
-        )}
-      </span>
       <h1>Profile</h1>
-      <h3> Welcome to Your Profile! </h3>
+      <h3>Welcome to Your Profile!</h3>
       <form onSubmit={handleSubmit} className="create-profile-form">
-        {/* Name */}
+        {/* Name Input */}
         <div className="Goals_req_input">
           <label htmlFor="newUserName">
             Name <span className="stars">*</span>
@@ -233,17 +224,19 @@ function GoalsPage({ user, setUser }) {
           {nameError && <p className="error-message">{nameError}</p>}
         </div>
 
-        {/* Position */}
+        {/* Position Dropdown */}
         <div className="Goals_req_input">
           <label htmlFor="newUserPosition">
-            Position<span className="stars">*</span>
+            Position <span className="stars">*</span>
           </label>
           <div className="user-postion">
             <select
               id="newUserPosition"
               className={`position-select ${
                 newUserPosition
-                  ? `select-${newUserPosition.toLowerCase().replace(/\s+/g, "-")}`
+                  ? `select-${newUserPosition
+                      .toLowerCase()
+                      .replace(/\s+/g, "-")}`
                   : ""
               }`}
               value={newUserPosition}
@@ -272,7 +265,7 @@ function GoalsPage({ user, setUser }) {
               onChange={(e) => {
                 const raw = e.target.value;
                 const sanitized = raw.replace(/^0+(?!$)/, "");
-                setCalories(sanitized === "" ? 0 : parseInt(sanitized)); // ✅ ensure it's a number
+                setCalories(sanitized === "" ? 0 : parseInt(sanitized));
               }}
             />
             <button type="button" onClick={decreaseCalories} className="arrow">
@@ -284,72 +277,123 @@ function GoalsPage({ user, setUser }) {
           </div>
         </div>
 
-        {/* Profile Picture */}
+        {/* Profile Picture Selection */}
         <div className="Goals_but_input">
           <label htmlFor="newUserImage" id="profile-pic-text">
             Profile Picture <span className="stars">*</span>
           </label>
           <div className="profile_pic">
-            {[ /* characters */ 
-              {
-                id: "einstein",
-                src: "/einstein-profile.png",
-                selectedSrc: "/einstein-profile-selected.png",
-                alt: "Einstein",
-                className: "einstein-img",
-              },
-              {
-                id: "astro",
-                src: "/astro-profile.png",
-                selectedSrc: "/astro-profile-selected.png",
-                alt: "Astro",
-                className: "astro-img",
-              },
-              {
-                id: "codey",
-                src: "/codey-profile.png",
-                selectedSrc: "/codey-profile-selected.png",
-                alt: "Codey",
-                className: "codey-img",
-              },
-              {
-                id: "ruth",
-                src: "/ruth-profile.png",
-                selectedSrc: "/ruth-profile-selected.png",
-                alt: "Ruth",
-                className: "ruth-img",
-              },
-              {
-                id: "appy",
-                src: "/appy-profile.png",
-                selectedSrc: "/appy-profile-selected.png",
-                alt: "Appy",
-                className: "appy-img",
-              },
-            ].map((char) => {
-              const isSelected = newUserImage_url === char.selectedSrc;
+            {["einstein", "astro", "codey", "ruth", "appy"].map((id) => {
+              const selectedSrc = `/${id}-profile-selected.png`;
+              const src = `/${id}-profile.png`;
+              const isSelected = newUserImage_url === selectedSrc;
               return (
                 <img
-                  key={char.id}
-                  src={isSelected ? char.selectedSrc : char.src}
-                  alt={char.alt}
-                  className={`${char.className} ${isSelected ? "selected" : ""}`}
-                  onClick={() => setNewUserImage_url(isSelected ? "" : char.selectedSrc)}
+                  key={id}
+                  src={isSelected ? selectedSrc : src}
+                  alt={id}
+                  className={`${id}-img ${isSelected ? "selected" : ""}`}
+                  onClick={() =>
+                    setNewUserImage_url(isSelected ? "" : selectedSrc)
+                  }
                 />
               );
             })}
           </div>
         </div>
+        {/* Food Goals Section */}
+        <div className="goals_but_input">
+          <label htmlFor="newUserGoals">Food Goals</label>
+          <div className="food-goals-select">
+            {["Protein", "Vegetables", "Weight Loss", "Muscle Gain"].map(
+              (goal) => (
+                <button
+                  type="button"
+                  key={goal}
+                  className={`${goal.replace(/\s+/g, "-").toLowerCase()} ${
+                    newFoodGoal.includes(goal) ? "selected" : ""
+                  }`}
+                  onClick={() => toggleFoodGoal(goal)}
+                >
+                  I want to{" "}
+                  {goal === "Weight Loss"
+                    ? "lose weight"
+                    : goal === "Muscle Gain"
+                    ? "gain more muscle"
+                    : `eat more ${goal.toLowerCase()}`}
+                </button>
+              )
+            )}
+          </div>
+        </div>
 
-        {/* Food Goals */}
-        {/* ... keep rest of form unchanged for brevity ... */}
+        {/* Dietary Preferences */}
+        <div className="goals_but_input">
+          <label>Do you have any dietary preferences?</label>
+          <div className="food-df-select">
+            {["Vegetarian", "Vegan", "Gluten-Free"].map((pref) => (
+              <button
+                key={pref}
+                type="button"
+                className={`${pref.replace(/\s+/g, "-").toLowerCase()} ${
+                  dietaryPref.includes(pref) ? "selected" : ""
+                }`}
+                onClick={() => toggleDietaryPref(pref)}
+              >
+                {pref}
+              </button>
+            ))}
+          </div>
+        </div>
 
-        {/* Save Button */}
+        {/* Allergies */}
+        <div className="goals_but_input">
+          <label>Do you have any allergies?</label>
+          <div className="food-allergy-select">
+            {commonAllergies.map((allergy) => (
+              <button
+                key={allergy}
+                type="button"
+                className={`${allergy.toLowerCase()} ${
+                  allergies.includes(allergy) ? "selected" : ""
+                }`}
+                onClick={() => toggleAllergies(allergy)}
+              >
+                {allergy}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Preferred Days */}
+        <div className="goals_but_input">
+          <label>What days would you like meal suggestions?</label>
+          <div className="food-days-select">
+            {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"].map(
+              (day) => (
+                <button
+                  key={day}
+                  type="button"
+                  className={`${day.toLowerCase()} ${
+                    newFoodDay.includes(day) ? "selected" : ""
+                  }`}
+                  onClick={() => toggleDay(day)}
+                >
+                  {day}
+                </button>
+              )
+            )}
+          </div>
+        </div>
+
         <button
           type="submit"
           className="save-button"
           onClick={() => {
-            localStorage.setItem("selectedFoodDays", JSON.stringify(newFoodDay));
+            localStorage.setItem(
+              "selectedFoodDays",
+              JSON.stringify(newFoodDay)
+            );
           }}
           disabled={!isFormValid}
         >
