@@ -112,6 +112,14 @@ export default function MealsList({ showAll }) {
     if (internalUserId && !showAll) checkPreferencesAndFetch();
   }, [internalUserId, getToken, showAll]);
 
+  useEffect(() => {
+    const cacheKey = showAll ? "allMeals" : "personalizedMeals";
+    const cached = localStorage.getItem(cacheKey);
+    if (cached) {
+      setMeals(JSON.parse(cached));
+    }
+  }, [showAll]);
+
   if (!meals?.length) {
     return (
       <div className="loader-container">

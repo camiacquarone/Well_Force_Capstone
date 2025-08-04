@@ -1,11 +1,8 @@
 h1.welcome-user {
-  /* margin-top: 4rem; */
   font-family: "Bold";
   font-size: 4rem;
   color: #0a7aaa;
-  /* position: absolute; */
   height: 100%;
-  /* width: calc(100% - 30px); */
   transition: all 0.5s ease;
   z-index: 1000;
 }
@@ -16,11 +13,11 @@ h1.welcome-user {
     justify-content: left;
     align-items: center;
     margin-top: 5rem;
-    margin-left: 5%;
+    margin-left: 0%;
 }
 
 .home-header .img-pfp {
-  width: 12rem !important;
+  width: 8rem !important;
   /* background-color: red; */
 }
 
@@ -39,9 +36,10 @@ p {
 .separated-container {
   width: 50%;
   padding: 1.5rem;
+  padding-left: 0;
   border-radius: 8px;
   box-sizing: border-box;
-  /* padding-right: 0; */
+  padding-right: 0.5rem;
 }
 
 .graph-container {
@@ -56,12 +54,14 @@ p {
   justify-content: center;
   margin-top: 1.45rem;
     border: solid #a1deff 4px;
+    width:720px;
+    height:480px;
 }
 
 .right-container{
   display: flex;
   flex-direction: column;
-  width:45rem;
+  /* width:45rem; */
   margin-top:1.55rem;
 }
 
@@ -73,8 +73,8 @@ p {
   align-items: flex-start;
   justify-content: space-around;
   box-sizing: border-box;
-  padding-left:-1rem;
-  margin-left: -2rem;
+  padding-left:-1rem; 
+  margin-left: -2rem; 
 }
 
 /* phone */
@@ -89,12 +89,25 @@ p {
     margin-left: 0rem !important;
   }
 
+  .img-pfp{
+    margin-top: 10px;
+  }
+  .container-temp{
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  .separated-container{
+    width:400px;
+  }
+
+
 }
 
 /* tablet size */
 @media screen and (max-width: 1024px) {
   h1.welcome-user {
-    font-size: 2rem !important;
+    font-size: 3rem !important;
     margin-top: 7rem;
     padding-top: 0;
     height: auto;
@@ -114,9 +127,9 @@ p {
 
   .container-temp {
     flex-direction: column;
-    width: 100%;
+    width:95%;
     padding: 1rem;
-    gap: 1rem;
+    /* gap: 1rem; */
     align-items: center;
     margin-left: 2rem;
   }
@@ -140,11 +153,32 @@ p {
   margin: 0px 0px 0px 0px;
 }
 
-
-
   .separated-container,
   .graph-container {
-    width: 100%;
+    width: 800px;
     padding: 1rem;
+    padding-bottom: 0;
   }
+  .right-container{
+      width: 800px;
+      margin-top:0;
+      padding-left: 26px;
+
+
 }
+.habit-card{
+  width: 730px;
+}
+
+.graph-container{
+margin-top:1rem;
+  height:520px;
+  width:800px;
+}
+
+
+}
+
+
+
+
