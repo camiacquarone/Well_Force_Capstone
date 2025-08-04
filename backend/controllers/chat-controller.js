@@ -78,7 +78,7 @@ ${meals
           { role: "system", content: systemPrompt },
           { role: "user", content: userPrompt },
         ],
-        temperature: 0.7,
+        temperature: 0.7, 
       });
 
       gptContent = completion.choices[0].message.content;

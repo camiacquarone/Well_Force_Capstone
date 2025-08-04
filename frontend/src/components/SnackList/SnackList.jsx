@@ -110,7 +110,7 @@ export default function SnackList({ energyLevel, allergy }) {
   //     return 0;
   // });
 
-
+    console.log("Filtered Snacks being rendered:", filteredSnacks)
   return (
     <div className="snack-container">
       {/* Conditionally render the modal */}
