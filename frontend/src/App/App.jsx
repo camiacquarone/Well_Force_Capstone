@@ -106,7 +106,8 @@ function App() {
               element={
                 <ProtectedRoute>
                   <>
-                    <GoalsPage user={user} setUser={setUser} /> <NavBar />
+                    <GoalsPage user={user} setUser={setUser} />
+                    {!!user && <NavBar />}
                   </>
                 </ProtectedRoute>
               }

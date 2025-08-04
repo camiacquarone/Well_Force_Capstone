@@ -7,7 +7,7 @@ import axios from "axios";
 function GoalsPage({ user, setUser }) {
   const [name, setName] = useState("");
   const [dietaryPref, setDietaryPref] = useState([]);
-  const [userExist, setUserExist] = useState(false);
+  const [localUserExist, setLocalUserExist] = useState(false);
   const [allergies, setAllergies] = useState([]);
   const [newUserPosition, setNewUserPosition] = useState("");
   const [calories, setCalories] = useState(2000);
@@ -72,17 +72,22 @@ function GoalsPage({ user, setUser }) {
   useEffect(() => {
     const checkIfExist = async () => {
       if (!user) {
-        setUserExist(false);
+        setLocalUserExist(false);
         return;
       }
-      setUserExist(true);
+
+      setLocalUserExist(true);
+
+      try {
+        const token = await getToken();
+      } catch (error) {}
     };
     checkIfExist();
   });
 
   useEffect(() => {
     if (!user) return;
-    setUserExist(true);
+    setLocalUserExist(true);
     setName(user.name || "");
     setNewUserImage_url(user.image_url || "");
     setCalories(user.caloric_goal || 2000);
@@ -119,11 +124,14 @@ function GoalsPage({ user, setUser }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
+    console.log("Does the user exist? ", localUserExist);
     try {
       const token = await getToken();
       let resultUser;
 
-      if (userExist) {
+  console.log(allergies);
+
+      if (localUserExist) {
         resultUser = await axios.put(
           `${baseUrl}/api/users`,
           {
@@ -192,18 +200,22 @@ function GoalsPage({ user, setUser }) {
     console.log("Food Goal:", newFoodGoal);
     console.log("Food Day:", newFoodDay);
     console.log("allergies: ", allergies);
-  
+  }
+
+  const hasProfile = !!user;
 
   return (
     <div className="GoalsPage">
       <span className="top-buttons">
-        <button
-          type="button"
-          className="top-left-button"
-          onClick={() => navigate("/")}
-        >
-          ⬅ Back
-        </button>
+        {!hasProfile && (
+          <button
+            type="button"
+            className="top-left-button"
+            onClick={() => navigate("/")}
+          >
+            ⬅ Back
+          </button>
+        )}
       </span>
       <h1>Profile</h1>
       <h3> Welcome to Your Profile! </h3>
