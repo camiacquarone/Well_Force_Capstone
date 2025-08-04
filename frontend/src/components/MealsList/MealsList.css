@@ -23,6 +23,28 @@
   margin-right: auto;
 }
 
+.meals-scroll-wrapper::-webkit-scrollbar {
+ height: 8px; /* Height of the horizontal scrollbar */
+  width: 8px;  
+}
+
+.meals-scroll-wrapper::-webkit-scrollbar-track {
+  background: #f1f1f1; /* A light background color for the track */
+  border-radius: 4px;
+}
+
+/* Style the scrollbar thumb (the draggable part) */
+.meals-scroll-wrapper::-webkit-scrollbar-thumb {
+  background: #0a7aaa; /* The color of your brand */
+  border-radius: 4px;
+  border: 1px solid #f1f1f1; /* Creates a small gap around the thumb */
+}
+
+/* Style the thumb on hover */
+.meals-scroll-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #06415b; /* A darker color on hover */
+}
+
 /* This is the FLEX CONTAINER that lays out the cards in a single row */
 .meals-list {
   display: flex; /* <--- CRITICAL: Arranges children in a row by default */

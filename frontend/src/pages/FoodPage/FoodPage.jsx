@@ -12,6 +12,7 @@ function FoodPage({ user, setUser }) {
   const [allergy, setAllergy] = useState("");
   const [showAllMeals, setShowAllMeals] = useState(false);
   const [buttonText, setButtonText] = useState(true);
+  const [hasOrdered, setHasOrdered] = useState(false);
 
   return (
     <div className="food-page">
@@ -87,7 +88,11 @@ function FoodPage({ user, setUser }) {
               </button>
             </div>
 
-            <MealsList showAll={showAllMeals} />
+            <MealsList
+              showAll={showAllMeals}
+              hasOrderedBefore={hasOrdered}
+              setHasOrderedBefore={setHasOrdered}
+            />
           </div>
         </section>
 

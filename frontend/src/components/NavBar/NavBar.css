@@ -135,7 +135,7 @@ body.nav-open {
 }
 
 body.nav-closed {
-  background: linear-gradient(180deg, #ffffff, #c4ebff);
+  /* background: linear-gradient(180deg, #ffffff, #c4ebff); */
   transition: all 0.5s ease;
 }
 
@@ -235,7 +235,6 @@ body.nav-open .GoalsPage {
 
   .pfp {
     position: absolute; 
-    margin-left: 15rem;
   }
 
   body.nav-open .open {

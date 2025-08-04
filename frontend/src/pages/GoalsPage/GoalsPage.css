@@ -1,7 +1,7 @@
 .body,
 html,
 .GoalsPage {
-  background: linear-gradient(180deg, #ffffff, #abe3ff);
+  /* background: linear-gradient(180deg, #ffffff, #abe3ff); */
   /* padding-bottom: 30rem; */
 }
 
@@ -336,16 +336,17 @@ button:hover {
 
 @media screen and (min-width: 300px) and (max-width: 767px) {
   .GoalsPage {
-    max-width: 1200px;
-    margin: auto;
-    margin-top: 3rem;
-    padding: 20px;
-    position: absolute;
-    right: 100px;
-    width: 80%;
-    padding-bottom: 39rem;
-    padding-right: 10rem;
-    padding-left: 10rem;
+     /* max-width: 1200px; */
+        margin: auto;
+        margin-top: 3rem;
+        padding: 20px;
+        position: absolute;
+        /* right: 100px; */
+        width: 80%;
+        padding-bottom: 39rem;
+        /* padding-right: 10rem; */
+        margin-left: 2rem;
+
   }
   .navbar {
     z-index: 3;
