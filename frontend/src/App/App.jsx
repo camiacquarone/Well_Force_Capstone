@@ -54,8 +54,8 @@ function App() {
             "Content-Type": "application/json",
           },
         });
-
         setUser(response.data); // Update state with the fetched data
+        localStorage.setItem("userObject", JSON.stringify(response.data)); // 💾 Save to localStorage
         console.log("User data fetched:", response.data);
       } catch (err) {
         console.error("Error fetching user data:", err);
