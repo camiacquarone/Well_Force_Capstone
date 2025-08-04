@@ -128,14 +128,16 @@
   }
 }
 
-/* .move-to-end-button {
+
+
+.move-to-end-button {
   position: absolute;
-  top: 5px; 
-  right: -10px; 
-  background-color: #ff4d4d; 
+  top: 5px; /* Adjust as needed */
+  right: -10px; /* Adjust as needed */
+  background-color: #ff4d4d; /* Red color */
   color: white;
   border: none;
-  border-radius: 50%; 
+  border-radius: 50%; /* Makes it a circle */
   width: 30px;
   height: 30px;
   display: flex;
@@ -145,14 +147,12 @@
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
-  z-index: 10; 
+  z-index: 10; /* Ensure it's on top of the card content */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   transition: background-color 0.2s ease;
 }
 
-.move-to-end-button:hover {
-  background-color: #e60000;
-}
+
 
 .x-icon {
   line-height: 1; 

@@ -1,0 +1,76 @@
+.container {
+    background-color: white;
+    position: absolute;
+    box-shadow: rgba(0, 0, 0, 0.457) 5px 5px 5px ;
+    color: black;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -170px;
+    margin-left: -55px;
+}
+
+.h2 {
+    margin: 0px;
+    padding: 0px;
+}
+
+p {
+    padding: 0px !important;
+    margin: 0px !important;
+}
+.notif-box {
+  position: relative;
+  display: inline-block;
+  background: #ffffff;
+  border: 1px solid #df2b2c;
+  border-radius: 6px;
+  width: 200px;
+  height: 150px;
+}
+
+
+.notif-box {
+          position: relative; /* Needed for absolute positioning of the triangle */
+          display: flex; /* Use flexbox for internal content layout */
+          flex-direction: column; /* Stack children vertically */
+          align-items: center; /* Center content horizontally */
+          background: #ffffff; /* Background color of the box */
+          border: 1px solid #df2b2c; /* Red border */
+          border-radius: 6px; /* Rounded corners for the box */
+          width: 200px; /* Fixed width */
+          padding: 15px; /* Internal padding for content */
+          box-sizing: border-box; /* Include padding in the element's total width */
+          text-align: center; /* Center text within paragraphs */
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; /* Subtle shadow for depth */
+        }
+
+        /* Common styles for both pseudo-elements (triangle border and fill) */
+        .notif-box::before,
+        .notif-box::after {
+          content: ''; /* Required for pseudo-elements */
+          position: absolute; /* Position relative to .notif-box */
+          left: 50%; /* Start at the horizontal center */
+          transform: translateX(-50%); /* Adjust to truly center the triangle */
+          width: 0; /* Zero width for triangle shape */
+          height: 0; /* Zero height for triangle shape */
+        }
+
+        /* Outer triangle (acts as the border of the speech bubble) */
+        .notif-box::before {
+          bottom: -11px; /* Position 1px below the inner triangle to create a border effect */
+          border-left: 11px solid transparent; /* Transparent left border */
+          border-right: 11px solid transparent; /* Transparent right border */
+          border-top: 11px solid #df2b2c; /* Solid top border, matching box border color */
+          z-index: 1; /* Ensure this is behind the inner triangle but above other content */
+        }
+
+        /* Inner triangle (acts as the fill of the speech bubble) */
+        .notif-box::after {
+          bottom: -10px; /* Position directly below the box */
+          border-left: 10px solid transparent; /* Transparent left border */
+          border-right: 10px solid transparent; /* Transparent right border */
+          border-top: 10px solid #ffffff; /* Solid top border, matching box background color */
+          z-index: 2; /* Place above the border triangle */
+        }

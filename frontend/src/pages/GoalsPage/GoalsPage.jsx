@@ -207,17 +207,7 @@ function GoalsPage({ user, setUser }) {
 
   return (
     <div className="GoalsPage">
-      <span className="top-buttons">
-        {!hasProfile && (
-          <button
-            type="button"
-            className="top-left-button"
-            onClick={() => navigate("/")}
-          >
-            ⬅ Back
-          </button>
-        )}
-      </span>
+      <span className="top-buttons"></span>
       <h1>Profile</h1>
       <h3>Welcome to Your Profile!</h3>
       <form onSubmit={handleSubmit} className="create-profile-form">
