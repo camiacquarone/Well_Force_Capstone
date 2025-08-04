@@ -1,4 +1,4 @@
-const { PrismaClient } = require("./generated/prisma");
+const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const fs = require("fs");
 const path = require("path");
@@ -12,17 +12,24 @@ async function seed() {
     // --- 1. Clear existing data for these models (optional, but good for clean re-seeding) ---
     // If you uncomment these, be careful as they will delete all records in these tables!
     // They are usually safer for development/testing environments.
-    console.log(`🗑️ Deleting existing SnackLog entries...`);
-  await prisma.snackLog.deleteMany({});
-    await prisma.goals.deleteMany();
-    console.log("🗑️ Cleared existing Goals data.");
-    await prisma.dietary_Preferences.deleteMany();
-    console.log("🗑️ Cleared existing Dietary_Preferences data.");
-    console.log(`🗑️ Deleting existing Meals...`);
-    await prisma.meals.deleteMany(); // Deletes all records from the 'Meals' table
+    console.log(`🗑️ Deleting existing MealLog entries...`);
+await prisma.mealLog.deleteMany({});
 
-    console.log(`🗑️ Deleting existing Snacks...`);
-    await prisma.snacks.deleteMany(); // Deletes all records from the 'Snack' table
+console.log(`🗑️ Deleting existing SnackLog entries...`);
+await prisma.snackLog.deleteMany({});
+
+console.log("🗑️ Clearing existing Goals data...");
+await prisma.goals.deleteMany();
+
+console.log("🗑️ Clearing existing Dietary_Preferences data...");
+await prisma.dietary_Preferences.deleteMany();
+
+console.log(`🗑️ Deleting existing Meals...`);
+await prisma.meals.deleteMany();
+
+console.log(`🗑️ Deleting existing Snacks...`);
+await prisma.snacks.deleteMany();
+
 
 
     // --- 2. Seed Goals (e.g., "Protein", "Vegetables", "Days of the Week") ---
