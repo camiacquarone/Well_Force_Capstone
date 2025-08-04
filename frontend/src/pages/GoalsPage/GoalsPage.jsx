@@ -39,6 +39,8 @@ function GoalsPage({ user, setUser }) {
     newUserImage_url.trim() !== "" &&
     !nameError;
 
+  const hasProfile = !!user;
+
   const handleNameChange = (e) => {
     const value = e.target.value;
     if (/^[A-Za-z\s]*$/.test(value)) {
@@ -205,6 +207,17 @@ function GoalsPage({ user, setUser }) {
 
   return (
     <div className="GoalsPage">
+      <span className="top-buttons">
+        {!hasProfile && (
+          <button
+            type="button"
+            className="top-left-button"
+            onClick={() => navigate("/")}
+          >
+            ⬅ Back
+          </button>
+        )}
+      </span>
       <h1>Profile</h1>
       <h3>Welcome to Your Profile!</h3>
       <form onSubmit={handleSubmit} className="create-profile-form">
