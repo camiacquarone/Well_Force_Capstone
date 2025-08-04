@@ -15,6 +15,7 @@ function GoalsPage({ user, setUser }) {
   const [newFoodGoal, setNewFoodGoal] = useState([]);
   const [newFoodDay, setNewFoodDay] = useState([]);
   const [nameError, setNameError] = useState("");
+  const [userLoaded, setUserLoaded] = useState(false);
 
   const position = ["Intern", "Full Time"];
   const commonAllergies = [
@@ -38,6 +39,12 @@ function GoalsPage({ user, setUser }) {
     newUserPosition.trim() !== "" &&
     newUserImage_url.trim() !== "" &&
     !nameError;
+
+  useEffect(() => {
+    if (user !== undefined) {
+      setUserLoaded(true);
+    }
+  }, [user]);
 
   const hasProfile = !!user;
 
