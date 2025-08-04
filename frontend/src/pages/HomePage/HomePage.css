@@ -1,5 +1,5 @@
 h1.welcome-user {
-  margin-top: 4rem;
+  /* margin-top: 4rem; */
   font-family: "Bold";
   font-size: 4rem;
   color: #0a7aaa;
@@ -8,6 +8,20 @@ h1.welcome-user {
   /* width: calc(100% - 30px); */
   transition: all 0.5s ease;
   z-index: 1000;
+}
+
+.home-header {
+  /* background-color: red; */
+  display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 5rem;
+    margin-left: 5%;
+}
+
+.home-header .img-pfp {
+  width: 12rem !important;
+  /* background-color: red; */
 }
 
 h3 {
@@ -77,6 +91,7 @@ p {
 
 }
 
+/* tablet size */
 @media screen and (max-width: 1024px) {
   h1.welcome-user {
     font-size: 2rem !important;
@@ -110,6 +125,22 @@ p {
   margin-top: 0rem;
 
 }
+
+.home-header .img-pfp {
+  width: 7rem !important;
+}
+
+.home-header {
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+}
+
+.home-header h1 {
+  margin: 0px 0px 0px 0px;
+}
+
+
 
   .separated-container,
   .graph-container {

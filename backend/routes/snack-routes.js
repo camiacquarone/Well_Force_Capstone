@@ -11,5 +11,4 @@ router.get("/log/total", snackController.getTotalCalories);
 router.get("/log/totals", snackController.getDailyCalories);
 router.get("/log/daily", getDailyCalories);
 
-
 module.exports = router;

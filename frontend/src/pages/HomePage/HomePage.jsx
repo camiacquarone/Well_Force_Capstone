@@ -107,7 +107,11 @@ const HomePage = ({ user, setUser }) => {
 
   return (
     <div className="home-body">
-      <h1 className="welcome-user">Welcome{user ? ", " + user.name : ""}!</h1>
+      <div className="home-header">
+        <img className="img-pfp" src={user?.image_url} />
+        <h1 className="welcome-user">Welcome{user ? ", " + user.name : ""}!</h1>
+      </div>
+
       <div className="container-temp">
         <div className="separated-container">
           <Info user={user} />

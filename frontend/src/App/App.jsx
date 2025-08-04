@@ -18,7 +18,7 @@ import SignInPage from "../pages/SignInPage/SignInPage.jsx";
 import HomePage from "../pages/HomePage/HomePage.jsx";
 import GoalsPage from "../pages/GoalsPage/GoalsPage.jsx";
 import AICompanion from "../components/AICompanion/AICompanion";
-import NotFoundPage from "../pages/NotFoundPage/NotFoundPage.jsx"
+import NotFoundPage from "../pages/NotFoundPage/NotFoundPage.jsx";
 
 import NavBar from "../components/NavBar/NavBar";
 // import { useAuth } from "@clerk/clerk-react";
@@ -106,7 +106,8 @@ function App() {
               element={
                 <ProtectedRoute>
                   <>
-                    <GoalsPage user={user} setUser={setUser} /> <NavBar />
+                    <GoalsPage user={user} setUser={setUser} />
+                    {!!user && <NavBar />}
                   </>
                 </ProtectedRoute>
               }

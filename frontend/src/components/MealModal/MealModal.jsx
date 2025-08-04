@@ -9,13 +9,16 @@ export default function MealModal({ meal, onClose }) {
           X
         </button>
         <h2>{meal.name}</h2>
-        <img src={meal.image_url} alt={meal.name} className="modal-img" />
-        <p>Restaurant: {meal.restaurant_name}</p>
+        <img src={meal.image_url} alt={meal.name} className="img-meal2" />
+        {/* <p>Restaurant: {meal.restaurant_name}</p> */}
         <p>
-          Calories: {meal.nutritional_information?.[0]?.calories ?? "N/A"} kcal
+          <span className="label">Calories:</span> {""}
+          {meal.nutritional_information?.[0]?.calories ?? "N/A"} kcal
         </p>
-        <p>Protein: {meal.nutritional_information?.[0]?.protein ?? "N/A"} g</p>
-
+        <p>
+          <span className="label">Protein:</span>
+          {""} {meal.nutritional_information?.[0]?.protein ?? "N/A"} g
+        </p>
       </div>
     </div>
   );
