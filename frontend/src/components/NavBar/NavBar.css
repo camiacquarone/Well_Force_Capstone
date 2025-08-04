@@ -141,7 +141,7 @@ body.nav-closed {
 
 h1.welcome-user {
   transition: all 0.5s ease;
-  margin-left: 2rem; 
+  margin-left: 1rem; 
 }
 
 
@@ -182,10 +182,7 @@ body.nav-open .GoalsPage {
     margin-right: 9rem;
   }
 
-  .navbar button {
-    /* background-color: #c4ebff; */
-    /* margin-left: 9rem; */
-  }
+
 
   .food-closed,
   .home-closed,
