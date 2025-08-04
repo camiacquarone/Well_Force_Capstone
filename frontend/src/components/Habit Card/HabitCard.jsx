@@ -13,7 +13,7 @@ const HabitCard = () => {
     Fri: "Friday",
   };
 
-  const { snackLoggedByDay } = useContext(CaloriesContext);
+  const { caloriesByDay } = useContext(CaloriesContext);
   const [completions, setCompletions] = useState(Array(5).fill(false));
   const [foodDays, setFoodDays] = useState([]);
   const [currentWeekDates, setCurrentWeekDates] = useState([]);
@@ -48,7 +48,7 @@ const HabitCard = () => {
           const currentDate = new Date(monday);
           currentDate.setDate(monday.getDate() + i);
           const isoDate = currentDate.toISOString().split("T")[0];
-          const isLogged = snackLoggedByDay[isoDate];
+          const isLogged = caloriesByDay[isoDate] > 0;
 
           return (
             <div className="day" key={i}>

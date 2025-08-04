@@ -45,7 +45,6 @@ export const CaloriesProvider = ({ children }) => {
     if (!user) return;
     try {
       const token = await getToken();
-      // ✅ Fixed endpoint to match backend
       const res = await axios.get(`${baseUrl}/api/meals/log/totals`, {
         params: { userId: user.id },
         headers: { Authorization: `Bearer ${token}` },
@@ -89,20 +88,20 @@ export const CaloriesProvider = ({ children }) => {
     });
   };
 
-  return (
-    <CaloriesContext.Provider
-      value={{
-        caloriesByDay,
-        setCaloriesByDay,
-        addCalories,
-        refreshCalories,
-        snackLoggedByDay,
-        logSnackForDay,
-        mealLoggedByDay,
-        logMealForDay,
-      }}
-    >
-      {children}
-    </CaloriesContext.Provider>
-  );
+return (
+  <CaloriesContext.Provider
+    value={{
+      caloriesByDay,
+      setCaloriesByDay,
+      addCalories,
+      refreshCalories,
+      snackLoggedByDay,
+      logSnackForDay,
+      mealLoggedByDay,
+      logMealForDay
+    }}
+  >
+    {children}
+  </CaloriesContext.Provider>
+);
 };

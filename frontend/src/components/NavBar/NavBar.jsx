@@ -65,6 +65,7 @@ function NavBar({ user }) {
                 style={{ cursor: "pointer" }}
               />
             </Link>
+
             <div className="pfp">
               <SignedOut>
                 <SignInButton
@@ -114,7 +115,7 @@ function NavBar({ user }) {
                   />
                   <Link to="/profile">Settings</Link>
                 </span>
-                <div className="pfp">
+                <span className="pfp">
                   <SignedOut>
                     <SignInButton
                       mode="modal"
@@ -128,7 +129,7 @@ function NavBar({ user }) {
                     <div className="text-gray-700 text-sm md:text-base"></div>
                   </SignedIn>
                   Profile
-                </div>
+                </span>
 
                 {/* <Avatar pfpImg={user.image_url}></Avatar> */}
               </nav>
