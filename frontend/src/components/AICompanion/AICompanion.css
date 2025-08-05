@@ -60,7 +60,7 @@ b {
   border-radius: 0.5rem;
   width: fit-content; /* Adjust width to content */
   max-width: 80%; /* Limit width */
-  background-color: red;
+  /* background-color: red; */
 
 }
 

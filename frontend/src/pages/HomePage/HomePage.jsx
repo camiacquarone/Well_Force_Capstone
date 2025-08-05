@@ -109,7 +109,7 @@ const HomePage = ({ user, setUser }) => {
       console.log("Snacks after energy filter:", filtered.length);
     }
 
-    setFilteredSnacks(filtered);
+    setFilteredSnacks(filtered.slice(0, 5));
   }, [snacks, userAllergies, selectedEnergyLevel, ignoreAllergiesFilter]);
 
   return (
