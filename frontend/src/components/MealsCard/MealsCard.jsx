@@ -174,7 +174,7 @@ export default function MealCard({
             ➕
           </button>
           <div className="ai-header">
-            <img src="../../public/bee.png" />
+            <img src="../../bee.png" />
             <h5 className="ai-pick-title">WellForce AI Pick</h5>
           </div>
         </div>
