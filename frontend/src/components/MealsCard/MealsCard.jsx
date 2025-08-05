@@ -14,7 +14,7 @@ export default function MealCard({
   type,
   hasOrderedBefore,
   setHasOrderedBefore,
-  internalUserId = { internalUserId },
+  internalUserId,
 }) {
   const [showModal, setShowModal] = useState(false);
   const [eatCount, setEatCount] = useState(0);
