@@ -29,6 +29,7 @@
 .habit-week {
   display: flex;
   justify-content: space-between;
+  margin-top: 0.5rem;
 }
 
 .day {
@@ -75,8 +76,8 @@
 
 .circle.unchecked.food-day {
   background-color: #0a7aaa;
-  width: 5rem;
-  height: 5rem;
+  /* width: 5rem; */
+  /* height: 5rem; */
 }
 .circle-content {
   display: flex;

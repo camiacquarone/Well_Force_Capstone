@@ -1,6 +1,7 @@
-html, .food-page{
+html,
+.food-page {
   background: linear-gradient(180deg, #ffffff, #abe3ff);
-  padding-left:1rem;
+  padding-left: 1rem;
   background-attachment: fixed;
   min-height: 100vh;
   margin: 0;
@@ -21,7 +22,7 @@ html, .food-page{
 }
 h1 {
   font-size: 3.5rem;
-  white-space: nowrap; 
+  white-space: nowrap;
   margin-bottom: 0;
   font-family: "Bold";
   margin-top: 0;
@@ -68,7 +69,6 @@ h2 {
   align-items: center;
   top: -1rem;
 }
-
 
 select {
   padding: 8px;
@@ -179,14 +179,13 @@ label {
 }
 
 .meals-section .button-wrapper {
- display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding: 0;
+  margin: 0;
 }
 
 .meals-section h2 {
@@ -216,7 +215,7 @@ label {
   box-shadow: 3px 5px gold;
   width: 5rem;
   height: 5rem;
-  padding:10px;
+  padding: 10px;
 }
 
 .ai-companion-button:hover {
@@ -231,7 +230,6 @@ label {
   flex-direction: column;
   padding-left: 60px;
   gap: 20px;
-
 }
 
 .food-page-header {
@@ -273,11 +271,11 @@ label {
   margin: 0;
 }
 .toggle-meals-button {
-  height: 2.5rem;
-    width: auto !important;
-    color: white;
-    font-weight: 800;
-    font-size: 1.2rem;
+  height: 2rem;
+  width: auto !important;
+  color: white;
+  font-weight: 800;
+  font-size: 1.2rem;
 }
 .ai-companion-button:hover .chat-message {
   visibility: visible;
@@ -288,8 +286,8 @@ label {
   width: auto;
 }
 
-@media screen and (max-width: 1024px) {
 
+@media screen and (max-width: 1024px) {
   .food-header {
     margin-top: 5rem !important;
     display: flex !important;
@@ -304,17 +302,17 @@ label {
   }
 
   .food-controls {
-        margin: 0px;
-        margin-right: 0px;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    margin: 0px;
+    margin-right: 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .dropdown-group {
-  padding: 8px;
+    padding: 8px;
     /* margin-right: 500px; */
     font-family: "Regular";
     /* display: flex; */
@@ -324,7 +322,7 @@ label {
     display: flex;
     align-items: center;
     top: -1rem;
-}
+  }
 
   .food-header {
     display: flex;
@@ -338,12 +336,12 @@ label {
   }
 
   h1 {
-  /* font-size: 3.5rem; */
-  margin-bottom: 0;
-  font-family: "Bold";
-  margin-top: 0;
-  color: #04354a;
-}
+    /* font-size: 3.5rem; */
+    margin-bottom: 0;
+    font-family: "Bold";
+    margin-top: 0;
+    color: #04354a;
+  }
 
   .meals-header {
     margin-top: 3rem;
@@ -374,8 +372,6 @@ label {
     display: none;
   }
 
-  
-
   .food-header {
     /* Make this the container that centers both the header text and the dropdown group */
     display: flex;
@@ -396,14 +392,15 @@ label {
     /* Ensure h1/h2 are block elements for centering */
   }
 
-  .meals-header h1 { /* Target h1 inside meals-header if needed */
+  .meals-header h1 {
+    /* Target h1 inside meals-header if needed */
     font-size: 1.8rem; /* Adjust font size for mobile */
   }
-  .meals-header h2 { /* Target h2 inside meals-header if needed */
+  .meals-header h2 {
+    /* Target h2 inside meals-header if needed */
     font-size: 1.8rem; /* Adjust font size for mobile */
     margin-top: 0.5rem; /* Space below h1 */
   }
-
 
   .dropdown-group {
     position: static; /* Reset positioning */
@@ -418,13 +415,15 @@ label {
     gap: 1rem; /* Space between energy and allergy dropdowns */
   }
 
-  .energy-drop, .allergy-drop {
+  .energy-drop,
+  .allergy-drop {
     width: 100%; /* Make dropdowns full width */
     max-width: 250px; /* Limit max width for readability */
     align-items: center; /* Center content within each dropdown container */
   }
 
-  .energy-title, .allergy-title {
+  .energy-title,
+  .allergy-title {
     position: static; /* Reset absolute positioning */
     margin: 0; /* Remove fixed margins */
     text-align: center; /* Center title text */
@@ -437,10 +436,9 @@ label {
     font-size: 1rem; /* Adjust font size */
   }
 
-  
-
   /* Adjustments for meals/snacks lists */
-  .meals-list, .snacks-list {
+  .meals-list,
+  .snacks-list {
     flex-direction: column; /* Stack cards vertically */
     align-items: center; /* Center cards horizontally */
     gap: 1rem; /* Space between cards */
@@ -450,3 +448,33 @@ label {
     max-width: 280px; /* Max width for readability */
   }
 }
+
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .food-page {
+    padding-left: 0.5rem;
+  }
+  .food-main {
+    padding-left: 1.5rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .toggle-meals-button {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+    height: 1.5rem;
+  }
+
+  .snack-container {
+    width: 297px;
+  }
+
+  .food-header {
+    padding-left: 0;
+  }
+}
+
+/* .hamburger-button {
+  margin-left: 2rem;
+} */
