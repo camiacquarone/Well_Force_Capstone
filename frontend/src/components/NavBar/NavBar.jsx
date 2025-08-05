@@ -78,8 +78,6 @@ function NavBar({ user }) {
                 <div className="text-gray-700 text-sm md:text-base"></div>
               </SignedIn>
             </div>
-            55, 10500 on hold - return offer - Derryn Beacon - May 18th, August
-            7th
           </>
         )}
         <div className="open">

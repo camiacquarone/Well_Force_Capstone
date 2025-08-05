@@ -203,3 +203,38 @@ b {
     height: 90%;
   }
 }
+
+.ai-chatbot-message.assistant {
+  align-self: flex-start; /* Align to the left */
+  background-color: #58c6f5; /* Light blue bubble */
+  padding: 10px;
+  border-radius: 0.5rem;
+  width: fit-content; /* Adjust width to content */
+  max-width: 80%; /* Limit width */
+  background-color: red;
+
+}
+
+.ai-chatbot-message.assistant.typing-animation {
+  width: 0; /* Start with zero width */
+  white-space: nowrap; /* Keep text on one line */
+  overflow: hidden; /* Hide overflowing text */
+  border-right: 2px solid orange; /* The blinking cursor */
+  animation:
+    typing 2s steps(40, end) forwards, /* Typing animation (2s duration, 40 steps) */
+    blink-caret 0.75s step-end infinite; /* Blinking cursor */
+  /* Ensure the background color is consistent for typing */
+  background-color: #58c6f5; /* Match assistant bubble color */
+}
+
+/* Keyframes for the typing animation */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; } /* Expands to full width of content */
+}
+
+/* Keyframes for the blinking cursor animation */
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: orange; }
+}
