@@ -151,6 +151,7 @@ export default function MealsList({
               meal={meal}
 hasOrderedBefore={hasOrderedBefore}
                 setHasOrderedBefore={setHasOrderedBefore}
+                internalUserId = {internalUserId}
             />
           ))}
 

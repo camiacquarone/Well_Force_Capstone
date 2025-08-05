@@ -14,6 +14,7 @@ export default function MealCard({
   type,
   hasOrderedBefore,
   setHasOrderedBefore,
+  internalUserId = { internalUserId },
 }) {
   const [showModal, setShowModal] = useState(false);
   const [eatCount, setEatCount] = useState(0);
@@ -22,7 +23,7 @@ export default function MealCard({
   const { addCalories, refreshCalories } = useContext(CaloriesContext);
   const { getToken } = useAuth();
   const { user } = useUser();
-  const userId = user?.id;
+  const userId = internalUserId || user?.id;
 
   useEffect(() => {
     const fetchCount = async () => {
