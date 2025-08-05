@@ -14,6 +14,8 @@ export default function SnackList({ energyLevel, allergy }) {
   const [ignoreAllergiesFilter, setIgnoreAllergiesFilter] = useState(false);
   const [userCustomSnacks, setUserCustomSnacks] = useState([]);
   const [showAddSnackModal, setShowAddSnackModal] = useState(false);
+  const [dietaryPreferences, setDietaryPreferences] = useState([]);
+
 
   const handleMoveToEnd = (snackIdToMove) => {
     setFilteredSnacks(prevSnacks => {
@@ -42,8 +44,9 @@ export default function SnackList({ energyLevel, allergy }) {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUserAllergies(res.data.allergies || []);
+        setDietaryPreferences(res.data.dietary_preferences || []);
       } catch (err) {
-        console.error("Error fetching user allergies:", err);
+        console.error("Error fetching user allergies/preferences:", err);
       }
     };
 
@@ -79,29 +82,29 @@ export default function SnackList({ energyLevel, allergy }) {
     setShowAddSnackModal(false);
   };
 
-  useEffect(() => {
-    const allAvailableSnacks = [...snacks, ...userCustomSnacks];
-    let filtered = [...allAvailableSnacks];
+  // useEffect(() => {
+  //   const allAvailableSnacks = [...snacks, ...userCustomSnacks];
+  //   let filtered = [...allAvailableSnacks];
 
-    if (userAllergies.length && !ignoreAllergiesFilter) {
-      const lowerAllergies = userAllergies.map((a) => a.toLowerCase());
-      filtered = filtered.filter((snack) => {
-        const snackText = `${snack.name} ${snack.description || ""}`.toLowerCase();
-        return !lowerAllergies.some((allergy) => snackText.includes(allergy));
-      });
-    }
+  //   if (userAllergies.length && !ignoreAllergiesFilter) {
+  //     const lowerAllergies = userAllergies.map((a) => a.toLowerCase());
+  //     filtered = filtered.filter((snack) => {
+  //       const snackText = `${snack.name} ${snack.description || ""}`.toLowerCase();
+  //       return !lowerAllergies.some((allergy) => snackText.includes(allergy));
+  //     });
+  //   }
 
-    if (energyLevel && energyLevel !== "All" && energyLevel !== "Energy Level") {
-      const normalizedEnergy = energyLevel.toLowerCase();
-      filtered = filtered.filter((snack) =>
-        snack.wellness_category?.some((category) =>
-          category.toLowerCase().includes(normalizedEnergy)
-        )
-      );
-    }
+  //   if (energyLevel && energyLevel !== "All" && energyLevel !== "Energy Level") {
+  //     const normalizedEnergy = energyLevel.toLowerCase();
+  //     filtered = filtered.filter((snack) =>
+  //       snack.wellness_category?.some((category) =>
+  //         category.toLowerCase().includes(normalizedEnergy)
+  //       )
+  //     );
+  //   }
 
-    setFilteredSnacks(filtered);
-  }, [snacks, userAllergies, energyLevel, ignoreAllergiesFilter, userCustomSnacks]);
+  //   setFilteredSnacks(filtered);
+  // }, [snacks, userAllergies, energyLevel, ignoreAllergiesFilter, userCustomSnacks]);
 
   // No need to sort if we are placing the add-snack-card explicitly
   // const sortedFilteredSnacks = [...filteredSnacks].sort((a, b) => {
@@ -109,6 +112,39 @@ export default function SnackList({ energyLevel, allergy }) {
   //     if (!b.id && !b.name) return 1;
   //     return 0;
   // });
+      useEffect(() => {
+  const allAvailableSnacks = [...snacks, ...userCustomSnacks];
+  let filtered = [...allAvailableSnacks];
+
+  if (userAllergies.length && !ignoreAllergiesFilter) {
+    const lowerAllergies = userAllergies.map((a) => a.toLowerCase());
+    filtered = filtered.filter((snack) => {
+      const snackText = `${snack.name} ${snack.description || ""}`.toLowerCase();
+      return !lowerAllergies.some((allergy) => snackText.includes(allergy));
+    });
+  }
+
+  if (energyLevel && energyLevel !== "All" && energyLevel !== "Energy Level") {
+    const normalizedEnergy = energyLevel.toLowerCase();
+    filtered = filtered.filter((snack) =>
+      snack.wellness_category?.some((category) =>
+        category.toLowerCase().includes(normalizedEnergy)
+      )
+    );
+  }
+
+  // ✅ Filter by dietary preferences
+  if (dietaryPreferences.length) {
+    filtered = filtered.filter((snack) => {
+      if (!snack.dietary_preferences) return false;
+      return dietaryPreferences.every((pref) =>
+        snack.dietary_preferences.map(p => p.toLowerCase()).includes(pref.toLowerCase())
+      );
+    });
+  }
+
+  setFilteredSnacks(filtered);
+}, [snacks, userAllergies, energyLevel, ignoreAllergiesFilter, userCustomSnacks, dietaryPreferences]);
 
     console.log("Filtered Snacks being rendered:", filteredSnacks)
   return (
