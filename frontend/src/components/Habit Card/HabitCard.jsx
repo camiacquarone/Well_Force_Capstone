@@ -35,7 +35,7 @@ const HabitCard = () => {
   return (
     <div className="habit-card">
       <div className="habit-header">
-        <p className="habit-title">YOUR WEEKLY TRACKER</p>
+        <p className="habit-title">YOUR WEEKLY LOG</p>
       </div>
       <div className="habit-week">
         {weekDays.map((abbr, i) => {
@@ -48,6 +48,8 @@ const HabitCard = () => {
           const currentDate = new Date(monday);
           currentDate.setDate(monday.getDate() + i);
           const isoDate = currentDate.toISOString().split("T")[0];
+          console.log("checking log for:", isoDate, "→", caloriesByDay[isoDate]);
+
           const isLogged = caloriesByDay[isoDate] > 0;
 
           return (

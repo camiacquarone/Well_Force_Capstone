@@ -28,6 +28,7 @@
   margin: 0.3rem;
   padding: 0.3rem, 0.5rem;
   border: solid, 0.2rem, rgb(208, 233, 255);
+  margin-bottom: 1rem;
 }
 .add-calories-button:hover{
     background-color: rgb(216, 237, 255);
@@ -43,6 +44,7 @@
   margin: 0.3rem;
   padding: 0.3rem, 0.5rem;
   border: solid, 0.2rem, rgb(208, 233, 255);
+   margin-bottom: 1rem;
 }
 
 .eaten-button {
@@ -132,8 +134,8 @@
 
 .move-to-end-button {
   position: absolute;
-  top: 5px;
-  right: 5px; 
+  top: -4px;
+  right: -10px; 
   background-color: #ff4d4d;
   color: white;
   border: none;

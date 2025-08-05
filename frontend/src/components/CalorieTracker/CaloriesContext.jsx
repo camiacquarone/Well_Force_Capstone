@@ -20,9 +20,10 @@ export const CaloriesProvider = ({ children }) => {
       try {
         const token = await getToken();
         const res = await axios.get(`${baseUrl}/api/meals/log/totals`, {
-          params: { userId: user.id },
+          params: { userId: user.id, type: "combined" }, // make sure your backend supports this
           headers: { Authorization: `Bearer ${token}` },
         });
+
         setCaloriesByDay(res.data);
       } catch (error) {
         console.error("Failed to fetch daily calories:", error);
@@ -46,9 +47,10 @@ export const CaloriesProvider = ({ children }) => {
     try {
       const token = await getToken();
       const res = await axios.get(`${baseUrl}/api/meals/log/totals`, {
-        params: { userId: user.id },
+        params: { userId: user.id, type: "combined" },
         headers: { Authorization: `Bearer ${token}` },
       });
+
       setCaloriesByDay(res.data);
     } catch (error) {
       console.error("Failed to refresh daily calories:", error);
@@ -88,20 +90,20 @@ export const CaloriesProvider = ({ children }) => {
     });
   };
 
-return (
-  <CaloriesContext.Provider
-    value={{
-      caloriesByDay,
-      setCaloriesByDay,
-      addCalories,
-      refreshCalories,
-      snackLoggedByDay,
-      logSnackForDay,
-      mealLoggedByDay,
-      logMealForDay
-    }}
-  >
-    {children}
-  </CaloriesContext.Provider>
-);
+  return (
+    <CaloriesContext.Provider
+      value={{
+        caloriesByDay,
+        setCaloriesByDay,
+        addCalories,
+        refreshCalories,
+        snackLoggedByDay,
+        logSnackForDay,
+        mealLoggedByDay,
+        logMealForDay,
+      }}
+    >
+      {children}
+    </CaloriesContext.Provider>
+  );
 };
