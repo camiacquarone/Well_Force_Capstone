@@ -33,11 +33,10 @@ function FoodPage({ user, setUser }) {
                 required
                 className={`energy-select ${energyLevel.toLowerCase()}-option`}
               >
-                <option value="">None</option>
+                <option value="">---</option>
                 <option value="tired">Tired</option>
                 <option value="stressed">Stressed</option>
                 <option value="energetic">Energetic</option>
-                <option value="all">All</option>
               </select>
               {/* </div> */}
             </div>

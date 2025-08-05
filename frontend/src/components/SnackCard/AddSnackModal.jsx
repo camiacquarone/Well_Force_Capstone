@@ -43,7 +43,9 @@ export default function AddSnackModal({ onClose, onAddSnack }) {
         <h2>Add Your Custom Snack</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="snackName">Snack Name:</label>
+            <label htmlFor="snackName">
+              Snack Name:<span className="star">*</span>
+            </label>
             <input
               type="text"
               id="snackName"
@@ -61,7 +63,7 @@ export default function AddSnackModal({ onClose, onAddSnack }) {
             ></textarea>
           </div>
           <div className="form-group">
-            <label htmlFor="snackImageUrl">Image URL (optional):</label>
+            <label htmlFor="snackImageUrl">Image URL:</label>
             <input
               type="url"
               id="snackImageUrl"
@@ -70,7 +72,9 @@ export default function AddSnackModal({ onClose, onAddSnack }) {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="snackWellnessCategory">Wellness Category (comma-separated):</label>
+            <label htmlFor="snackWellnessCategory">
+              Wellness Category (comma-separated):
+            </label>
             <input
               type="text"
               id="snackWellnessCategory"
@@ -80,7 +84,9 @@ export default function AddSnackModal({ onClose, onAddSnack }) {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="snackCalories">Calories:</label>
+            <label htmlFor="snackCalories">
+              Calories:<span className="star">*</span>
+            </label>
             <input
               type="number"
               id="snackCalories"
@@ -90,8 +96,12 @@ export default function AddSnackModal({ onClose, onAddSnack }) {
             />
           </div>
           <div className="modal-actions">
-            <button type="submit" className="add-button">Add Snack</button>
-            <button type="button" onClick={onClose} className="cancel-button">Cancel</button>
+            <button type="submit" className="add-button">
+              Add Snack
+            </button>
+            <button type="button" onClick={onClose} className="cancel-button">
+              Cancel
+            </button>
           </div>
         </form>
       </div>
