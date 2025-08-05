@@ -1,9 +1,4 @@
-.body,
-html,
-.GoalsPage {
-  /* background: linear-gradient(180deg, #ffffff, #abe3ff); */
-  /* padding-bottom: 30rem; */
-}
+
 
 .GoalsPage {
   position: absolute;
@@ -93,12 +88,13 @@ button:hover {
 }
 
 #Name {
-  margin-right: 2rem;
+  width: 100%;
 }
-
+/* 
 #newUserPosition {
   font-family: "Regular";
-}
+  width: 100%;
+} */
 
 .Goals_req_input input,
 .Goals_req_input select {
@@ -216,7 +212,24 @@ button:hover {
   grid-template-columns: auto auto auto auto auto;
 }
 
-/* Food Goals and Days Selection */
+
+.Goals_req_input input,
+.Goals_req_input select,
+#Name, 
+#newUserPosition { 
+  margin: 0 !important; 
+  border: 1px solid #ccc !important; 
+  padding: 10px !important;
+  box-sizing: border-box !important; 
+  width: 100% !important; 
+  min-width: 0 !important; 
+  max-width: none !important; 
+  outline: none !important; 
+  border-radius: 6px !important; 
+  font-size: 16px !important; 
+  font-family: "Regular" !important; 
+}
+
 .food-days-select,
 .food-goals-select,
 .food-df-select,
