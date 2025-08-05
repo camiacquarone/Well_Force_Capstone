@@ -34,7 +34,6 @@ function NavBar({ user }) {
             <button className="hamburger-button" onClick={toggleNavBar}>
               ☰
             </button>
-
             <Link to="/home">
               <img
                 src="/home.png"
@@ -65,7 +64,6 @@ function NavBar({ user }) {
                 style={{ cursor: "pointer" }}
               />
             </Link>
-
             <div className="pfp">
               <SignedOut>
                 <SignInButton
