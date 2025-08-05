@@ -47,7 +47,14 @@ const logMeal = async (req, res) => {
   const { userId: clerkId, mealId, date, count } = req.body;
 
   if (!clerkId || !mealId || !date || typeof count !== "number") {
-    return res.status(400).json({ error: "Missing or invalid body parameters" });
+    return res
+      .status(400)
+      .json({ error: "Missing or invalid body parameters" });
+  }
+
+  const parsedMealId = parseInt(mealId);
+  if (isNaN(parsedMealId)) {
+    return res.status(400).json({ error: "Invalid mealId" });
   }
 
   try {
@@ -56,48 +63,47 @@ const logMeal = async (req, res) => {
 
     const internalUserId = user.id;
 
+    const meal = await prisma.meals.findUnique({ where: { id: parsedMealId } });
+    if (!meal) return res.status(404).json({ error: "Meal not found" });
+
     const existingLog = await prisma.mealLog.findUnique({
       where: {
         userId_mealId_date: {
           userId: internalUserId,
-          mealId: parseInt(mealId),
+          mealId: parsedMealId,
           date: new Date(date),
         },
       },
     });
 
-    let updatedLog;
-    if (existingLog) {
-      updatedLog = await prisma.mealLog.update({
-        where: {
-          userId_mealId_date: {
-            userId: internalUserId,
-            mealId: parseInt(mealId),
-            date: new Date(date),
+    const updatedLog = existingLog
+      ? await prisma.mealLog.update({
+          where: {
+            userId_mealId_date: {
+              userId: internalUserId,
+              mealId: parsedMealId,
+              date: new Date(date),
+            },
           },
-        },
-        data: {
-          count: { increment: count },
-        },
-      });
-    } else {
-      updatedLog = await prisma.mealLog.create({
-        data: {
-          userId: internalUserId,
-          mealId: parseInt(mealId),
-          date: new Date(date),
-          count,
-        },
-      });
-    }
+          data: {
+            count: { increment: count },
+          },
+        })
+      : await prisma.mealLog.create({
+          data: {
+            userId: internalUserId,
+            mealId: parsedMealId,
+            date: new Date(date),
+            count,
+          },
+        });
 
     res.json(updatedLog);
   } catch (err) {
-    console.error("❌ Meal log failed:", err);
+    console.error("❌ Meal log failed:", err.message, err.stack);
     res.status(500).json({ error: "Internal server error" });
   }
 };
-
 
 // 4. Get meal count
 const getMealCount = async (req, res) => {
@@ -109,7 +115,7 @@ const getMealCount = async (req, res) => {
   try {
     // 🧠 Convert Clerk ID to internal user ID (INT)
     const user = await prisma.user.findUnique({
-      where: { clerkId }
+      where: { clerkId },
     });
     if (!user) return res.status(404).json({ error: "User not found" });
 
@@ -127,7 +133,6 @@ const getMealCount = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
-
 
 // 5. Total calories for meals for a given date
 const getTotalMealCalories = async (req, res) => {
@@ -193,14 +198,16 @@ const getCombinedCalories = async (req, res) => {
     const snackByDay = {};
     for (const log of snackLogs) {
       const date = log.date.toISOString().split("T")[0];
-      const calories = parseInt(log.snack?.nutritional_info?.[0]?.calories) || 0;
+      const calories =
+        parseInt(log.snack?.nutritional_info?.[0]?.calories) || 0;
       snackByDay[date] = (snackByDay[date] || 0) + calories * log.count;
     }
 
     const mealByDay = {};
     for (const log of mealLogs) {
       const date = log.date.toISOString().split("T")[0];
-      const calories = parseInt(log.meal?.nutritional_information?.[0]?.calories) || 0;
+      const calories =
+        parseInt(log.meal?.nutritional_information?.[0]?.calories) || 0;
       mealByDay[date] = (mealByDay[date] || 0) + calories * log.count;
     }
 
@@ -212,10 +219,11 @@ const getCombinedCalories = async (req, res) => {
     res.json(combined);
   } catch (err) {
     console.error("❌ Error in getCombinedCalories:", err);
-    res.status(500).json({ error: "Internal Server Error", details: err.message });
+    res
+      .status(500)
+      .json({ error: "Internal Server Error", details: err.message });
   }
 };
-
 
 module.exports = {
   getAllMeals,
