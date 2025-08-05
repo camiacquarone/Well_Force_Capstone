@@ -21,6 +21,14 @@
   width: 90%;
 }
 
+.star {
+  color: red;
+  font-size: 1.5rem;
+}
+
+#snackDescription {
+  font-family: 'Regular';
+}
 .modal-content h2 {
   margin-top: 0;
   margin-bottom: 20px;

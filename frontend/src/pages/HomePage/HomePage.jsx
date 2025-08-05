@@ -9,6 +9,7 @@ import Graph from "../../components/Graph/Graph";
 import Carousel from "../../components/Carousel/Carousel";
 import Info from "../../components/DisplayInfo/DisplayInfo";
 import NavBar from "../../components/NavBar/NavBar";
+import { useNavigate } from "react-router-dom";
 
 import "../HomePage/HomePage.css";
 import HabitCard from "../../components/Habit Card/HabitCard";
@@ -26,9 +27,15 @@ const HomePage = ({ user, setUser }) => {
 
   const [isSnacksLoading, setIsSnacksLoading] = useState(true);
   const [snacksError, setSnacksError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log("HomePage.jsx - Received user prop:", user);
+
+    if (user === null) {
+      console.log("user prop is null, need to redirect to the profile setup");
+      navigate("/profile");
+    }
   }, [user]);
 
   useEffect(() => {
