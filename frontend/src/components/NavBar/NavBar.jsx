@@ -126,7 +126,6 @@ function NavBar({ user }) {
                     <UserButton afterSignOutUrl="/" />
                     <div className="text-gray-700 text-sm md:text-base"></div>
                   </SignedIn>
-                  Profile
                 </span>
 
                 {/* <Avatar pfpImg={user.image_url}></Avatar> */}
