@@ -17,10 +17,10 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/users", userRoutes);
-app.use("/api", chatRoutes); 
-app.use("/api/meals", mealRoutes); 
+app.use("/api", chatRoutes);
+app.use("/api/meals", mealRoutes);
 app.use("/api/snacks", snackRoutes);
-app.use("/api/mealchat", mealchatRoutes)
+app.use("/api/mealchat", mealchatRoutes);
 
 app.get("/", (req, res) => {
   res.send("API is working.");
