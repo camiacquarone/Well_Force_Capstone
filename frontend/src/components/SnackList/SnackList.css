@@ -138,9 +138,7 @@
   line-height: 1;
 }
 
-.add-snack-card .snack-card-title {
-  /* Inherits existing title styles */
-}
+
 
 .add-snack-card .snack-card-bottom-actions {
   /* This div holds the "Click to create" text, styled to appear at the bottom */
