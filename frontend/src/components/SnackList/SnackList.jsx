@@ -59,7 +59,6 @@ export default function SnackList({ energyLevel, allergy }) {
         const baseUrl = import.meta.env.VITE_PUBLIC_API_BASE_URL;
         const res = await axios.get(`${baseUrl}/api/snacks`);
         setSnacks(res.data);
-        console.log("📦 Snacks loaded:", res.data);
       } catch (err) {
         console.error("Error fetching snacks:", err);
       }
@@ -146,7 +145,6 @@ export default function SnackList({ energyLevel, allergy }) {
   setFilteredSnacks(filtered);
 }, [snacks, userAllergies, energyLevel, ignoreAllergiesFilter, userCustomSnacks, dietaryPreferences]);
 
-    console.log("Filtered Snacks being rendered:", filteredSnacks)
   return (
     <div className="snack-container">
       {/* Conditionally render the modal */}
