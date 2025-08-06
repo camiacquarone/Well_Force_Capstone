@@ -74,7 +74,6 @@ function GoalsPage({ user, setUser }) {
     setDietaryPref((prev) =>
       prev.includes(dr) ? prev.filter((item) => item !== dr) : [...prev, dr]
     );
-    console.log("dietary preferences: ", dietaryPref);
   }
 
   function toggleAllergies(allerg) {
@@ -138,21 +137,11 @@ function GoalsPage({ user, setUser }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log("Does the user exist? ", localUserExist);
     try {
       const token = await getToken();
       let resultUser;
 
-      console.log("USER INFORMATION");
-      console.log("Name:", name);
-      console.log("Position:", newUserPosition);
-      console.log("Calories", calories);
-      console.log("Image URL:", newUserImage_url);
-      console.log("dietary preferences: ", dietaryPref);
-      console.log("Food Goal:", newFoodGoal);
-      console.log("Food Day:", newFoodDay);
-      console.log("allergies: ", allergies);
-
+      
       if (localUserExist) {
         resultUser = await axios.put(
           `${baseUrl}/api/users`,

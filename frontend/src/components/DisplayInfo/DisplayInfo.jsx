@@ -3,11 +3,8 @@ import Chip from "../../components/Chip/Chip";
 import "./DisplayInfo.css";
 
 const DisplayInfo = ({ user, setuser }) => {
-  console.log("DEBUG: DisplayInfo - Received user prop:", user); // <--- CHECK THIS LOG
-  console.log("DEBUG: DisplayInfo - user.dietary_pref:", user?.dietary_pref); // <--- CRITICAL LOG!
 
   useEffect(() => {
-    console.log("info - Received user prop:", user);
   }, [user]);
 
   //makes the rendering process wait until the user is loaded

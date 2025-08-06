@@ -23,7 +23,7 @@ export default function MealCard({
   const { addCalories, refreshCalories } = useContext(CaloriesContext);
   const { getToken } = useAuth();
   const { user } = useUser();
-  const userId = internalUserId || user?.id;
+  const userId =  internalUserId || user?.id; 
 
   useEffect(() => {
     const fetchCount = async () => {
@@ -40,7 +40,6 @@ export default function MealCard({
         });
 
         setEatCount(res.data.count || 0);
-        console.log("🍽️ Loaded meal count:", res.data.count || 0);
       } catch (err) {
         console.error("Failed to load meal count:", err);
       }
