@@ -1,26 +1,29 @@
 
 
-# SITE Capstone Project
+# WellForce
 
-SITE Course Year: **2025**
+**2025**
 
-Cohort: **Salesforce**
+**Salesforce**
 
 Team Member Names:**Camila Acquarone Janine Jimenez Joshua Donatien**
 
-Mentors Names: **Insert Professional Mentor Names**
+## Overview
 
-Project Code Repository Links
+Wellforce is a health platform that allows Salesforce employees in San Francisco get personalized meal and snack recommendations based on dietary restrictions and preferences. 
 
-* [Frontend Repo Link]()
-* [Backend Repo Link]()
 
-## Project Overview
+## Tech Stack 
+ - PostgreSQL
+ - Express
+ - Node.js
+ - React
+ - Open AI API
+ - Clerk
+ - Render 
 
-Add a quick summary of what your project theme and objectives are. 
 
-Deployment Website: **Add Link to Deployed Project**
 
-### Open-source libraries used
+Deployment Website: **wellforce.site**
 
-- Add any links to open-source libraries used in your project.
+
