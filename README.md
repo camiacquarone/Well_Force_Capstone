@@ -2,9 +2,7 @@
 
 # WellForce
 
-**2025**
-
-**Salesforce**
+**2025 Salesforce**
 
 Team Member Names:**Camila Acquarone Janine Jimenez Joshua Donatien**
 
@@ -24,6 +22,6 @@ Wellforce is a health platform that allows Salesforce employees in San Francisco
 
 
 
-Deployment Website: **wellforce.site**
+Deployment Website: **https://wellforce.site**
 
 
